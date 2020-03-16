@@ -13,10 +13,7 @@ import javax.swing.JFrame;
  */
 public class main {
     public static void main(String[]arg) throws InterruptedException{
-        Game game = new Game(50,50);
-        
-        
-        
+        Game game = new Game();
         //Mantiene las dimensiones establecidas en el objeto, y deshabilita al usuario para cambiar la misma
         game.frame.setResizable(false);
         game.frame.setTitle("Hera's Legacy");
@@ -33,10 +30,6 @@ public class main {
 
         
         game.start();
-        for (int i = 0; i < 100; i++) {
-            Thread.sleep(1000);
-            System.out.println(i);
-        }
         
     }
 }
