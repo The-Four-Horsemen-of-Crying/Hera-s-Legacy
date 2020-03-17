@@ -24,7 +24,7 @@ public class Screen {
     private int tilesIndex;
     private int[] Tiles= new int[MAP_SIZE*MAP_SIZE];
     private Random random = new Random();
-    private int speed=10;
+    private int speed=5;
     
     public Screen(int width, int height) {
         this.width = width;
@@ -45,6 +45,7 @@ public class Screen {
     public void render(int xOutScreen, int yOutScreen) {
         
         for (int y = 0; y < height; y++) {
+            
             int yy = y + yOutScreen*speed;
                                                 //if (y >= height || y < 0) break;
             for (int x = 0; x < width; x++) {
