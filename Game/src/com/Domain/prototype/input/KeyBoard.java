@@ -14,6 +14,7 @@ public class KeyBoard implements KeyListener {
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
+        //restart = keys[KeyEvent.VK_SPACE];
     }
 
     @Override

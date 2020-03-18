@@ -7,6 +7,7 @@ package com.Domain.prototype;
 
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.input.KeyBoard;
+import com.Domain.prototype.level.RandomLevel;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,14 +23,15 @@ import javax.swing.JFrame;
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
-    public static int width = 400;
+    public static int width = 300;
     public static int height = width / 16 * 9;
     public static int scale = 3;
-
+    private Level level;
     private Thread thread;
     private boolean running = true;
     JFrame frame;
     String windowTittle = "Hera's Legacy";
+    
     //Profundizar
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -46,7 +48,7 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         key = new KeyBoard();
-
+        level = new RandomLevel(64,64);
         addKeyListener(key);
     }
 
@@ -68,11 +70,11 @@ public class Game extends Canvas implements Runnable {
     public void run() {
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();//1000 ms = 1sg
-        final double convert = 1000000000.0 / 60.0;
+        final double convert = 1000000000.0 / 120;
         double deltaTime = 0;
         int frames = 0; //Imagenes por segundo
         int uptades = 0; //veces que es llamada la funcion dentro del ciclo
-
+        requestFocus();
         //Y esto se hará tantas veces como la condición se cumpla;
         while (running) {
             long now = System.nanoTime();
@@ -102,11 +104,12 @@ public class Game extends Canvas implements Runnable {
 
     public void uptade() {
         key.uptade();
-        if(key.up)y--;
-        if(key.down)y++;
-        if(key.right)x++;
-        if(key.left)x--;
-
+        //if(x>0&&x+220<width&&y+124<height+1&&y>-1){
+            if(key.up)y--;
+            if(key.down)y++;
+            if(key.right)x++;
+            if(key.left)x--;
+        
     }
 
     public void render() {
@@ -117,7 +120,8 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         screen.clear();
-        screen.render(x, y);
+        //screen.render(x, y);
+        
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
@@ -126,7 +130,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
+        //g.fillOval(x*10, y*10, 100, 100);
         //g.fillRect(50, 200, 100, 300);
         //clear the frame
         g.dispose();

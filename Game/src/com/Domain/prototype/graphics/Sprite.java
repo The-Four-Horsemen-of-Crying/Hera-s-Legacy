@@ -3,14 +3,14 @@ package com.Domain.prototype.graphics;
 
 
 public class Sprite {
-    private final int SIZE;
+    public final int SIZE;
     private int x;
     private int y;
     public int [] pixels;
     private SpriteSheet sheet;
     
-    public static Sprite sp = new Sprite(16,0,0,null);
-
+    public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.floor);
+    public static Sprite null_floor = new Sprite(16,0,0,SpriteSheet.floor);
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet
