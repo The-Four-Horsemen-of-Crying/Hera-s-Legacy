@@ -11,6 +11,6 @@ class VoidTile extends Tile {
 
     public void render(int x, int y, Screen screen) {
         //Renderizar cosas aquí
-        screen.renderTile(x, y, this);
+        screen.renderTile(x<<4, y<<4, this);
     }
 }

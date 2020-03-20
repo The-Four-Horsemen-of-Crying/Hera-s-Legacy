@@ -17,7 +17,7 @@ public class SpriteSheet {
     public final int SIZE;
     public int[] pixels;
 
-    public static SpriteSheet floor = new SpriteSheet("/textures/spriteSheet.png", 225);//La ruta y el tamaño de todo el pack
+    public static SpriteSheet spriteSheet = new SpriteSheet("/textures/spriteSheet.png", 225);//La ruta y el tamaño de todo el pack
 
     public SpriteSheet(String path, int size) {
         this.path = path;

@@ -1,6 +1,8 @@
 
 package com.Domain.prototype.graphics;
 
+import com.Domain.prototype.entity.movil.Player;
+
 
 public class Sprite {
     public final int SIZE;
@@ -9,8 +11,23 @@ public class Sprite {
     public int [] pixels;
     private SpriteSheet sheet;
     
-    public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.floor);
-    public static Sprite null_floor = new Sprite(16,0,0,SpriteSheet.floor);
+    
+    public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.spriteSheet);
+    public static Sprite null_floor = new Sprite(16,0,0,SpriteSheet.spriteSheet);
+    
+    public static Sprite[] player_down  = {new Sprite(32,0,1,SpriteSheet.spriteSheet), new Sprite(32,1,1,SpriteSheet.spriteSheet),
+                                           new Sprite(32,2,1,SpriteSheet.spriteSheet), new Sprite(32,3,1,SpriteSheet.spriteSheet)};
+        
+    public static Sprite[] player_rigth = {new Sprite(32,0,3,SpriteSheet.spriteSheet),new Sprite(32,1,3,SpriteSheet.spriteSheet),
+                                           new Sprite(32,2,3,SpriteSheet.spriteSheet),new Sprite(32,3,3,SpriteSheet.spriteSheet)};
+    
+    public static Sprite[] player_up    = {new Sprite(32,0,4,SpriteSheet.spriteSheet),new Sprite(32,1,4,SpriteSheet.spriteSheet),
+                                           new Sprite(32,2,4,SpriteSheet.spriteSheet),new Sprite(32,3,4,SpriteSheet.spriteSheet)};
+    
+    public static Sprite[] player_left  = {new Sprite(32,0,2,SpriteSheet.spriteSheet),new Sprite(32,1,2,SpriteSheet.spriteSheet),
+                                           new Sprite(32,2,2,SpriteSheet.spriteSheet),new Sprite(32,3,2,SpriteSheet.spriteSheet)};
+    
+    
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet

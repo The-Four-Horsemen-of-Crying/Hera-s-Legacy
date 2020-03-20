@@ -5,6 +5,7 @@
  */
 package com.Domain.prototype.graphics;
 
+import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.level.tile.Tile;
 import static java.lang.System.currentTimeMillis;
 import java.util.Random;
@@ -45,27 +46,6 @@ public class Screen {
         }
     }
 
-//    public void render(int xOutScreen, int yOutScreen) {
-//
-//        for (int y = 0; y < height; y++) {
-//
-//            int yy = y - yOutScreen;    //y + yOutScreen;
-//            if (yy >= height || yy < 0) {
-//                continue;
-//            }
-//
-//            for (int x = 0; x < width; x++) {
-//
-//                int xx = x - xOutScreen; //x + xOutScreen 
-//                if (xx >= width || xx < 0) {
-//                    continue;
-//                }
-//                    //tilesIndex=((xx>>4)& MAP_SIZE_MINUS)+((yy>>4)&MAP_SIZE_MINUS)*MAP_SIZE;   //Same shit that (x/16)+(y/16)*64 but faster
-//
-//                pixels[xx + yy * width] = Sprite.floor_mat.pixels[(x & 15) + (y & 15) * Sprite.floor_mat.SIZE]; //Sprite.floor_mat.pixels[(xx&15)+(yy&15)*Sprite.floor_mat.SIZE];
-//            }
-//        }
-//    }
 
     public void renderTile(int xPosition, int yPosition, Tile tile) {
         xPosition-=xOffSet;
@@ -73,9 +53,25 @@ public class Screen {
         for (int y = 0; y < tile.sprite.SIZE; y++) {
             int yAbsolute = y + yPosition;
             for (int x = 0; x < tile.sprite.SIZE; x++) {
-                int xAbsolute = x + xPosition;
-                if (xAbsolute < 0 || xAbsolute >= width || yAbsolute < 0 || yAbsolute > height);//yAbsolute>width
+                int xAbsolute = x + xPosition;                
+                if (xAbsolute < -tile.sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height) break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
+                if(xAbsolute<0) xAbsolute=0;//Evita un outOfBounds
                 pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+            }
+        }
+    }
+    
+    public void renderPlayer(int xPosition, int yPosition, Sprite sprite) {
+        xPosition -= xOffSet;
+        yPosition -= yOffset;
+        for (int y = 0; y < sprite.SIZE; y++) {
+            int yAbsolute = y + yPosition;
+            for (int x = 0; x < sprite.SIZE; x++) {
+                int xAbsolute = x + xPosition;
+                if (xAbsolute < -sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height)break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
+                if (xAbsolute < 0)xAbsolute = 0;//Evita un outOfBounds
+                int fondo = sprite.pixels[x + y * sprite.SIZE];
+                if(fondo != 0xff000000)pixels[xAbsolute + yAbsolute * width] = sprite.pixels[x + y * sprite.SIZE];
             }
         }
     }
