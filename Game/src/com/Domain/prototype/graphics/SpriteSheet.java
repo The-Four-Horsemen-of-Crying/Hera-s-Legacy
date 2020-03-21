@@ -18,6 +18,7 @@ public class SpriteSheet {
     public int[] pixels;
 
     public static SpriteSheet spriteSheet = new SpriteSheet("/textures/spriteSheet.png", 225);//La ruta y el tamaño de todo el pack
+    public static SpriteSheet nivel01_mat = new SpriteSheet("/textures/mini_game01.png", 96);
 
     public SpriteSheet(String path, int size) {
         this.path = path;

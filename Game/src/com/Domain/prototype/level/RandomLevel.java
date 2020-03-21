@@ -17,9 +17,10 @@ public class RandomLevel extends Level {
 
     @Override
     protected void generateLevel() {
+        System.out.println("111");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                tiles[x + y * width] = random.nextInt(4);
+                tilesR[x + y * width] = random.nextInt(4);
             }
         }
     }

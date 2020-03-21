@@ -9,6 +9,7 @@ import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.Level;
+import com.Domain.prototype.level.LevelGenesis;
 import com.Domain.prototype.level.RandomLevel;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -51,8 +52,8 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         key = new KeyBoard();
-        level = new RandomLevel(64,64);
-        player = new Player(key);
+        level = new LevelGenesis("/textures/level1.png");
+        player = new Player(width/2,height/2,key);
         addKeyListener(key);
     }
 
@@ -122,6 +123,8 @@ public class Game extends Canvas implements Runnable {
         int xScroll = player.x - screen.width/2;
         int yScroll = player.y - screen.height/2;
         //Las dos variables de aquí van abajo.
+        //System.out.println(xScroll+" || "+yScroll);
+        
         level.render(xScroll, yScroll, screen);
         
         player.render(screen);

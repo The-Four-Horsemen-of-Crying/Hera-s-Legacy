@@ -22,7 +22,7 @@ public abstract class Movil extends Entity {
         if(xMove>0)direccion=1;//" " derecha
         if(yMove>0)direccion=2;//" " arriba
         if(xMove<0)direccion=3;//" " izquierda
-        if(ani%20==0){
+        if(ani%2==0){
             ani2++;
         }
         ani++;

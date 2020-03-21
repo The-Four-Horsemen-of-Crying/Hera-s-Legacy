@@ -20,7 +20,13 @@ public class Tile {
     
     public static Tile floor = new FloorTile(Sprite.floor_mat);
     public static Tile pikes = new VoidTile(Sprite.null_floor);
-
+    public static Tile mesa = new Mesa(Sprite.mesa);
+    public static Tile mesa2= new Mesa2(Sprite.mesa2);
+    public static Tile mesa3= new Mesa3(Sprite.mesa3);
+    public static Tile mesa4=new Mesa4(Sprite.mesa4);
+    public static Tile wall = new Wall(Sprite.wall);
+    
+    
     public Tile(Sprite sprite) {
         this.sprite = sprite;
 
