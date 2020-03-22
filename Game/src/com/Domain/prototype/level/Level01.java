@@ -8,15 +8,15 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 
-public class LevelGenesis extends Level{
+public class Level01 extends Level{
     
-    public LevelGenesis(String path) {
+    public Level01(String path) {
         super(path);
     }
     
      protected void loadLevel(String path) {
         try {
-            BufferedImage image = ImageIO.read(LevelGenesis.class.getResource(path));
+            BufferedImage image = ImageIO.read(Level01.class.getResource(path));
             int w=width= image.getWidth();
             int h =height= image.getHeight();
             //tiles = new Tile[w*h];

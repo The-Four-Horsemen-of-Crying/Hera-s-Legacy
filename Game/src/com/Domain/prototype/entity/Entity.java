@@ -14,7 +14,7 @@ public abstract class  Entity {
     public int x;
     public int y;
     private boolean removed=false;
-    private Level level;
+    protected Level level;
     protected final Random random = new Random();
 
     public void uptade(){
@@ -30,6 +30,9 @@ public abstract class  Entity {
     }
     public boolean isRemoved(){
         return removed;
+    }
+    public void init(Level level){
+        this.level=level;
     }
 }
  

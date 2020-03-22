@@ -9,8 +9,9 @@ import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.Level;
-import com.Domain.prototype.level.LevelGenesis;
+import com.Domain.prototype.level.Level01;
 import com.Domain.prototype.level.RandomLevel;
+import com.Domain.prototype.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -36,6 +37,9 @@ public class Game extends Canvas implements Runnable {
     public JFrame frame;
     private String windowTittle = "Hera's Legacy";
     
+    private TileCoordenada spawnplayer = new TileCoordenada(width/2, height/2);
+    private int[] spawnpj = spawnplayer.getXY();
+    
     //Profundizar
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -52,8 +56,9 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         key = new KeyBoard();
-        level = new LevelGenesis("/textures/level1.png");
-        player = new Player(width/2,height/2,key);
+        level = Level.level01;
+        player = new Player(spawnpj[0],spawnpj[1],key);
+        player.init(level);
         addKeyListener(key);
     }
 

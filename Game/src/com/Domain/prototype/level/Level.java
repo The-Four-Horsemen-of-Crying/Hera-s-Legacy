@@ -10,6 +10,8 @@ import com.Domain.prototype.level.tile.Tile;
 import java.util.Random;
 
 public class Level {
+    
+    public static Level level01 = new Level01("/levels/level1.png");
     //protected Tile[] tiles;
     protected int width;
     protected int height;
@@ -63,17 +65,18 @@ public class Level {
         if(x<0 || y<0||x>=width||y>=height) return Tile.pikes;
         //System.out.println(x+"  ||  "+y+"   ||  "+width+"   ||  "+height);    Imprimase para mayor entendimiento del recorrido del level1.png
         if (tiles[x + y * width] == 0xffff0000)return Tile.floor;
-        if (tiles[x + y * width] == 0xff00ff00&&tiles[x+1+y*width]==0xff0000ff)return Tile.mesa;
-        if (tiles[x + y * width] == 0xff0000ff&&tiles[x-1+y*width]==0xff00ff00)return Tile.mesa2;
-        if (tiles[x + y * width] == 0xffffff00&&tiles[x+1+y*width]==0xffffffff)return Tile.mesa3;
-        if (tiles[x + y * width] == 0xffffffff&&tiles[x-1+y*width]==0xffffff00)return Tile.mesa4;
-        
-        if (tiles[x + y * width] == 0xff0000ff&&tiles[x+1+y*width]==0xff00ff00)return Tile.silla;
-        if (tiles[x + y * width] == 0xff00ff00&&tiles[x-1+y*width]==0xff0000ff)return Tile.silla2;
-        
-        if (tiles[x + y * width] == 0xffffffff&&tiles[x+1+y*width]==0xffffff00)return Tile.silla3;
-        if (tiles[x + y * width] == 0xffffff00&&tiles[x-1+y*width]==0xffffffff)return Tile.silla4;
         if (tiles[x + y * width] == 0xffff00ff)return Tile.wall;//ff00ff
+        
+        if (tiles[x + y * width] == 0xff00ff00  &&    tiles[x+1+y*width] == 0xff0000ff)return Tile.mesa;
+        if (tiles[x + y * width] == 0xff0000ff  &&    tiles[x-1+y*width] == 0xff00ff00)return Tile.mesa2;
+        if (tiles[x + y * width] == 0xffffff00  &&    tiles[x+1+y*width] == 0xffffffff)return Tile.mesa3;
+        if (tiles[x + y * width] == 0xffffffff  &&    tiles[x-1+y*width] == 0xffffff00)return Tile.mesa4;
+        
+        if (tiles[x + y * width] == 0xff0000ff  &&    tiles[x+1+y*width] == 0xff00ff00)return Tile.silla;
+        if (tiles[x + y * width] == 0xff00ff00  &&    tiles[x-1+y*width] == 0xff0000ff)return Tile.silla2;   
+        if (tiles[x + y * width] == 0xffffffff  &&    tiles[x+1+y*width] == 0xffffff00)return Tile.silla3;
+        if (tiles[x + y * width] == 0xffffff00  &&    tiles[x-1+y*width] == 0xffffffff)return Tile.silla4;
+        
         return Tile.pikes;
     }
 
