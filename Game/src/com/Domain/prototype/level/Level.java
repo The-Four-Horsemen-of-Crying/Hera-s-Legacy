@@ -7,7 +7,10 @@ package com.Domain.prototype.level;
 
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.level.tile.Tile;
+import java.awt.Dimension;
 import java.util.Random;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Level {
     
@@ -18,7 +21,10 @@ public class Level {
     protected int[] tilesR;
     protected int[] tiles; //contendrá todos los pixeles del nivel.
     private Random random = new Random();
+    private JFrame tarea = new JFrame();
 
+    
+    
     public Level(int width, int height) {
         this.width = width;
         this.height = height;
@@ -29,6 +35,8 @@ public class Level {
     public Level(String path) {
         loadLevel(path);
         generateLevel();
+        Dimension dimension2 = new Dimension(233, 3434);
+        tarea.setSize(dimension2);
     }
 
     //Entidades: ia, npcs, etc
@@ -87,6 +95,16 @@ public class Level {
     }
 
     private void time() {
+    }
+    public boolean mecanica(){
+        Boolean good=false;
+        int dos = Integer.parseInt(JOptionPane.showInputDialog(null,"¿Cuanto es 2 + 2?"));
+        if(dos != 22){
+            JOptionPane.showMessageDialog(tarea, "JAJAJA, PUTA, LA RESPUESTA ERA 22, PERDISTE, NO IRÁS A LA nANAL");
+            return false;
+        }else{
+        return good;
+        }
     }
 
 }

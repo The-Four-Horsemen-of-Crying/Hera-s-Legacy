@@ -2,16 +2,19 @@
 package com.Domain.prototype.level;
 
 import com.Domain.prototype.level.tile.Tile;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 
 public class Level01 extends Level{
-    
+ 
     public Level01(String path) {
+        
         super(path);
+
     }
     
      protected void loadLevel(String path) {
@@ -29,6 +32,7 @@ public class Level01 extends Level{
         }
     }
      
+
 //     protected void generateLevel(){
 //         for (int i = 0; i < levelPixels.length; i++) {
 //             if(levelPixels[i]==0xff00ff44)tiles [i]= Tile.pikes;
