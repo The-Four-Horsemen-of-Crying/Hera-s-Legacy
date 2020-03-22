@@ -12,12 +12,17 @@ import com.Domain.prototype.graphics.Sprite;
  *
  * @author Domain
  */
-public class Mesa4 extends Tile{
+public class Silla extends Tile{
 
-    public Mesa4(Sprite sprite) {
+    public Silla(Sprite sprite) {
         super(sprite);
     }
-        public void render(int x, int y, Screen screen) {
+    
+    public void render(int x, int y, Screen screen) {
         screen.renderTile(x<<4, y<<4, this);
     }  
+    
+    public boolean solid() {
+        return true;
+    }
 }
