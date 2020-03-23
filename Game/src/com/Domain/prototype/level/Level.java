@@ -97,13 +97,13 @@ public class Level {
     private void time() {
     }
     public boolean mecanica(){
-        Boolean good=false;
+        
         int dos = Integer.parseInt(JOptionPane.showInputDialog(null,"¿Cuanto es 2 + 2?"));
         if(dos != 22){
             JOptionPane.showMessageDialog(tarea, "JAJAJA, PUTA, LA RESPUESTA ERA 22, PERDISTE, NO IRÁS A LA nANAL");
             return false;
         }else{
-        return good;
+        return true;
         }
     }
 

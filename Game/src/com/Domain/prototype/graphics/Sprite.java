@@ -8,15 +8,17 @@ public class Sprite {
     public final int SIZE;
     private int x;
     private int y;
+    private int width;
+    private int height;
     public int [] pixels;
     private SpriteSheet sheet;
     
     
     public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
-    
+    public static Sprite hoja =new Sprite(96, 96, 0,0, SpriteSheet.paperplox);
     //Mesa
-    public static Sprite mesa = new Sprite(16, 4, 4, SpriteSheet.nivel01_mat);
+    public static Sprite mesa = new Sprite(16, 4, 4, SpriteSheet.nivel01_mat);//new Sprite(32, 32, 1,2, SpriteSheet.nivel01_mat);
     public static Sprite mesa2 = new Sprite(16, 5, 4, SpriteSheet.nivel01_mat);
     public static Sprite mesa3 = new Sprite(16, 4, 5, SpriteSheet.nivel01_mat);
     public static Sprite mesa4 = new Sprite(16, 5, 5, SpriteSheet.nivel01_mat);
@@ -48,16 +50,64 @@ public class Sprite {
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet
         this.y = y*size; //seleccionando la coordenada y del SpriteSheet
         this.sheet=sheet;
+        this.width = SIZE;
+        this.height= SIZE;
         pixels=new int[SIZE*SIZE];
         load();
     }
+    public Sprite(int width, int height, int colour){
+        SIZE=-1;
+        this.height=height;
+        this.width=width;
+        pixels=new int[width*height];
+        setColour(colour);
     
+    }
+    public Sprite(int w, int h, int xC, int yC,SpriteSheet sheet){
+        SIZE=-1;
+        this.height=h;
+        this.width=w;
+        this.x=xC*w;
+        this.y=yC*h;
+        this.sheet=sheet;
+        pixels = new int [w*h];
+        load2();
+    }
+    
+    
+    private void setColour(int colour){
+        for (int i = 0; i < width*height; i++) {
+            pixels[i]= colour;
+        }
+    
+    }
+//    private void setSprite(){
+//        for (int y = 0; y < height; y++) {
+//            for (int x = 0; x < width; x++) {
+//                pixels[x+y*width]=
+//            }
+//        }
+//    }
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
     private void load(){
         for (int y = 0; y < SIZE; y++) {
             for (int x = 0; x < SIZE; x++) {
                 pixels[x+y*SIZE]=sheet.pixels[(x+this.x)+(y+this.y)*sheet.SIZE];
             }
         }
+    }
+    private void load2(){
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x <width; x++) {
+                pixels[x+y*width]=sheet.pixels[(x+this.x)+(y+this.y)*sheet.SIZE];
+            }
+        }
+    
     }
     
     

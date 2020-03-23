@@ -17,7 +17,6 @@ public class Tile {
     public int x;
     public int y;
     public Sprite sprite;
-    
     public static Tile floor = new FloorTile(Sprite.floor_mat);
     public static Tile pikes = new VoidTile(Sprite.null_floor);
     public static Tile mesa = new Mesa(Sprite.mesa);

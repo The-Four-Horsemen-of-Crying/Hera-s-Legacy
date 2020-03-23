@@ -46,7 +46,22 @@ public class Screen {
         }
     }
 
-
+    public void renderSprite(boolean fixed, int xp, int yp, Sprite sprite){
+        if(fixed){
+            xp-=xOffSet;
+            yp-=yOffset;
+        }
+        for (int y = 0; y < sprite.getHeight(); y++) {
+                int ya= y+yp;
+            for (int x = 0; x < sprite.getWidth(); x++) {
+                int xa=x+xp;
+                if(xa<0||xa>=width||ya<0||ya>=height)continue;
+                pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
+            }
+            
+        }
+        
+    }
     public void renderTile(int xPosition, int yPosition, Tile tile) {
         xPosition-=xOffSet;
         yPosition-=yOffset;

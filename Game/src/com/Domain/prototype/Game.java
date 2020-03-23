@@ -7,6 +7,9 @@ package com.Domain.prototype;
 
 import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
+import com.Domain.prototype.graphics.Sprite;
+import static com.Domain.prototype.graphics.Sprite.hoja;
+import com.Domain.prototype.graphics.SpriteSheet;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.Level;
 import com.Domain.prototype.level.Level01;
@@ -29,6 +32,7 @@ public class Game extends Canvas implements Runnable {
     public static int width = 300  ;
     public static int height = width / 16 * 9;
     public static int scale = 3;
+    public static boolean papel=false;
     private Level level;
     private Thread thread;
     private boolean running = true;
@@ -44,10 +48,7 @@ public class Game extends Canvas implements Runnable {
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
-    private Screen screen;
-    
-
-    ;
+    public static Screen screen;
     
 
     public Game() {
@@ -131,12 +132,14 @@ public class Game extends Canvas implements Runnable {
         //System.out.println(xScroll+" || "+yScroll);
         
         level.render(xScroll, yScroll, screen);
-        
         player.render(screen);
+        if(papel)screen.renderSprite(true, width/2, height/2,hoja);
+        //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
+        
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
-
+        
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
