@@ -13,7 +13,6 @@ import com.Domain.prototype.graphics.SpriteSheet;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.Level;
 import com.Domain.prototype.level.Level01;
-import com.Domain.prototype.level.RandomLevel;
 import com.Domain.prototype.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -29,10 +28,10 @@ import javax.swing.JFrame;
 public class Game extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
-    public static int width = 300  ;
+    public static int width = 300;
     public static int height = width / 16 * 9;
     public static int scale = 3;
-    public static boolean papel=false;
+    public static boolean activarMecanica=false;
     private Level level;
     private Thread thread;
     private boolean running = true;
@@ -40,14 +39,13 @@ public class Game extends Canvas implements Runnable {
     private KeyBoard key;
     public JFrame frame;
     private String windowTittle = "Hera's Legacy";
-    
     private TileCoordenada spawnplayer = new TileCoordenada(width/2, height/2);
     private int[] spawnpj = spawnplayer.getXY();
     
-    //Profundizar
+    
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
+    private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();//Profundizar
     public static Screen screen;
     
 
@@ -67,7 +65,6 @@ public class Game extends Canvas implements Runnable {
         thread = new Thread(this, "Display");
         thread.start();
     }
-
     public synchronized void stop() {
         try {
             thread.join();
@@ -77,7 +74,6 @@ public class Game extends Canvas implements Runnable {
         }
     }
 //Esto entra al metodo run una sola vez
-
     public void run() {
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();//1000 ms = 1sg
@@ -111,7 +107,7 @@ public class Game extends Canvas implements Runnable {
 
         stop();
     }
-    //int x = 0, y = 0;
+   
 
     public void uptade() {
         key.uptade();
@@ -128,14 +124,15 @@ public class Game extends Canvas implements Runnable {
         screen.clear();
         int xScroll = player.x - screen.width/2;
         int yScroll = player.y - screen.height/2;
+        
         //Las dos variables de aquí van abajo.
         //System.out.println(xScroll+" || "+yScroll);
         
         level.render(xScroll, yScroll, screen);
         player.render(screen);
-        if(papel)screen.renderSprite(true, width/2, height/2,hoja);
-        //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
+        //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
+           if(activarMecanica)level.mecanica(100,player.y-80);
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
@@ -144,8 +141,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-        //g.fillOval(x*10, y*10, 100, 100);
-        //g.fillRect(50, 200, 100, 300);
+
         //clear the frame
         g.dispose();
         //display the buffer

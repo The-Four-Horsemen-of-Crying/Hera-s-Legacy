@@ -5,6 +5,7 @@
  */
 package com.Domain.prototype.entity.movil;
 
+import com.Domain.prototype.Game;
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.graphics.Sprite;
 import com.Domain.prototype.input.KeyBoard;
@@ -47,6 +48,8 @@ public class Player extends Movil{
         if(direccion==1)sprite = Sprite.player_rigth[ani2&3];
         if(direccion==2)sprite = Sprite.player_down[ani2&3];
         if(direccion==3)sprite = Sprite.player_left[ani2&3];
+        //if(x+y==160)System.out.println(x+"  ||  "+y);
+        Game.activarMecanica=level.getCollision(x, y);
         screen.renderPlayer(x-16,y-16,sprite);
     }
 }

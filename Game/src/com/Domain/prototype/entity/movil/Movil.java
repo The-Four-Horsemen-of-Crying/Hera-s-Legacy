@@ -8,7 +8,7 @@ package com.Domain.prototype.entity.movil;
 
 import static com.Domain.prototype.Game.height;
 import static com.Domain.prototype.Game.screen;
-import static com.Domain.prototype.Game.papel;
+import static com.Domain.prototype.Game.activarMecanica;
 import com.Domain.prototype.entity.Entity;
 import com.Domain.prototype.level.tile.Mesa;
 import com.Domain.prototype.level.tile.Tile;
@@ -45,15 +45,17 @@ public abstract class Movil extends Entity {
     
     private boolean collision(int xMove, int yMove){
         boolean solid=false;
-        for (int c = 0; c < 4; c++) {
-            int xLimit =((x+xMove)+c%2*14-8)/16;
-            int yLimit =(((y+yMove)+c/2*12+3)/16);
+        for (int corners = 0; corners < 4; corners++) {
+            int xLimit =((x+xMove)+corners%2*14-8)/16;
+            int yLimit =(((y+yMove)+corners/2*12+3)/16);
             Tile nextTile = level.getTile(xLimit,yLimit);
-            if (nextTile == Mesa.mesa||nextTile == Mesa.mesa2||nextTile == Mesa.mesa3||nextTile == Mesa.mesa4){ //if(level.mecanica()==false){System.exit(0);}}
-                        //Enviar bool a Game
-                        papel=true;
-                        System.out.println("Es mesa");
-            }
+            //Tile notNextButClose = level.getCollision(xMove, yMove);
+            
+//            if (notNextButClose == Mesa.mesa||notNextButClose == Mesa.mesa2||notNextButClose == Mesa.mesa3||notNextButClose == Mesa.mesa4){ //if(level.mecanica()==false){System.exit(0);}}
+//                        //Enviar bool a Game
+//                //System.out.println("es mesa");
+//                        
+//            }
             if(nextTile.solid()) solid = true;
             
         }
