@@ -41,18 +41,18 @@ public class Level01 extends Level {
         if(x<0 || y<0||x>=width||y>=height) return Tile.pikes;
         //System.out.println(x+"  ||  "+y+"   ||  "+width+"   ||  "+height);    Imprimase para mayor entendimiento del recorrido del level1.png
         
-        if (tiles[x + y * width] == 0xffff0000)return Tile.floor;
-        if (tiles[x + y * width] == 0xffff00ff)return Tile.wall;//ff00ff
+        if (tiles[x + y * width] == red)return Tile.floor;
+        if (tiles[x + y * width] == fuchsia)return Tile.wall;//ff00ff
         
-        if (tiles[x + y * width] == 0xff00ff00  &&    tiles[x+1+y*width] == 0xff0000ff)return Tile.mesa;
-        if (tiles[x + y * width] == 0xff0000ff  &&    tiles[x-1+y*width] == 0xff00ff00)return Tile.mesa2;
-        if (tiles[x + y * width] == 0xffffff00  &&    tiles[x+1+y*width] == 0xffffffff)return Tile.mesa3;
-        if (tiles[x + y * width] == 0xffffffff  &&    tiles[x-1+y*width] == 0xffffff00)return Tile.mesa4;
+        if (tiles[x + y * width] ==lime  &&    tiles[x+1+y*width] == blue)return Tile.mesa;
+        if (tiles[x + y * width] == blue  &&    tiles[x-1+y*width] == lime)return Tile.mesa2;
+        if (tiles[x + y * width] == yellow &&    tiles[x+1+y*width] == white )return Tile.mesa3;
+        if (tiles[x + y * width] == white  &&    tiles[x-1+y*width] == yellow)return Tile.mesa4;
         
-        if (tiles[x + y * width] == 0xff0000ff  &&    tiles[x+1+y*width] == 0xff00ff00)return Tile.silla;
-        if (tiles[x + y * width] == 0xff00ff00  &&    tiles[x-1+y*width] == 0xff0000ff)return Tile.silla2;   
-        if (tiles[x + y * width] == 0xffffffff  &&    tiles[x+1+y*width] == 0xffffff00)return Tile.silla3;
-        if (tiles[x + y * width] == 0xffffff00  &&    tiles[x-1+y*width] == 0xffffffff)return Tile.silla4;
+        if (tiles[x + y * width] == blue  &&    tiles[x+1+y*width] == lime)return Tile.silla;
+        if (tiles[x + y * width] == lime  &&    tiles[x-1+y*width] == blue)return Tile.silla2;   
+        if (tiles[x + y * width] == white  &&    tiles[x+1+y*width] == yellow)return Tile.silla3;
+        if (tiles[x + y * width] == yellow  &&    tiles[x-1+y*width] == white)return Tile.silla4;
         
         return Tile.pikes;
      }
@@ -61,19 +61,19 @@ public class Level01 extends Level {
      public boolean getCollision(int x, int y){
          //if(x<0 || y<0||x>=width||y>=height)return false;
          
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffffff00){
+         if (tilesCollision[(x>>4)+(y>>4)*width] == yellow){
              mesa=0;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xff0000ff){
+         if (tilesCollision[(x>>4)+(y>>4)*width] == blue){
              mesa=1;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffff00ff){
+         if (tilesCollision[(x>>4)+(y>>4)*width] == fuchsia){
              mesa=2;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xff00ff00){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+         if (tilesCollision[(x>>4)+(y>>4)*width] == lime){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
              mesa=3;
              return true;
          }

@@ -18,6 +18,14 @@ public class Level {
     protected int height;
     protected int[] tiles; //contendrá todos los pixeles del nivel.
     protected int[] tilesCollision;
+    protected int red= 0xffff0000;
+    protected int fuchsia=  0xffff00ff;
+    protected int lime = 0xff00ff00 ;
+    protected int blue =0xff0000ff;
+    protected int yellow=0xffffff00;
+    protected int white= 0xffffffff;
+  
+
     
 
     
