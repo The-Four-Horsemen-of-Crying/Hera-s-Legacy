@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Level01 extends Level {
     private int mesa=0;
+    
     public Level01(String path, String pathCollision) {
 
         super(path, pathCollision);
@@ -60,19 +61,19 @@ public class Level01 extends Level {
      public boolean getCollision(int x, int y){
          //if(x<0 || y<0||x>=width||y>=height)return false;
          
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffffff00){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffffff00){
              mesa=0;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xff0000ff){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xff0000ff){
              mesa=1;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffff00ff){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffff00ff){
              mesa=2;
              return true;
          }
-         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xffffff00){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+         if (tilesCollision[(x>>4)+(y>>4)*width] == 0xff00ff00){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
              mesa=3;
              return true;
          }
@@ -81,8 +82,8 @@ public class Level01 extends Level {
      }
      
     @Override
-    public void mecanica(int x, int y) {
-        screen.renderSprite(true,x,y, hoja[0]);
-        
+    public void mecanica() {
+        screen.renderSprite(false,screen.width/2-hoja[0].getWidth()/2,screen.height/2-hoja[0].getHeight()/2, hoja[mesa]);
+        if(1==2){}
     }
 }   

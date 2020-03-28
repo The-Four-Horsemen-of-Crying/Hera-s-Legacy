@@ -50,6 +50,8 @@ public class Player extends Movil{
         if(direccion==3)sprite = Sprite.player_left[ani2&3];
         //if(x+y==160)System.out.println(x+"  ||  "+y);
         Game.activarMecanica=level.getCollision(x, y);
+        
         screen.renderPlayer(x-16,y-16,sprite);
     }
+    
 }

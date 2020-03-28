@@ -7,14 +7,14 @@ import javafx.scene.input.KeyCode;
 public class KeyBoard implements KeyListener {
 
     private boolean keys[] = new boolean[120];
-    public boolean up, down, left, right;
+    public boolean up, down, left, right,restart;
 
     public void uptade() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
         left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
-        //restart = keys[KeyEvent.VK_SPACE];
+        restart = keys[KeyEvent.VK_R];
     }
 
     @Override

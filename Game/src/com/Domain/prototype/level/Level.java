@@ -6,19 +6,19 @@
 package com.Domain.prototype.level;
 
 import com.Domain.prototype.graphics.Screen;
+import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.tile.Tile;
 import java.util.Random;
 import javax.swing.JFrame;
 
 public class Level {
-    
     public static Level level01 = new Level01("/levels/level01/level1.png","/levels/level01/collisionlevel1.png");
     //protected Tile[] tiles;
     protected int width;
     protected int height;
     protected int[] tiles; //contendrá todos los pixeles del nivel.
     protected int[] tilesCollision;
-    private Random random = new Random();
+    
 
     
 
@@ -63,7 +63,10 @@ public class Level {
 
     private void time() {
     }
-    public void mecanica(int x, int y){
+    public void mecanica(){
     }
-
+    
+    public void restar(){
+        
+    }
 }

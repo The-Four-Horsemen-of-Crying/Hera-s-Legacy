@@ -16,7 +16,8 @@ public class Sprite {
     
     public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
-    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.paperplox)};
+    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.paperplox),new Sprite(150, 150, 1,0, SpriteSheet.paperplox),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.paperplox),new Sprite(150, 150, 1,1, SpriteSheet.paperplox)};
     //Mesa
     public static Sprite mesa = new Sprite(16, 4, 4, SpriteSheet.nivel01_mat);//new Sprite(32, 32, 1,2, SpriteSheet.nivel01_mat);
     public static Sprite mesa2 = new Sprite(16, 5, 4, SpriteSheet.nivel01_mat);

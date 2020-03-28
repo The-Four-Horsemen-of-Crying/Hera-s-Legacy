@@ -15,7 +15,7 @@ public abstract class  Entity {
     public int y;
     private boolean removed=false;
     protected Level level;
-    protected final Random random = new Random();
+    
 
     public void uptade(){
     
