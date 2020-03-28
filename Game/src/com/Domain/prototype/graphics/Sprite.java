@@ -14,16 +14,17 @@ public class Sprite {
     private SpriteSheet sheet;
     
     
-    public static Sprite floor_mat = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
+    public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
-    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.paperplox),new Sprite(150, 150, 1,0, SpriteSheet.paperplox),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.paperplox),new Sprite(150, 150, 1,1, SpriteSheet.paperplox)};
+    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.miniGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.miniGame01_mat)};
+    public static Sprite lapiz = new Sprite(6, 6, 0, 0, SpriteSheet.tools);
     //Mesa
     public static Sprite mesa = new Sprite(16, 4, 4, SpriteSheet.nivel01_mat);//new Sprite(32, 32, 1,2, SpriteSheet.nivel01_mat);
     public static Sprite mesa2 = new Sprite(16, 5, 4, SpriteSheet.nivel01_mat);
     public static Sprite mesa3 = new Sprite(16, 4, 5, SpriteSheet.nivel01_mat);
     public static Sprite mesa4 = new Sprite(16, 5, 5, SpriteSheet.nivel01_mat);
-    public static Sprite wall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
+    public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
     //Mesa
     
     //Silla

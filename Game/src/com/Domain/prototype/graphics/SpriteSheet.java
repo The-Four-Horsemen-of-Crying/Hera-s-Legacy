@@ -19,7 +19,9 @@ public class SpriteSheet {
 
     public static SpriteSheet spriteSheet = new SpriteSheet("/textures/spriteSheet.png", 225);//La ruta y el tamaño de todo el pack
     public static SpriteSheet nivel01_mat = new SpriteSheet("/textures/mini_game01.png", 96);
-    public static SpriteSheet paperplox = new SpriteSheet("/levels/level01/ejerciciosSheet.png", 300);
+    public static SpriteSheet miniGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet.png", 300);
+    public static SpriteSheet tools = new SpriteSheet("/levels/level01/pincel.png",6);
+    
 
     public SpriteSheet(String path, int size) {
         this.path = path;

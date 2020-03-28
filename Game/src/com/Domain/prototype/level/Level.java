@@ -8,11 +8,15 @@ package com.Domain.prototype.level;
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.level.tile.Tile;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Level {
     public static Level level01 = new Level01("/levels/level01/level1.png","/levels/level01/collisionlevel1.png");
+    public static Level lobby = new Level01("/levels/level01/level1.png","/levels/level01/collisionlevel1.png");
     //protected Tile[] tiles;
     protected int width;
     protected int height;
@@ -57,13 +61,27 @@ public class Level {
     //35
     
     public Tile getTile(int x, int y) {
-        return Tile.floor;
+        return Tile.woodFloor;
     }
     public boolean getCollision(int x, int y){
        return false;
      }
 
     protected void loadLevel(String path, String pathCollision) {
+        try {
+            BufferedImage image = ImageIO.read(Level01.class.getResource(path));
+            BufferedImage imageCollision = ImageIO.read(Level01.class.getResource(pathCollision));
+            int w = width = image.getWidth();
+            int h = height = image.getHeight();
+            tiles = new int[w * h];
+            tilesCollision = new int[w * h];
+
+            image.getRGB(0, 0, w, h, tiles, 0, w);
+            imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("No se pudo cargar level file!");
+        }
     }
 
     protected void generateLevel() {
@@ -71,6 +89,7 @@ public class Level {
 
     private void time() {
     }
+    
     public void mecanica(){
     }
     

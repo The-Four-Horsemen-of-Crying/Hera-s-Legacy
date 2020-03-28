@@ -17,7 +17,7 @@ public class Tile {
     public int x;
     public int y;
     public Sprite sprite;
-    public static Tile floor = new FloorTile(Sprite.floor_mat);
+    public static Tile woodFloor = new FloorTile(Sprite.woodFloor);
     public static Tile pikes = new VoidTile(Sprite.null_floor);
     public static Tile mesa = new Mesa(Sprite.mesa);
     public static Tile mesa2= new Mesa(Sprite.mesa2);
@@ -27,7 +27,7 @@ public class Tile {
     public static Tile silla2=new Silla(Sprite.silla2);
     public static Tile silla3=new Silla(Sprite.silla3);
     public static Tile silla4=new Silla(Sprite.silla4);
-    public static Tile wall = new Wall(Sprite.wall);
+    public static Tile woodWall = new Wall(Sprite.woodWall);
     
     
     public Tile(Sprite sprite) {

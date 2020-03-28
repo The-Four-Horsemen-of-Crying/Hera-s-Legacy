@@ -137,9 +137,9 @@ public class Game extends Canvas implements Runnable {
             level.mecanica();
         }
         if(key.restart){
-            
             player.x = spawnpj[0];
             player.y = spawnpj[1];
+            level.restar();
         }
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];

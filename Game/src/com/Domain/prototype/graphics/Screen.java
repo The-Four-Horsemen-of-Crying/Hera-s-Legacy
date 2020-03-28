@@ -5,12 +5,10 @@
  */
 package com.Domain.prototype.graphics;
 
-import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.level.tile.Tile;
-import static java.lang.System.currentTimeMillis;
+
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Screen {
 
@@ -46,15 +44,16 @@ public class Screen {
         }
     }
 
-    public void renderSprite(boolean fixed, int xp, int yp, Sprite sprite){
+    public void renderSprite(boolean fixed, int xPosition, int yPosition, Sprite sprite){
         if(fixed){
-            xp-=xOffSet;
-            yp-=yOffset;
+            xPosition-=xOffSet;
+            yPosition-=yOffset;
         }
+        //458 && 249
         for (int y = 0; y < sprite.getHeight(); y++) {
-                int ya= y+yp;
+                int ya= y+yPosition;
             for (int x = 0; x < sprite.getWidth(); x++) {
-                int xa=x+xp;
+                int xa=x+xPosition;
                 if(xa<0||xa>=width||ya<0||ya>=height)continue;
                 pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
             }

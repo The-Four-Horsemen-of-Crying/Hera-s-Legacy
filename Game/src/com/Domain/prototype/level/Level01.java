@@ -3,13 +3,14 @@ package com.Domain.prototype.level;
 
 import static com.Domain.prototype.Game.screen;
 import static com.Domain.prototype.graphics.Sprite.hoja;
+import static com.Domain.prototype.graphics.Sprite.lapiz;
+import com.Domain.prototype.input.Mouse;
 import com.Domain.prototype.level.tile.Tile;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+
 
 public class Level01 extends Level {
     private int mesa=0;
+    private Mouse pincel;
     
     public Level01(String path, String pathCollision) {
 
@@ -17,32 +18,14 @@ public class Level01 extends Level {
 
     }
 
-    @Override
-    protected void loadLevel(String path, String pathCollision) {
-        try {
-            BufferedImage image = ImageIO.read(Level01.class.getResource(path));
-            BufferedImage imageCollision = ImageIO.read(Level01.class.getResource(pathCollision));
-            int w = width = image.getWidth();
-            int h = height = image.getHeight();
-            tiles = new int[w * h];
-            tilesCollision= new int[w*h];
-
-            image.getRGB(0, 0, w, h, tiles, 0, w);
-            imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            System.out.println("No se pudo cargar level file!");
-        }
-    }
     
     @Override
      public Tile getTile(int x, int y){
-        
+         
         if(x<0 || y<0||x>=width||y>=height) return Tile.pikes;
         //System.out.println(x+"  ||  "+y+"   ||  "+width+"   ||  "+height);    Imprimase para mayor entendimiento del recorrido del level1.png
-        
-        if (tiles[x + y * width] == red)return Tile.floor;
-        if (tiles[x + y * width] == fuchsia)return Tile.wall;//ff00ff
+        if (tiles[x + y * width] == red)return Tile.woodFloor;
+        if (tiles[x + y * width] == fuchsia)return Tile.woodWall;//ff00ff
         
         if (tiles[x + y * width] ==lime  &&    tiles[x+1+y*width] == blue)return Tile.mesa;
         if (tiles[x + y * width] == blue  &&    tiles[x-1+y*width] == lime)return Tile.mesa2;
@@ -84,6 +67,10 @@ public class Level01 extends Level {
     @Override
     public void mecanica() {
         screen.renderSprite(false,screen.width/2-hoja[0].getWidth()/2,screen.height/2-hoja[0].getHeight()/2, hoja[mesa]);
-        if(1==2){}
+        
+        if((pincel.getMouseX()>452&&pincel.getMouseX()<639)&&(pincel.getMouseY()>245&&pincel.getMouseY()<432)){
+            screen.renderSprite(false,pincel.getMouseX(),pincel.getMouseY(),lapiz);
+            System.out.println(pincel.getMouseX()+"     ||      "+pincel.getMouseY());
+        }
     }
 }   
