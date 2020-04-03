@@ -13,25 +13,27 @@ public class Sprite {
     public int [] pixels;
     private SpriteSheet sheet;
     
-    
+    public static Sprite shit = new Sprite(300,168,0,0,SpriteSheet.shit);
     public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
     public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.miniGame01_mat),
                                   new Sprite(150, 150, 0,1, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.miniGame01_mat)};
     public static Sprite lapiz = new Sprite(6, 6, 0, 0, SpriteSheet.tools);
     //Mesa
-    public static Sprite mesa = new Sprite(16, 4, 4, SpriteSheet.nivel01_mat);//new Sprite(32, 32, 1,2, SpriteSheet.nivel01_mat);
-    public static Sprite mesa2 = new Sprite(16, 5, 4, SpriteSheet.nivel01_mat);
-    public static Sprite mesa3 = new Sprite(16, 4, 5, SpriteSheet.nivel01_mat);
-    public static Sprite mesa4 = new Sprite(16, 5, 5, SpriteSheet.nivel01_mat);
+    public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
+                                   new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};
+
+//    public static Sprite mesa2 = new Sprite(16, 5, 4, SpriteSheet.nivel01_mat);
+//    public static Sprite mesa3 = new Sprite(16, 4, 5, SpriteSheet.nivel01_mat);
+//    public static Sprite mesa4 = new Sprite(16, 5, 5, SpriteSheet.nivel01_mat);
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
-    //Mesa
     
-    //Silla
-    public static Sprite silla = new Sprite(16,0,4,SpriteSheet.nivel01_mat);
-    public static Sprite silla2 = new Sprite(16,1,4,SpriteSheet.nivel01_mat);
-    public static Sprite silla3 = new Sprite(16,0,5,SpriteSheet.nivel01_mat);
-    public static Sprite silla4 = new Sprite(16,1,5,SpriteSheet.nivel01_mat);
+    public static Sprite []silla = {new Sprite(16,0,4,SpriteSheet.nivel01_mat),new Sprite(16,1,4,SpriteSheet.nivel01_mat),
+                                    new Sprite(16,0,5,SpriteSheet.nivel01_mat),new Sprite(16,1,5,SpriteSheet.nivel01_mat)};
+    
+//    public static Sprite silla2 = new Sprite(16,1,4,SpriteSheet.nivel01_mat);
+//    public static Sprite silla3 = new Sprite(16,0,5,SpriteSheet.nivel01_mat);
+//    public static Sprite silla4 = new Sprite(16,1,5,SpriteSheet.nivel01_mat);
     
     //Player
     public static Sprite[] player_down  = {new Sprite(32,0,1,SpriteSheet.spriteSheet), new Sprite(32,1,1,SpriteSheet.spriteSheet),
@@ -66,7 +68,7 @@ public class Sprite {
     
     }
     public Sprite(int w, int h, int xC, int yC,SpriteSheet sheet){
-        SIZE=-1;
+        SIZE=h*w;
         this.height=h;
         this.width=w;
         this.x=xC*w;

@@ -5,7 +5,7 @@
             <url>src/com/Domain/prototype/graphics/SpriteSheet.java</url>
             <bookmark id="1">
                 <name/>
-                <line>37</line>
+                <line>38</line>
                 <key/>
             </bookmark>
         </file>
@@ -14,7 +14,9 @@
         <group>
             <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/Domain/prototype/level/Level01.java</file>
             <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/Domain/prototype/Game.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/Domain/prototype/graphics/Sprite.java</file>
             <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/Domain/prototype/graphics/Screen.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/Domain/prototype/graphics/SpriteSheet.java</file>
         </group>
     </open-files>
 </project-private>

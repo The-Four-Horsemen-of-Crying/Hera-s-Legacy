@@ -7,6 +7,7 @@ package com.Domain.prototype;
 
 import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
+import com.Domain.prototype.graphics.Sprite;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.input.Mouse;
 import com.Domain.prototype.level.Level;
@@ -34,6 +35,7 @@ public class Game extends Canvas implements Runnable {
     private boolean running = true;
     private Player player;
     private KeyBoard key;
+    //private Mouse mouse;
     private Mouse mouse;
     public JFrame frame;
     private String windowTittle = "Hera's Legacy";
@@ -42,7 +44,7 @@ public class Game extends Canvas implements Runnable {
     
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();//Profundizar
+    //Profundizar
     public static Screen screen;
     
 
@@ -57,8 +59,11 @@ public class Game extends Canvas implements Runnable {
         player.init(level);
         addKeyListener(key);
         mouse = new Mouse();
-        addMouseMotionListener(mouse);
         addMouseListener(mouse);
+        addMouseMotionListener(mouse);
+        //mouse = new Mouse();
+        //addMouseMotionListener(mouse);
+        //addMouseListener(mouse);
     }
 
     public synchronized void start() {
@@ -74,6 +79,7 @@ public class Game extends Canvas implements Runnable {
         }
     }
 //Esto entra al metodo run una sola vez
+    @Override
     public void run() {
         long lastTime = System.nanoTime();
         long timer = System.currentTimeMillis();//1000 ms = 1sg
@@ -149,7 +155,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
+        
         //clear the frame
         g.dispose();
         //display the buffer
