@@ -17,10 +17,12 @@ public class Mouse extends MouseAdapter{
     public static int mouseX=-1;
     public static int mouseY=-1;
     public static boolean click=false;
+    public static boolean clickSwitch=false;
        
      @Override
     public void mousePressed(MouseEvent e) {
         if(e.getButton()==MouseEvent.BUTTON1)click=true;
+        if(e.getButton()==MouseEvent.BUTTON1)clickSwitch=!clickSwitch?true:false;
     }
 
     

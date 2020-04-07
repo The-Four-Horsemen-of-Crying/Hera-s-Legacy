@@ -19,20 +19,14 @@ public class Tile {
     public Sprite sprite;
     public static Tile woodFloor = new FloorTile(Sprite.woodFloor);
     public static Tile pikes = new VoidTile(Sprite.null_floor);
+    public static Tile woodWall = new Wall(Sprite.woodWall);
     
     public static Tile []mesa = {new Mesa(Sprite.mesa[0]),new Mesa(Sprite.mesa[1]),
                                  new Mesa(Sprite.mesa[2]),new Mesa(Sprite.mesa[3])};
     
-//    public static Tile mesa2= new Mesa(Sprite.mesa[1]);
-//    public static Tile mesa3= new Mesa(Sprite.mesa[2]);
-//    public static Tile mesa4=new Mesa(Sprite.mesa[3]);
-    
-    public static Tile []silla={new Silla(Sprite.silla[0]),new Silla(Sprite.silla[1]),
-                                new Silla(Sprite.silla[2]),new Silla(Sprite.silla[3])};
-//    public static Tile silla2=new Silla(Sprite.silla2);
-//    public static Tile silla3=new Silla(Sprite.silla3);
-//    public static Tile silla4=new Silla(Sprite.silla4);
-    public static Tile woodWall = new Wall(Sprite.woodWall);
+    public static Tile []silla= {new Silla(Sprite.silla[0]),new Silla(Sprite.silla[1]),
+                                 new Silla(Sprite.silla[2]),new Silla(Sprite.silla[3])};
+
     
     
     public Tile(Sprite sprite) {

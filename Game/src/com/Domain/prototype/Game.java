@@ -7,11 +7,9 @@ package com.Domain.prototype;
 
 import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
-import com.Domain.prototype.graphics.Sprite;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.input.Mouse;
 import com.Domain.prototype.level.Level;
-import com.Domain.prototype.level.Level01;
 
 import com.Domain.prototype.level.TileCoordenada;
 import java.awt.Canvas;
@@ -35,16 +33,15 @@ public class Game extends Canvas implements Runnable {
     private boolean running = true;
     private Player player;
     private KeyBoard key;
-    //private Mouse mouse;
     private Mouse mouse;
     public JFrame frame;
-    private String windowTittle = "Hera's Legacy";
+    private final String windowTittle = "Hera's Legacy";
     private TileCoordenada spawnplayer = new TileCoordenada(width/2, height/2);
     private int[] spawnpj = spawnplayer.getXY();
     
     //Se crea un obejto BufferedImage que en sí mismo es una imagen (grupo de pixeles) que posee un Buffer. No puede ser manipulada para usarse por si sola.
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-    //Profundizar
+    private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();//Profundizar
     public static Screen screen;
     
 
@@ -61,9 +58,6 @@ public class Game extends Canvas implements Runnable {
         mouse = new Mouse();
         addMouseListener(mouse);
         addMouseMotionListener(mouse);
-        //mouse = new Mouse();
-        //addMouseMotionListener(mouse);
-        //addMouseListener(mouse);
     }
 
     public synchronized void start() {
@@ -135,18 +129,22 @@ public class Game extends Canvas implements Runnable {
         //System.out.println(xScroll+" || "+yScroll);
         
         level.render(xScroll, yScroll, screen);
+        
         player.render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
+        
         if(activarMecanica){
-            //System.out.println(mouse.getMouseX()+"  || "+mouse.getMouseY());
             level.mecanica();
         }
+        
+        
         if(key.restart){
             player.x = spawnpj[0];
             player.y = spawnpj[1];
             level.restar();
         }
+        
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
