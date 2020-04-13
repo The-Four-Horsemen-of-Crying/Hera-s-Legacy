@@ -1,4 +1,4 @@
-package com.Domain.prototype.level.tile;
+/*package com.Domain.prototype.level.tile;
 
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.graphics.Sprite;
@@ -17,3 +17,4 @@ class VoidTile extends Tile {
         return true;
     }
 }
+*/

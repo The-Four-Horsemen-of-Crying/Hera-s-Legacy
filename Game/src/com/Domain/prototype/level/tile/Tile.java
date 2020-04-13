@@ -17,26 +17,29 @@ public class Tile {
     public int x;
     public int y;
     public Sprite sprite;
-    public static Tile woodFloor = new FloorTile(Sprite.woodFloor);
-    public static Tile pikes = new VoidTile(Sprite.null_floor);
-    public static Tile woodWall = new Wall(Sprite.woodWall);
+    public final boolean solid;
+    public static Tile woodFloor = new Tile(Sprite.woodFloor,false);
+    public static Tile pikes = new Tile(Sprite.null_floor,true);
+    public static Tile woodWall = new Tile(Sprite.woodWall,true);
     
-    public static Tile []mesa = {new Mesa(Sprite.mesa[0]),new Mesa(Sprite.mesa[1]),
-                                 new Mesa(Sprite.mesa[2]),new Mesa(Sprite.mesa[3])};
+    public static Tile []mesa = {new Tile(Sprite.mesa[0],true),new Tile(Sprite.mesa[1],true),
+                                 new Tile(Sprite.mesa[2],true),new Tile(Sprite.mesa[3],true)};
     
-    public static Tile []silla= {new Silla(Sprite.silla[0]),new Silla(Sprite.silla[1]),
-                                 new Silla(Sprite.silla[2]),new Silla(Sprite.silla[3])};
+    public static Tile []silla= {new Tile(Sprite.silla[0],true),new Tile(Sprite.silla[1],true),
+                                 new Tile(Sprite.silla[2],true),new Tile(Sprite.silla[3],true)};
 
     
     
-    public Tile(Sprite sprite) {
+    public Tile(Sprite sprite,boolean solid) {
         this.sprite = sprite;
+        this.solid = solid;
     }
 
-    public void render(int x, int y, Screen screen) {
+    public void render(int x, int y, Screen screen){
+            screen.renderTile(x<<4, y<<4, this);
     }
 
     public boolean solid() {
-        return false;
+        return solid;
     }
 }

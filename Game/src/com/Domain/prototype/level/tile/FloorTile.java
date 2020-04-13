@@ -1,4 +1,4 @@
-
+/*
 package com.Domain.prototype.level.tile;
 
 import com.Domain.prototype.graphics.Screen;
@@ -16,3 +16,4 @@ public class FloorTile extends Tile {
     }
 
 }
+*/
