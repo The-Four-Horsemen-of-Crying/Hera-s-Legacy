@@ -10,7 +10,6 @@ import static com.Domain.prototype.Game.height;
 import static com.Domain.prototype.Game.screen;
 import static com.Domain.prototype.Game.activarMecanica;
 import com.Domain.prototype.entity.Entity;
-import com.Domain.prototype.level.tile.Mesa;
 import com.Domain.prototype.level.tile.Tile;
 
 
