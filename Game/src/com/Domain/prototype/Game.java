@@ -9,7 +9,7 @@ import com.Domain.prototype.entity.movil.Player;
 import com.Domain.prototype.graphics.Screen;
 import com.Domain.prototype.input.KeyBoard;
 import com.Domain.prototype.input.Mouse;
-import com.Domain.prototype.level.Level;
+import com.Domain.prototype.level.*;
 
 import com.Domain.prototype.level.TileCoordenada;
 import java.awt.Canvas;
@@ -51,7 +51,7 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         key = new KeyBoard();
-        level = Level.level01;
+        level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png", new Level01());
         player = new Player(spawnpj[0],spawnpj[1],key);
         player.init(level);
         addKeyListener(key);
@@ -149,6 +149,11 @@ public class Game extends Canvas implements Runnable {
             pixels[i] = screen.pixels[i];
         }
         
+        //para cambiar de nivel
+        if(level.cambio()){
+            System.out.println("Esta cosa cambió");
+            level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new Level01_1());
+        }
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());

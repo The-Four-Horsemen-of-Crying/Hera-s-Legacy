@@ -15,7 +15,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class Level01 implements levelStrategy {
+public class Level01_1 implements levelStrategy {
     protected int width;
     protected int height;
     protected int[] tiles; //contendrá todos los pixeles del nivel.
@@ -32,14 +32,14 @@ public class Level01 implements levelStrategy {
     private Mouse mouse;
     private KeyBoard key;
     private int numeroAnterior;
-    boolean boo;
     
-    @Override
+    public Level01_1() {
+    }
+    
     public void update(){
         
     }
     
-    @Override
     public void render(int xScroll, int yScroll, Screen screen) {//x0=parteinicial de la ventana&&xf=partefinal de la ventana en x
         screen.setOffset(xScroll, yScroll);
         int x0 = (xScroll >> 4);//same that xScroll/16
@@ -63,9 +63,9 @@ public class Level01 implements levelStrategy {
         if (tiles[x + y * width] == fuchsia)return Tile.woodWall;
         
         if (tiles[x + y * width] == lime    &&    tiles[x+1+y*width] == blue)   return Tile.mesa[0];
-        if (tiles[x + y * width] == blue    &&    tiles[x-1+y*width] == lime)   return Tile.mesa[1];
-        if (tiles[x + y * width] == yellow  &&    tiles[x+1+y*width] == white ) return Tile.mesa[2];
-        if (tiles[x + y * width] == white   &&    tiles[x-1+y*width] == yellow) return Tile.mesa[3];
+        if (tiles[x + y * width] == blue    &&    tiles[x-1+y*width] == lime)   return Tile.mesa[0];
+        if (tiles[x + y * width] == yellow  &&    tiles[x+1+y*width] == white ) return Tile.mesa[0];
+        if (tiles[x + y * width] == white   &&    tiles[x-1+y*width] == yellow) return Tile.mesa[0];
         
         if (tiles[x + y * width] == blue    &&    tiles[x+1+y*width] == lime)   return Tile.silla[0];
         if (tiles[x + y * width] == lime    &&    tiles[x-1+y*width] == blue)   return Tile.silla[1];   
@@ -108,7 +108,6 @@ public class Level01 implements levelStrategy {
          return false;
      }
      
-    @Override
     public void loadLevel(String path, String pathCollision) {
         try {
             BufferedImage image = ImageIO.read(Level01.class.getResource(path));
@@ -126,7 +125,6 @@ public class Level01 implements levelStrategy {
         }
     }
     
-    @Override
     public void mecanica() {
         int thisNum=0;
         screen.renderSprite(false,screen.width/2-hoja[0].getWidth()/2,screen.height/2-hoja[0].getHeight()/2, hoja[mesa]);
@@ -169,23 +167,17 @@ public class Level01 implements levelStrategy {
                 key.numbers[i] = false;
             }
         }
-        
     }
-    @Override
+    
     public void time(){
             
     }
         
-    @Override
     public void restar(){
             
     }
     
     public boolean cambio(){
-        boo=true;
-        for (boolean re : resueltos) {
-            boo=boo&&re;
-        }
-        return boo;
+        return false;
     }
 }   

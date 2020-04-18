@@ -8,7 +8,7 @@ package com.Domain.prototype.level;
 /**
  *
  * @author Domain
- */
+ 
 public class Lobby extends Level{
 
     public Lobby(String path, String pathCollision) {
@@ -16,3 +16,4 @@ public class Lobby extends Level{
     }
     
 }
+*/
