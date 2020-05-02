@@ -3,6 +3,7 @@ package com.heraslegacy.main;
 
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
@@ -46,6 +47,7 @@ public class Game extends Canvas implements Runnable {
         setPreferredSize(size);
         frame = new JFrame();
         screen = new Screen(width, height);
+        Sound.init();
         key = new KeyBoard();
         level = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new Level01());
         player = new Player(spawnpj[0],spawnpj[1],key);
