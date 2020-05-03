@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
-    
+    Sound theme;
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
@@ -48,6 +48,8 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         Sound.init();
+        theme=new Sound(Sound.de);
+        theme.loop();
         key = new KeyBoard();
         level = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new Level01());
         player = new Player(spawnpj[0],spawnpj[1],key);

@@ -25,13 +25,13 @@ public class Sound {
     
    
     public Sound (Clip clip){
-    this.clip=clip;
-    volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+        this.clip=clip;
+        volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
     }
     
      public void loop(){//Se reinicia la musica constantemente.
-     clip.setFramePosition(0);//Vuelve al inicio.
-     clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.setFramePosition(0);//Vuelve al inicio.
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
      }
 
      public void play(){
@@ -47,11 +47,11 @@ public class Sound {
          return clip.getFramePosition();
      }
      public void changeVolume(float f){
-      volume.setValue(f);
+         volume.setValue(f);
      }
      
     public static void init(){//Es llamada 1 sola vez cuando se crea la clase Game, para añadir más sonidos se deben cargar aquí. 
-        de=loadSound("/sound/backgroundMusic.wav");
+        de=loadSound("/sonidos/aerith.wav");
     }
     public static Clip loadSound(String path){
           
