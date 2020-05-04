@@ -13,7 +13,7 @@ import com.heraslegacy.manager.KeyBoard;
  *
  * @author HP
  */
-public class Ship extends Entity {
+public class Ship extends Mov {
     private Vector2D position, velocity;
     private  Sprite sprite;
     private KeyBoard input;
