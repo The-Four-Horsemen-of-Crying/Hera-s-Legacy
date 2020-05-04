@@ -4,15 +4,7 @@
  * and open the template in the editor.
  */
 package com.heraslegacy.level;
-
-import com.heraslegacy.graphics.Screen;
-import com.heraslegacy.graphics.Sprite;
-import static com.heraslegacy.graphics.Sprite.hoja;
 import com.heraslegacy.level.tile.Tile;
-import static com.heraslegacy.main.Game.scale;
-import static com.heraslegacy.main.Game.screen;
-import com.heraslegacy.manager.KeyBoard;
-import com.heraslegacy.manager.Mouse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -30,7 +22,6 @@ public class SpaceLevel implements levelStrategy{
     
     @Override
     public void update(){
-        
     }
     
     @Override
@@ -38,7 +29,7 @@ public class SpaceLevel implements levelStrategy{
 
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
 
-        return Tile.pikes;
+        return Tile.space01;
     }
 
     @Override

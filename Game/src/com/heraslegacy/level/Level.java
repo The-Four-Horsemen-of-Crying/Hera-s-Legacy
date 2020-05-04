@@ -9,6 +9,7 @@ public class Level{
     public Sound b;
     private final levelStrategy levelstrategy;
     
+    
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
         this.levelstrategy = levelstrategy;
         b=new Sound(Sound.de);

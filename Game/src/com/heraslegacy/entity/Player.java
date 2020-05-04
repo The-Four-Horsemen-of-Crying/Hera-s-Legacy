@@ -2,12 +2,12 @@
 package com.heraslegacy.entity;
 
 import com.heraslegacy.main.Game;
-import com.heraslegacy.entity.Entity;
+import com.heraslegacy.entity.Mov;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
 
-public class Player extends Entity{
+public class Player extends Mov{
     private KeyBoard input;
     private Sprite sprite;
     
@@ -42,8 +42,7 @@ public class Player extends Entity{
         if(direction == 1) sprite = Sprite.player_rigth[ani2 & 3];
         if(direction == 2) sprite = Sprite.player_down[ani2 & 3];
         if(direction == 3) sprite = Sprite.player_left[ani2 & 3];
-        Game.activarMecanica=level.getCollision(x, y);
-        
+        Game.activarMecanica=level.getCollision(x, y);    
         screen.renderPlayer(x - 16, y - 16, sprite);
     }
     

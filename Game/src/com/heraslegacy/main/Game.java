@@ -8,6 +8,7 @@ import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.MathLevel;
+import com.heraslegacy.level.SpaceLevel;
 import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -20,7 +21,8 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
 
-    private Level level;
+    private Level level01;
+    private Level level02;
     private Thread thread;
     private Player player;
     private KeyBoard key;
@@ -51,9 +53,10 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         theme.loop();
         key = new KeyBoard();
-        level = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
+        level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
+        level02 = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new SpaceLevel());
         player = new Player(spawnpj[0],spawnpj[1],key);
-        player.init(level);
+        player.init(level01);
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);
@@ -126,19 +129,20 @@ public class Game extends Canvas implements Runnable {
         int yScroll = player.getY() - screen.height/2;
 
         
-        level.render(xScroll, yScroll, screen);        
+        //level01.render(xScroll, yScroll, screen);
+        level02.render(xScroll, yScroll, screen);        
         player.render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
         if(activarMecanica){
-            level.mecanica();
+            level01.mecanica();
         }        
         
         if(key.restart){
             player.setX(spawnpj[0]);
             player.setY(spawnpj[1]);
-            level.restart();
+            level01.restart();
         }
         
         for (int i = 0; i < pixels.length; i++) {

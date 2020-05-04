@@ -13,6 +13,7 @@ public class Tile {
     public static Tile woodFloor = new Tile(Sprite.woodFloor, false);
     public static Tile pikes = new Tile(Sprite.null_floor, true);
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
+    public static Tile space01 = new Tile(Sprite.spaceCheese, false);
     
     public static Tile []mesa = {new Tile(Sprite.mesa[0], true), new Tile(Sprite.mesa[1], true),
                                  new Tile(Sprite.mesa[2], true), new Tile(Sprite.mesa[3], true)};

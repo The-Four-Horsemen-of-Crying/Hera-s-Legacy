@@ -5,7 +5,7 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.tile.Tile;
 
-public abstract class Entity {
+public abstract class Mov {
     private boolean removed = false, moving = false;   
     protected int ani = 0, ani2 = 0, direction = 0, x, y;
     protected Level level;
