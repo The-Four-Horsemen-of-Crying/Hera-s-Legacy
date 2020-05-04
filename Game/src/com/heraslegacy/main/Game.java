@@ -7,7 +7,7 @@ import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.Level01;
+import com.heraslegacy.level.MathLevel;
 import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -51,7 +51,7 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         theme.loop();
         key = new KeyBoard();
-        level = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new Level01());
+        level = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
         player = new Player(spawnpj[0],spawnpj[1],key);
         player.init(level);
         addKeyListener(key);
