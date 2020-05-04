@@ -2,7 +2,6 @@
 package com.heraslegacy.entity;
 
 import com.heraslegacy.main.Game;
-import com.heraslegacy.entity.Mov;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
@@ -11,11 +10,6 @@ public class Player extends Mov{
     private KeyBoard input;
     private Sprite sprite;
     
-    
-    public Player(KeyBoard input){
-        this.input = input;
-    }
-       
     public Player(int x, int y, KeyBoard input){
         this.x = x;
         this.y = y;
