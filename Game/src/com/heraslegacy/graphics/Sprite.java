@@ -16,7 +16,8 @@ public class Sprite {
     public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
-    public static Sprite spaceCheese = new Sprite(16, 0,0,SpriteSheet.nivel02_space);
+    public static Sprite spaceCheese[] = {new Sprite(16, 0,0,SpriteSheet.nivel02_space),new Sprite(16, 1,0,SpriteSheet.nivel02_space),new Sprite(16, 0,1,SpriteSheet.nivel02_space),
+                                          new Sprite(16, 2,0,SpriteSheet.nivel02_space),new Sprite(16, 1,1,SpriteSheet.nivel02_space)};
     
     public static Sprite fonts01[] = {new Sprite(32,32,0,0, SpriteSheet.numFonts),new Sprite(32,32,1,0, SpriteSheet.numFonts),new Sprite(32,32,2,0, SpriteSheet.numFonts),
                                       new Sprite(32,32,3,0, SpriteSheet.numFonts),new Sprite(32,32,0,1, SpriteSheet.numFonts),new Sprite(32,32,1,1, SpriteSheet.numFonts),
@@ -25,8 +26,8 @@ public class Sprite {
     
     public static Sprite frasesLvl01[] = {new Sprite(96,32,0,3, SpriteSheet.numFonts)};
     
-    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.miniGame01_mat),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.miniGame01_mat)};
+    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat)};
     //Mesa
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
                                    new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};

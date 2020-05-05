@@ -54,7 +54,7 @@ public class Game extends Canvas implements Runnable {
         theme.loop();
         key = new KeyBoard();
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
-        level02 = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new SpaceLevel());
+        level02 = new Level("/levels/level02/level2.png","/levels/level02/level2.png",new SpaceLevel());
         player = new Player(spawnpj[0],spawnpj[1],key);
         player.init(level01);
         addKeyListener(key);
@@ -130,13 +130,13 @@ public class Game extends Canvas implements Runnable {
 
         
         //level01.render(xScroll, yScroll, screen);
-        level02.render(xScroll, yScroll, screen);        
+        level02.render(xScroll, yScroll, screen);     
         player.render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
         if(activarMecanica){
-            level01.mecanica();
+            level02.mecanica();
         }        
         
         if(key.restart){
