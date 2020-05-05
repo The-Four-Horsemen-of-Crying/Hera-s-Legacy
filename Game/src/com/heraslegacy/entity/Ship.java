@@ -8,28 +8,29 @@ package com.heraslegacy.entity;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
 
-
 /**
  *
  * @author HP
  */
 public class Ship extends Mov {
+
     private Vector2D position, velocity;
-    private  Sprite sprite;
+    private Sprite sprite;
     private KeyBoard input;
     private double angle, maxv;
-    public Ship(Vector2D position, Vector2D velocity,double maxv,KeyBoard input){
-    this.position=position;
-    this.input=input;
-    this.velocity = velocity;
-    angle = 0;
-    this.maxv=maxv;
+
+    public Ship(Vector2D position, Vector2D velocity, double maxv, KeyBoard input) {
+        this.position = position;
+        this.input = input;
+        this.velocity = velocity;
+        angle = 0;
+        this.maxv = maxv;
     }
 
-    private boolean collision(){
-    return true;
+    private boolean collision() {
+        return true;
     }
-    
+
     public Vector2D getPosition() {
         return position;
     }
@@ -37,7 +38,8 @@ public class Ship extends Mov {
     public void setPosition(Vector2D position) {
         this.position = position;
     }
-    private Vector2D getCenter(){
-        return new Vector2D(position.getX()/2, position.getY()/2);
+
+    private Vector2D getCenter() {
+        return new Vector2D(position.getX() / 2, position.getY() / 2);
     }
 }

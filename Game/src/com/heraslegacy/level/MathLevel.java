@@ -4,8 +4,6 @@ package com.heraslegacy.level;
 
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
-import com.heraslegacy.graphics.Screen;
-import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import static com.heraslegacy.graphics.Sprite.hoja;
 import com.heraslegacy.manager.KeyBoard;
