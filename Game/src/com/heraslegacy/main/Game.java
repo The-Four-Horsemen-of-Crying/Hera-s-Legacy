@@ -51,12 +51,12 @@ public class Game extends Canvas implements Runnable {
         screen = new Screen(width, height);
         Sound.init();
         theme=new Sound(Sound.de);
-        theme.loop();
+        //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
         level02 = new Level("/levels/level02/level2.png","/levels/level02/level2.png",new SpaceLevel());
         player = new Player(spawnpj[0],spawnpj[1],key);
-        player.init(level01);
+        player.init(level02); //MOV DEL PLAYER QUE DEPENDE DEL NIVEL
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);

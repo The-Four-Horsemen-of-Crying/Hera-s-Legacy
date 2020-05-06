@@ -34,11 +34,13 @@ public class SpaceLevel implements levelStrategy{
     public Tile getTile(int x, int y){
 
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.spacePices[3];
-        if (tiles[x + y * width] == lime)   return Tile.spacePices[0];
-        if (tiles[x + y * width] == blue)   return Tile.spacePices[1];
-        if (tiles[x + y * width] == yellow) return Tile.spacePices[5];  
-        if (tiles[x + y * width] == red)   return Tile.spacePices[2];
-        if (tiles[x + y * width] == fuchsia)  return Tile.spacePices[3];
+        
+        if (tiles[x + y * width] == lime)       return Tile.spacePices[0];
+        if (tiles[x + y * width] == blue)       return Tile.spacePices[1];
+        if (tiles[x + y * width] == red)        return Tile.spacePices[2];
+        if (tiles[x + y * width] == fuchsia)    return Tile.spacePices[3];     
+        if (tiles[x + y * width] == yellow)     return Tile.spacePices[5];  
+       
         
         return Tile.spacePices[3];
     }
