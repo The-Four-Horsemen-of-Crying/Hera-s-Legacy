@@ -14,7 +14,13 @@ import javax.imageio.ImageIO;
  * @author Domain
  */
 public class SpaceLevel implements levelStrategy{
-
+    
+    protected int red = 0xffff0000;//s
+    protected int fuchsia = 0xffff00ff;//s
+    protected int lime = 0xff00ff00 ;//s
+    protected int blue = 0xff0000ff;//s
+    protected int yellow = 0xffffff00;//s
+    protected int white = 0xffffffff;
     protected int width;
     protected int height;
     protected int[] tiles; 
@@ -27,9 +33,16 @@ public class SpaceLevel implements levelStrategy{
     @Override
     public Tile getTile(int x, int y){
 
-        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
-
-        return Tile.space01;
+        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.spacePices[3];
+        
+        if (tiles[x + y * width] == lime)       return Tile.spacePices[0];
+        if (tiles[x + y * width] == blue)       return Tile.spacePices[1];
+        if (tiles[x + y * width] == red)        return Tile.spacePices[2];
+        if (tiles[x + y * width] == fuchsia)    return Tile.spacePices[3];     
+        if (tiles[x + y * width] == yellow)     return Tile.spacePices[5];  
+        if (tiles[x + y * width] == white)      return Tile.spacePices[6];
+        
+        return Tile.spacePices[3];
     }
 
     @Override

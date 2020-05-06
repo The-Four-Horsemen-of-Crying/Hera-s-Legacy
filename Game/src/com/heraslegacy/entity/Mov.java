@@ -62,7 +62,7 @@ public abstract class Mov {
         for (int corners = 0; corners < 4; corners++) {
             int xLimit =((x + xMove) + corners % 2 * 14 - 8) / 16;
             int yLimit =(((y + yMove) + corners / 2 * 12 + 3) / 16);
-            Tile nextTile = level.getTile(xLimit, yLimit);
+            Tile nextTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
             if(nextTile.solid()) solid = true;            
         }
         return  solid;
@@ -78,6 +78,6 @@ public abstract class Mov {
         }
         ani++;
     }  
-        
+
 }
  
