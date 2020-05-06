@@ -4,6 +4,7 @@ package com.heraslegacy.main;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
+import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
@@ -54,9 +55,10 @@ public class Game extends Canvas implements Runnable {
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
-        level02 = new Level("/levels/level02/level2.png","/levels/level02/level2.png",new SpaceLevel());
+        level02 = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
         player = new Player(spawnpj[0],spawnpj[1],key);
-        player.init(level02); //MOV DEL PLAYER QUE DEPENDE DEL NIVEL
+        player.setSprites(Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left);   // ****COSAS QUE VAN EN EL SWITCHLVL****
+        player.init(level02); //MOV DEL PLAYER QUE DEPENDE DEL NIVEL ****COSAS QUE VAN EN EL SWITCHLVL****
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);

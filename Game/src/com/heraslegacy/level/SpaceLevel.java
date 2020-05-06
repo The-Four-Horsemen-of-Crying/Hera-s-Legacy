@@ -40,7 +40,7 @@ public class SpaceLevel implements levelStrategy{
         if (tiles[x + y * width] == red)        return Tile.spacePices[2];
         if (tiles[x + y * width] == fuchsia)    return Tile.spacePices[3];     
         if (tiles[x + y * width] == yellow)     return Tile.spacePices[5];  
-       
+        if (tiles[x + y * width] == white)      return Tile.spacePices[6];
         
         return Tile.spacePices[3];
     }
