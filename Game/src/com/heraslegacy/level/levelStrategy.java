@@ -1,7 +1,6 @@
 
 package com.heraslegacy.level;
 
-import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.level.tile.Tile;
 
 public interface levelStrategy {

@@ -41,7 +41,7 @@ public class Player extends Mov{
         if(direction == 1) sprite = rigth[ani2 & 3];
         if(direction == 2) sprite = down[ani2 & 3];
         if(direction == 3) sprite = left[ani2 & 3];
-        //Game.activarMecanica=level.getCollision(x, y);    MECANICA QUE DEPENDE DEL NIVEL
+        Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
         screen.renderPlayer(x - 16, y - 16, sprite);
     }
     

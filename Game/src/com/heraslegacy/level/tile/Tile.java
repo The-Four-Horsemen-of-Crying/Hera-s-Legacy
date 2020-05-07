@@ -15,7 +15,7 @@ public class Tile {
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
     public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
                                        new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true),
-                                       new Tile(Sprite.meteoritoRelleno,true)};
+                                       new Tile(Sprite.meteoritoRelleno,false)};
     
     public static Tile []mesa = {new Tile(Sprite.mesa[0], true), new Tile(Sprite.mesa[1], true),
                                  new Tile(Sprite.mesa[2], true), new Tile(Sprite.mesa[3], true)};
