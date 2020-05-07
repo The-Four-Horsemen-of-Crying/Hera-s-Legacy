@@ -5,7 +5,6 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.level.tile.Tile;
 
 public interface levelStrategy {
-    
     public void update();
     //public void render(int xScroll, int yScroll, Screen screen);
     public Tile getTile(int x, int y);
