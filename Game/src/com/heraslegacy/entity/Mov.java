@@ -8,7 +8,7 @@ import com.heraslegacy.level.tile.Tile;
 public abstract class Mov {
     private boolean removed = false, moving = false;   
     protected int ani = 0, ani2 = 0, direction = 0, x, y;
-    protected Level level;
+    Level level;
     
     public void remove(){
         removed = true;
@@ -16,9 +16,6 @@ public abstract class Mov {
     
     public boolean isRemoved(){
         return removed;
-    }
-    public void init(Level level){
-        this.level = level;
     }
 
     public int getX(){
@@ -78,6 +75,14 @@ public abstract class Mov {
         }
         ani++;
     }  
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
 
 }
  

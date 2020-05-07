@@ -1,7 +1,6 @@
 
 package com.heraslegacy.main;
 
-import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
@@ -25,7 +24,6 @@ public class Game extends Canvas implements Runnable {
     private Level level01;
     private Level level02;
     private Thread thread;
-    private Player player;
     private KeyBoard key;
     private Mouse mouse;
     public JFrame frame; 
@@ -55,10 +53,8 @@ public class Game extends Canvas implements Runnable {
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
+        level01.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left);
         level02 = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-        player = new Player(spawnpj[0],spawnpj[1],key);
-        player.setSprites(Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left);   // ****COSAS QUE VAN EN EL SWITCHLVL****
-        player.init(level02); //MOV DEL PLAYER QUE DEPENDE DEL NIVEL ****COSAS QUE VAN EN EL SWITCHLVL****
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);
@@ -115,7 +111,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        player.update();
+        level01.player.update();
     }
 
     public void render() {
@@ -127,13 +123,13 @@ public class Game extends Canvas implements Runnable {
         }
         
         screen.clear();
-        int xScroll = player.getX() - screen.width/2;
-        int yScroll = player.getY() - screen.height/2;
+        int xScroll = level01.player.getX() - screen.width/2;
+        int yScroll = level01.player.getY() - screen.height/2;
 
         
-        //level01.render(xScroll, yScroll, screen);
-        level02.render(xScroll, yScroll, screen);     
-        player.render(screen);
+        level01.render(xScroll, yScroll, screen);
+        //level02.render(xScroll, yScroll, screen);     
+        level01.player.render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
@@ -142,8 +138,8 @@ public class Game extends Canvas implements Runnable {
         }
         
         if(key.restart){
-            player.setX(spawnpj[0]);
-            player.setY(spawnpj[1]);
+            level01.player.setX(spawnpj[0]);
+            level01.player.setY(spawnpj[1]);
             level01.restart();
         }
         

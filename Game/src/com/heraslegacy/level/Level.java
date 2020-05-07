@@ -1,12 +1,16 @@
 
 package com.heraslegacy.level;
 
+import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
+import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.manager.KeyBoard;
 
 public class Level{
     public Sound b;
+    public Player player;
     private final levelStrategy levelstrategy;
     
     
@@ -59,6 +63,12 @@ public class Level{
     
     public boolean cambio(){
         return levelstrategy.cambio();
+    }
+    
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left){
+        player = new Player(x,y,input);
+        player.setSprites(up, down, rigth, left);
+        player.setLevel(this);
     }
 }
 

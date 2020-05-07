@@ -83,6 +83,7 @@ public class SpaceLevel implements levelStrategy{
             
     }
     
+    @Override
     public boolean cambio(){
         
         return false;
