@@ -48,10 +48,7 @@ public class SpaceLevel implements levelStrategy{
     @Override
     public boolean getCollision(int x, int y){
     
-         if (tilesCollision[(x>>4)+(y>>4)*width] == red ){
-            return true;
-        }         
-        return false;
+        return tilesCollision[(x>>4)+(y>>4)*width] == red;
     }
      
     @Override

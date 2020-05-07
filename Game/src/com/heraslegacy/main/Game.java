@@ -139,7 +139,7 @@ public class Game extends Canvas implements Runnable {
         
         if(activarMecanica){
             level02.mecanica();
-        }        
+        }
         
         if(key.restart){
             player.setX(spawnpj[0]);
