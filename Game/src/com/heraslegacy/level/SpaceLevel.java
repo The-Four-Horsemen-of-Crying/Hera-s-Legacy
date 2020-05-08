@@ -15,12 +15,13 @@ import javax.imageio.ImageIO;
  */
 public class SpaceLevel implements levelStrategy{
     
-    protected int red = 0xffff0000;//s
-    protected int fuchsia = 0xffff00ff;//s
-    protected int lime = 0xff00ff00 ;//s
-    protected int blue = 0xff0000ff;//s
-    protected int yellow = 0xffffff00;//s
+    protected int red = 0xffff0000;
+    protected int fuchsia = 0xffff00ff;
+    protected int lime = 0xff00ff00 ;
+    protected int blue = 0xff0000ff;
+    protected int yellow = 0xffffff00;
     protected int white = 0xffffffff;
+    protected int kindblue = -9411424;//RGB:666699
     protected int width;
     protected int height;
     protected int[] tiles; 
@@ -41,14 +42,14 @@ public class SpaceLevel implements levelStrategy{
         if (tiles[x + y * width] == fuchsia)    return Tile.spacePices[3];     
         if (tiles[x + y * width] == yellow)     return Tile.spacePices[5];  
         if (tiles[x + y * width] == white)      return Tile.spacePices[6];
-        
+        System.out.println(tiles[x + y * width]);
         return Tile.spacePices[3];
     }
 
     @Override
     public boolean getCollision(int x, int y){
-    
-        return tilesCollision[(x>>4)+(y>>4)*width] == red;
+        
+        return tilesCollision[(x>>4)+(y>>4)*width] == kindblue;
     }
      
     @Override
