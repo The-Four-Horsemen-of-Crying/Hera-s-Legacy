@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.heraslegacy.level;
+import com.heraslegacy.entity.Player;
 import com.heraslegacy.level.tile.Tile;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import javax.imageio.ImageIO;
  *
  * @author Domain
  */
-public class SpaceLevel implements levelStrategy{
+public class SpaceLevel implements levelStrategy {
     
     protected int red = 0xffff0000;
     protected int fuchsia = 0xffff00ff;
@@ -22,6 +23,9 @@ public class SpaceLevel implements levelStrategy{
     protected int yellow = 0xffffff00;
     protected int white = 0xffffffff;
     protected int kindblue = -9411424;//RGB:666699
+    protected int kindred = -2358749;
+    protected int kindColdplay = -5991936;
+    protected int kindblue2 = -16724531;
     protected int width;
     protected int height;
     protected int[] tiles; 
@@ -41,8 +45,9 @@ public class SpaceLevel implements levelStrategy{
         if (tiles[x + y * width] == red)        return Tile.spacePices[2];
         if (tiles[x + y * width] == fuchsia)    return Tile.spacePices[3];     
         if (tiles[x + y * width] == yellow)     return Tile.spacePices[5];  
-        if (tiles[x + y * width] == white)      return Tile.spacePices[6];
-        System.out.println(tiles[x + y * width]);
+        if (tiles[x + y * width] == white)      return Tile.spaceMeteor[0];
+        
+        
         return Tile.spacePices[3];
     }
 
@@ -86,7 +91,6 @@ public class SpaceLevel implements levelStrategy{
     
     @Override
     public boolean cambio(){
-        
         return false;
     }
     

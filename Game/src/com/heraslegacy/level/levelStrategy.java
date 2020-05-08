@@ -1,6 +1,7 @@
 
 package com.heraslegacy.level;
 
+import com.heraslegacy.entity.Player;
 import com.heraslegacy.level.tile.Tile;
 
 public interface levelStrategy {
