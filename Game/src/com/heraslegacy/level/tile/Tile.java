@@ -9,7 +9,7 @@ public class Tile {
     public int x;
     public int y;
     public Sprite sprite;
-    public final boolean solid;
+    public boolean solid;
     public static Tile woodFloor = new Tile(Sprite.woodFloor, false);
     public static Tile pikes = new Tile(Sprite.null_floor, true);
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
@@ -41,6 +41,12 @@ public class Tile {
     
     public static Tile []silla= {new Tile(Sprite.silla[0], true), new Tile(Sprite.silla[1], true),
                                  new Tile(Sprite.silla[2], true), new Tile(Sprite.silla[3], true)};
+    
+    //LibraryLevel    
+    public static Tile puertaE[] ={new Tile(Sprite.puerta,false),new Tile(Sprite.puerta,false),
+                                   new Tile(Sprite.puerta,false),new Tile(Sprite.puerta,false)};
+    public static Tile puertaS[] ={new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true),
+                                   new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true)};
 
     public Tile(Sprite sprite,boolean solid) {
         this.sprite = sprite;
@@ -53,5 +59,9 @@ public class Tile {
 
     public boolean solid() {
         return solid;
+    }
+    
+    public void setSolid(Boolean solid){
+        this.solid=solid;
     }
 }

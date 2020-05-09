@@ -116,10 +116,15 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo) {
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
         player = new Player(x, y, input);
         player.setSprites(up, down, rigth, left);
         player.setTipo(tipo);
+        player.setLevel(level);
+    }
+    
+    @Override
+    public Player getPlayer(){
         return player;
     }
 }

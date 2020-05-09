@@ -35,6 +35,8 @@ public class Lobby implements levelStrategy{
     protected int kindgreenday=-16730112;
     protected int purplePoe=-9699234;
     protected int naranjaMecanica=-1411778;
+    private Player player;
+    
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -103,8 +105,16 @@ public class Lobby implements levelStrategy{
     }
 
     @Override
-    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
+        player = new Player(x, y, input);
+        player.setSprites(up, down, rigth, left);
+        player.setTipo(tipo);
+        player.setLevel(level);
+    }
+    
+    @Override
+    public Player getPlayer(){
+        return player;
     }
         
 }
