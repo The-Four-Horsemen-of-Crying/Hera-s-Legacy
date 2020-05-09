@@ -13,12 +13,16 @@ public class Tile {
     public static Tile woodFloor = new Tile(Sprite.woodFloor, false);
     public static Tile pikes = new Tile(Sprite.null_floor, true);
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
+    
     //Lobby
-    public static Tile marmolWall = new Tile(Sprite.marmolWall, true);
-    public static Tile marmolFloor = new Tile(Sprite.marmolFloor, false);
+    public static Tile marmolWall[] = {new Tile(Sprite.marmolWall[0], true),new Tile(Sprite.marmolWall[1], true),new Tile(Sprite.marmolWall[2], true)};
+    
+    public static Tile marmolFloor[] ={new Tile(Sprite.marmolFloor[0], false),new Tile(Sprite.marmolFloor[1], false),
+                                       new Tile(Sprite.marmolFloor[2], false),new Tile(Sprite.marmolFloor[3], false)};
+    
     public static Tile specialMarmolFloor = new Tile(Sprite.specialMarmolFloor, false);
     public static Tile columnas[] = {new Tile(Sprite.columnas[0], true),new Tile(Sprite.columnas[1], true)};
-   
+    public static Tile techo = new Tile(Sprite.techo, true);
     
     
     //SpaceShit

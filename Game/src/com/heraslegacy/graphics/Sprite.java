@@ -18,11 +18,15 @@ public class Sprite {
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
     
     //Lobby
-    public static Sprite marmolWall = new Sprite(16,0,1,SpriteSheet.nivel00_lobby);
-    public static Sprite marmolFloor = new Sprite(16, 0, 0, SpriteSheet.nivel00_lobby);
+    public static Sprite marmolWall[] = {new Sprite(16,0,1,SpriteSheet.nivel00_lobby), new Sprite(16, 1, 1, SpriteSheet.nivel00_lobby),
+                                         new Sprite(16, 2, 1, SpriteSheet.nivel00_lobby)};//NORMAL, UP
+    
+    public static Sprite marmolFloor[] = {new Sprite(16, 0, 0, SpriteSheet.nivel00_lobby),new Sprite(16, 2, 0, SpriteSheet.nivel00_lobby),//NORMAL,LEFT,DOWN,RIGTH
+                                          new Sprite(16, 3, 0, SpriteSheet.nivel00_lobby),new Sprite(16, 4, 0, SpriteSheet.nivel00_lobby)};
+    
     public static Sprite specialMarmolFloor = new Sprite(16, 1, 0, SpriteSheet.nivel00_lobby);
     public static Sprite columnas[] = {new Sprite(16, 0, 2, SpriteSheet.nivel00_lobby),new Sprite(16, 1, 2, SpriteSheet.nivel00_lobby)};
-    
+    public static Sprite techo = new Sprite(16, 2, 2, SpriteSheet.nivel00_lobby);
     //SpaceShit
     public static Sprite meteorito[] = {new Sprite(16,0,2,SpriteSheet.nivel02_space),new Sprite(16,2,2,SpriteSheet.nivel02_space),new Sprite(16,3,2,SpriteSheet.nivel02_space),
                                         new Sprite(16,4,2,SpriteSheet.nivel02_space),new Sprite(16,5,2,SpriteSheet.nivel02_space),new Sprite(16,2,3,SpriteSheet.nivel02_space),
