@@ -56,7 +56,6 @@ public class Game extends Canvas implements Runnable {
         key = new KeyBoard();
         level00 = new Level("/levels/lobby/lobby.png", "/levels/lobby/lobby.png", new Lobby());
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
-        level01.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         level02 = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
         level02.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         
