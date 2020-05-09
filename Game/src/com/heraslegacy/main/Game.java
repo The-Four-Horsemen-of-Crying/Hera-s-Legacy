@@ -115,7 +115,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-                level02.player.update();
+        level02.getPlayer().update();
     }
 
     public void render() {
@@ -127,13 +127,13 @@ public class Game extends Canvas implements Runnable {
         }
         
         screen.clear();
-        int xScroll = level02.player.getX() - screen.width/2;
-        int yScroll = level02.player.getY() - screen.height/2;
+        int xScroll = level02.getPlayer().getX() - screen.width/2;
+        int yScroll = level02.getPlayer().getY() - screen.height/2;
 
         
         level02.render(xScroll, yScroll, screen);
         //level02.render(xScroll, yScroll, screen);     
-        level02.player.render(screen);
+        level02.getPlayer().render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
@@ -143,8 +143,8 @@ public class Game extends Canvas implements Runnable {
         }
         
         if(key.restart){
-            level01.player.setX(spawnpj[0]);
-            level01.player.setY(spawnpj[1]);
+            level01.getPlayer().setX(spawnpj[0]);
+            level01.getPlayer().setY(spawnpj[1]);
             level01.restart();
         }
         

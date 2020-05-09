@@ -16,10 +16,10 @@ import javax.imageio.ImageIO;
 
 
 public class MathLevel implements levelStrategy {
-    protected int width;
-    protected int height;
-    protected int[] tiles; 
-    protected int[] tilesCollision;
+    private int width;
+    private int height;
+    private int[] tiles; 
+    private int[] tilesCollision;
     protected int red = 0xffff0000;
     protected int fuchsia = 0xffff00ff;
     protected int lime = 0xff00ff00 ;
@@ -33,6 +33,7 @@ public class MathLevel implements levelStrategy {
     private KeyBoard key;
     private int numeroAnterior;
     boolean boo;
+    private Player player;
     
     @Override
     public void update(){
@@ -173,10 +174,15 @@ public class MathLevel implements levelStrategy {
     }
 
     @Override
-    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo) {
-       Player player = new Player(x,y,input);
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo, Level level) {
+        player = new Player(x,y,input);
         player.setSprites(up, down, rigth, left);
         player.setTipo(tipo);
+        player.setLevel(level);
+    }
+    
+    @Override
+    public Player getPlayer(){
         return player;
     }
 }   
