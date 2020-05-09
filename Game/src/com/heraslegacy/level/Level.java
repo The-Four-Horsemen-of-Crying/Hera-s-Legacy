@@ -65,10 +65,10 @@ public class Level{
         return levelstrategy.cambio();
     }
     
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left){
-        player = new Player(x,y,input);
-        player.setSprites(up, down, rigth, left);
-        player.setLevel(this);   
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo){
+        player= levelstrategy.configPlayer(x, y, input, up, down, rigth, left, tipo);
+        player.setLevel(this);
     }
+   
 }
 

@@ -14,6 +14,7 @@ public class Player extends Mov{
     private Sprite rigth[];
     private Sprite left[];
     private Sprite down[];
+    private boolean tipo=false;
     
     public Player(int x, int y, KeyBoard input){
         this.x = x;
@@ -26,11 +27,17 @@ public class Player extends Mov{
     public void update(){
         int xDireccion = 0;
         int yDireccion = 0;
-           
+           if(tipo){
+             if(input.up) yDireccion++;
+        if(input.down) yDireccion--;
+        if(input.right) xDireccion--;
+        if(input.left) xDireccion++;
+           }else{
         if(input.up) yDireccion--;
         if(input.down) yDireccion++;
         if(input.right) xDireccion++;
         if(input.left) xDireccion--;
+           }
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion,yDireccion);
     }
@@ -42,7 +49,7 @@ public class Player extends Mov{
         if(direction == 1) sprite = rigth[ani2 & 3];
         if(direction == 2) sprite = down[ani2 & 3];
         if(direction == 3) sprite = left[ani2 & 3];
-        Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
+       Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
         screen.renderPlayer(x - 16, y - 16, sprite);
     }
     
@@ -52,4 +59,9 @@ public class Player extends Mov{
         this.left=left;
         this.rigth=rigth;
     }
+    public void setTipo(Boolean b){
+      tipo=b;
+    }
+
+    
 }

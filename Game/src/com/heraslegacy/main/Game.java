@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable {
     
     private Level level00;
     private Level level01;
-    private Level level02;
+    public Level level02;
     private Thread thread;
     private KeyBoard key;
     private Mouse mouse;
@@ -56,8 +56,9 @@ public class Game extends Canvas implements Runnable {
         key = new KeyBoard();
         level00 = new Level("/levels/lobby/lobby.png", "/levels/lobby/lobby.png", new Lobby());
         level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
-        level02 = new Level("/levels/level02/level2.png","/levels/level02/leveltest.png",new SpaceLevel());
-        level00.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left);
+        level01.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
+        level02 = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        level02.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         
         addKeyListener(key);
         mouse = new Mouse();
@@ -115,7 +116,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level00.player.update();
+                level02.player.update();
     }
 
     public void render() {
@@ -127,18 +128,19 @@ public class Game extends Canvas implements Runnable {
         }
         
         screen.clear();
-        int xScroll = level00.player.getX() - screen.width/2;
-        int yScroll = level00.player.getY() - screen.height/2;
+        int xScroll = level02.player.getX() - screen.width/2;
+        int yScroll = level02.player.getY() - screen.height/2;
 
         
-        level00.render(xScroll, yScroll, screen);
+        level02.render(xScroll, yScroll, screen);
         //level02.render(xScroll, yScroll, screen);     
-        level00.player.render(screen);
+        level02.player.render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
         if(activarMecanica){
-            level00.mecanica();
+            level02.mecanica();
+            
         }
         
         if(key.restart){
