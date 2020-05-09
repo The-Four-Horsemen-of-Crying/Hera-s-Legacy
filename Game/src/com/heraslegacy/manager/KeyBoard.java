@@ -2,7 +2,7 @@ package com.heraslegacy.manager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javafx.scene.input.KeyCode;
+//import javafx.scene.input.KeyCode;
 
 public class KeyBoard implements KeyListener {
 

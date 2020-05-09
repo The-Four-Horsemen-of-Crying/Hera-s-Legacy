@@ -13,10 +13,25 @@ public class Tile {
     public static Tile woodFloor = new Tile(Sprite.woodFloor, false);
     public static Tile pikes = new Tile(Sprite.null_floor, true);
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
-    public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
-                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true),
-                                       new Tile(Sprite.meteoritoRelleno,true)};
+    //Lobby
+    public static Tile marmolWall = new Tile(Sprite.marmolWall, true);
+    public static Tile marmolFloor = new Tile(Sprite.marmolFloor, false);
+    public static Tile specialMarmolFloor = new Tile(Sprite.specialMarmolFloor, false);
+    public static Tile columnas[] = {new Tile(Sprite.columnas[0], true),new Tile(Sprite.columnas[1], true)};
+   
     
+    
+    //SpaceShit
+    public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
+                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true)};
+    
+    public static Tile []spaceMeteor = {new Tile(Sprite.meteorito[0], true),new Tile(Sprite.meteorito[1], true),new Tile(Sprite.meteorito[2], true),
+                                        new Tile(Sprite.meteorito[3], true),new Tile(Sprite.meteorito[4], true),new Tile(Sprite.meteorito[5], true),
+                                        new Tile(Sprite.meteorito[6], true),new Tile(Sprite.meteorito[7], true),new Tile(Sprite.meteorito[8], true),
+                                        new Tile(Sprite.meteorito[9], true),new Tile(Sprite.meteorito[10], true),new Tile(Sprite.meteorito[11], true),
+                                        new Tile(Sprite.meteorito[12], true)};
+    
+    //MathLevel
     public static Tile []mesa = {new Tile(Sprite.mesa[0], true), new Tile(Sprite.mesa[1], true),
                                  new Tile(Sprite.mesa[2], true), new Tile(Sprite.mesa[3], true)};
     

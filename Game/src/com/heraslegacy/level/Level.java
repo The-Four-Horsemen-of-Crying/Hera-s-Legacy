@@ -68,7 +68,7 @@ public class Level{
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left){
         player = new Player(x,y,input);
         player.setSprites(up, down, rigth, left);
-        player.setLevel(this);
+        player.setLevel(this);   
     }
 }
 
