@@ -29,6 +29,9 @@ public class Lobby implements levelStrategy{
     protected int kindred = -2358749;
     protected int kindColdplay = -5991936;
     protected int kindblue2 = -16724531;
+    protected int kindgreenday=-16730112;
+    protected int purplePoe=-9699234;
+    protected int naranjaMecanica=-1411778;
     @Override
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -36,14 +39,20 @@ public class Lobby implements levelStrategy{
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.spacePices[3];
+        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
         
         if (tiles[x + y * width] == lime)       return Tile.specialMarmolFloor;
         if (tiles[x + y * width] == blue)       return Tile.pikes;
         if (tiles[x + y * width] == red)        return Tile.columnas[1];      
         if (tiles[x + y * width] == kindblue)   return Tile.columnas[0];
-        if (tiles[x + y * width] == fuchsia)    return Tile.marmolFloor;     
-        if (tiles[x + y * width] == yellow)     return Tile.marmolWall;  
+        if (tiles[x + y * width] == fuchsia)    return Tile.marmolFloor[0];     
+        if (tiles[x + y * width] == yellow)     return Tile.marmolWall[0];
+        if (tiles[x + y * width] ==kindColdplay)return Tile.marmolFloor[1];
+        if (tiles[x + y * width] ==kindgreenday)return Tile.marmolWall[1];
+        if (tiles[x + y * width] ==purplePoe)   return Tile.marmolWall[2];
+        if (tiles[x + y * width] ==naranjaMecanica)return Tile.marmolFloor[3];
+        if (tiles[x + y * width] ==kindblue2)return Tile.techo;
+        System.out.println(tiles[x + y * width]);
         return Tile.pikes;
     }
 
