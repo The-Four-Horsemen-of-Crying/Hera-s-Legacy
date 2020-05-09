@@ -5,7 +5,10 @@
  */
 package com.heraslegacy.level;
 
+import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.manager.KeyBoard;
 
 /**
  *
@@ -56,6 +59,11 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public boolean cambio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

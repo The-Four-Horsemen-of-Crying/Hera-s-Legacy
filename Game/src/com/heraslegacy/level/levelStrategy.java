@@ -2,7 +2,9 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.manager.KeyBoard;
 
 public interface levelStrategy {
     public void update();
@@ -14,5 +16,6 @@ public interface levelStrategy {
     public void mecanica();
     public void restar();
     public boolean cambio();
-    
+    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo);
+ 
 }

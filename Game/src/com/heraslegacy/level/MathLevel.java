@@ -2,6 +2,7 @@
 package com.heraslegacy.level;
 
 
+import com.heraslegacy.entity.Player;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
@@ -169,5 +170,13 @@ public class MathLevel implements levelStrategy {
             boo = boo && re;
         }
         return boo;
+    }
+
+    @Override
+    public Player configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo) {
+       Player player = new Player(x,y,input);
+        player.setSprites(up, down, rigth, left);
+        player.setTipo(tipo);
+        return player;
     }
 }   
