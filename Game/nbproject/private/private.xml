@@ -12,12 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/main/Game.java</file>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/level/LibraryLevel.java</file>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/graphics/Colors.java</file>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/level/Lobby.java</file>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/level/MathLevel.java</file>
-            <file>file:/C:/Users/ejose/Desktop/Proyecto/Proyecto-POO/Game/src/com/heraslegacy/level/tile/Tile.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/main/Game.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/entity/Mov.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/level/levelStrategy.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/level/Level.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/level/Lobby.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Proyecto-POO/Game/src/com/heraslegacy/entity/Player.java</file>
         </group>
     </open-files>
 </project-private>
