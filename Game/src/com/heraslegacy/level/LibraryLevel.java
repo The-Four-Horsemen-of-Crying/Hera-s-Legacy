@@ -6,10 +6,14 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
 import java.time.LocalTime;
 import com.heraslegacy.manager.KeyBoard;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -33,8 +37,7 @@ public class LibraryLevel implements levelStrategy{
     private int direction=0;
     private LocalTime ant= LocalTime.now();
     private Player player;
-    //IA
-    //BOnito
+    public Sound fail = new Sound(Sound.fail); 
 
     @Override
     public void update() {
@@ -46,7 +49,7 @@ public class LibraryLevel implements levelStrategy{
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
         if (tiles[x + y * width] == black)     return Tile.puertaE[zone];
         if (tiles[x + y * width] == gray)      return Tile.puertaS[zone];
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Tile.pikes;
     }
 
     @Override
@@ -70,7 +73,21 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void loadLevel(String path, String pathCollision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            BufferedImage image = ImageIO.read(MathLevel.class.getResource(path));
+            BufferedImage imageCollision = ImageIO.read(MathLevel.class.getResource(pathCollision));
+            int w = width = image.getWidth();
+            int h = height = image.getHeight();
+            tiles = new int[w * h];
+            tilesCollision = new int[w * h];
+
+            image.getRGB(0, 0, w, h, tiles, 0, w);
+            imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.out.println("No se pudo cargar el archivo del nivel.");
+        }
     }
 
     @Override
@@ -89,12 +106,18 @@ public class LibraryLevel implements levelStrategy{
     public void mecanica() {
         if(!Tile.puertaS[zone].solid) Tile.puertaS[zone].setSolid(true);
         time();
-        
+        if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == visualRange[direction]){
+            fail.play();
+            restar();
+        }
     }
 
     @Override
     public void restar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < 4; i++) {
+            libros[i]=false;
+        }
+        loadLevel("","");
     }
 
     @Override
