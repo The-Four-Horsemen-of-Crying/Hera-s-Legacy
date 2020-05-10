@@ -6,6 +6,7 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
@@ -20,20 +21,11 @@ import javax.imageio.ImageIO;
  */
 public class SpaceLevel implements levelStrategy {
 
-    protected int red = 0xffff0000;
-    protected int fuchsia = 0xffff00ff;
-    protected int lime = 0xff00ff00;
-    protected int blue = 0xff0000ff;
-    protected int yellow = 0xffffff00;
-    protected int white = 0xffffffff;
-    protected int kindblue = -9411424;//RGB:666699
-    protected int kindred = -2358749;
-    protected int kindColdplay = -5991936;
-    protected int kindblue2 = -16724531;
-    protected int width;
-    protected int height;
-    protected int[] tiles;
-    protected int[] tilesCollision;
+    
+    private int width;
+    private int height;
+    private int[] tiles;
+    private int[] tilesCollision;
     private int i=0;
     private Player player;
     private boolean running = false;
@@ -48,17 +40,17 @@ public class SpaceLevel implements levelStrategy {
         if (x < 0 || y < 0 || x >= width || y >= height)  return Tile.spacePices[3];
         
 
-        if (tiles[x + y * width] == lime)  return Tile.spacePices[0];
+        if (tiles[x + y * width] == Colors.lime.color())  return Tile.spacePices[0];
         
-        if (tiles[x + y * width] == blue)  return Tile.spacePices[1];
+        if (tiles[x + y * width] == Colors.blue.color())  return Tile.spacePices[1];
         
-        if (tiles[x + y * width] == red)   return Tile.spacePices[2];
+        if (tiles[x + y * width] == Colors.red.color())   return Tile.spacePices[2];
         
-        if (tiles[x + y * width] == fuchsia)  return Tile.spacePices[3];
+        if (tiles[x + y * width] == Colors.fuchsia.color())  return Tile.spacePices[3];
         
-        if (tiles[x + y * width] == yellow)  return Tile.spacePices[5];
+        if (tiles[x + y * width] == Colors.yellow.color())  return Tile.spacePices[5];
         
-        if (tiles[x + y * width] == white)  return Tile.spaceMeteor[0];
+        if (tiles[x + y * width] == Colors.white.color())  return Tile.spaceMeteor[0];
         
         return Tile.spacePices[3];
     }

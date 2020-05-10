@@ -3,6 +3,7 @@ package com.heraslegacy.level;
 
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Colors;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
@@ -20,12 +21,6 @@ public class MathLevel implements levelStrategy {
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
-    protected int red = 0xffff0000;
-    protected int fuchsia = 0xffff00ff;
-    protected int lime = 0xff00ff00 ;
-    protected int blue = 0xff0000ff;
-    protected int yellow = 0xffffff00;
-    protected int white = 0xffffffff;
     private int mesa=0;
     private final int respuestas[] = {0, 1, 4, 0};
     private boolean resueltos[] = {false, false, false, false};
@@ -45,18 +40,18 @@ public class MathLevel implements levelStrategy {
 
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
 
-        if (tiles[x + y * width] == red)     return Tile.woodFloor;
-        if (tiles[x + y * width] == fuchsia) return Tile.woodWall;
+        if (tiles[x + y * width] == Colors.red.color())     return Tile.woodFloor;
+        if (tiles[x + y * width] == Colors.fuchsia.color()) return Tile.woodWall;
 
-        if (tiles[x + y * width] == lime   && tiles[x+1+y*width] == blue)   return Tile.mesa[0];
-        if (tiles[x + y * width] == blue   && tiles[x-1+y*width] == lime)   return Tile.mesa[1];
-        if (tiles[x + y * width] == yellow && tiles[x+1+y*width] == white ) return Tile.mesa[2];
-        if (tiles[x + y * width] == white  && tiles[x-1+y*width] == yellow) return Tile.mesa[3];
+        if (tiles[x + y * width] == Colors.lime.color()   && tiles[x+1+y*width] == Colors.blue.color())   return Tile.mesa[0];
+        if (tiles[x + y * width] == Colors.blue.color()   && tiles[x-1+y*width] == Colors.lime.color())   return Tile.mesa[1];
+        if (tiles[x + y * width] == Colors.yellow.color() && tiles[x+1+y*width] == Colors.white.color()) return Tile.mesa[2];
+        if (tiles[x + y * width] == Colors.white.color()  && tiles[x-1+y*width] == Colors.yellow.color()) return Tile.mesa[3];
 
-        if (tiles[x + y * width] == blue   && tiles[x+1+y*width] == lime)   return Tile.silla[0];
-        if (tiles[x + y * width] == lime   && tiles[x-1+y*width] == blue)   return Tile.silla[1];   
-        if (tiles[x + y * width] == white  && tiles[x+1+y*width] == yellow) return Tile.silla[2];
-        if (tiles[x + y * width] == yellow && tiles[x-1+y*width] == white)  return Tile.silla[3];
+        if (tiles[x + y * width] == Colors.blue.color()   && tiles[x+1+y*width] == Colors.lime.color())   return Tile.silla[0];
+        if (tiles[x + y * width] == Colors.lime.color()   && tiles[x-1+y*width] == Colors.blue.color())   return Tile.silla[1];   
+        if (tiles[x + y * width] == Colors.white.color()  && tiles[x+1+y*width] == Colors.yellow.color()) return Tile.silla[2];
+        if (tiles[x + y * width] == Colors.yellow.color() && tiles[x-1+y*width] == Colors.white.color())  return Tile.silla[3];
 
         return Tile.pikes;
     }
@@ -64,22 +59,22 @@ public class MathLevel implements levelStrategy {
     @Override
     public boolean getCollision(int x, int y){
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == yellow && !this.resueltos[0]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.color() && !this.resueltos[0]){
             mesa = 0;
             return true;
         }
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == fuchsia && !this.resueltos[1]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.color() && !this.resueltos[1]){
             mesa = 1;
             return true;
         }         
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == lime && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.color() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
             mesa = 2;
             return true;
         }
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == blue && !this.resueltos[3]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.color() && !this.resueltos[3]){
             mesa = 3;
             return true;
         }

@@ -47,6 +47,8 @@ public class Tile {
                                    new Tile(Sprite.puerta,false),new Tile(Sprite.puerta,false)};
     public static Tile puertaS[] ={new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true),
                                    new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true)};
+    public static Tile paredLibrary = new Tile(Sprite.pared,true);
+    public static Tile sueloLibrary = new Tile(Sprite.sueloLibrary,false);
 
     public Tile(Sprite sprite,boolean solid) {
         this.sprite = sprite;

@@ -6,6 +6,7 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
@@ -28,11 +29,10 @@ public class LibraryLevel implements levelStrategy{
     private int[] tiles; 
     private int[] tilesCollision;
     private boolean libros[] ={false, false, false, false};
-    protected int zoneColor[] ={0xff000000,0xff000000,0xff000000,0xff000000};//Los colores que diferencian cada zona
-    protected int visualRange[] ={0xff000000,0xff000000,0xff000000,0xff000000};//Los colores de a que lugar están viendo
+    protected int zoneColor[] ={Colors.yellow.color(),Colors.blue.color(),Colors.white.color(),Colors.red.color()};//Los colores que diferencian cada zona
+    protected int visualRange[] ={Colors.yellow.color(),Colors.red.color(),Colors.kindblue2.color(),Colors.kindgreenday.color()};//Los colores de a que lugar están viendo
     protected int black = 0xff000000;//Este es la puerta de entrada
     protected int gray;//Por favor Dilan, este es la  puerta de salida
-    protected int green;//Por favor Dilan, este es donde está el libro
     private int zone;
     private int direction=0;
     private LocalTime ant= LocalTime.now();
@@ -46,15 +46,17 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
-        if (tiles[x + y * width] == black)     return Tile.puertaE[zone];
-        if (tiles[x + y * width] == gray)      return Tile.puertaS[zone];
+        if(x < 0 || y < 0 || x >= width || y >= height)         return Tile.pikes;
+        if (tiles[x + y * width] == Colors.black.color())       return Tile.puertaE[zone];
+        if (tiles[x + y * width] == gray)       return Tile.puertaS[zone];
+        if (tiles[x + y * width] == Colors.fuchsia.color())      return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.white.color())      return Tile.sueloLibrary;
         return Tile.pikes;
     }
 
     @Override
     public boolean getCollision(int x, int y) {
-        if (tilesCollision[(x>>4)+(y>>4)*width] == green){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.color()){
             libros[zone]=true;
             tilesCollision[(x>>4)+(y>>4)*width] = zoneColor[zone];
             Tile.puertaS[zone].setSolid(false);
@@ -117,7 +119,7 @@ public class LibraryLevel implements levelStrategy{
         for (int i = 0; i < 4; i++) {
             libros[i]=false;
         }
-        loadLevel("","");
+        loadLevel("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png");
     }
 
     @Override
