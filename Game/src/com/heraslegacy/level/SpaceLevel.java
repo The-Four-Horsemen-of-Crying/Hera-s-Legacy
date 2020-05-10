@@ -91,10 +91,10 @@ public class SpaceLevel implements levelStrategy {
             i=0;
             dy=LocalTime.now();
         }
-        if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==red && !loose){
+        if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==Colors.red.getColor() && !loose){
             System.out.println("loos"+"do u wann restart?");//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
             loose=true;
-        }else if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]== bluecoli && !win ){
+        }else if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]== Colors.bluecoli.getColor() && !win ){
             System.out.println("win");//Se le indica que ganó, ya no se hace nada y se termina el juego
            win=true;
         }
