@@ -51,7 +51,8 @@ public class Sprite {
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
                                    new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};
 
-    
+    //LibraryLevel
+    public static Sprite puerta;
     
     public static Sprite []silla = {new Sprite(16,0,4,SpriteSheet.nivel01_mat),new Sprite(16,1,4,SpriteSheet.nivel01_mat),
                                     new Sprite(16,0,5,SpriteSheet.nivel01_mat),new Sprite(16,1,5,SpriteSheet.nivel01_mat)};

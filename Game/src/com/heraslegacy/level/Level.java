@@ -10,7 +10,6 @@ import com.heraslegacy.manager.KeyBoard;
 
 public class Level{
     public Sound b;
-    public Player player;
     private final levelStrategy levelstrategy;
     
     
@@ -66,8 +65,11 @@ public class Level{
     }
     
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo){
-        player= levelstrategy.configPlayer(x, y, input, up, down, rigth, left, tipo);
-        player.setLevel(this);
+        levelstrategy.configPlayer(x, y, input, up, down, rigth, left, tipo,this);
+    }
+    
+    public Player getPlayer(){
+        return levelstrategy.getPlayer();
     }
    
 }
