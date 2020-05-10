@@ -6,6 +6,7 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.manager.KeyBoard;
@@ -18,23 +19,10 @@ import javax.imageio.ImageIO;
  * @author jony1
  */
 public class Lobby implements levelStrategy{
-    protected int width;
-    protected int height;
-    protected int[] tiles;
-    protected int[] tilesCollision;
-    protected int red = 0xffff0000;
-    protected int fuchsia = 0xffff00ff;
-    protected int lime = 0xff00ff00;
-    protected int blue = 0xff0000ff;
-    protected int yellow = 0xffffff00;
-    protected int white = 0xffffffff;
-    protected int kindblue = -9411424;//RGB:666699
-    protected int kindred = -2358749;
-    protected int kindColdplay = -5991936;
-    protected int kindblue2 = -16724531;
-    protected int kindgreenday=-16730112;
-    protected int purplePoe=-9699234;
-    protected int naranjaMecanica=-1411778;
+    private int width;
+    private int height;
+    private int[] tiles;
+    private int[] tilesCollision;
     private Player player;
     
     @Override
@@ -46,17 +34,17 @@ public class Lobby implements levelStrategy{
     public Tile getTile(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
         
-        if (tiles[x + y * width] == lime)       return Tile.specialMarmolFloor;
-        if (tiles[x + y * width] == blue)       return Tile.pikes;
-        if (tiles[x + y * width] == red)        return Tile.columnas[1];      
-        if (tiles[x + y * width] == kindblue)   return Tile.columnas[0];
-        if (tiles[x + y * width] == fuchsia)    return Tile.marmolFloor[0];     
-        if (tiles[x + y * width] == yellow)     return Tile.marmolWall[0];
-        if (tiles[x + y * width] ==kindColdplay)return Tile.marmolFloor[1];
-        if (tiles[x + y * width] ==kindgreenday)return Tile.marmolWall[1];
-        if (tiles[x + y * width] ==purplePoe)   return Tile.marmolWall[2];
-        if (tiles[x + y * width] ==naranjaMecanica)return Tile.marmolFloor[3];
-        if (tiles[x + y * width] ==kindblue2)return Tile.techo;
+        if (tiles[x + y * width] == Colors.lime.getColor())            return Tile.specialMarmolFloor;
+        if (tiles[x + y * width] == Colors.blue.getColor())            return Tile.pikes;
+        if (tiles[x + y * width] == Colors.red.getColor())             return Tile.columnas[1];      
+        if (tiles[x + y * width] == Colors.kindblue.getColor())        return Tile.columnas[0];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())         return Tile.marmolFloor[0];     
+        if (tiles[x + y * width] == Colors.yellow.getColor())          return Tile.marmolWall[0];
+        if (tiles[x + y * width] == Colors.kindColdplay.getColor())    return Tile.marmolFloor[1];
+        if (tiles[x + y * width] == Colors.kindgreenday.getColor())    return Tile.marmolWall[1];
+        if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
+        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
+        if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
         System.out.println(tiles[x + y * width]);
         return Tile.pikes;
     }

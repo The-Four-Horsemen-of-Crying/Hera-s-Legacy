@@ -7,9 +7,7 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.Lobby;
-import com.heraslegacy.level.MathLevel;
-import com.heraslegacy.level.SpaceLevel;
+import com.heraslegacy.level.LibraryLevel;
 import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -22,8 +20,6 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
     
-    private Level level00;
-    private Level level01;
     public Level level02;
     private Thread thread;
     private KeyBoard key;
@@ -53,9 +49,7 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        level00 = new Level("/levels/lobby/lobby.png", "/levels/lobby/lobby.png", new Lobby());
-        level01 = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
-        level02 = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        level02 = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level02.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         
         addKeyListener(key);

@@ -51,8 +51,6 @@ public class Sprite {
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
                                    new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};
 
-    //LibraryLevel
-    public static Sprite puerta;
     
     public static Sprite []silla = {new Sprite(16,0,4,SpriteSheet.nivel01_mat),new Sprite(16,1,4,SpriteSheet.nivel01_mat),
                                     new Sprite(16,0,5,SpriteSheet.nivel01_mat),new Sprite(16,1,5,SpriteSheet.nivel01_mat)};
@@ -70,6 +68,11 @@ public class Sprite {
     public static Sprite[] player_left  = {new Sprite(32,0,2,SpriteSheet.elizabeth),new Sprite(32,1,2,SpriteSheet.elizabeth),
                                            new Sprite(32,2,2,SpriteSheet.elizabeth),new Sprite(32,3,2,SpriteSheet.elizabeth)};
     //Player
+    
+    //LibraryLevel
+    public static Sprite puerta = new Sprite(16,2,0,SpriteSheet.nivel03_library);
+    public static Sprite pared = new Sprite(16,1,0,SpriteSheet.nivel02_space);
+    public static Sprite sueloLibrary = new Sprite(16,0,2,SpriteSheet.nivel03_library);
     
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
