@@ -7,7 +7,7 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.LibraryLevel;
+import com.heraslegacy.level.*;
 import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
     
-    public Level level02;
+    public Level level;
     private Thread thread;
     private KeyBoard key;
     private Mouse mouse;
@@ -49,8 +49,11 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        level02 = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
-        level02.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
+        //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
+        //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
+        //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         
         addKeyListener(key);
         mouse = new Mouse();
@@ -108,7 +111,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level02.getPlayer().update();
+        level.getPlayer().update();
     }
 
     public void render() {
@@ -120,25 +123,25 @@ public class Game extends Canvas implements Runnable {
         }
         
         screen.clear();
-        int xScroll = level02.getPlayer().getX() - screen.width/2;
-        int yScroll = level02.getPlayer().getY() - screen.height/2;
+        int xScroll = level.getPlayer().getX() - screen.width/2;
+        int yScroll = level.getPlayer().getY() - screen.height/2;
 
         
-        level02.render(xScroll, yScroll, screen);
+        level.render(xScroll, yScroll, screen);
         //level02.render(xScroll, yScroll, screen);     
-        level02.getPlayer().render(screen);
+        level.getPlayer().render(screen);
         
         //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
         if(activarMecanica){
-            level02.mecanica();
+            level.mecanica();
             
         }
         
         if(key.restart){
-            level02.getPlayer().setX(spawnpj[0]);
-            level02.getPlayer().setY(spawnpj[1]);
-            level02.restart();
+            level.getPlayer().setX(spawnpj[0]);
+            level.getPlayer().setY(spawnpj[1]);
+            level.restart();
         }
         
         for (int i = 0; i < pixels.length; i++) {
