@@ -29,8 +29,8 @@ public class LibraryLevel implements levelStrategy{
     private int[] tiles; 
     private int[] tilesCollision;
     private boolean libros[] ={false, false, false, false};
-    private final int zoneColor[] ={Colors.yellow.color(),Colors.blue.color(),Colors.white.color(),Colors.darkerred.color()};//Los colores que diferencian cada zona
-    private final int visualRange[] ={Colors.orange.color(),Colors.lessdarkerred.color(),Colors.clearblue.color(),Colors.green.color()};//Los colores de a que lugar están viendo
+    private final int zoneColor[] ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkerred.getColor()};//Los colores que diferencian cada zona
+    private final int visualRange[] ={Colors.orange.getColor(),Colors.lessdarkerred.getColor(),Colors.clearblue.getColor(),Colors.green.getColor()};//Los colores de a que lugar están viendo
     private int zone;
     private int direction=0;
     private LocalTime ant= LocalTime.now();
@@ -44,11 +44,11 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height)             return Tile.pikes;
-        if (tiles[x + y * width] == Colors.yellow.color()){         return Tile.puertaS[zone];}
-        if (tiles[x + y * width] == Colors.blue.color())            return Tile.puertaE[zone];
-        if (tiles[x + y * width] == Colors.fuchsia.color())         return Tile.paredLibrary;
-        if (tiles[x + y * width] == Colors.white.color())           return Tile.sueloLibrary;
+        if(x < 0 || y < 0 || x >= width || y >= height)                 return Tile.pikes;
+        if (tiles[x + y * width] == Colors.yellow.getColor()){          return Tile.puertaS[zone];}
+        if (tiles[x + y * width] == Colors.blue.getColor())             return Tile.puertaE[zone];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())          return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.white.getColor())            return Tile.sueloLibrary;
         return Tile.pikes;
     }
 
