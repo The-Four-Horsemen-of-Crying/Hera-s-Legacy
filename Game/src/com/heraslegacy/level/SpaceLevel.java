@@ -12,6 +12,7 @@ import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalTime;
 import javax.imageio.ImageIO;
 
 /**
@@ -30,13 +31,15 @@ public class SpaceLevel implements levelStrategy {
     protected int kindred = -2358749;
     protected int kindColdplay = -5991936;
     protected int kindblue2 = -16724531;
+    protected int bluecoli=0xff3900ff;
     protected int width;
     protected int height;
     protected int[] tiles;
     protected int[] tilesCollision;
     private int i=0;
     private Player player;
-    private boolean running = false;
+    private boolean cambio = false, loose=false, win=false;
+    private LocalTime dy= LocalTime.now();
 
     @Override
     public void update() {
@@ -89,12 +92,20 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void mecanica() {
-        i++;
-        if(i>=5000){
-            System.out.println("Cambio de controles");
-            running=!running;
-            player.setTipo(running);
+        LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
+        if(res.getSecond()==25){
+            System.out.println("Cambio de controles");//Implementar aviso cada 25s
+            cambio=!cambio;
+            player.setTipo(cambio);
             i=0;
+            dy=LocalTime.now();
+        }
+        if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==red && !loose){
+            System.out.println("loos"+"do u wann restart?");//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
+            loose=true;
+        }else if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]== bluecoli && !win ){
+            System.out.println("win");//Se le indica que ganó, ya no se hace nada y se termina el juego
+           win=true;
         }
         
 
@@ -111,8 +122,8 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public boolean cambio() {
-
-        return false;
+        
+        return win;
     }
 
     @Override
