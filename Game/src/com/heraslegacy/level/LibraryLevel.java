@@ -44,11 +44,11 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height)                return Tile.pikes;
-        if (tiles[x + y * width] == Colors.yellow.getColor()){         return Tile.puertaS[zone];}
-        if (tiles[x + y * width] == Colors.blue.getColor())            return Tile.puertaE[zone];
-        if (tiles[x + y * width] == Colors.fuchsia.getColor())         return Tile.paredLibrary;
-        if (tiles[x + y * width] == Colors.white.getColor())           return Tile.sueloLibrary;
+        if(x < 0 || y < 0 || x >= width || y >= height)                 return Tile.pikes;
+        if (tiles[x + y * width] == Colors.yellow.getColor()){          return Tile.puertaS[zone];}
+        if (tiles[x + y * width] == Colors.blue.getColor())             return Tile.puertaE[zone];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())          return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.white.getColor())            return Tile.sueloLibrary;
         return Tile.pikes;
     }
 
