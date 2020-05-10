@@ -40,18 +40,18 @@ public class MathLevel implements levelStrategy {
 
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
 
-        if (tiles[x + y * width] == Colors.red.color())     return Tile.woodFloor;
-        if (tiles[x + y * width] == Colors.fuchsia.color()) return Tile.woodWall;
+        if (tiles[x + y * width] == Colors.red.getColor())     return Tile.woodFloor;
+        if (tiles[x + y * width] == Colors.fuchsia.getColor()) return Tile.woodWall;
 
-        if (tiles[x + y * width] == Colors.lime.color()   && tiles[x+1+y*width] == Colors.blue.color())   return Tile.mesa[0];
-        if (tiles[x + y * width] == Colors.blue.color()   && tiles[x-1+y*width] == Colors.lime.color())   return Tile.mesa[1];
-        if (tiles[x + y * width] == Colors.yellow.color() && tiles[x+1+y*width] == Colors.white.color()) return Tile.mesa[2];
-        if (tiles[x + y * width] == Colors.white.color()  && tiles[x-1+y*width] == Colors.yellow.color()) return Tile.mesa[3];
+        if (tiles[x + y * width] == Colors.lime.getColor()   && tiles[x+1+y*width] == Colors.blue.getColor())   return Tile.mesa[0];
+        if (tiles[x + y * width] == Colors.blue.getColor()   && tiles[x-1+y*width] == Colors.lime.getColor())   return Tile.mesa[1];
+        if (tiles[x + y * width] == Colors.yellow.getColor() && tiles[x+1+y*width] == Colors.white.getColor()) return Tile.mesa[2];
+        if (tiles[x + y * width] == Colors.white.getColor()  && tiles[x-1+y*width] == Colors.yellow.getColor()) return Tile.mesa[3];
 
-        if (tiles[x + y * width] == Colors.blue.color()   && tiles[x+1+y*width] == Colors.lime.color())   return Tile.silla[0];
-        if (tiles[x + y * width] == Colors.lime.color()   && tiles[x-1+y*width] == Colors.blue.color())   return Tile.silla[1];   
-        if (tiles[x + y * width] == Colors.white.color()  && tiles[x+1+y*width] == Colors.yellow.color()) return Tile.silla[2];
-        if (tiles[x + y * width] == Colors.yellow.color() && tiles[x-1+y*width] == Colors.white.color())  return Tile.silla[3];
+        if (tiles[x + y * width] == Colors.blue.getColor()   && tiles[x+1+y*width] == Colors.lime.getColor())   return Tile.silla[0];
+        if (tiles[x + y * width] == Colors.lime.getColor()   && tiles[x-1+y*width] == Colors.blue.getColor())   return Tile.silla[1];   
+        if (tiles[x + y * width] == Colors.white.getColor()  && tiles[x+1+y*width] == Colors.yellow.getColor()) return Tile.silla[2];
+        if (tiles[x + y * width] == Colors.yellow.getColor() && tiles[x-1+y*width] == Colors.white.getColor())  return Tile.silla[3];
 
         return Tile.pikes;
     }
@@ -59,22 +59,22 @@ public class MathLevel implements levelStrategy {
     @Override
     public boolean getCollision(int x, int y){
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.color() && !this.resueltos[0]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.getColor() && !this.resueltos[0]){
             mesa = 0;
             return true;
         }
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.color() && !this.resueltos[1]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor() && !this.resueltos[1]){
             mesa = 1;
             return true;
         }         
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.color() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.getColor() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
             mesa = 2;
             return true;
         }
 
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.color() && !this.resueltos[3]){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.getColor() && !this.resueltos[3]){
             mesa = 3;
             return true;
         }

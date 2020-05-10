@@ -34,17 +34,17 @@ public class Lobby implements levelStrategy{
     public Tile getTile(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
         
-        if (tiles[x + y * width] == Colors.lime.color())            return Tile.specialMarmolFloor;
-        if (tiles[x + y * width] == Colors.blue.color())            return Tile.pikes;
-        if (tiles[x + y * width] == Colors.red.color())             return Tile.columnas[1];      
-        if (tiles[x + y * width] == Colors.kindblue.color())        return Tile.columnas[0];
-        if (tiles[x + y * width] == Colors.fuchsia.color())         return Tile.marmolFloor[0];     
-        if (tiles[x + y * width] == Colors.yellow.color())          return Tile.marmolWall[0];
-        if (tiles[x + y * width] == Colors.kindColdplay.color())    return Tile.marmolFloor[1];
-        if (tiles[x + y * width] == Colors.kindgreenday.color())    return Tile.marmolWall[1];
-        if (tiles[x + y * width] == Colors.purplePoe.color())       return Tile.marmolWall[2];
-        if (tiles[x + y * width] == Colors.naranjaMecanica.color()) return Tile.marmolFloor[3];
-        if (tiles[x + y * width] == Colors.kindblue2.color())       return Tile.techo;
+        if (tiles[x + y * width] == Colors.lime.getColor())            return Tile.specialMarmolFloor;
+        if (tiles[x + y * width] == Colors.blue.getColor())            return Tile.pikes;
+        if (tiles[x + y * width] == Colors.red.getColor())             return Tile.columnas[1];      
+        if (tiles[x + y * width] == Colors.kindblue.getColor())        return Tile.columnas[0];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())         return Tile.marmolFloor[0];     
+        if (tiles[x + y * width] == Colors.yellow.getColor())          return Tile.marmolWall[0];
+        if (tiles[x + y * width] == Colors.kindColdplay.getColor())    return Tile.marmolFloor[1];
+        if (tiles[x + y * width] == Colors.kindgreenday.getColor())    return Tile.marmolWall[1];
+        if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
+        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
+        if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
         System.out.println(tiles[x + y * width]);
         return Tile.pikes;
     }

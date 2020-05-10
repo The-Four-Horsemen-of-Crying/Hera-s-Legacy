@@ -29,8 +29,8 @@ public class LibraryLevel implements levelStrategy{
     private int[] tiles; 
     private int[] tilesCollision;
     private boolean libros[] ={false, false, false, false};
-    protected int zoneColor[] ={Colors.yellow.color(),Colors.blue.color(),Colors.white.color(),Colors.red.color()};//Los colores que diferencian cada zona
-    protected int visualRange[] ={Colors.yellow.color(),Colors.red.color(),Colors.kindblue2.color(),Colors.kindgreenday.color()};//Los colores de a que lugar están viendo
+    protected int zoneColor[] ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.red.getColor()};//Los colores que diferencian cada zona
+    protected int visualRange[] ={Colors.yellow.getColor(),Colors.red.getColor(),Colors.kindblue2.getColor(),Colors.kindgreenday.getColor()};//Los colores de a que lugar están viendo
     protected int black = 0xff000000;//Este es la puerta de entrada
     protected int gray;//Por favor Dilan, este es la  puerta de salida
     private int zone;
@@ -46,17 +46,17 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height)         return Tile.pikes;
-        if (tiles[x + y * width] == Colors.black.color())       return Tile.puertaE[zone];
-        if (tiles[x + y * width] == gray)       return Tile.puertaS[zone];
-        if (tiles[x + y * width] == Colors.fuchsia.color())      return Tile.paredLibrary;
-        if (tiles[x + y * width] == Colors.white.color())      return Tile.sueloLibrary;
+        if(x < 0 || y < 0 || x >= width || y >= height)             return Tile.pikes;
+        if (tiles[x + y * width] == Colors.black.getColor())        return Tile.puertaE[zone];
+        if (tiles[x + y * width] == gray)                           return Tile.puertaS[zone];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())      return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.white.getColor())        return Tile.sueloLibrary;
         return Tile.pikes;
     }
 
     @Override
     public boolean getCollision(int x, int y) {
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.color()){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor()){
             libros[zone]=true;
             tilesCollision[(x>>4)+(y>>4)*width] = zoneColor[zone];
             Tile.puertaS[zone].setSolid(false);

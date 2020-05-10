@@ -40,17 +40,17 @@ public class SpaceLevel implements levelStrategy {
         if (x < 0 || y < 0 || x >= width || y >= height)  return Tile.spacePices[3];
         
 
-        if (tiles[x + y * width] == Colors.lime.color())  return Tile.spacePices[0];
+        if (tiles[x + y * width] == Colors.lime.getColor())  return Tile.spacePices[0];
         
-        if (tiles[x + y * width] == Colors.blue.color())  return Tile.spacePices[1];
+        if (tiles[x + y * width] == Colors.blue.getColor())  return Tile.spacePices[1];
         
-        if (tiles[x + y * width] == Colors.red.color())   return Tile.spacePices[2];
+        if (tiles[x + y * width] == Colors.red.getColor())   return Tile.spacePices[2];
         
-        if (tiles[x + y * width] == Colors.fuchsia.color())  return Tile.spacePices[3];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())  return Tile.spacePices[3];
         
-        if (tiles[x + y * width] == Colors.yellow.color())  return Tile.spacePices[5];
+        if (tiles[x + y * width] == Colors.yellow.getColor())  return Tile.spacePices[5];
         
-        if (tiles[x + y * width] == Colors.white.color())  return Tile.spaceMeteor[0];
+        if (tiles[x + y * width] == Colors.white.getColor())  return Tile.spaceMeteor[0];
         
         return Tile.spacePices[3];
     }
