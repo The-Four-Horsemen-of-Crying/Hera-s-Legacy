@@ -25,6 +25,7 @@ public class SpriteSheet {
 
     //public static SpriteSheet tools = new SpriteSheet("/levels/level01/pincel.png",6);
     public static SpriteSheet numFonts = new SpriteSheet("/fonts/numberfont00.png",128);
+    public static SpriteSheet guardia;
     
     
 

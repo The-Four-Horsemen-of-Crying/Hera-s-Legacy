@@ -73,6 +73,10 @@ public class Sprite {
     public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
     public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite sueloLibrary = new Sprite(16,0,2,SpriteSheet.nivel03_library);
+    public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
+                                     new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
+    public static Sprite guardia[]= new Sprite[4];
+    public static Sprite libro;
     
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;

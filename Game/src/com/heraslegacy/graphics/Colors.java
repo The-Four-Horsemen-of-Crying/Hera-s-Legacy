@@ -11,8 +11,9 @@ package com.heraslegacy.graphics;
  */
 public enum Colors {
     red                 (0xffff0000),
-    darkerred           (0xffdc0223),
-    lessdarkerred       (0xffff0026),
+    higdarkred          (0xffbc021e),
+    darkred             (0xffdc0223),
+    lessdarkred       (0xffff0026),
     fuchsia             (0xffff00ff),
     lime                (0xff00ff00),
     blue                (0xff0000ff),
