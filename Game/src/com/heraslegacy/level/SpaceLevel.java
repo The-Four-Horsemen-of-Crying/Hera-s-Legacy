@@ -7,9 +7,9 @@ package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
-import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -29,8 +29,10 @@ public class SpaceLevel implements levelStrategy {
     private int[] tilesCollision;
     private int i=0;
     private Player player;
-    private boolean cambio = false, loose=false, win=false;
+    private boolean cambio = false, loose=false, win=true;
     private LocalTime dy= LocalTime.now();
+    private Sound bk= new Sound(Sound.bakSpa);
+    private Sound c= new Sound(Sound.change);
 
     @Override
     public void update() {
@@ -83,9 +85,15 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void mecanica() {
+        if(win){
+        bk.loop();
+        win= false;
+        }
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
-        if(res.getSecond()==25){
+        if(res.getSecond()==45){
             System.out.println("Cambio de controles");//Implementar aviso cada 25s
+            c.changeVolume(6);
+            c.play();
             cambio=!cambio;
             player.setTipo(cambio);
             i=0;
