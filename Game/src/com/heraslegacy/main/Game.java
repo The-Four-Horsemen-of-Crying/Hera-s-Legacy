@@ -1,9 +1,11 @@
 
 package com.heraslegacy.main;
 
+import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.graphics.Text;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
@@ -14,6 +16,7 @@ import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -36,7 +39,12 @@ public class Game extends Canvas implements Runnable {
     public static boolean activarMecanica = false;    
     private TileCoordenada spawnplayer = new TileCoordenada(width / 2, height / 2);
     private int[] spawnpj = spawnplayer.getXY();   
-    
+    //Para dibujar texto
+    private String text="";
+    private int x=0, y=0;
+    private Color c=Color.white;
+    private Font f=Text.spaceFont;
+    //para dibujar texto
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
@@ -48,13 +56,14 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         Sound.init();
+        Text.init();
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
         //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
         //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
         level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-        //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+       // level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         spawnpj[0]=25;spawnpj[1]=400;// Necesario para el nivel 3
         level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
         
@@ -156,8 +165,29 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+            g.setFont(f);
+            g.setColor(c);
+            g.drawString(text, x, y);
             g.dispose();
             bs.show();
         }
     }
+
+    public void setTexX(int x) {
+        this.x = x;
+    }
+
+    public void setTextY(int y) {
+        this.y = y;
+    }
+
+    public void setTextC(Color c) {
+        this.c = c;
+    }
+
+    public void setF(Font f) {
+        this.f = f;
+    }
+        
+        
 }
