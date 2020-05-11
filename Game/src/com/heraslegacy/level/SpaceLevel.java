@@ -54,7 +54,36 @@ public class SpaceLevel implements levelStrategy {
         
         if (tiles[x + y * width] == Colors.yellow.getColor())  return Tile.spacePices[5];
         
-        if (tiles[x + y * width] == Colors.white.getColor())  return Tile.spaceMeteor[0];
+        if (tiles[x + y * width] == Colors.white.getColor())  return Tile.spaceMeteor[0];        
+        
+        if (tiles[x + y * width] == Colors.kindblue.getColor() && tiles[x - 1 + y * width] == Colors.kindblue.getColor())return Tile.spaceMeteor[2];
+         
+        if (y>0&&tiles[x + y * width] == Colors.kindblue.getColor() && tiles[x + (y-1) * width] == Colors.kindblue.getColor())return Tile.spaceMeteor[5];
+        
+        if (tiles[x + y * width] == Colors.kindblue.getColor())  return Tile.spaceMeteor[1];
+        
+        if (tiles[x + y * width] == Colors.kindred.getColor() && tiles[x + 1 + y * width] == Colors.kindred.getColor())  return Tile.spaceMeteor[3];
+        
+        if (y>0&&tiles[x + y * width] == Colors.kindred.getColor() && tiles[x + (y-1) * width] == Colors.kindred.getColor())  return Tile.spaceMeteor[6];
+        
+        if (tiles[x + y * width] == Colors.kindred.getColor())  return Tile.spaceMeteor[4];
+        
+        if (tiles[x + y * width] == Colors.kindColdplay.getColor() && tiles[x + (y+1) * width] == Colors.kindColdplay.getColor())return Tile.spaceMeteor[6];
+        
+        if (tiles[x + y * width] == Colors.kindColdplay.getColor() && tiles[x - 1 + y * width] == Colors.kindColdplay.getColor())return Tile.spaceMeteor[8];
+        
+        if (tiles[x + y * width] == Colors.kindColdplay.getColor())  return Tile.spaceMeteor[7];
+        
+        if (tiles[x + y * width] == Colors.kindblue2.getColor() && tiles[x + (y+1) * width] == Colors.kindblue2.getColor())return Tile.spaceMeteor[6];
+        
+        if (tiles[x + y * width] == Colors.kindblue2.getColor() && tiles[x + 1 + y * width] == Colors.kindblue2.getColor())return Tile.spaceMeteor[9];
+        
+        if (tiles[x + y * width] == Colors.kindblue2.getColor())  return Tile.spaceMeteor[12];
+        
+        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor())  return Tile.niceStuff[0];
+        
+        if (tiles[x + y * width] == Colors.purplePoe.getColor())  return Tile.niceStuff[1];
+        
         
         return Tile.spacePices[3];
     }
@@ -86,13 +115,14 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void mecanica() {
         if(win){
-        bk.loop();
-        win= false;
+            bk.loop();
+            bk.changeVolume((float) -80);
+            win= false;
         }
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
         if(res.getSecond()==45){
             System.out.println("Cambio de controles");//Implementar aviso cada 25s
-            c.changeVolume(6);
+            c.changeVolume(-80);
             c.play();
             cambio=!cambio;
             player.setTipo(cambio);
