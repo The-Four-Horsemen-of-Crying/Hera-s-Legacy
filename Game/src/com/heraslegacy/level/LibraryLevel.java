@@ -29,28 +29,35 @@ public class LibraryLevel implements levelStrategy{
     private int[] tiles; 
     private int[] tilesCollision;
     private boolean libros[] ={false, false, false, false};
-    protected int zoneColor[] ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.red.getColor()};//Los colores que diferencian cada zona
-    protected int visualRange[] ={Colors.yellow.getColor(),Colors.red.getColor(),Colors.kindblue2.getColor(),Colors.kindgreenday.getColor()};//Los colores de a que lugar están viendo
-    protected int black = 0xff000000;//Este es la puerta de entrada
-    protected int gray;//Por favor Dilan, este es la  puerta de salida
+    private final int zoneColor[] ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkred.getColor()};//Los colores que diferencian cada zona
+    private final int visualRange[] ={Colors.orange.getColor(),Colors.lessdarkred.getColor(),Colors.clearblue.getColor(),Colors.green.getColor()};//Los colores de a que lugar están viendo
     private int zone;
-    private int direction=0;
+    private int pattern[]={0,1,2,3},direction=0;
     private LocalTime ant= LocalTime.now();
     private Player player;
     public Sound fail = new Sound(Sound.fail); 
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public Tile getTile(int x, int y) {
-        if(x < 0 || y < 0 || x >= width || y >= height)             return Tile.pikes;
-        if (tiles[x + y * width] == Colors.black.getColor())        return Tile.puertaE[zone];
-        if (tiles[x + y * width] == gray)                           return Tile.puertaS[zone];
-        if (tiles[x + y * width] == Colors.fuchsia.getColor())      return Tile.paredLibrary;
-        if (tiles[x + y * width] == Colors.white.getColor())        return Tile.sueloLibrary;
+        if(x < 0 || y < 0 || x >= width || y >= height)                 return Tile.pikes;
+        if (tiles[x + y * width] == Colors.yellow.getColor())           return Tile.puertaS[zone];
+        if (tiles[x + y * width] == Colors.blue.getColor())             return Tile.puertaE[zone];
+        if (tiles[x + y * width] == Colors.fuchsia.getColor())          return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.white.getColor())            return Tile.sueloLibrary;
+        if (tiles[x + y * width] == Colors.red.getColor())              return Tile.estanterias[0];
+        if (tiles[x + y * width] == Colors.higdarkred.getColor())       return Tile.estanterias[1];
+        if (tiles[x + y * width] == Colors.darkred.getColor())          return Tile.estanterias[2];
+        if (tiles[x + y * width] == Colors.lessdarkred.getColor())      return Tile.estanterias[3];
+        if (tiles[x + y * width] == Colors.green.getColor())            return Tile.libro;
+        for (int i = 0; i < 4; i++) {
+            if (tiles[x + y * width] == Colors.black.getColor()
+              &&tilesCollision[x + (y-1) * width] == visualRange[i])    return Tile.guardia[pattern[i]];
+        }
         return Tile.pikes;
     }
 
@@ -65,7 +72,8 @@ public class LibraryLevel implements levelStrategy{
         for (int i = 0; i < 4; i++) {
             if (tilesCollision[(x>>4)+(y>>4)*width] == zoneColor[i]){
                 zone=i;
-                if(!Tile.puertaE[zone].solid) Tile.puertaE[zone].setSolid(true);
+                if(Tile.puertaE[zone].solid==false && libros[zone]==true) Tile.puertaE[zone].setSolid(true);
+                System.out.println(zone);
                 return false;
             }
         }
@@ -94,19 +102,22 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void time() {
-        LocalTime rest = ant.minusMinutes(LocalTime.now().getSecond());
+        LocalTime rest = LocalTime.now().minusSeconds(ant.getSecond());
         if(rest.getSecond()>=10){
             ant=LocalTime.now();
             direction++;
-            if(direction==4){
-                direction=0;
+            if(direction==4) direction=0;
+            
+            for (int i = 0; i < 4; i++) {
+                pattern[i]++;
+                if(pattern[i]==4) pattern[i]=0;
             }
         }
     }
 
     @Override
     public void mecanica() {
-        if(!Tile.puertaS[zone].solid) Tile.puertaS[zone].setSolid(true);
+        if(Tile.puertaS[zone].solid==false){ Tile.puertaS[zone].setSolid(true);}
         time();
         if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == visualRange[direction]){
             fail.play();
@@ -118,7 +129,12 @@ public class LibraryLevel implements levelStrategy{
     public void restar() {
         for (int i = 0; i < 4; i++) {
             libros[i]=false;
+            Tile.puertaE[i].setSolid(false);
+            pattern[i]=i;
         }
+        direction=0;
+        player.setX(25);
+        player.setY(400);
         loadLevel("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png");
     }
 
