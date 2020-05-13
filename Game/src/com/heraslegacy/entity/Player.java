@@ -16,17 +16,19 @@ public class Player extends Mov{
     private Sprite down[];
     private boolean tipo=false;
     private int ajusteCentroX, ajusteCentroY;
+    private int xDireccion = 0, yDireccion = 0;
     
     public Player(int x, int y, KeyBoard input){
         this.x = x;
         this.y = y;
         this.input = input;
+        
     }
     
     @Override
     public void update(){
-        int xDireccion = 0;
-        int yDireccion = 0;
+        xDireccion=0;
+        yDireccion=0;
         if(tipo){
             if(input.up) yDireccion++;
             if(input.down) yDireccion--;
@@ -39,7 +41,7 @@ public class Player extends Mov{
             if(input.left) xDireccion--;
         }
         
-        if(xDireccion!=0||yDireccion!=0) move(xDireccion,yDireccion);
+        if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
     }
     
     @Override

@@ -168,7 +168,7 @@ public class Game extends Canvas implements Runnable {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
             g.setFont(f);
             g.setColor(c);
-            g.drawString(level.getText(), Mouse.mouseX, Mouse.mouseY);
+            g.drawString(level.getText(), (width/2)*scale-50, (height/2)*scale-50);
             g.dispose();
             bs.show();
         }
