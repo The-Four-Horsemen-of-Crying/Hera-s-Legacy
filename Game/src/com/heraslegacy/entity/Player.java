@@ -14,7 +14,7 @@ public class Player extends Mov{
     private Sprite rigth[];
     private Sprite left[];
     private Sprite down[];
-    private boolean tipo=false;
+    private int tipo=0;
     private int ajusteCentroX, ajusteCentroY;
     private int xDireccion = 0, yDireccion = 0;
     
@@ -27,18 +27,21 @@ public class Player extends Mov{
     
     @Override
     public void update(){
+        switch(tipo){
+            case 1: if(input.up) yDireccion++;
         xDireccion=0;
         yDireccion=0;
-        if(tipo){
-            if(input.up) yDireccion++;
             if(input.down) yDireccion--;
             if(input.right) xDireccion--;
             if(input.left) xDireccion++;
-        }else{
-            if(input.up) yDireccion--;
+                break;
+            case 0: if(input.up) yDireccion--;
             if(input.down) yDireccion++;
             if(input.right) xDireccion++;
             if(input.left) xDireccion--;
+            break;
+            case 2: xDireccion = 0;
+                    yDireccion = 0;
         }
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
@@ -61,7 +64,7 @@ public class Player extends Mov{
         this.left=left;
         this.rigth=rigth;
     }
-    public void setTipo(Boolean b){
+    public void setTipo(int b){
       tipo=b;
     }
 
