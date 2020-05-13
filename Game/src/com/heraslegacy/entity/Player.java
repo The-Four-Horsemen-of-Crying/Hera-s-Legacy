@@ -20,7 +20,6 @@ public class Player extends Mov{
         this.x = x;
         this.y = y;
         this.input = input;
-        
     }
     
     @Override
@@ -61,6 +60,13 @@ public class Player extends Mov{
     }
     public void setTipo(Boolean b){
       tipo=b;
+    }
+
+    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2) {
+        this.ajusteX1 = ajusteX1;
+        this.ajusteX2 = ajusteX2;
+        this.ajusteY1 = ajusteY1;
+        this.ajusteY2 = ajusteY2;
     }
 
     

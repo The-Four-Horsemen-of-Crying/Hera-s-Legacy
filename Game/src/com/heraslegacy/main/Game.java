@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
     private TileCoordenada spawnplayer = new TileCoordenada(width / 2, height / 2);
     private int[] spawnpj = spawnplayer.getXY();   
     //Para dibujar texto
-    private String text="";
+    private String text="Puta";
     private int x=0, y=0;
     private Color c=Color.white;
     private Font f=Text.spaceFont;
@@ -167,7 +167,7 @@ public class Game extends Canvas implements Runnable {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
             g.setFont(f);
             g.setColor(c);
-            g.drawString(text, x, y);
+            g.drawString(text, Mouse.mouseX, Mouse.mouseY);
             g.dispose();
             bs.show();
         }

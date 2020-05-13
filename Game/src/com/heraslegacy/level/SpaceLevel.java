@@ -159,6 +159,7 @@ public class SpaceLevel implements levelStrategy {
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
         player = new Player(x, y, input);
         player.setSprites(up, down, rigth, left);
+        player.setAjustes(14, 8, 12, 3);
         player.setTipo(tipo);
         player.setLevel(level);
     }

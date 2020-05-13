@@ -8,6 +8,7 @@ import com.heraslegacy.level.tile.Tile;
 public abstract class Mov {
     private boolean removed = false, moving = false;   
     protected int ani = 0, ani2 = 0, direction = 0, x, y;
+    int ajusteX1, ajusteX2, ajusteY1, ajusteY2;
     Level level;
     
     public void remove(){
@@ -57,10 +58,10 @@ public abstract class Mov {
     private boolean collision(int xMove, int yMove){
         boolean solid = false;
         for (int corners = 0; corners < 4; corners++) {
-            int xLimit =((x + xMove) + corners % 2 * 14 - 8) / 16;
-            int yLimit =(((y + yMove) + corners / 2 * 12 + 3) / 16);
+            int xLimit =((x + xMove) + corners % 2 * ajusteX1 - ajusteX2) / 16;
+            int yLimit =(((y + yMove) + corners / 2 * ajusteY1 + ajusteY2) / 16);
             Tile nextTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
-            if(nextTile.solid()) solid = true;            
+            if(nextTile.solid()) solid = true;
         }
         return  solid;
     }       
