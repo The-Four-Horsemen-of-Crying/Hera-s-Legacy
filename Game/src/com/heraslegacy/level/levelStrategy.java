@@ -18,5 +18,6 @@ public interface levelStrategy {
     public boolean cambio();
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo, Level level);
     public Player getPlayer();
- 
+    public String getText();
+    public void setText(String c);
 }

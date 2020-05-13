@@ -72,5 +72,12 @@ public class Level{
         return levelstrategy.getPlayer();
     }
    
+    public String getText(){
+        return levelstrategy.getText();
+    }
+    
+    public  void setText(String t){
+         levelstrategy.setText(t);
+    }
 }
 

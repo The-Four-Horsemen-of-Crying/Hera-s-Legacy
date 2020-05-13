@@ -105,5 +105,16 @@ public class Lobby implements levelStrategy{
     public Player getPlayer(){
         return player;
     }
-        
+
+    @Override
+    public String getText() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setText(String c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+            
 }
