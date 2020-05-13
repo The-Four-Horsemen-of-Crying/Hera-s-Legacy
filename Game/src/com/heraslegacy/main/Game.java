@@ -65,7 +65,7 @@ public class Game extends Canvas implements Runnable {
         level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
        // level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         spawnpj[0]=25;spawnpj[1]=400;// Necesario para el nivel 3
-        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
+        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left,false);
         
         addKeyListener(key);
         mouse = new Mouse();

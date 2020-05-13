@@ -15,6 +15,7 @@ public class Player extends Mov{
     private Sprite left[];
     private Sprite down[];
     private boolean tipo=false;
+    private int ajusteCentroX, ajusteCentroY;
     
     public Player(int x, int y, KeyBoard input){
         this.x = x;
@@ -44,12 +45,12 @@ public class Player extends Mov{
     @Override
     public void render(Screen screen){
         
-        if(direction == 0) sprite = up[ani2 & 3];
+        //if(direction == 0) sprite = up[ani2 & 3];
         if(direction == 1) sprite = rigth[ani2 & 3];
-        if(direction == 2) sprite = down[ani2 & 3];
+        //if(direction == 2) sprite = down[ani2 & 3];
         if(direction == 3) sprite = left[ani2 & 3];
         Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
-        screen.renderPlayer(x - 16, y - 16, sprite);
+        screen.renderPlayer(x - ajusteCentroX, y - ajusteCentroY, sprite);
     }
     
     public void setSprites(Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left){
@@ -62,11 +63,13 @@ public class Player extends Mov{
       tipo=b;
     }
 
-    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2) {
+    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2, int ajusteCentroX, int ajusteCentroY) {
         this.ajusteX1 = ajusteX1;
         this.ajusteX2 = ajusteX2;
         this.ajusteY1 = ajusteY1;
         this.ajusteY2 = ajusteY2;
+        this.ajusteCentroX = ajusteCentroX;
+        this.ajusteCentroY = ajusteCentroY;
     }
 
     

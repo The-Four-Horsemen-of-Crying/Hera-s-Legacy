@@ -69,7 +69,7 @@ public class Screen {
     public void renderPlayer(int xPosition, int yPosition, Sprite sprite) {
         xPosition -= xOffSet;
         yPosition -= yOffset;
-        for (int y = 0; y < sprite.getWidth(); y++) {
+        for (int y = 0; y < sprite.getHeight(); y++) {
             int yAbsolute = y + yPosition;
             for (int x = 0; x < sprite.getWidth(); x++) {
                 int xAbsolute = x + xPosition;

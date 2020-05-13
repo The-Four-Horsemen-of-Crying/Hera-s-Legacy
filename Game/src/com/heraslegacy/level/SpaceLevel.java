@@ -122,7 +122,7 @@ public class SpaceLevel implements levelStrategy {
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
         if(res.getSecond()==45){
             System.out.println("Cambio de controles");//Implementar aviso cada 25s
-            c.changeVolume(-80);
+            c.changeVolume((float)-80);
             c.play();
             cambio=!cambio;
             player.setTipo(cambio);
@@ -157,9 +157,10 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
+        
         player = new Player(x, y, input);
-        player.setSprites(up, down, rigth, left);
-        player.setAjustes(14, 8, 12, 3);
+        player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
+        player.setAjustes(10, -15, 1, -4, 32,8);
         player.setTipo(tipo);
         player.setLevel(level);
     }

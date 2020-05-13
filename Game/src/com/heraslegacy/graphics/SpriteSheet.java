@@ -16,6 +16,7 @@ public class SpriteSheet {
     public int[] pixels;
     
     public static SpriteSheet elizabeth = new SpriteSheet("/textures/Elizabeth.png", 225);//La ruta y el tamaño de todo el pack
+    public static SpriteSheet apolo11 = new SpriteSheet("/textures/apolo11.png", 128);
     public static SpriteSheet nivel00_lobby = new SpriteSheet("/textures/textuLobby.png", 96);
     public static SpriteSheet nivel01_mat = new SpriteSheet("/textures/mini_game01.png", 96);
     public static SpriteSheet nivel02_space = new SpriteSheet("/textures/mini_game02.png", 96);
