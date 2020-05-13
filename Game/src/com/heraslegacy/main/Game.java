@@ -43,7 +43,7 @@ public class Game extends Canvas implements Runnable {
     private String text="Puta";
     private int x=0, y=0;
     private Color c=Color.white;
-    private Font f=Text.spaceFont;
+    private Font f;
     //para dibujar texto
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -57,6 +57,7 @@ public class Game extends Canvas implements Runnable {
         screen = new Screen(width, height);
         Sound.init();
         Text.init();
+        f=Text.spaceFont;
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
@@ -65,7 +66,7 @@ public class Game extends Canvas implements Runnable {
         level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
        // level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         spawnpj[0]=25;spawnpj[1]=400;// Necesario para el nivel 3
-        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.player_up, Sprite.player_down, Sprite.player_rigth, Sprite.player_left,false);
+        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left,false);
         
         addKeyListener(key);
         mouse = new Mouse();
@@ -167,7 +168,7 @@ public class Game extends Canvas implements Runnable {
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
             g.setFont(f);
             g.setColor(c);
-            g.drawString(text, Mouse.mouseX, Mouse.mouseY);
+            g.drawString(level.getText(), Mouse.mouseX, Mouse.mouseY);
             g.dispose();
             bs.show();
         }
@@ -187,6 +188,11 @@ public class Game extends Canvas implements Runnable {
 
     public void setF(Font f) {
         this.f = f;
+    }
+    public String setText(){
+        text=level.getText();
+       // level.setText("");
+        return text;
     }
         
         

@@ -33,6 +33,7 @@ public class SpaceLevel implements levelStrategy {
     private LocalTime dy= LocalTime.now();
     private Sound bk= new Sound(Sound.bakSpa);
     private Sound c= new Sound(Sound.change);
+    private String text="";
 
     @Override
     public void update() {
@@ -121,8 +122,8 @@ public class SpaceLevel implements levelStrategy {
         }
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
         if(res.getSecond()==45){
-            System.out.println("Cambio de controles");//Implementar aviso cada 25s
-            c.changeVolume(-80);
+            text= "Cambio de controles";//Implementar aviso cada 25s
+            c.changeVolume((float)-80);
             c.play();
             cambio=!cambio;
             player.setTipo(cambio);
@@ -130,10 +131,10 @@ public class SpaceLevel implements levelStrategy {
             dy=LocalTime.now();
         }
         if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==Colors.red.getColor() && !loose){
-            System.out.println("loos"+"do u wann restart?");//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
+                text="loos"+"do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
             loose=true;
         }else if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]== Colors.bluecoli.getColor() && !win ){
-            System.out.println("win");//Se le indica que ganó, ya no se hace nada y se termina el juego
+            text="win";//Se le indica que ganó, ya no se hace nada y se termina el juego
            win=true;
         }
         
@@ -157,9 +158,10 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
+        
         player = new Player(x, y, input);
-        player.setSprites(up, down, rigth, left);
-        player.setAjustes(14, 8, 12, 3);
+        player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
+        player.setAjustes(10, -15, 1, -4, 32,8);
         player.setTipo(tipo);
         player.setLevel(level);
     }
@@ -167,5 +169,15 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public Player getPlayer(){
         return player;
+    }
+    
+    @Override
+    public String getText(){
+        return text;
+    }
+
+    @Override
+    public void setText(String c) {
+        text="";
     }
 }
