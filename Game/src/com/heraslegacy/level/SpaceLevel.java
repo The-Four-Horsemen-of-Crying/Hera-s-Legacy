@@ -27,9 +27,8 @@ public class SpaceLevel implements levelStrategy {
     private int height;
     private int[] tiles;
     private int[] tilesCollision;
-    private int i=0;
     private Player player;
-    private boolean cambio = false, loose=false, win=true;
+    private boolean cambio = false, loose=false, win=false;
     private LocalTime dy= LocalTime.now();
     private Sound bk= new Sound(Sound.bakSpa);
     private Sound c= new Sound(Sound.change);
@@ -37,6 +36,8 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void update() {
+          bk.loop();
+            bk.changeVolume((float) -80);
     }
 
     @Override
@@ -115,27 +116,27 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void mecanica() {
-        if(win){
-            bk.loop();
-            bk.changeVolume((float) -80);
-            win= false;
-        }
+       
+          
+        player.animación();
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
-        if(res.getSecond()==45){
+        if(res.getSecond()==45 && !win && !loose){
             text= "Cambio de controles";//Implementar aviso cada 25s
             c.changeVolume((float)-80);
             c.play();
             cambio=!cambio;
-            player.setTipo(cambio);
-            i=0;
+            player.setTipo(1);
             dy=LocalTime.now();
+        }else if(res.getSecond()==55 && !win && !loose){
+            setText("");
         }
-        if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==Colors.red.getColor() && !loose){
-                text="loos"+"do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
-            loose=true;
+        if(player.getCollisionP() && !loose){
+                text="loos do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
+                player.setTipo(2);
+                loose=true;
         }else if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]== Colors.bluecoli.getColor() && !win ){
             text="win";//Se le indica que ganó, ya no se hace nada y se termina el juego
-           win=true;
+            win=true;
         }
         
 
@@ -157,13 +158,14 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo,Level level) {
         
         player = new Player(x, y, input);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
         player.setAjustes(24, -7, -12, -11, 12,24);
         player.setTipo(tipo);
         player.setLevel(level);
+        player.setLatencia(400);
     }
     
     @Override
@@ -178,6 +180,6 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void setText(String c) {
-        text="";
+        this.text="";
     }
 }

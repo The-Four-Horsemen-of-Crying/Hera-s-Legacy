@@ -63,10 +63,10 @@ public class Game extends Canvas implements Runnable {
         key = new KeyBoard();
         //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
         //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-        level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+            level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
        // level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         spawnpj[0]=25;spawnpj[1]=400;// Necesario para el nivel 3
-        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left,false);
+        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left,0);
         
         addKeyListener(key);
         mouse = new Mouse();
@@ -124,7 +124,10 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level.getPlayer().update();
+ 
+      level.getPlayer().update();
+            
+        
     }
 
     public void render() {
@@ -156,7 +159,7 @@ public class Game extends Canvas implements Runnable {
             level.getPlayer().setY(spawnpj[1]);
             level.restart();
         }
-        
+       
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }
@@ -191,7 +194,6 @@ public class Game extends Canvas implements Runnable {
     }
     public String setText(){
         text=level.getText();
-       // level.setText("");
         return text;
     }
         

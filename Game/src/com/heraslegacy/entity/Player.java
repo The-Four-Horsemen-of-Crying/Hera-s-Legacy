@@ -6,6 +6,7 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
+import com.sun.xml.internal.bind.v2.util.CollisionCheckStack;
 
 public class Player extends Mov{
     private KeyBoard input;
@@ -14,7 +15,7 @@ public class Player extends Mov{
     private Sprite rigth[];
     private Sprite left[];
     private Sprite down[];
-    private boolean tipo=false;
+    private int tipo=0;
     private int ajusteCentroX, ajusteCentroY;
     private int xDireccion = 0, yDireccion = 0;
     
@@ -29,19 +30,24 @@ public class Player extends Mov{
     public void update(){
         xDireccion=0;
         yDireccion=0;
-        if(tipo){
-            if(input.up) yDireccion++;
-            if(input.down) yDireccion--;
-            if(input.right) xDireccion--;
-            if(input.left) xDireccion++;
-        }else{
-            if(input.up) yDireccion--;
-            if(input.down) yDireccion++;
-            if(input.right) xDireccion++;
-            if(input.left) xDireccion--;
+        
+        switch(tipo){
+            case 1:              
+                if(input.up) yDireccion++;
+                if(input.down) yDireccion--;
+                if(input.right) xDireccion--;
+                if(input.left) xDireccion++;
+                break;
+            case 0: 
+                if(input.up) yDireccion--;
+                if(input.down) yDireccion++;
+                if(input.right) xDireccion++;
+                if(input.left) xDireccion--;
+            break;
         }
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
+        if(collision(xDireccion,yDireccion)) System.out.println("yu die");
     }
     
     @Override
@@ -61,7 +67,7 @@ public class Player extends Mov{
         this.left=left;
         this.rigth=rigth;
     }
-    public void setTipo(Boolean b){
+    public void setTipo(int b){
       tipo=b;
     }
 
@@ -74,5 +80,7 @@ public class Player extends Mov{
         this.ajusteCentroY = ajusteCentroY;
     }
 
-    
+    public boolean getCollisionP(){
+        return this.collision(xDireccion, yDireccion);
+    }
 }
