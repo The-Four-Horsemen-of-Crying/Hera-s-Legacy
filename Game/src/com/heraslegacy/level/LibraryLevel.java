@@ -53,10 +53,10 @@ public class LibraryLevel implements levelStrategy{
         if (tiles[x + y * width] == Colors.higdarkred.getColor())       return Tile.estanterias[1];
         if (tiles[x + y * width] == Colors.darkred.getColor())          return Tile.estanterias[2];
         if (tiles[x + y * width] == Colors.lessdarkred.getColor())      return Tile.estanterias[3];
-        if (tiles[x + y * width] == Colors.green.getColor())            return Tile.libro;
+        //if (tiles[x + y * width] == Colors.green.getColor())            return Tile.libro;
         for (int i = 0; i < 4; i++) {
             if (tiles[x + y * width] == Colors.black.getColor()
-              &&tilesCollision[x + (y-1) * width] == visualRange[i])    return Tile.guardia[pattern[i]];
+              &&tilesCollision[x + (y-1) * width] == visualRange[i])    return Tile.estanterias[pattern[i]];
         }
         return Tile.pikes;
     }
@@ -106,6 +106,7 @@ public class LibraryLevel implements levelStrategy{
         if(rest.getSecond()>=10){
             ant=LocalTime.now();
             direction++;
+            
             if(direction==4) direction=0;
             
             for (int i = 0; i < 4; i++) {
