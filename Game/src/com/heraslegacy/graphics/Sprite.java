@@ -61,17 +61,17 @@ public class Sprite {
     
     //Players
         //SpaceShit
-    public static Sprite[] apolo_up     = {new Sprite(16, 64, 0, 1, SpriteSheet.apolo11),new Sprite(16, 64, 1, 1, SpriteSheet.apolo11),
-                                           new Sprite(16, 64, 2, 1, SpriteSheet.apolo11),new Sprite(16, 64, 3, 1, SpriteSheet.apolo11)};
+    public static Sprite[] apolo_up     = {new Sprite(16, 48, 0, 2, SpriteSheet.apolo11),new Sprite(16, 48, 1, 2, SpriteSheet.apolo11),
+                                           new Sprite(16, 48, 2, 2, SpriteSheet.apolo11),new Sprite(16, 48, 3, 2, SpriteSheet.apolo11)};
     
-    public static Sprite[] apolo_down   = {new Sprite(16, 64, 4, 1, SpriteSheet.apolo11),new Sprite(16, 64, 5, 1, SpriteSheet.apolo11),
-                                           new Sprite(16, 64, 6, 1, SpriteSheet.apolo11),new Sprite(16, 64, 7, 1, SpriteSheet.apolo11)};
+    public static Sprite[] apolo_down   = {new Sprite(16, 48, 4, 2, SpriteSheet.apolo11),new Sprite(16, 48, 5, 2, SpriteSheet.apolo11),
+                                           new Sprite(16, 48, 6, 2, SpriteSheet.apolo11),new Sprite(16, 48, 7, 2, SpriteSheet.apolo11)};
     
     
-    public static Sprite[] apolo_rigth  = {new Sprite(64, 16, 0, 0, SpriteSheet.apolo11),new Sprite(64,16, 0, 1, SpriteSheet.apolo11),
-                                           new Sprite(64, 16, 0, 2, SpriteSheet.apolo11),new Sprite(64, 16, 0, 3, SpriteSheet.apolo11)};
+    public static Sprite[] apolo_rigth  = {new Sprite(48, 16, 0, 0, SpriteSheet.apolo11),new Sprite(48, 16, 0, 1, SpriteSheet.apolo11),
+                                           new Sprite(48, 16, 0, 2, SpriteSheet.apolo11),new Sprite(48, 16, 0, 3, SpriteSheet.apolo11)};
     
-    public static Sprite[] apolo_left   = {new Sprite(64, 16, 1, 0, SpriteSheet.apolo11),new Sprite(64,16, 1, 1, SpriteSheet.apolo11),
+    public static Sprite[] apolo_left   = {new Sprite(64, 16, 1, 0, SpriteSheet.apolo11),new Sprite(64, 16, 1, 1, SpriteSheet.apolo11),
                                            new Sprite(64, 16, 1, 2, SpriteSheet.apolo11),new Sprite(64, 16, 1, 3, SpriteSheet.apolo11)};
     
         //TestPJ

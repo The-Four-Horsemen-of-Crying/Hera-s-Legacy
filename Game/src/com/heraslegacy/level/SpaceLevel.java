@@ -161,7 +161,7 @@ public class SpaceLevel implements levelStrategy {
         
         player = new Player(x, y, input);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
-        player.setAjustes(10, -15, 1, -4, 32,8);
+        player.setAjustes(24, -7, -12, -11, 12,24);
         player.setTipo(tipo);
         player.setLevel(level);
     }
