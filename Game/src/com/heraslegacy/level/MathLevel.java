@@ -9,6 +9,7 @@ import static com.heraslegacy.graphics.Sprite.hoja;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
 import static com.heraslegacy.main.Game.height;
 import static com.heraslegacy.main.Game.width;
 import java.awt.image.BufferedImage;
@@ -79,9 +80,9 @@ public class MathLevel implements levelStrategy {
         }
 
 
-        mouse.clickSwitch=false;
-        for (int i = 0; i < key.numbers.length; i++) {
-            key.numbers[i] = false;
+        Mouse.clickSwitch=false;
+        for (int i = 0; i < KeyBoard.numbers.length; i++) {
+            KeyBoard.numbers[i] = false;
         }
 
         return false;
@@ -170,7 +171,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void configPlayer(Level level) {
-        player = new Player(width / 2, height / 2);
+        player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
         player.setAjustes(14, 8, 12, 3,16,16);
         player.setLatencia(30);
