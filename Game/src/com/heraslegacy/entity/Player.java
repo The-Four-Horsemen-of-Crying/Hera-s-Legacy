@@ -8,7 +8,6 @@ import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 
 public class Player extends Mov{
-    private KeyBoard input;
     private Sprite sprite;
     private Sprite up[];
     private Sprite rigth[];
@@ -18,10 +17,9 @@ public class Player extends Mov{
     private int ajusteCentroX, ajusteCentroY;
     private int xDireccion = 0, yDireccion = 0;
     
-    public Player(int x, int y, KeyBoard input){
+    public Player(int x, int y){
         this.x = x;
         this.y = y;
-        this.input = input;
         
     }
     
@@ -31,20 +29,24 @@ public class Player extends Mov{
             case 1: if(input.up) yDireccion++;
         xDireccion=0;
         yDireccion=0;
-            if(input.down) yDireccion--;
-            if(input.right) xDireccion--;
-            if(input.left) xDireccion++;
+        
+        switch(tipo){
+            case 1:              
+                if(KeyBoard.up) yDireccion++;
+                if(KeyBoard.down) yDireccion--;
+                if(KeyBoard.right) xDireccion--;
+                if(KeyBoard.left) xDireccion++;
                 break;
-            case 0: if(input.up) yDireccion--;
-            if(input.down) yDireccion++;
-            if(input.right) xDireccion++;
-            if(input.left) xDireccion--;
+            case 0: 
+                if(KeyBoard.up) yDireccion--;
+                if(KeyBoard.down) yDireccion++;
+                if(KeyBoard.right) xDireccion++;
+                if(KeyBoard.left) xDireccion--;
             break;
-            case 2: xDireccion = 0;
-                    yDireccion = 0;
         }
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
+        if(collision(xDireccion,yDireccion)) System.out.println("yu die");
     }
     
     @Override
@@ -77,5 +79,7 @@ public class Player extends Mov{
         this.ajusteCentroY = ajusteCentroY;
     }
 
-    
+    public boolean getCollisionP(){
+        return this.collision(xDireccion, yDireccion);
+    }
 }

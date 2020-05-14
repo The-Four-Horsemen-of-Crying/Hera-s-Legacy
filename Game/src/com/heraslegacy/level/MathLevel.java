@@ -9,6 +9,9 @@ import static com.heraslegacy.graphics.Sprite.hoja;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.height;
+import static com.heraslegacy.main.Game.width;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -77,9 +80,9 @@ public class MathLevel implements levelStrategy {
         }
 
 
-        mouse.clickSwitch=false;
-        for (int i = 0; i < key.numbers.length; i++) {
-            key.numbers[i] = false;
+        Mouse.clickSwitch=false;
+        for (int i = 0; i < KeyBoard.numbers.length; i++) {
+            KeyBoard.numbers[i] = false;
         }
 
         return false;
@@ -109,28 +112,28 @@ public class MathLevel implements levelStrategy {
         screen.renderSprite(false, screen.width / 2 - hoja[0].getWidth() / 2, screen.height / 2 - hoja[0].getHeight() / 2,
                 hoja[mesa]);
 
-        if((mouse.mouseX > screen.width  * scale / 2) && 
-                (mouse.mouseX < screen.width  * scale / 2 + (hoja[mesa].getWidth() - 22) * scale / 2 ) &&
-                (mouse.mouseY > screen.height * scale / 2) && 
-                (mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight()- 22) * scale / 2 )){
+        if((Mouse.mouseX > screen.width  * scale / 2) && 
+                (Mouse.mouseX < screen.width  * scale / 2 + (hoja[mesa].getWidth() - 22) * scale / 2 ) &&
+                (Mouse.mouseY > screen.height * scale / 2) && 
+                (Mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight()- 22) * scale / 2 )){
             
-            if(mouse.clickSwitch){
-                while(thisNum < key.numbers.length){
-                    if(key.numbers[thisNum]){
-                        if(numeroAnterior != thisNum)key.numbers[numeroAnterior] = false;                        
+            if(Mouse.clickSwitch){
+                while(thisNum < KeyBoard.numbers.length){
+                    if(KeyBoard.numbers[thisNum]){
+                        if(numeroAnterior != thisNum)KeyBoard.numbers[numeroAnterior] = false;                        
                         screen.renderSprite(false, screen.width / 2 + Sprite.fonts01[thisNum].getWidth() / 2,
                                 screen.height / 2 + Sprite.fonts01[thisNum].getHeight() / 2, Sprite.fonts01[thisNum]);  
                         numeroAnterior = thisNum;
 
                         //read answer
-                        if(key.enter&&thisNum == respuestas[mesa]){
+                        if(KeyBoard.enter&&thisNum == respuestas[mesa]){
                             System.out.println("Respuesta correcta.");
                             resueltos[mesa] = true;
-                            key.numbers[thisNum] = false;
+                            KeyBoard.numbers[thisNum] = false;
                         }
-                        else if(key.enter&&thisNum!=respuestas[mesa]){
+                        else if(KeyBoard.enter&&thisNum!=respuestas[mesa]){
                             System.out.println("Respuesta incorrecta.");
-                            key.numbers[thisNum] = false;
+                            KeyBoard.numbers[thisNum] = false;
                         }
                     }
                     thisNum++;
@@ -140,9 +143,9 @@ public class MathLevel implements levelStrategy {
                     Sprite.frasesLvl01[0]);
         }
         else {
-            mouse.clickSwitch = false;
-            for (int i = 0; i < key.numbers.length; i++) {
-                key.numbers[i] = false;
+            Mouse.clickSwitch = false;
+            for (int i = 0; i < KeyBoard.numbers.length; i++) {
+                KeyBoard.numbers[i] = false;
             }
         }
         
@@ -157,6 +160,7 @@ public class MathLevel implements levelStrategy {
             
     }
     
+    @Override
     public boolean cambio(){
         boo = true;
         for (boolean re : resueltos) {
@@ -166,11 +170,12 @@ public class MathLevel implements levelStrategy {
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo, Level level) {
-        player = new Player(x,y,input);
-        player.setSprites(up, down, rigth, left);
+    public void configPlayer(Level level) {
+        player = new Player(Game.width / 2, Game.height / 2);
+        player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
         player.setAjustes(14, 8, 12, 3,16,16);
-        player.setTipo(tipo);
+        player.setLatencia(30);
+        player.setTipo(0);
         player.setLevel(level);
         
     }
@@ -182,7 +187,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public String getText() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
     @Override

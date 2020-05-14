@@ -16,7 +16,7 @@ public interface levelStrategy {
     public void mecanica();
     public void restar();
     public boolean cambio();
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo, Level level);
+    public void configPlayer(Level level);
     public Player getPlayer();
     public String getText();
     public void setText(String c);

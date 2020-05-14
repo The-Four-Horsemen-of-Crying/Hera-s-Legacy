@@ -10,6 +10,9 @@ import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.height;
+import static com.heraslegacy.main.Game.width;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -118,7 +121,7 @@ public class SpaceLevel implements levelStrategy {
     public void mecanica() {
        
           
-        
+        player.animación();
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
         if(res.getSecond()==45 && !win && !loose){
             text= "Cambio de controles";//Implementar aviso cada 25s
@@ -130,7 +133,7 @@ public class SpaceLevel implements levelStrategy {
         }else if(res.getSecond()==55 && !win && !loose){
             setText("");
         }
-        if(tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width]==Colors.red.getColor() && !loose){
+        if(player.getCollisionP()&& player.getDirectionalTile()==Tile.spaceMeteor[0] && !loose){
                 text="loos do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
                 player.setTipo(2);
                 loose=true;
@@ -158,13 +161,14 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo,Level level) {
+    public void configPlayer(Level level) {
         
-        player = new Player(x, y, input);
+        player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
         player.setAjustes(24, -7, -12, -11, 12,24);
-        player.setTipo(tipo);
+        player.setTipo(0);
         player.setLevel(level);
+        player.setLatencia(400);
     }
     
     @Override

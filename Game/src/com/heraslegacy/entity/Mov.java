@@ -8,7 +8,10 @@ import com.heraslegacy.level.tile.Tile;
 public abstract class Mov {
     private boolean removed = false, moving = false;   
     protected int ani = 0, ani2 = 0, direction = 1, x, y;
-    int ajusteX1, ajusteX2, ajusteY1, ajusteY2;
+    protected int ajusteX1, ajusteX2, ajusteY1, ajusteY2;
+    protected int latencia;
+    protected Tile directionalTile;
+    
     Level level;
     
     public void remove(){
@@ -55,12 +58,12 @@ public abstract class Mov {
         }
     }
     
-    private boolean collision(int xMove, int yMove){
+    protected boolean collision(int xMove, int yMove){
         boolean solid = false;
         for (int corners = 0; corners < 4; corners++) {
             int xLimit =((x + xMove) + corners % 2 * ajusteX1 - ajusteX2) / 16;
             int yLimit =(((y + yMove) + corners / 2 *ajusteY1 + ajusteY2) / 16);
-            Tile nextTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
+            Tile nextTile = directionalTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
             if(nextTile.solid()) solid = true;
         }
         return  solid;
@@ -70,7 +73,7 @@ public abstract class Mov {
     }
     
     public void animación(){            
-        if(ani % 30 == 0){
+        if(ani % latencia == 0){
             ani2++;
             ani = 0;
         }
@@ -84,6 +87,14 @@ public abstract class Mov {
     public void setLevel(Level level) {
         this.level = level;
     }
-
+    
+    public Tile getDirectionalTile(){
+        System.out.println(directionalTile);
+        return directionalTile;
+    }
+    
+    public void setLatencia(int latencia){
+        this.latencia=latencia;
+    }
 }
  
