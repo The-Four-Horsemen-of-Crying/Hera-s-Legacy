@@ -6,10 +6,8 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
-import com.sun.xml.internal.bind.v2.util.CollisionCheckStack;
 
 public class Player extends Mov{
-    private KeyBoard input;
     private Sprite sprite;
     private Sprite up[];
     private Sprite rigth[];
@@ -19,10 +17,9 @@ public class Player extends Mov{
     private int ajusteCentroX, ajusteCentroY;
     private int xDireccion = 0, yDireccion = 0;
     
-    public Player(int x, int y, KeyBoard input){
+    public Player(int x, int y){
         this.x = x;
         this.y = y;
-        this.input = input;
         
     }
     
@@ -33,16 +30,16 @@ public class Player extends Mov{
         
         switch(tipo){
             case 1:              
-                if(input.up) yDireccion++;
-                if(input.down) yDireccion--;
-                if(input.right) xDireccion--;
-                if(input.left) xDireccion++;
+                if(KeyBoard.up) yDireccion++;
+                if(KeyBoard.down) yDireccion--;
+                if(KeyBoard.right) xDireccion--;
+                if(KeyBoard.left) xDireccion++;
                 break;
             case 0: 
-                if(input.up) yDireccion--;
-                if(input.down) yDireccion++;
-                if(input.right) xDireccion++;
-                if(input.left) xDireccion--;
+                if(KeyBoard.up) yDireccion--;
+                if(KeyBoard.down) yDireccion++;
+                if(KeyBoard.right) xDireccion++;
+                if(KeyBoard.left) xDireccion--;
             break;
         }
         

@@ -145,12 +145,12 @@ public class LibraryLevel implements levelStrategy{
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left,int tipo,Level level) {
-        player = new Player(x, y, input);
-        player.setSprites(up, down, rigth, left);
+    public void configPlayer(Level level) {
+        player = new Player(25, 400);
+        player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
         player.setAjustes(14, 8, 12, 3, 16 ,16);
         player.setLatencia(30);
-        player.setTipo(tipo);
+        player.setTipo(0);
         player.setLevel(level);
         
     }
@@ -162,12 +162,12 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public String getText() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
     }
 
     @Override
     public void setText(String c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

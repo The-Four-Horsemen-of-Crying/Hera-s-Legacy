@@ -36,9 +36,7 @@ public class Game extends Canvas implements Runnable {
     public static int scale = 3;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
-    public static boolean activarMecanica = false;    
-    private TileCoordenada spawnplayer = new TileCoordenada(width / 2, height / 2);
-    private int[] spawnpj = spawnplayer.getXY();   
+    public static boolean activarMecanica = false; 
     //Para dibujar texto
     private String text="Puta";
     private int x=0, y=0;
@@ -64,9 +62,8 @@ public class Game extends Canvas implements Runnable {
         //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
         //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
         //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-       // level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
-        spawnpj[0]=25;spawnpj[1]=400;// Necesario para el nivel 3
-        level.configPlayer(spawnpj[0],spawnpj[1],key, Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left,0);
+        level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+        level.configPlayer();
         
         addKeyListener(key);
         mouse = new Mouse();
@@ -124,8 +121,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
- 
-      level.getPlayer().update();
+        level.getPlayer().update();
             
         
     }
@@ -143,22 +139,13 @@ public class Game extends Canvas implements Runnable {
         int yScroll = level.getPlayer().getY() - screen.height/2;
 
         
-        level.render(xScroll, yScroll, screen);
-        //level02.render(xScroll, yScroll, screen);     
+        level.render(xScroll, yScroll, screen);    
         level.getPlayer().render(screen);
-        
-        //if bool colision = true then renderizar datos en Level01 y pasarlos a screen
         
         if(activarMecanica){
             level.mecanica();
             
-        }
-        
-        if(key.restart){
-            level.getPlayer().setX(spawnpj[0]);
-            level.getPlayer().setY(spawnpj[1]);
-            level.restart();
-        }
+        }        
        
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
