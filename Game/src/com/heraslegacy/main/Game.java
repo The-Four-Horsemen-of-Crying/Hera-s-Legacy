@@ -59,9 +59,9 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
+        level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-        level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
         //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level.configPlayer();
         
