@@ -64,7 +64,7 @@ public class Level{
         return levelstrategy.cambio();
     }
     
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo){
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo){
         levelstrategy.configPlayer(x, y, input, up, down, rigth, left, tipo,this);
     }
     
@@ -72,5 +72,12 @@ public class Level{
         return levelstrategy.getPlayer();
     }
    
+    public String getText(){
+        return levelstrategy.getText();
+    }
+    
+    public  void setText(String t){
+         levelstrategy.setText(t);
+    }
 }
 

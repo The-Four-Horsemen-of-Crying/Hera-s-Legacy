@@ -34,6 +34,7 @@ public class Tile {
                                         new Tile(Sprite.meteorito[6], true),new Tile(Sprite.meteorito[7], true),new Tile(Sprite.meteorito[8], true),
                                         new Tile(Sprite.meteorito[9], true),new Tile(Sprite.meteorito[10], true),new Tile(Sprite.meteorito[11], true),
                                         new Tile(Sprite.meteorito[12], true)};
+    public static Tile []niceStuff = {new Tile(Sprite.niceStuffForANiceGame[0], false),new Tile(Sprite.niceStuffForANiceGame[1], false)};
     
     //MathLevel
     public static Tile []mesa = {new Tile(Sprite.mesa[0], true), new Tile(Sprite.mesa[1], true),

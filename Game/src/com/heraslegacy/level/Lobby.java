@@ -93,9 +93,11 @@ public class Lobby implements levelStrategy{
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, boolean tipo,Level level) {
+    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo,Level level) {
         player = new Player(x, y, input);
         player.setSprites(up, down, rigth, left);
+        player.setAjustes(14, 8, 12, 3, 16, 16);
+        player.setLatencia(200);
         player.setTipo(tipo);
         player.setLevel(level);
     }
@@ -104,5 +106,16 @@ public class Lobby implements levelStrategy{
     public Player getPlayer(){
         return player;
     }
-        
+
+    @Override
+    public String getText() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setText(String c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+            
 }

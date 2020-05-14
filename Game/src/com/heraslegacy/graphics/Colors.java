@@ -13,7 +13,7 @@ public enum Colors {
     red                 (0xffff0000),
     higdarkred          (0xffbc021e),
     darkred             (0xffdc0223),
-    lessdarkred       (0xffff0026),
+    lessdarkred         (0xffff0026),
     fuchsia             (0xffff00ff),
     lime                (0xff00ff00),
     blue                (0xff0000ff),
@@ -29,7 +29,8 @@ public enum Colors {
     kindColdplay        (-5991936),
     kindgreenday        (-16730112),
     purplePoe           (-9699234),
-    naranjaMecanica     (-1411778);
+    naranjaMecanica     (-1411778),
+    bluecoli            (0xff3900ff);
     
     private final int color;
     
