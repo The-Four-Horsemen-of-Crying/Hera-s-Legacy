@@ -10,6 +10,8 @@ import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import static com.heraslegacy.main.Game.height;
+import static com.heraslegacy.main.Game.width;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -158,12 +160,12 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public void configPlayer(int x, int y, KeyBoard input, Sprite[] up, Sprite[] down, Sprite[] rigth, Sprite[] left, int tipo,Level level) {
+    public void configPlayer(Level level) {
         
-        player = new Player(x, y, input);
+        player = new Player(width / 2, height / 2);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
         player.setAjustes(24, -7, -12, -11, 12,24);
-        player.setTipo(tipo);
+        player.setTipo(0);
         player.setLevel(level);
         player.setLatencia(400);
     }
