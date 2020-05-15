@@ -9,10 +9,11 @@ import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.level.tile.TipoTile;
 import com.heraslegacy.main.Game;
-
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -34,7 +35,13 @@ public class SpaceLevel implements levelStrategy {
     private LocalTime dy= LocalTime.now();
     private Sound bk= new Sound(Sound.bakSpa);
     private Sound c= new Sound(Sound.change);
-    private String text="";
+    private String text;
+    private Color colorTexto= Color.WHITE;
+    private static Texto textSpace[]= {
+        new Texto("Hola perra", 15, 15, false),
+            
+    };
+
 
     @Override
     public void update() {
@@ -123,14 +130,14 @@ public class SpaceLevel implements levelStrategy {
         player.animación();
         LocalTime res=dy.minusSeconds(LocalTime.now().getSecond());
         if(res.getSecond()==45 && !win && !loose){
-            text= "Cambio de controles";//Implementar aviso cada 25s
+           textSpace[0].setVisible(true);//Implementar aviso cada 25s
             c.changeVolume((float)-80);
             c.play();
             cambio=!cambio;
             player.setTipo(1);
             dy=LocalTime.now();
         }else if(res.getSecond()==55 && !win && !loose){
-            setText("");
+            textSpace[0].setVisible(false);
         }
         if(player.getCollisionP()&& player.getDirectionalTile().tipo==TipoTile.GAME_OVER && !loose){
                 text="loos do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
@@ -176,12 +183,17 @@ public class SpaceLevel implements levelStrategy {
     }
     
     @Override
-    public String getText(){
-        return text;
+    public Texto[] getText(){
+       return textSpace;
     }
 
     @Override
     public void setText(String c) {
         this.text="";
+    }
+
+    @Override
+    public Color getColor() {
+       return colorTexto;
     }
 }
