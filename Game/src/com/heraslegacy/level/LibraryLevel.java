@@ -9,9 +9,10 @@ import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import java.awt.Color;
 import java.time.LocalTime;
-import com.heraslegacy.manager.KeyBoard;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -35,7 +36,11 @@ public class LibraryLevel implements levelStrategy{
     private int pattern[]={0,1,2,3},direction=0;
     private LocalTime ant= LocalTime.now();
     private Player player;
-    public Sound fail = new Sound(Sound.fail); 
+    public Sound fail = new Sound(Sound.fail);
+    private final Color colorTexto= Color.WHITE;
+    private Texto textLibrary[]= {
+    
+    };
 
     @Override
     public void update() {
@@ -161,13 +166,18 @@ public class LibraryLevel implements levelStrategy{
     }
 
     @Override
-    public String getText() {
-        return "";
+    public Texto[] getText() {
+        return textLibrary;
     }
 
     @Override
     public void setText(String c) {
         
+    }
+
+    @Override
+    public Color getColor() {
+        return colorTexto;
     }
     
 }

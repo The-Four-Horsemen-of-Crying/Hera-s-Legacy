@@ -8,11 +8,10 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
-import static com.heraslegacy.main.Game.height;
-import static com.heraslegacy.main.Game.width;
-import com.heraslegacy.manager.KeyBoard;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -27,6 +26,10 @@ public class Lobby implements levelStrategy{
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
+    private final Color colorTexto= Color.WHITE;
+    private Texto textLobby[]= {
+    
+    };
     
     @Override
     public void update() {
@@ -111,13 +114,18 @@ public class Lobby implements levelStrategy{
     }
 
     @Override
-    public String getText() {
-        return "";
+    public Texto[] getText() {
+        return textLobby;
     }
 
     @Override
     public void setText(String c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Color getColor() {
+        return colorTexto;
     }
     
             

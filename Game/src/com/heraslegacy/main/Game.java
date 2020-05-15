@@ -3,7 +3,8 @@ package com.heraslegacy.main;
 
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
-import com.heraslegacy.graphics.Text;
+import com.heraslegacy.graphics.Fuente;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
@@ -26,14 +27,14 @@ public class Game extends Canvas implements Runnable {
     private Mouse mouse;
     public JFrame frame; 
     private static final long serialVersionUID = 1L;
-    public static int width = 300;
-    public static int height = width / 16 * 9;
-    public static int scale = 3;
+    public static final int width = 300;
+    public static final int height = width / 16 * 9;
+    public static final int scale = 3;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = false; 
     //Para dibujar texto
-    private String text="Puta";
+    private Texto text[];
     private int x=0, y=0;
     private Color c=Color.white;
     private Font f;
@@ -49,8 +50,9 @@ public class Game extends Canvas implements Runnable {
         frame = new JFrame();
         screen = new Screen(width, height);
         Sound.init();
-        Text.init();
-        f=Text.spaceFont;
+        Fuente.init();
+        text= new Texto[1000];
+        f=Fuente.spaceFont;
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
@@ -152,32 +154,15 @@ public class Game extends Canvas implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
             g.setFont(f);
-            g.setColor(c);
-            g.drawString(level.getText(), (width/2)*scale-50, (height/2)*scale-50);
+            g.setColor(level.getColor());
+            for (int i = 0; i < level.getText().length; i++) {
+                if(level.getText()[i].isVisible()) {
+                    g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
+                }
+            }
             g.dispose();
             bs.show();
         }
     }
-
-    public void setTexX(int x) {
-        this.x = x;
-    }
-
-    public void setTextY(int y) {
-        this.y = y;
-    }
-
-    public void setTextC(Color c) {
-        this.c = c;
-    }
-
-    public void setF(Font f) {
-        this.f = f;
-    }
-    public String setText(){
-        text=level.getText();
-        return text;
-    }
-        
-        
+                
 }
