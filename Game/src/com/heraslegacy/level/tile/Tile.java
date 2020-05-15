@@ -3,6 +3,7 @@ package com.heraslegacy.level.tile;
 
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
+import javafx.scene.input.KeyCode;
 
 public class Tile {
 
@@ -10,6 +11,11 @@ public class Tile {
     public int y;
     public Sprite sprite;
     public boolean solid;
+    public TipoTile tipo;
+    
+    
+    
+    
     public static Tile woodFloor = new Tile(Sprite.woodFloor, false);
     public static Tile pikes = new Tile(Sprite.null_floor, true);
     public static Tile woodWall = new Tile(Sprite.woodWall, true);
@@ -29,11 +35,12 @@ public class Tile {
     public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
                                        new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true)};
     
-    public static Tile []spaceMeteor = {new Tile(Sprite.meteorito[0], true),new Tile(Sprite.meteorito[1], true),new Tile(Sprite.meteorito[2], true),
-                                        new Tile(Sprite.meteorito[3], true),new Tile(Sprite.meteorito[4], true),new Tile(Sprite.meteorito[5], true),
-                                        new Tile(Sprite.meteorito[6], true),new Tile(Sprite.meteorito[7], true),new Tile(Sprite.meteorito[8], true),
-                                        new Tile(Sprite.meteorito[9], true),new Tile(Sprite.meteorito[10], true),new Tile(Sprite.meteorito[11], true),
+    public static Tile []spaceMeteor = {new Tile(Sprite.meteorito[0], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[1], true),new Tile(Sprite.meteorito[2], true,TipoTile.GAME_OVER),
+                                        new Tile(Sprite.meteorito[3], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[4], true),new Tile(Sprite.meteorito[5], true,TipoTile.GAME_OVER),
+                                        new Tile(Sprite.meteorito[6], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[7], true),new Tile(Sprite.meteorito[8], true,TipoTile.GAME_OVER),
+                                        new Tile(Sprite.meteorito[9], true),new Tile(Sprite.meteorito[10], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[11], true,TipoTile.GAME_OVER),
                                         new Tile(Sprite.meteorito[12], true)};
+    
     public static Tile []niceStuff = {new Tile(Sprite.niceStuffForANiceGame[0], false),new Tile(Sprite.niceStuffForANiceGame[1], false)};
     
     //MathLevel
@@ -60,7 +67,12 @@ public class Tile {
         this.sprite = sprite;
         this.solid = solid;
     }
-
+    
+    public Tile(Sprite sprite, boolean solid, TipoTile tipo){
+        this.sprite=sprite;
+        this.solid=solid;
+        this.tipo=tipo;
+    }
     public void render(int x, int y, Screen screen){
             screen.renderTile(x << 4, y << 4, this);
     }
