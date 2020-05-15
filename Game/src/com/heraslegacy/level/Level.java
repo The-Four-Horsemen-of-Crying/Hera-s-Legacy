@@ -4,7 +4,9 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import java.awt.Color;
 
 public class Level{
     public Sound b;
@@ -70,12 +72,15 @@ public class Level{
         return levelstrategy.getPlayer();
     }
    
-    public String getText(){
+    public Texto[] getText(){
         return levelstrategy.getText();
     }
     
     public  void setText(String t){
          levelstrategy.setText(t);
+    }
+    public Color getColor(){
+        return levelstrategy.getColor();
     }
 }
 

@@ -6,12 +6,12 @@ import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
 import static com.heraslegacy.graphics.Sprite.hoja;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
-import static com.heraslegacy.main.Game.height;
-import static com.heraslegacy.main.Game.width;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -30,6 +30,10 @@ public class MathLevel implements levelStrategy {
     private int numeroAnterior;
     boolean boo;
     private Player player;
+    private Texto textMath[]= {
+    
+    };
+    private final Color colorTexto= Color.WHITE;
     
     @Override
     public void update(){   
@@ -186,12 +190,17 @@ public class MathLevel implements levelStrategy {
     }
 
     @Override
-    public String getText() {
-        return "";
+    public Texto[] getText() {
+        return textMath;
     }
 
     @Override
     public void setText(String c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Color getColor() {
+        return colorTexto;
     }
 }   

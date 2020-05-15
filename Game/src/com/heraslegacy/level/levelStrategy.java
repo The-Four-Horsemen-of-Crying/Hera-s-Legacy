@@ -3,8 +3,10 @@ package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.manager.KeyBoard;
+import java.awt.Color;
 
 public interface levelStrategy {
     
@@ -18,6 +20,7 @@ public interface levelStrategy {
     public boolean cambio();
     public void configPlayer(Level level);
     public Player getPlayer();
-    public String getText();
+    public Texto[] getText();
     public void setText(String c);
+    public Color getColor();
 }

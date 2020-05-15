@@ -13,15 +13,15 @@ import java.io.IOException;
  *
  * @author HP
  */
-public class Text {
+public class Fuente {
     public static Font spaceFont;
-  
+   
     public static void init(){
         spaceFont=loadFont("/fonts/RobotoMono-Light.ttf", 20);
     } 
     public static Font loadFont(String path, int size) {
         try {
-            return Font.createFont(Font.TRUETYPE_FONT,Text.class.getResourceAsStream(path)).deriveFont(Font.PLAIN, size);
+            return Font.createFont(Font.TRUETYPE_FONT,Font.class.getResourceAsStream(path)).deriveFont(Font.PLAIN, size);
         } catch (IOException | FontFormatException ex) {        
             return null;
         }
