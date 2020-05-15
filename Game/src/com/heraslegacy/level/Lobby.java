@@ -57,7 +57,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public boolean getCollision(int x, int y) {
-       return false;
+       return true;
     }
 
     @Override
@@ -80,13 +80,19 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void time() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void mecanica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         if(player.getDirectionalTile() == Tile.specialMarmolFloor){
+            System.out.println("Colision");
+             Game.gameState = 2; 
+             Game.switched = true; 
+            
+        }
     }
+    
 
     @Override
     public void restar() {

@@ -21,7 +21,9 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
     
-    public Level level;
+    public Level level, math, library,space;
+    public static boolean switched = false; 
+    
     private Thread thread;
     private KeyBoard key;
     private Mouse mouse;
@@ -32,7 +34,8 @@ public class Game extends Canvas implements Runnable {
     public static final int scale = 3;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
-    public static boolean activarMecanica = false; 
+    public static boolean activarMecanica = true;
+    public static int gameState = 1; 
     //Para dibujar texto
     private Texto text[];
     private int x=0, y=0;
@@ -56,10 +59,10 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        //level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-        level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-        //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+          level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+          math = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
+          space = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+          library = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level.configPlayer();
         
         addKeyListener(key);
@@ -130,8 +133,22 @@ public class Game extends Canvas implements Runnable {
             createBufferStrategy(3);
             return;
         }
-        
         screen.clear();
+        
+        if(switched)
+        {   
+            switch(gameState){
+            case 2: 
+             level = math; 
+             level.configPlayer();
+             switched = false;
+             activarMecanica = false;
+                break;
+        }    
+        
+        }
+        
+         screen.clear();
         int xScroll = level.getPlayer().getX() - screen.width/2;
         int yScroll = level.getPlayer().getY() - screen.height/2;
 
