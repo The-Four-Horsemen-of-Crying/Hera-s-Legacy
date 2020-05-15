@@ -5,6 +5,7 @@ import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 
@@ -23,4 +24,5 @@ public interface levelStrategy {
     public Texto[] getText();
     public void setText(String c);
     public Color getColor();
+    public void setGame(Game aThis);
 }

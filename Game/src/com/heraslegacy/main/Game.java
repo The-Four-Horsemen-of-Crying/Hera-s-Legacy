@@ -21,7 +21,7 @@ import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable {
     
-    public Level level, math, library,space;
+    public Level level;
     public static boolean switched = false; 
     
     private Thread thread;
@@ -47,7 +47,7 @@ public class Game extends Canvas implements Runnable {
     public static Screen screen;
     Sound theme;
 
-    public Game() {
+    public Game(){
         Dimension size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
         frame = new JFrame();
@@ -59,10 +59,11 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-          level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-          math = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-          space = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-          library = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+        level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+        level.levelstrategy.setGame(this);
+        //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
+        //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level.configPlayer();
         
         addKeyListener(key);
@@ -121,9 +122,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level.getPlayer().update();
-            
-        
+        level.getPlayer().update();      
     }
 
     public void render() {
@@ -133,22 +132,8 @@ public class Game extends Canvas implements Runnable {
             createBufferStrategy(3);
             return;
         }
+        
         screen.clear();
-        
-        if(switched)
-        {   
-            switch(gameState){
-            case 2: 
-             level = math; 
-             level.configPlayer();
-             switched = false;
-             activarMecanica = false;
-                break;
-        }    
-        
-        }
-        
-         screen.clear();
         int xScroll = level.getPlayer().getX() - screen.width/2;
         int yScroll = level.getPlayer().getY() - screen.height/2;
 
@@ -181,5 +166,9 @@ public class Game extends Canvas implements Runnable {
             bs.show();
         }
     }
-                
+    
+    public void setLevel(Level newLevel){
+        this.level=newLevel;
+        this.level.configPlayer();
+    }
 }
