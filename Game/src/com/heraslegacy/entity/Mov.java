@@ -93,7 +93,7 @@ public abstract class Mov {
     }
     
     public Tile getDirectionalTile(){
-        System.out.println(directionalTile.tipo);
+       // System.out.println(directionalTile);
         return directionalTile;
     }
     
