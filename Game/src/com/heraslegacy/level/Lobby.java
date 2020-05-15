@@ -100,7 +100,7 @@ public class Lobby implements levelStrategy{
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
         player.setAjustes(14, 8, 12, 3, 16, 16);
-        player.setLatencia(200);
+        player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);
     }
