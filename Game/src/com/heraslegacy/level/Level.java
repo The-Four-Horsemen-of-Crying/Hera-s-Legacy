@@ -4,13 +4,11 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
-import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
-import com.heraslegacy.manager.KeyBoard;
 
 public class Level{
     public Sound b;
-    private final levelStrategy levelstrategy;
+    public final levelStrategy levelstrategy;
     
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){

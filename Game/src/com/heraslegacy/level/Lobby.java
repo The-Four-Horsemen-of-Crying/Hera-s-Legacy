@@ -9,6 +9,7 @@ import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
 import static com.heraslegacy.main.Game.height;
 import static com.heraslegacy.main.Game.width;
 import com.heraslegacy.manager.KeyBoard;
@@ -96,10 +97,10 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void configPlayer(Level level) {
-        player = new Player(width / 2, height / 2);
+        player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
         player.setAjustes(14, 8, 12, 3, 16, 16);
-        player.setLatencia(200);
+        player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);
     }

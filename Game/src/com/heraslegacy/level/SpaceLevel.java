@@ -10,9 +10,9 @@ import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.tile.Tile;
-import static com.heraslegacy.main.Game.height;
-import static com.heraslegacy.main.Game.width;
-import com.heraslegacy.manager.KeyBoard;
+import com.heraslegacy.level.tile.TipoTile;
+import com.heraslegacy.main.Game;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -132,7 +132,7 @@ public class SpaceLevel implements levelStrategy {
         }else if(res.getSecond()==55 && !win && !loose){
             setText("");
         }
-        if(player.getCollisionP() && !loose){
+        if(player.getCollisionP()&& player.getDirectionalTile().tipo==TipoTile.GAME_OVER && !loose){
                 text="loos do u wann restart?";//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
                 player.setTipo(2);
                 loose=true;
@@ -162,7 +162,7 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void configPlayer(Level level) {
         
-        player = new Player(width / 2, height / 2);
+        player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
         player.setAjustes(24, -7, -12, -11, 12,24);
         player.setTipo(0);

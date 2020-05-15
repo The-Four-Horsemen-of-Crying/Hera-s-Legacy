@@ -1,18 +1,13 @@
 
 package com.heraslegacy.main;
 
-import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
-import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Text;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.*;
-import com.heraslegacy.level.LibraryLevel;
-import com.heraslegacy.level.SpaceLevel;
-import com.heraslegacy.level.TileCoordenada;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -59,10 +54,10 @@ public class Game extends Canvas implements Runnable {
         theme=new Sound(Sound.de);
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        //level = new Level("/levels/lobby/lobby.png","/levels/lobby/lobby.png",new Lobby());
+        //level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-        //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-        level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
+        level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
+        //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level.configPlayer();
         
         addKeyListener(key);
