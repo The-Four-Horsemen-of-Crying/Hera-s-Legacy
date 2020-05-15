@@ -26,10 +26,10 @@ public class Player extends Mov{
     
     @Override
     public void update(){
-        switch(tipo){
-            case 1: if(input.up) yDireccion++;
-        xDireccion=0;
+            xDireccion=0;
         yDireccion=0;
+    
+      
         
         switch(tipo){
             case 1:              
