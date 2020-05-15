@@ -63,8 +63,12 @@ public abstract class Mov {
         for (int corners = 0; corners < 4; corners++) {
             int xLimit =((x + xMove) + corners % 2 * ajusteX1 - ajusteX2) / 16;
             int yLimit =(((y + yMove) + corners / 2 *ajusteY1 + ajusteY2) / 16);
-            Tile nextTile = directionalTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
-            if(nextTile.solid()) solid = true;
+            Tile nextTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
+            if(nextTile.solid()){ 
+                
+                solid = true;
+                directionalTile=nextTile;
+            }
         }
         return  solid;
     }       
@@ -89,7 +93,7 @@ public abstract class Mov {
     }
     
     public Tile getDirectionalTile(){
-        System.out.println(directionalTile);
+        System.out.println(directionalTile.tipo);
         return directionalTile;
     }
     
