@@ -82,5 +82,9 @@ public class Level{
     public Color getColor(){
         return levelstrategy.getColor();
     }
+    
+    public Level levelCambio(){
+        return levelstrategy.levelCambio();
+    }
 }
 

@@ -198,7 +198,8 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public void setGame(Game aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Level levelCambio() {
+        Lobby.levels[2]=true;
+        return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
 }
