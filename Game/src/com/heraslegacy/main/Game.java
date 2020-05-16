@@ -60,10 +60,6 @@ public class Game extends Canvas implements Runnable {
         //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
         level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        level.levelstrategy.setGame(this);
-        //level = new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel());
-        //level = new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel());
-        //level = new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel());
         level.configPlayer();
         
         addKeyListener(key);
@@ -145,6 +141,11 @@ public class Game extends Canvas implements Runnable {
             level.mecanica();
             
         }        
+        
+        if(level.cambio()){
+            level = level.levelCambio();
+            level.configPlayer();
+        }
        
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];

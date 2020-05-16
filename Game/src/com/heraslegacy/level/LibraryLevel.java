@@ -11,7 +11,6 @@ import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
-import com.heraslegacy.main.Game;
 import java.awt.Color;
 import java.time.LocalTime;
 import java.awt.image.BufferedImage;
@@ -147,7 +146,7 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public boolean cambio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
@@ -182,8 +181,9 @@ public class LibraryLevel implements levelStrategy{
     }
 
     @Override
-    public void setGame(Game aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Level levelCambio() {
+        Lobby.levels[3]=true;
+        return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
     
 }

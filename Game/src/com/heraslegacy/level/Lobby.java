@@ -28,7 +28,7 @@ public class Lobby implements levelStrategy{
     private int[] tilesCollision;
     private Player player;
     private final Color colorTexto= Color.WHITE;
-    private Game game;
+    public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
     
     };
@@ -100,17 +100,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void mecanica() {
-        switch(nivelCase){
-            case 1:
-                game.setLevel(new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel()));
-                break;
-            case 2:
-                game.setLevel(new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
-                break;
-            case 3:
-                game.setLevel(new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel()));
-                break;
-        }
+        
     }
     
 
@@ -121,7 +111,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public boolean cambio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getCollision(player.getX(), player.getY());
     }
 
     @Override
@@ -153,8 +143,22 @@ public class Lobby implements levelStrategy{
     public Color getColor() {
         return colorTexto;
     }
-    
-    public void setGame(Game game){
-        this.game=game;
+   
+
+    @Override
+    public Level levelCambio() {
+        Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+        switch(nivelCase){
+            case 1:
+                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel()));
+                break;
+            case 2:
+                game = (new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
+                break;
+            case 3:
+                game = (new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel()));
+                break;
+        }
+        return game;
     }
 }

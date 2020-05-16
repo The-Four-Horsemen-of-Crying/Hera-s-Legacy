@@ -24,5 +24,5 @@ public interface levelStrategy {
     public Texto[] getText();
     public void setText(String c);
     public Color getColor();
-    public void setGame(Game aThis);
+    public Level levelCambio();
 }
