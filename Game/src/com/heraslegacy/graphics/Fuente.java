@@ -17,7 +17,7 @@ public class Fuente {
     public static Font spaceFont;
    
     public static void init(){
-        spaceFont=loadFont("/fonts/RobotoMono-Light.ttf", 20);
+        spaceFont=loadFont("/fonts/RobotoMono-Light.ttf", 35);
     } 
     public static Font loadFont(String path, int size) {
         try {

@@ -35,7 +35,6 @@ public class Lobby implements levelStrategy{
     
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
