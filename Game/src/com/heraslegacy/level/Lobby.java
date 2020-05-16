@@ -23,10 +23,12 @@ import javax.imageio.ImageIO;
 public class Lobby implements levelStrategy{
     private int width;
     private int height;
+    private int nivelCase;
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
     private final Color colorTexto= Color.WHITE;
+    public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
     
     };
@@ -57,7 +59,20 @@ public class Lobby implements levelStrategy{
 
     @Override
     public boolean getCollision(int x, int y) {
-       return false;
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
+            nivelCase = 1;
+            return true;
+        }
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.blue.getColor()) {
+            nivelCase = 2;
+            return true;
+        }
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.red.getColor()) {
+            nivelCase = 3;
+            return true;
+        }
+
+        return false;
     }
 
     @Override
@@ -80,13 +95,14 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void time() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void mecanica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
+    
 
     @Override
     public void restar() {
@@ -95,7 +111,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public boolean cambio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.getCollision(player.getX(), player.getY());
     }
 
     @Override
@@ -127,6 +143,22 @@ public class Lobby implements levelStrategy{
     public Color getColor() {
         return colorTexto;
     }
-    
-            
+   
+
+    @Override
+    public Level levelCambio() {
+        Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+        switch(nivelCase){
+            case 1:
+                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel()));
+                break;
+            case 2:
+                game = (new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
+                break;
+            case 3:
+                game = (new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel()));
+                break;
+        }
+        return game;
+    }
 }

@@ -53,16 +53,11 @@ public class Player extends Mov{
     @Override
     public void render(Screen screen){
         
-        if(direction == 0){
-            if(!(this.level.levelstrategy instanceof SpaceLevel))sprite = up[ani2 & 3];
-            else animación();
-        }
+        if(direction == 0)sprite = up[ani2 & 3];
         if(direction == 1) sprite = rigth[ani2 & 3];
-        if(direction == 2){
-            if(!(this.level.levelstrategy instanceof SpaceLevel))sprite = down[ani2 & 3];
-            else ani2++;
-        }
+        if(direction == 2) sprite = down[ani2 & 3];      
         if(direction == 3) sprite = left[ani2 & 3];
+        
         Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
         screen.renderPlayer(x - ajusteCentroX, y - ajusteCentroY, sprite);
     }
