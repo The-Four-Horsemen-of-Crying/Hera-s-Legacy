@@ -14,9 +14,33 @@ public class Sprite {
     
     public static Sprite shit = new Sprite(300,168,0,0,SpriteSheet.shit);
     public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
-    public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.spriteSheet);
+    public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.elizabeth);
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
     
+    //Lobby
+    public static Sprite marmolWall[] = {new Sprite(16,0,1,SpriteSheet.nivel00_lobby), new Sprite(16, 1, 1, SpriteSheet.nivel00_lobby),
+                                         new Sprite(16, 2, 1, SpriteSheet.nivel00_lobby)};//NORMAL, UP
+    
+    public static Sprite marmolFloor[] = {new Sprite(16, 0, 0, SpriteSheet.nivel00_lobby),new Sprite(16, 2, 0, SpriteSheet.nivel00_lobby),//NORMAL,LEFT,DOWN,RIGTH
+                                          new Sprite(16, 3, 0, SpriteSheet.nivel00_lobby),new Sprite(16, 4, 0, SpriteSheet.nivel00_lobby)};
+    
+    public static Sprite specialMarmolFloor = new Sprite(16, 1, 0, SpriteSheet.nivel00_lobby);
+    public static Sprite columnas[] = {new Sprite(16, 0, 2, SpriteSheet.nivel00_lobby),new Sprite(16, 1, 2, SpriteSheet.nivel00_lobby)};
+    public static Sprite techo = new Sprite(16, 2, 2, SpriteSheet.nivel00_lobby);
+    //SpaceShit
+    public static Sprite meteorito[] = {new Sprite(16,0,2,SpriteSheet.nivel02_space),new Sprite(16,2,2,SpriteSheet.nivel02_space),new Sprite(16,3,2,SpriteSheet.nivel02_space),
+                                        new Sprite(16,4,2,SpriteSheet.nivel02_space),new Sprite(16,5,2,SpriteSheet.nivel02_space),new Sprite(16,2,3,SpriteSheet.nivel02_space),
+                                        new Sprite(16,5,3,SpriteSheet.nivel02_space),new Sprite(16,2,5,SpriteSheet.nivel02_space),new Sprite(16,3,5,SpriteSheet.nivel02_space),
+                                        new Sprite(16,2,4,SpriteSheet.nivel02_space),new Sprite(16,5,4,SpriteSheet.nivel02_space),new Sprite(16,4,5,SpriteSheet.nivel02_space),
+                                        new Sprite(16,5,5,SpriteSheet.nivel02_space)};
+    
+    public static Sprite spaceCheese[] = {new Sprite(16, 0,0,SpriteSheet.nivel02_space),new Sprite(16, 1,0,SpriteSheet.nivel02_space),new Sprite(16, 3,0,SpriteSheet.nivel02_space),
+                                          new Sprite(16, 2,0,SpriteSheet.nivel02_space),new Sprite(16, 3,1,SpriteSheet.nivel02_space)};
+    
+    public static Sprite niceStuffForANiceGame [] = {new Sprite(16, 3, 3, SpriteSheet.nivel02_space),new Sprite(16, 4, 3, SpriteSheet.nivel02_space)};
+    
+    
+    //ZeroZone
     public static Sprite fonts01[] = {new Sprite(32,32,0,0, SpriteSheet.numFonts),new Sprite(32,32,1,0, SpriteSheet.numFonts),new Sprite(32,32,2,0, SpriteSheet.numFonts),
                                       new Sprite(32,32,3,0, SpriteSheet.numFonts),new Sprite(32,32,0,1, SpriteSheet.numFonts),new Sprite(32,32,1,1, SpriteSheet.numFonts),
                                       new Sprite(32,32,2,1, SpriteSheet.numFonts),new Sprite(32,32,3,1, SpriteSheet.numFonts),new Sprite(32,32,0,2, SpriteSheet.numFonts),
@@ -24,29 +48,54 @@ public class Sprite {
     
     public static Sprite frasesLvl01[] = {new Sprite(96,32,0,3, SpriteSheet.numFonts)};
     
-    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.miniGame01_mat),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.miniGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.miniGame01_mat)};
-    //Mesa
+    //MathLevel
+    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat)};
+    
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
                                    new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};
 
     
-    
     public static Sprite []silla = {new Sprite(16,0,4,SpriteSheet.nivel01_mat),new Sprite(16,1,4,SpriteSheet.nivel01_mat),
-                                    new Sprite(16,0,5,SpriteSheet.nivel01_mat),new Sprite(16,1,5,SpriteSheet.nivel01_mat)};   
-    //Player
-    public static Sprite[] player_down  = {new Sprite(32,0,1,SpriteSheet.spriteSheet), new Sprite(32,1,1,SpriteSheet.spriteSheet),
-                                           new Sprite(32,2,1,SpriteSheet.spriteSheet), new Sprite(32,3,1,SpriteSheet.spriteSheet)};
+                                    new Sprite(16,0,5,SpriteSheet.nivel01_mat),new Sprite(16,1,5,SpriteSheet.nivel01_mat)};
+    
+    //Players
+        //SpaceShit
+    public static Sprite[] apolo_up     = {new Sprite(16, 48, 0, 2, SpriteSheet.apolo11),new Sprite(16, 48, 1, 2, SpriteSheet.apolo11),
+                                           new Sprite(16, 48, 2, 2, SpriteSheet.apolo11),new Sprite(16, 48, 3, 2, SpriteSheet.apolo11)};
+    
+    public static Sprite[] apolo_down   = {new Sprite(16, 48, 4, 2, SpriteSheet.apolo11),new Sprite(16, 48, 5, 2, SpriteSheet.apolo11),
+                                           new Sprite(16, 48, 6, 2, SpriteSheet.apolo11),new Sprite(16, 48, 7, 2, SpriteSheet.apolo11)};
+    
+    
+    public static Sprite[] apolo_rigth  = {new Sprite(48, 16, 0, 0, SpriteSheet.apolo11),new Sprite(48, 16, 0, 1, SpriteSheet.apolo11),
+                                           new Sprite(48, 16, 0, 2, SpriteSheet.apolo11),new Sprite(48, 16, 0, 3, SpriteSheet.apolo11)};
+    
+    public static Sprite[] apolo_left   = {new Sprite(64, 16, 1, 0, SpriteSheet.apolo11),new Sprite(64, 16, 1, 1, SpriteSheet.apolo11),
+                                           new Sprite(64, 16, 1, 2, SpriteSheet.apolo11),new Sprite(64, 16, 1, 3, SpriteSheet.apolo11)};
+    
+        //TestPJ
+    public static Sprite[] Elizabeth_down  = {new Sprite(32,0,1,SpriteSheet.elizabeth), new Sprite(32,1,1,SpriteSheet.elizabeth),
+                                              new Sprite(32,2,1,SpriteSheet.elizabeth), new Sprite(32,3,1,SpriteSheet.elizabeth)};
         
-    public static Sprite[] player_rigth = {new Sprite(32,0,3,SpriteSheet.spriteSheet),new Sprite(32,1,3,SpriteSheet.spriteSheet),
-                                           new Sprite(32,2,3,SpriteSheet.spriteSheet),new Sprite(32,3,3,SpriteSheet.spriteSheet)};
+    public static Sprite[] Elizabeth_rigth = {new Sprite(32,0,3,SpriteSheet.elizabeth),new Sprite(32,1,3,SpriteSheet.elizabeth),
+                                              new Sprite(32,2,3,SpriteSheet.elizabeth),new Sprite(32,3,3,SpriteSheet.elizabeth)};
     
-    public static Sprite[] player_up    = {new Sprite(32,0,4,SpriteSheet.spriteSheet),new Sprite(32,1,4,SpriteSheet.spriteSheet),
-                                           new Sprite(32,2,4,SpriteSheet.spriteSheet),new Sprite(32,3,4,SpriteSheet.spriteSheet)};
+    public static Sprite[] Elizabeth_up    = {new Sprite(32,0,4,SpriteSheet.elizabeth),new Sprite(32,1,4,SpriteSheet.elizabeth),
+                                              new Sprite(32,2,4,SpriteSheet.elizabeth),new Sprite(32,3,4,SpriteSheet.elizabeth)};
     
-    public static Sprite[] player_left  = {new Sprite(32,0,2,SpriteSheet.spriteSheet),new Sprite(32,1,2,SpriteSheet.spriteSheet),
-                                           new Sprite(32,2,2,SpriteSheet.spriteSheet),new Sprite(32,3,2,SpriteSheet.spriteSheet)};
+    public static Sprite[] Elizabeth_left  = {new Sprite(32,0,2,SpriteSheet.elizabeth),new Sprite(32,1,2,SpriteSheet.elizabeth),
+                                              new Sprite(32,2,2,SpriteSheet.elizabeth),new Sprite(32,3,2,SpriteSheet.elizabeth)};
     //Player
+    
+    //LibraryLevel
+    public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
+    public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
+    public static Sprite sueloLibrary = new Sprite(16,0,2,SpriteSheet.nivel03_library);
+    public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
+                                     new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
+    public static Sprite guardia[]= new Sprite[4];
+    public static Sprite libro;
     
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
@@ -89,6 +138,10 @@ public class Sprite {
     }
     public int getHeight(){
         return height;
+    }
+    public int getSIZE(){
+        return SIZE;
+    
     }
     private void load(){
         for (int y = 0; y < SIZE; y++) {

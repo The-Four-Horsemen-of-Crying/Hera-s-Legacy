@@ -1,15 +1,21 @@
 
 package com.heraslegacy.level;
 
+import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Screen;
+import com.heraslegacy.graphics.Sound;
+import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import java.awt.Color;
 
 public class Level{
+    public Sound b;
+    public final levelStrategy levelstrategy;
     
-    private final levelStrategy levelstrategy;
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
         this.levelstrategy = levelstrategy;
+        b=new Sound(Sound.de);
         levelstrategy.loadLevel(path, pathCollision);
     }
 
@@ -18,7 +24,16 @@ public class Level{
     }
 
     public void render(int xScroll, int yScroll, Screen screen) {
-        levelstrategy.render(xScroll, yScroll, screen);
+        screen.setOffset(xScroll, yScroll);
+        int x0 = (xScroll >> 4);
+        int x1 = (xScroll + screen.width+16) >> 4;
+        int y0 = (yScroll >> 4);
+        int y1 = (yScroll + screen.height+16) >> 4;
+        for (int y = y0; y < y1; y++) {
+            for (int x = x0; x < x1; x++) {
+                getTile(x, y).render(x, y, screen);
+            }
+        }
     }
 
     public Tile getTile(int x, int y) {
@@ -47,6 +62,29 @@ public class Level{
     
     public boolean cambio(){
         return levelstrategy.cambio();
+    }
+    
+    public void configPlayer(){
+        levelstrategy.configPlayer(this);
+    }
+    
+    public Player getPlayer(){
+        return levelstrategy.getPlayer();
+    }
+   
+    public Texto[] getText(){
+        return levelstrategy.getText();
+    }
+    
+    public  void setText(String t){
+         levelstrategy.setText(t);
+    }
+    public Color getColor(){
+        return levelstrategy.getColor();
+    }
+    
+    public Level levelCambio(){
+        return levelstrategy.levelCambio();
     }
 }
 

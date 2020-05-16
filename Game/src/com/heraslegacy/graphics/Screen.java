@@ -14,17 +14,9 @@ public class Screen {
 
     public int width;
     public int height;
-    private final int MAP_SIZE = 64;
     public int[] pixels; //Lo que se ve
     public int xOffSet;
     public int yOffset;
-
-    //Testing Phase
-    private int tilesIndex;
-    private int[] Tiles = new int[MAP_SIZE * MAP_SIZE];
-    private Random random = new Random();
-    private final int MAP_SIZE_MINUS = MAP_SIZE - 1;
-    private int speed = 1;
     
 
     public Screen(int width, int height) {
@@ -32,9 +24,6 @@ public class Screen {
         this.height = height;
         pixels = new int[width * height];
 
-//        for (int i = 0; i < MAP_SIZE * MAP_SIZE; i++) {
-//            Tiles[i] = random.nextInt(0xFFFFFF);//Llenar cada espacio del vector con un color
-//        }
     }
 
     //Metodo para limpiar los pixeles que estaban antes
@@ -80,14 +69,14 @@ public class Screen {
     public void renderPlayer(int xPosition, int yPosition, Sprite sprite) {
         xPosition -= xOffSet;
         yPosition -= yOffset;
-        for (int y = 0; y < sprite.SIZE; y++) {
+        for (int y = 0; y < sprite.getHeight(); y++) {
             int yAbsolute = y + yPosition;
-            for (int x = 0; x < sprite.SIZE; x++) {
+            for (int x = 0; x < sprite.getWidth(); x++) {
                 int xAbsolute = x + xPosition;
-                if (xAbsolute < -sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height)break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
+                if (xAbsolute < -sprite.getWidth() || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height)break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
                 if (xAbsolute < 0)xAbsolute = 0;//Evita un outOfBounds
-                int fondo = sprite.pixels[x + y * sprite.SIZE];
-                if(fondo != 0xff000000)pixels[xAbsolute + yAbsolute * width] = sprite.pixels[x + y * sprite.SIZE];
+                int fondo = sprite.pixels[x + y * sprite.getWidth()];
+                if(fondo != 0xff000000)pixels[xAbsolute + yAbsolute * width] = sprite.pixels[x + y * sprite.getWidth()];
             }
         }
     }

@@ -2,13 +2,13 @@ package com.heraslegacy.manager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javafx.scene.input.KeyCode;
+//import javafx.scene.input.KeyCode;
 
 public class KeyBoard implements KeyListener {
 
     private boolean keys[] = new boolean[500];
     private boolean keysStatic[] = new boolean[500];
-    public static boolean up, down, left, right,restart,delete,enter;
+    public static boolean up, down, left, right,restart,delete,enter, space;
     public static boolean numbers[]= {false,false,false,false,false,false,false,false,false,false};
     
     public void uptade() {
@@ -17,6 +17,7 @@ public class KeyBoard implements KeyListener {
         left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
         restart = keys[KeyEvent.VK_R];
+        space = keys[KeyEvent.VK_SPACE];
         delete = keys[KeyEvent.VK_DELETE];
         enter = keys[KeyEvent.VK_ENTER];
         if(!numbers[1])numbers[1] = keysStatic[KeyEvent.VK_1];

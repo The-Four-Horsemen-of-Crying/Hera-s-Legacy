@@ -22,7 +22,9 @@ public class Sound {
     private final Clip clip;
     private FloatControl volume;
     public static Clip de;
-    
+    public static Clip fail;
+    public static Clip change;
+    public static Clip bakSpa;
    
     public Sound (Clip clip){
         this.clip=clip;
@@ -52,6 +54,10 @@ public class Sound {
      
     public static void init(){//Es llamada 1 sola vez cuando se crea la clase Game, para añadir más sonidos se deben cargar aquí. 
         de=loadSound("/sonidos/aerith.wav");
+        fail = loadSound("/sonidos/fail.wav");
+        change= loadSound("/sonidos/error.wav");
+        bakSpa= loadSound("/sonidos/0842(1).wav");
+                
     }
     public static Clip loadSound(String path){
           
