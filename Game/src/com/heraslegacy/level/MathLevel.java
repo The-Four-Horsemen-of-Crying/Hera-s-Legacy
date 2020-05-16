@@ -203,4 +203,10 @@ public class MathLevel implements levelStrategy {
     public Color getColor() {
         return colorTexto;
     }
+
+    @Override
+    public Level levelCambio() {
+        Lobby.levels[1]=true;
+        return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+    }
 }   
