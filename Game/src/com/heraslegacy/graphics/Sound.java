@@ -55,8 +55,8 @@ public class Sound {
     public static void init(){//Es llamada 1 sola vez cuando se crea la clase Game, para añadir más sonidos se deben cargar aquí. 
         de=loadSound("/sonidos/aerith.wav");
         fail = loadSound("/sonidos/fail.wav");
-        change= loadSound("/sonidos/error.wav");
-        bakSpa= loadSound("/sonidos/0842(1).wav");
+        change= loadSound("/sonidos/change.wav");
+        bakSpa= loadSound("/sonidos/fon.wav");
                 
     }
     public static Clip loadSound(String path){
