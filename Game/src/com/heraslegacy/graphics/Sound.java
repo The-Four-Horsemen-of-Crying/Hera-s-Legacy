@@ -56,7 +56,7 @@ public class Sound {
         de=loadSound("/sonidos/aerith.wav");
         fail = loadSound("/sonidos/fail.wav");
         change= loadSound("/sonidos/change.wav");
-        bakSpa= loadSound("/sonidos/fon.wav");
+        bakSpa= loadSound("/sonidos/fondo.wav");
                 
     }
     public static Clip loadSound(String path){
