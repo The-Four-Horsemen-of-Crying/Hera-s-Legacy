@@ -7,6 +7,7 @@ package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
+import com.heraslegacy.graphics.Fuente;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
@@ -14,10 +15,10 @@ import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.level.tile.TipoTile;
 import com.heraslegacy.main.Game;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalTime;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -32,6 +33,7 @@ public class SpaceLevel implements levelStrategy {
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
+    private Font spaceFont = Fuente.spaceFont;
     private boolean cambio=false, loose=false, win=false;
     private LocalTime dy= LocalTime.now();
     private Sound bk= new Sound(Sound.bakSpa);
@@ -224,5 +226,10 @@ public class SpaceLevel implements levelStrategy {
     public Level levelCambio() {
         Lobby.levels[2]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+    }
+
+    @Override
+    public Font getFont() {
+        return this.spaceFont;
     }
 }

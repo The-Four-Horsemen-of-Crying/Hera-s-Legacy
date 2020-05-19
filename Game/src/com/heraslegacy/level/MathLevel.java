@@ -2,6 +2,7 @@
 package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
+import com.heraslegacy.graphics.Fuente;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
@@ -12,8 +13,10 @@ import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.Random;
 import javax.imageio.ImageIO;
 
@@ -23,18 +26,26 @@ public class MathLevel implements levelStrategy {
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
+    private Font mathLevelFont= Fuente.spaceFont;
+    private final Color colorTexto= Color.BLACK;
+    private Player player;
     private int mesa=0;
     private Random r = new Random();
     private final int respuestas[] = {0,0, 1, 4, 0,0, 1, 4, 0,0, 1, 4, 0};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
-    boolean boo;
-    int indiceMesa;
-    private Player player;
-    private Texto textMath[]= { new Texto("Click para responder", screen.width/2+10, screen.height/2+5, false), new Texto("Introduce tu respuesta", screen.width/2+10, screen.height/2+5, false),
-    new Texto("", screen.width/2+10, screen.height/2+5, false)
+    private boolean boo;
+    private int indiceMesa;
+    private int answerLength = 0;
+    
+    private Texto textMath[]= {
+        new Texto("Click", screen.width/2*scale+45, screen.height/2*scale+70, false), 
+        new Texto("Introduce", screen.width/2*scale+3, screen.height/2*scale+30, false),
+        new Texto("Respuesta", screen.width/2*scale+3, screen.height/2*scale+70, false),
+        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
+        new Texto("Carlitos, Estás haciendo esa vaina mal", screen.width/2-140, screen.height/2*scale-200, false)
     };
-    private final Color colorTexto= Color.WHITE;
+    
 
     
     @Override
@@ -92,7 +103,9 @@ public class MathLevel implements levelStrategy {
         }
 
 
-
+        for (Texto T : textMath ) {
+            T.setVisible(false);
+        }
         return false;
      }
      
@@ -106,6 +119,7 @@ public class MathLevel implements levelStrategy {
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
             uso();
+            Mouse.clickSwitch=false;
             image.getRGB(0, 0, w, h, tiles, 0, w);
             imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
         } catch (IOException ex) {
@@ -127,24 +141,40 @@ public class MathLevel implements levelStrategy {
             
             if(Mouse.clickSwitch){
                         textMath[0].setVisible(false);
-                        textMath[1].setVisible(true);
-                        
+                        textMath[1].setVisible(true);                        
                         textMath[2].setVisible(true);
-                        textMath[2].setText(textMath[2].getText()+numberInput());
+                        textMath[3].setVisible(true);
+                        if(KeyBoard.rate==2&&answerLength<7){
+                            textMath[3].setText(textMath[3].getText()+numberInput());
+                            textMath[3].setPosx(textMath[3].getPosx()-9);
+                            answerLength++;
+                        }
+                        else if(answerLength>=7)textMath[4].setVisible(true);
+                        KeyBoard.rate=0;
+                        
+                        if(KeyBoard.delete){
+                            textMath[3].setText("");
+                            textMath[3].setPosx(screen.width/2*scale+100);
+                            answerLength=1;
+                            textMath[4].setVisible(false);
+                        }
                         //read answer
-                        if(KeyBoard.enter&&Integer.parseInt(textMath[2].getText()) == respuestas[mesa]){
+                        if(KeyBoard.enter&&Integer.parseInt(textMath[3].getText()) == respuestas[mesa]){
                             System.out.println("Respuesta correcta.");
                             resueltos[indiceMesa] = true;
                             
                         }
-                        else if(KeyBoard.enter&&Integer.parseInt(textMath[2].getText())!=respuestas[mesa]){
+                        else if(KeyBoard.enter&&Integer.parseInt(textMath[3].getText())!=respuestas[mesa]){
                             System.out.println("Respuesta incorrecta.");
                             
                         }
                     }
             else{
                 textMath[1].setVisible(false);
+                textMath[2].setVisible(false);
                 textMath[0].setVisible(true);
+                textMath[3].setText("");
+                textMath[3].setPosx(screen.width / 2 * scale+100);
             }
                     
             
@@ -215,7 +245,8 @@ public class MathLevel implements levelStrategy {
                 ejercicios[i]=random;
                 System.out.println(random);
             
-            }    
+            }
+            else i--;
         }
     
     }
@@ -227,20 +258,25 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
-        if(KeyBoard.one)return "1";
-        if(KeyBoard.doix){
-            System.out.println("0");
-            return "2";
-        }
-        if(KeyBoard.trois)return "3";
-        if(KeyBoard.quatre)return "4";
-        if(KeyBoard.cinq)return "5";
-        if(KeyBoard.six)return "6";
-        if(KeyBoard.sept)return "7";
-        if(KeyBoard.huit)return "8";
-        if(KeyBoard.neuf)return "9";
-        if(KeyBoard.zero)return "0";
+            if(KeyBoard.one)return "1";
+            if (KeyBoard.doix)return "2";           
+            if (KeyBoard.trois)return "3";            
+            if (KeyBoard.quatre)return "4";
+            if (KeyBoard.cinq)return "5";
+            if (KeyBoard.six)return "6";
+            if (KeyBoard.sept)return "7";
+            if (KeyBoard.huit)return "8";
+            if (KeyBoard.neuf)return "9";          
+            if (KeyBoard.zero)return "0";
+            
+            
         
         return "";
+        
+    }
+
+    @Override
+    public Font getFont() {
+        return this.mathLevelFont;
     }
 }   

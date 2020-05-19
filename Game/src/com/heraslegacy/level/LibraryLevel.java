@@ -7,11 +7,13 @@ package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
+import com.heraslegacy.graphics.Fuente;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import java.awt.Color;
+import java.awt.Font;
 import java.time.LocalTime;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -29,6 +31,7 @@ public class LibraryLevel implements levelStrategy{
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
+    private Font LibraryFont = Fuente.spaceFont;
     private boolean libros[] ={false, false, false, false};
     private final int zoneColor[] ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkred.getColor()};//Los colores que diferencian cada zona
     private final int visualRange[] ={Colors.orange.getColor(),Colors.lessdarkred.getColor(),Colors.clearblue.getColor(),Colors.green.getColor()};//Los colores de a que lugar están viendo
@@ -184,6 +187,11 @@ public class LibraryLevel implements levelStrategy{
     public Level levelCambio() {
         Lobby.levels[3]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+    }
+
+    @Override
+    public Font getFont() {
+        return this.LibraryFont;
     }
     
 }

@@ -6,10 +6,10 @@ import java.awt.event.KeyListener;
 
 public class KeyBoard implements KeyListener {
 
-    private boolean keys[] = new boolean[500];
-    private boolean keysStatic[] = new boolean[500];
-    public static boolean up, down, left, right,restart,delete,enter, space, one, doix, trois, quatre, cinq, six, sept, huit,neuf, zero;
-    
+    private static boolean keys[] = new boolean[500];
+    private static boolean keysStatic[] = new boolean[500];
+    public static boolean up, down, left, right,restart,delete,enter, space, one, doix, trois, quatre, cinq, six, sept, huit,neuf, zero,soltado;
+    public static int rate = 2;
     public void uptade() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
@@ -17,9 +17,11 @@ public class KeyBoard implements KeyListener {
         right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
         restart = keys[KeyEvent.VK_R];
         space = keys[KeyEvent.VK_SPACE];
-        delete = keys[KeyEvent.VK_DELETE];
+        delete = keys[KeyEvent.VK_BACK_SPACE];
         enter = keys[KeyEvent.VK_ENTER];
         one = keys[KeyEvent.VK_1];
+
+        
         doix = keys[KeyEvent.VK_2];
         trois = keys[KeyEvent.VK_3];
         quatre = keys[KeyEvent.VK_4];
@@ -40,7 +42,9 @@ public class KeyBoard implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
+            
             keysStatic[e.getKeyCode()]=true;//!keysStatic[e.getKeyCode()]?true:false; 
+            
         }
     }
 
@@ -49,7 +53,10 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keysStatic[e.getKeyCode()]=false;
             keys[e.getKeyCode()] = false;
+            rate=2;
         }
     }
-
+    public static void setKey(boolean b, int i){
+        keys[i]=b;
+    }
 }
