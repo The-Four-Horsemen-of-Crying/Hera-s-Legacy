@@ -118,7 +118,8 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level.getPlayer().update();      
+        level.getPlayer().update();  
+        level.update();
     }
 
     public void render() {
@@ -141,7 +142,9 @@ public class Game extends Canvas implements Runnable {
             level.mecanica();
             
         }        
-        
+        if(KeyBoard.restart){
+            level.restart();
+        }
         if(level.cambio()){
             level = level.levelCambio();
             level.configPlayer();
@@ -156,8 +159,9 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-            g.setFont(f);
+            g.setFont(level.getFont());
             g.setColor(level.getColor());
+            
             for (int i = 0; i < level.getText().length; i++) {
                 if(level.getText()[i].isVisible()) {
                     g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
