@@ -2,12 +2,10 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
-import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
-import com.heraslegacy.main.Game;
-import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
+import java.awt.Font;
 
 public interface levelStrategy {
     
@@ -25,4 +23,5 @@ public interface levelStrategy {
     public void setText(String c);
     public Color getColor();
     public Level levelCambio();
+    public Font getFont();
 }

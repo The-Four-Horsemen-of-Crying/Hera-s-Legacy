@@ -7,16 +7,18 @@ import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import java.awt.Color;
+import java.awt.Font;
 
 public class Level{
     public Sound b;
     public final levelStrategy levelstrategy;
-    
+    private Font fontLevel;
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
         this.levelstrategy = levelstrategy;
         b=new Sound(Sound.de);
         levelstrategy.loadLevel(path, pathCollision);
+        fontLevel=levelstrategy.getFont();
     }
 
     public void update() {
@@ -81,6 +83,10 @@ public class Level{
     }
     public Color getColor(){
         return levelstrategy.getColor();
+    }
+    
+    public Font getFont(){
+        return levelstrategy.getFont();
     }
     
     public Level levelCambio(){
