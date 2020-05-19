@@ -34,19 +34,19 @@ public class SpaceLevel implements levelStrategy {
     private Player player;
     private boolean cambio = false, loose = false, win = false;
     private LocalTime dy = LocalTime.now();
-    private Sound sonido[] = { new Sound(Sound.bakSpa),new Sound(Sound.change)};
-    private String text;
-    private int j = 0;
+    private Sound sonido[] = {new Sound(Sound.bakSpa), new Sound(Sound.change), new Sound(Sound.bakSpa)};
+    private int life = 3, j = 0, sw = 0;
     private Color colorTexto = Color.WHITE;
     private static Texto textSpace[] = {
         new Texto("¡LOS CONTROLES FALLAN!", Game.width / 2, Game.height / 2, false),
         new Texto("!Felicidades, has llegado a la luna!", Game.width / 2, Game.height / 2, false),
-        new Texto("FIN DEL JUEGO", Game.width / 2, Game.height / 2, false)
+        new Texto("FIN DEL JUEGO", Game.width / 2, Game.height / 2, false),
+        new Texto("¡INTENTA DE NUEVO!", Game.width / 2, Game.height / 2, false)
     };
 
     @Override
     public void update() {
-        
+
     }
 
     @Override
@@ -154,6 +154,7 @@ public class SpaceLevel implements levelStrategy {
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
+            sonido[2].play();
 
             image.getRGB(0, 0, w, h, tiles, 0, w);
             imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
@@ -166,33 +167,42 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void mecanica() {
         int i;
-        sonido[0].loop();
-        sonido[0].changeVolume(-20);
         if (!cambio) {
             i = 1;
         } else {
             i = 0;
         }
+        if (sw == 0) {
+            sonido[2].play();
+            sw = 2;
+        }
         player.animación();
         int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
         if (res == 50 && !win && !loose) {
-            textSpace[0].setVisible(true);//Implementar aviso cada 25s
-            sonido[i].play();
-             sonido[i].changeVolume(-20);
+            textSpace[0].setVisible(0, textSpace);//Implementar aviso cada 25s
+            sonido[1].stop();
+            sonido[2].stop();
+            sonido[2 - i].play();
+            sonido[1].changeVolume(-20);
+            sonido[2].changeVolume(0);
             player.setTipo(i);
             cambio = !cambio;
             dy = LocalTime.now();
         } else if (res == 55 && !win && !loose) {
+            textSpace[3].setVisible(false);
             textSpace[0].setVisible(false);
         }
         if (player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER && !loose) {
             textSpace[0].setVisible(false);
-            textSpace[2].setVisible(true);//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
+            textSpace[0].setVisible(2, textSpace);//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
             player.setTipo(2);
             loose = true;
+            life--;
+            restar();
+
         } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !win) {
             textSpace[0].setVisible(false);
-            textSpace[1].setVisible(true);//Se le indica que ganó, ya no se hace nada y se termina el juego
+           textSpace[0].setVisible(1, textSpace);//Se le indica que ganó, ya no se hace nada y se termina el juego
             player.setTipo(2);
             j++;
             if (j > 800) {
@@ -210,13 +220,17 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void restar() {
-        if (loose) {
+        if (loose && life > 0) {
             player.setX(Game.width / 2);
             player.setY(Game.height / 2);
             loose = false;
             win = false;
             player.setTipo(0);
             textSpace[2].setVisible(false);
+            textSpace[0].setVisible(3, textSpace);
+            sonido[1].stop();
+            sonido[2].stop();
+            sonido[2].play();
         }
     }
 
@@ -248,7 +262,6 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void setText(String c) {
-        this.text = "";
     }
 
     @Override

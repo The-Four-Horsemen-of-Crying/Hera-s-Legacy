@@ -53,5 +53,14 @@ public class Texto {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+    public void setVisible(int i, Texto[]s){
+        for (int j = 0; j < s.length; j++) {
+            if(j!=i){
+            s[j].setVisible(false);
+            }else{
+            s[j].setVisible(true);
+            }
+        }
+    }
   
 }
