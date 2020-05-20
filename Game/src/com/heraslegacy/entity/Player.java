@@ -16,7 +16,7 @@ public class Player extends Mov{
     private Sprite down[];
     private int tipo=0;
     private int ajusteCentroX, ajusteCentroY;
-    private int xDireccion = 0, yDireccion = 0;
+    private int xDireccion = 0, yDireccion = 0, lastDirx;
     
     public Player(int x, int y){
         this.x = x;
@@ -45,6 +45,7 @@ public class Player extends Mov{
                 if(KeyBoard.left) xDireccion--;
             break;
         }
+        lastDirx=xDireccion;
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
         if(collision(xDireccion,yDireccion)) System.out.println("yu die");
@@ -53,9 +54,29 @@ public class Player extends Mov{
     @Override
     public void render(Screen screen){
         
-        if(direction == 0)sprite = up[ani2 & 3];
+        if(direction == 0){
+            if(level.getLevelstrategy() instanceof SpaceLevel){
+                if(lastDirx>xDireccion){
+                    sprite =left[ani2 & 3];
+                }else{
+                    sprite= rigth[ani2& 3];
+                }
+            }else{
+                sprite= up[ani2& 3];
+            }
+        }
         if(direction == 1) sprite = rigth[ani2 & 3];
-        if(direction == 2) sprite = down[ani2 & 3];      
+        if(direction == 2) {
+        if(level.getLevelstrategy() instanceof SpaceLevel){
+                if(lastDirx>xDireccion){
+                    sprite =left[ani2 & 3];
+                }else{
+                    sprite= rigth[ani2& 3];
+                }
+            }else{
+                sprite= down[ani2& 3];
+            }
+        }
         if(direction == 3) sprite = left[ani2 & 3];
         
         Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL

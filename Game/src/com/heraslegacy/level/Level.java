@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class Level{
     public Sound b;
-    public final levelStrategy levelstrategy;
+    private final levelStrategy levelstrategy;
     
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
@@ -86,5 +86,10 @@ public class Level{
     public Level levelCambio(){
         return levelstrategy.levelCambio();
     }
+
+    public levelStrategy getLevelstrategy() {
+        return levelstrategy;
+    }
+    
 }
 
