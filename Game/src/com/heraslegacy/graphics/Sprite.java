@@ -49,7 +49,9 @@ public class Sprite {
     public static Sprite frasesLvl01[] = {new Sprite(96,32,0,3, SpriteSheet.numFonts)};
     
     //MathLevel
-    public static Sprite []hoja ={new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+    public static Sprite []hoja ={null,new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
                                   new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat)};
     
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),

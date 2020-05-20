@@ -159,8 +159,9 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-            g.setFont(Fuente.spaceFont);
+            g.setFont(level.getFont());
             g.setColor(level.getColor());
+            
             for (int i = 0; i < level.getText().length; i++) {
                 if(level.getText()[i].isVisible()) {
                     g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   

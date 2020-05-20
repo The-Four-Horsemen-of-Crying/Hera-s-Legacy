@@ -2,6 +2,7 @@
 package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
+import com.heraslegacy.graphics.Fuente;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
@@ -12,8 +13,11 @@ import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.util.Random;
 import javax.imageio.ImageIO;
 
 
@@ -22,18 +26,27 @@ public class MathLevel implements levelStrategy {
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
-    private int mesa=0;
-    private final int respuestas[] = {0, 1, 4, 0};
-    private boolean resueltos[] = {false, false, false, false};
-    private Mouse mouse;
-    private KeyBoard key;
-    private int numeroAnterior;
-    boolean boo;
+    private Font mathLevelFont= Fuente.spaceFont;
+    private final Color colorTexto= Color.BLACK;
     private Player player;
-    private Texto textMath[]= {
+    private int mesa=0;
+    private Random r = new Random();
+    private final int respuestas[] = {0,0, 1, 4, 0,0, 1, 4, 0,0, 1, 4, 0};
+    private int [] ejercicios = {0,0,0,0};
+    private boolean resueltos[] = {false, false, false, false};
+    private boolean boo;
+    private int indiceMesa;
+    private int answerLength = 0;
     
+    private Texto textMath[]= {
+        new Texto("Click", screen.width/2*scale+45, screen.height/2*scale+70, false), 
+        new Texto("Introduce", screen.width/2*scale+3, screen.height/2*scale+30, false),
+        new Texto("Respuesta", screen.width/2*scale+3, screen.height/2*scale+70, false),
+        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
+        new Texto("Carlitos, Estás haciendo esa vaina mal", screen.width/2-140, screen.height/2*scale-200, false)
     };
-    private final Color colorTexto= Color.WHITE;
+    
+
     
     @Override
     public void update(){   
@@ -64,31 +77,35 @@ public class MathLevel implements levelStrategy {
     public boolean getCollision(int x, int y){
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.getColor() && !this.resueltos[0]){
-            mesa = 0;
+            
+            mesa = ejercicios[0];
+            indiceMesa=0;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor() && !this.resueltos[1]){
-            mesa = 1;
+            
+            mesa = ejercicios[1];
+            indiceMesa=1;
             return true;
         }         
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.getColor() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
-            mesa = 2;
+            mesa = ejercicios[2];
+            indiceMesa = 2;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.getColor() && !this.resueltos[3]){
-            mesa = 3;
+            mesa = ejercicios[3];
+            indiceMesa = 3;
             return true;
         }
 
 
-        Mouse.clickSwitch=false;
-        for (int i = 0; i < KeyBoard.numbers.length; i++) {
-            KeyBoard.numbers[i] = false;
+        for (Texto T : textMath ) {
+            T.setVisible(false);
         }
-
         return false;
      }
      
@@ -101,7 +118,8 @@ public class MathLevel implements levelStrategy {
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
-
+            uso();
+            Mouse.clickSwitch=false;
             image.getRGB(0, 0, w, h, tiles, 0, w);
             imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
         } catch (IOException ex) {
@@ -112,8 +130,8 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void mecanica() {
-        int thisNum = 0;
-        screen.renderSprite(false, screen.width / 2 - hoja[0].getWidth() / 2, screen.height / 2 - hoja[0].getHeight() / 2,
+        
+        screen.renderSprite(false, screen.width / 2 - hoja[1].getWidth() / 2, screen.height / 2 - hoja[1].getHeight() / 2,
                 hoja[mesa]);
 
         if((Mouse.mouseX > screen.width  * scale / 2) && 
@@ -122,38 +140,48 @@ public class MathLevel implements levelStrategy {
                 (Mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight()- 22) * scale / 2 )){
             
             if(Mouse.clickSwitch){
-                while(thisNum < KeyBoard.numbers.length){
-                    if(KeyBoard.numbers[thisNum]){
-                        if(numeroAnterior != thisNum)KeyBoard.numbers[numeroAnterior] = false;                        
-                        screen.renderSprite(false, screen.width / 2 + Sprite.fonts01[thisNum].getWidth() / 2,
-                                screen.height / 2 + Sprite.fonts01[thisNum].getHeight() / 2, Sprite.fonts01[thisNum]);  
-                        numeroAnterior = thisNum;
-
-                        //read answer
-                        if(KeyBoard.enter&&thisNum == respuestas[mesa]){
-                            System.out.println("Respuesta correcta.");
-                            resueltos[mesa] = true;
-                            KeyBoard.numbers[thisNum] = false;
+                        textMath[0].setVisible(false);
+                        textMath[1].setVisible(true);                        
+                        textMath[2].setVisible(true);
+                        textMath[3].setVisible(true);
+                        if(KeyBoard.rate==2&&answerLength<7){
+                            textMath[3].setText(textMath[3].getText()+numberInput());
+                            textMath[3].setPosx(textMath[3].getPosx()-9);
+                            answerLength++;
                         }
-                        else if(KeyBoard.enter&&thisNum!=respuestas[mesa]){
+                        else if(answerLength>=7)textMath[4].setVisible(true);
+                        KeyBoard.rate=0;
+                        
+                        if(KeyBoard.delete){
+                            textMath[3].setText("");
+                            textMath[3].setPosx(screen.width/2*scale+100);
+                            answerLength=1;
+                            textMath[4].setVisible(false);
+                        }
+                        //read answer
+                        if(KeyBoard.enter&&Integer.parseInt(textMath[3].getText()) == respuestas[mesa]){
+                            System.out.println("Respuesta correcta.");
+                            resueltos[indiceMesa] = true;
+                            
+                        }
+                        else if(KeyBoard.enter&&Integer.parseInt(textMath[3].getText())!=respuestas[mesa]){
                             System.out.println("Respuesta incorrecta.");
-                            KeyBoard.numbers[thisNum] = false;
+                            
                         }
                     }
-                    thisNum++;
-                }                
+            else{
+                textMath[1].setVisible(false);
+                textMath[2].setVisible(false);
+                textMath[0].setVisible(true);
+                textMath[3].setText("");
+                textMath[3].setPosx(screen.width / 2 * scale+100);
             }
-            else screen.renderSprite(false, screen.width / 2 - 2, screen.height / 2 + Sprite.fonts01[thisNum].getHeight() / 2,
-                    Sprite.frasesLvl01[0]);
-        }
-        else {
-            Mouse.clickSwitch = false;
-            for (int i = 0; i < KeyBoard.numbers.length; i++) {
-                KeyBoard.numbers[i] = false;
+                    
+            
             }
-        }
-        
     }
+        
+    
     @Override
     public void time(){
             
@@ -166,6 +194,7 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public boolean cambio(){
+            
         boo = true;
         for (boolean re : resueltos) {
             boo = boo && re;
@@ -208,5 +237,46 @@ public class MathLevel implements levelStrategy {
     public Level levelCambio() {
         Lobby.levels[1]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
+    }
+    private void uso(){
+            for (int i = 0; i < ejercicios.length; i++) {
+            int random = r.nextInt(10)+1;
+            if(!nonRepeated(random)){
+                ejercicios[i]=random;
+                System.out.println(random);
+            
+            }
+            else i--;
+        }
+    
+    }
+    private boolean nonRepeated(int i){
+        for (int j = 0; j < ejercicios.length; j++) {
+            if(ejercicios[j]==i)return true;
+        }
+        return false;
+    }
+
+    private String numberInput() {
+            if(KeyBoard.one)return "1";
+            if (KeyBoard.doix)return "2";           
+            if (KeyBoard.trois)return "3";            
+            if (KeyBoard.quatre)return "4";
+            if (KeyBoard.cinq)return "5";
+            if (KeyBoard.six)return "6";
+            if (KeyBoard.sept)return "7";
+            if (KeyBoard.huit)return "8";
+            if (KeyBoard.neuf)return "9";          
+            if (KeyBoard.zero)return "0";
+            
+            
+        
+        return "";
+        
+    }
+
+    @Override
+    public Font getFont() {
+        return this.mathLevelFont;
     }
 }   

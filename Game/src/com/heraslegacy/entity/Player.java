@@ -4,7 +4,6 @@ package com.heraslegacy.entity;
 
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
-import com.heraslegacy.level.SpaceLevel;
 import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 
@@ -48,7 +47,7 @@ public class Player extends Mov{
         lastDirx=xDireccion;
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
-        if(collision(xDireccion,yDireccion)) System.out.println("yu die");
+        
     }
     
     @Override
