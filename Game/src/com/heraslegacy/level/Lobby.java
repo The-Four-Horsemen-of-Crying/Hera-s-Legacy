@@ -55,6 +55,7 @@ public class Lobby implements levelStrategy{
         if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
         if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
         if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
+        
         System.out.println(tiles[x + y * width]);
         return Tile.pikes;
     }
