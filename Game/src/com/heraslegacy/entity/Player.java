@@ -4,6 +4,7 @@ package com.heraslegacy.entity;
 
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
+import com.heraslegacy.level.SpaceLevel;
 import com.heraslegacy.main.Game;
 import com.heraslegacy.manager.KeyBoard;
 
@@ -44,7 +45,6 @@ public class Player extends Mov{
                 if(KeyBoard.left) xDireccion--;
             break;
         }
-        lastDirx=xDireccion;
         
         if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
         
@@ -55,7 +55,7 @@ public class Player extends Mov{
         
         if(direction == 0){
             if(level.getLevelstrategy() instanceof SpaceLevel){
-                if(lastDirx>xDireccion){
+                if(lastDirx==1){
                     sprite =left[ani2 & 3];
                 }else{
                     sprite= rigth[ani2& 3];
@@ -64,10 +64,13 @@ public class Player extends Mov{
                 sprite= up[ani2& 3];
             }
         }
-        if(direction == 1) sprite = rigth[ani2 & 3];
+        if(direction == 1) {
+            sprite = rigth[ani2 & 3];
+            lastDirx=0;
+        }
         if(direction == 2) {
         if(level.getLevelstrategy() instanceof SpaceLevel){
-                if(lastDirx>xDireccion){
+                if(lastDirx==1){
                     sprite =left[ani2 & 3];
                 }else{
                     sprite= rigth[ani2& 3];
@@ -76,7 +79,10 @@ public class Player extends Mov{
                 sprite= down[ani2& 3];
             }
         }
-        if(direction == 3) sprite = left[ani2 & 3];
+        if(direction == 3) {
+            sprite = left[ani2 & 3];
+            lastDirx=1;
+        }
         
         Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
         screen.renderPlayer(x - ajusteCentroX, y - ajusteCentroY, sprite);
