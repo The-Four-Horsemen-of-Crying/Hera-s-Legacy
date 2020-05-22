@@ -28,6 +28,8 @@ public class Sprite {
     public static Sprite columnas[] = {new Sprite(16, 0, 2, SpriteSheet.nivel00_lobby),new Sprite(16, 1, 2, SpriteSheet.nivel00_lobby)};
     public static Sprite techo = new Sprite(16, 2, 2, SpriteSheet.nivel00_lobby);
     //SpaceShit
+    public static Sprite moon = new Sprite(96,0,0,SpriteSheet.singleDrawMoon);
+    
     public static Sprite meteorito[] = {new Sprite(16,0,2,SpriteSheet.nivel02_space),new Sprite(16,2,2,SpriteSheet.nivel02_space),new Sprite(16,3,2,SpriteSheet.nivel02_space),
                                         new Sprite(16,4,2,SpriteSheet.nivel02_space),new Sprite(16,5,2,SpriteSheet.nivel02_space),new Sprite(16,2,3,SpriteSheet.nivel02_space),
                                         new Sprite(16,5,3,SpriteSheet.nivel02_space),new Sprite(16,2,5,SpriteSheet.nivel02_space),new Sprite(16,3,5,SpriteSheet.nivel02_space),

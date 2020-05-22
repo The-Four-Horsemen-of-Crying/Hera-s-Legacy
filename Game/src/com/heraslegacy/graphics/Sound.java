@@ -27,6 +27,8 @@ public class Sound {
     public static Clip bakSpa;
     public static Clip win;
     public static Clip loose;
+    public static Clip walk;
+    public static Clip propulsion;
    
     public Sound (Clip clip){
         this.clip=clip;
@@ -61,6 +63,8 @@ public class Sound {
         bakSpa= loadSound("/sonidos/fondo.wav");
         win=loadSound("/sonidos/Win.wav");
         loose=loadSound("/sonidos/Loose.wav");
+        walk=loadSound("/sonidos/caminar.wav");
+        propulsion=loadSound("/sonidos/propulsion.wav");
                 
     }
     public static Clip loadSound(String path){

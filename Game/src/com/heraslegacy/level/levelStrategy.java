@@ -24,4 +24,6 @@ public interface levelStrategy {
     public Color getColor();
     public Level levelCambio();
     public Font getFont();
+
+    public void sobreRender();
 }

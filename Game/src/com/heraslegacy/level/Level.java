@@ -36,6 +36,10 @@ public class Level{
                 getTile(x, y).render(x, y, screen);
             }
         }
+        
+    }
+    public void superRender(){
+        levelstrategy.sobreRender();    
     }
 
     public Tile getTile(int x, int y) {

@@ -8,10 +8,12 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Fuente;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.screen;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
@@ -38,6 +40,7 @@ public class Lobby implements levelStrategy{
     
     @Override
     public void update() {
+        
     }
 
     @Override
@@ -120,7 +123,8 @@ public class Lobby implements levelStrategy{
     public void configPlayer(Level level) {
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
-        player.setAjustes(14, 8, 12, 3, 16, 16);
+        Sound w= new Sound(Sound.propulsion);
+        player.setAjustes(14, 8, 12, 3, 16, 16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);
@@ -167,5 +171,9 @@ public class Lobby implements levelStrategy{
     @Override
     public Font getFont() {
         return this.lobbyFont;
+    }
+
+    @Override
+    public void sobreRender() {
     }
 }
