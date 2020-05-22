@@ -156,7 +156,7 @@ public class Lobby implements levelStrategy{
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         switch(nivelCase){
             case 1:
-                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel()));
+                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(1)));
                 break;
             case 2:
                 game = (new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
