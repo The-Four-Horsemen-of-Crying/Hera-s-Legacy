@@ -47,6 +47,9 @@ public class Fantasma implements levelStrategy {
     public Fantasma(int nivelsig){
         cont[3]=nivelsig;//La idea es utilizar esto para hacer tipo un switch
     }
+
+  
+
     @Override
     public void update() {
     }
@@ -110,6 +113,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void time() {
+
         cont[0] = LocalTime.now().minusSeconds(cont[0]).getSecond();//MAnejo del tiempo del nivel
         cont[1] = LocalTime.now().minusSeconds(cont[1]).getSecond();//MAnejo del tiempo de los mensajes
         if (cont[1] == 3) {//Mostrar mensajes
