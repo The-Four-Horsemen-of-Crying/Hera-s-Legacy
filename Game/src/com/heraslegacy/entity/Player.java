@@ -3,6 +3,7 @@ package com.heraslegacy.entity;
 
 
 import com.heraslegacy.graphics.Screen;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.SpaceLevel;
 import com.heraslegacy.main.Game;
@@ -17,6 +18,7 @@ public class Player extends Mov{
     private int tipo=0;
     private int ajusteCentroX, ajusteCentroY;
     private int xDireccion = 0, yDireccion = 0, lastDirx;
+    
     
     public Player(int x, int y){
         this.x = x;
@@ -46,7 +48,9 @@ public class Player extends Mov{
             break;
         }
         
-        if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
+        if(xDireccion!=0||yDireccion!=0) {
+            move(xDireccion, yDireccion);
+        }
         
     }
     
@@ -98,13 +102,14 @@ public class Player extends Mov{
       tipo=b;
     }
 
-    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2, int ajusteCentroX, int ajusteCentroY) {
+    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2, int ajusteCentroX, int ajusteCentroY, Sound move) {
         this.ajusteX1 = ajusteX1;
         this.ajusteX2 = ajusteX2;
         this.ajusteY1 = ajusteY1;
         this.ajusteY2 = ajusteY2;
         this.ajusteCentroX = ajusteCentroX;
         this.ajusteCentroY = ajusteCentroY;
+        this.move=move;
     }
 
     public boolean getCollisionP(){

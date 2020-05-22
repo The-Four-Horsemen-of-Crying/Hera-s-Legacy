@@ -2,6 +2,7 @@
 package com.heraslegacy.entity;
 
 import com.heraslegacy.graphics.Screen;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.tile.Tile;
 
@@ -11,7 +12,7 @@ public abstract class Mov {
     protected int ajusteX1, ajusteX2, ajusteY1, ajusteY2;
     protected int latencia;
     protected Tile directionalTile;
-    
+    protected Sound move;
     Level level;
     
     public void remove(){
@@ -78,8 +79,10 @@ public abstract class Mov {
     
     public void animación(){            
         if(ani % latencia == 0){
+            move.play();
             ani2++;
             ani = 0;
+            
         }
         ani++;
     }  

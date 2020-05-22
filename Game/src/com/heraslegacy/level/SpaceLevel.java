@@ -14,6 +14,7 @@ import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.level.tile.TipoTile;
 import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.screen;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
@@ -54,7 +55,6 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void update() {
-
     }
 
     @Override
@@ -149,7 +149,6 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public boolean getCollision(int x, int y) {
-
         return true;
     }
 
@@ -277,7 +276,9 @@ public class SpaceLevel implements levelStrategy {
 
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
-        player.setAjustes(24, -7, -12, -11, 12, 24);
+        Sound p = new Sound(Sound.propulsion);
+        p.changeVolume(-10);
+        player.setAjustes(24, -7, -12, -11, 12, 24, p);
         player.setTipo(0);
         player.setLevel(level);
         player.setLatencia(400);
@@ -311,5 +312,10 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public Font getFont() {
         return this.spaceFont;
+    }
+
+    @Override
+    public void sobreRender() {
+        screen.renderSprite(true, 1800, 300,Sprite.moon);
     }
 }
