@@ -46,6 +46,10 @@ public class Player extends Mov{
                 if(KeyBoard.right) xDireccion++;
                 if(KeyBoard.left) xDireccion--;
             break;
+            case 3:
+                xDireccion++;
+                yDireccion=0;
+            break;
         }
         
         if(xDireccion!=0||yDireccion!=0) {
