@@ -29,6 +29,9 @@ public class Sound {
     public static Clip loose;
     public static Clip walk;
     public static Clip propulsion;
+    public static Clip lobby_Theme;
+    public static Clip lobby_portalSound;
+    public static Clip buttonAlert_0;
    
     public Sound (Clip clip){
         this.clip=clip;
@@ -65,6 +68,9 @@ public class Sound {
         loose=loadSound("/sonidos/Loose.wav");
         walk=loadSound("/sonidos/caminar.wav");
         propulsion=loadSound("/sonidos/propulsion.wav");
+        lobby_Theme=loadSound("/sonidos/lobbyTheme.wav");
+        lobby_portalSound= loadSound("/sonidos/portalPass.wav");
+        buttonAlert_0= loadSound("/sonidos/buttonSound_0.wav");
                 
     }
     public static Clip loadSound(String path){

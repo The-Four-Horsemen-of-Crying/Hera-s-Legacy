@@ -2,30 +2,32 @@
 package com.heraslegacy.level;
 
 import com.heraslegacy.entity.Player;
+import com.heraslegacy.graphics.MenuGUI;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import static com.heraslegacy.main.Game.screen;
 import java.awt.Color;
 import java.awt.Font;
 
 public class Level{
-    public Sound b;
     public final levelStrategy levelstrategy;
     private Font fontLevel;
+    private MenuGUI menu;
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
         this.levelstrategy = levelstrategy;
-        b=new Sound(Sound.de);
         levelstrategy.loadLevel(path, pathCollision);
         fontLevel=levelstrategy.getFont();
+        menu= new MenuGUI();
     }
 
     public void update() {
         levelstrategy.update();
     }
 
-    public void render(int xScroll, int yScroll, Screen screen) {
+    public void render(int xScroll, int yScroll) {
         screen.setOffset(xScroll, yScroll);
         int x0 = (xScroll >> 4);
         int x1 = (xScroll + screen.width+16) >> 4;
@@ -33,13 +35,14 @@ public class Level{
         int y1 = (yScroll + screen.height+16) >> 4;
         for (int y = y0; y < y1; y++) {
             for (int x = x0; x < x1; x++) {
-                getTile(x, y).render(x, y, screen);
+                getTile(x, y).render(x, y);
             }
         }
+        levelstrategy.render();
         
     }
-    public void superRender(){
-        levelstrategy.sobreRender();    
+    public void superRender(int xScroll, int yScroll){
+        levelstrategy.sobreRender(xScroll,yScroll);    
     }
 
     public Tile getTile(int x, int y) {

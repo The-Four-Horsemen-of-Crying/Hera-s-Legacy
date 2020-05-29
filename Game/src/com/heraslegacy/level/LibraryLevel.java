@@ -195,7 +195,12 @@ public class LibraryLevel implements levelStrategy{
     }
 
     @Override
-    public void sobreRender() {
+    public void sobreRender(int xScroll, int yScroll) {
+    }
+
+    @Override
+    public void render() {
+        
     }
     
 }

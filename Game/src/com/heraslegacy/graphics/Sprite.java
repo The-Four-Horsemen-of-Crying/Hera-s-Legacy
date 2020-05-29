@@ -12,7 +12,7 @@ public class Sprite {
     public int [] pixels;
     private SpriteSheet sheet;
     
-    public static Sprite shit = new Sprite(300,168,0,0,SpriteSheet.shit);
+    
     public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.elizabeth);
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
@@ -25,8 +25,14 @@ public class Sprite {
                                           new Sprite(16, 3, 0, SpriteSheet.nivel00_lobby),new Sprite(16, 4, 0, SpriteSheet.nivel00_lobby)};
     
     public static Sprite specialMarmolFloor = new Sprite(16, 1, 0, SpriteSheet.nivel00_lobby);
+    
     public static Sprite columnas[] = {new Sprite(16, 0, 2, SpriteSheet.nivel00_lobby),new Sprite(16, 1, 2, SpriteSheet.nivel00_lobby)};
+    
     public static Sprite techo = new Sprite(16, 2, 2, SpriteSheet.nivel00_lobby);
+    
+    public static Sprite portales [][] = {{new Sprite(32, 48, 0, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 0, SpriteSheet.LobbyDoors)},
+                                          {new Sprite(32, 48, 0, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 1, SpriteSheet.LobbyDoors)},
+                                          {new Sprite(32, 48, 0, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 2, SpriteSheet.LobbyDoors)}};
     //SpaceShit
     public static Sprite moon = new Sprite(96,0,0,SpriteSheet.singleDrawMoon);
     

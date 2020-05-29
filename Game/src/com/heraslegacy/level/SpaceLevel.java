@@ -320,7 +320,12 @@ public class SpaceLevel implements levelStrategy {
     }
 
     @Override
-    public void sobreRender() {
-        screen.renderSprite(true, 1800, 300, Sprite.moon);
+    public void sobreRender(int xScroll, int yScroll) {
+        screen.renderSprite(true, 112*16,16*16 , Sprite.moon);
+    }
+
+    @Override
+    public void render() {
+       
     }
 }
