@@ -135,9 +135,9 @@ public class Game extends Canvas implements Runnable {
         int yScroll = level.getPlayer().getY() - screen.height/2;
 
         
-        level.render(xScroll, yScroll, screen);   
+        level.render(xScroll, yScroll);   
         level.getPlayer().render(screen);
-        level.superRender();
+        level.superRender(xScroll, yScroll);
         
         if(activarMecanica){
             level.mecanica();

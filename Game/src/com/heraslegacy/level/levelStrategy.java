@@ -25,5 +25,5 @@ public interface levelStrategy {
     public Level levelCambio();
     public Font getFont();
 
-    public void sobreRender();
+    public void sobreRender(int xScroll,int yScroll);
 }

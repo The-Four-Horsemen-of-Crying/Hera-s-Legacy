@@ -282,6 +282,6 @@ public class MathLevel implements levelStrategy {
     }
 
     @Override
-    public void sobreRender() {
+    public void sobreRender(int xScroll, int yScroll) {
     }
 }   

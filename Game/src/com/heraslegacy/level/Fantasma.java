@@ -135,7 +135,6 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void restar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -187,7 +186,7 @@ public class Fantasma implements levelStrategy {
     }
 
     @Override
-    public void sobreRender() {
+    public void sobreRender(int xScroll, int yScroll) {
     }
 
 }
