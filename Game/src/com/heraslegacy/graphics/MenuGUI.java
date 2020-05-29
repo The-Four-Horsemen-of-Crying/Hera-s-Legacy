@@ -28,7 +28,7 @@ public class MenuGUI {
     
     void mouseOptionsTracker(){
         
-        //Depediendo de la locacización del mouse hacer ciertas acciones    
+         
     }
 
     private void splitAll() {

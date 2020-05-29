@@ -81,7 +81,7 @@ public class SpaceLevel implements levelStrategy {
         }
 
         if (tiles[x + y * width] == Colors.yellow.getColor()) {
-            return Tile.spacePices[5];
+            return Tile.spacePices[6];
         }
 
         if (tiles[x + y * width] == Colors.white.getColor()) {
@@ -169,7 +169,7 @@ public class SpaceLevel implements levelStrategy {
             System.out.println("No se pudo cargar el archivo del nivel.");
         }
     }
-
+    
     @Override
     public void mecanica() {
 

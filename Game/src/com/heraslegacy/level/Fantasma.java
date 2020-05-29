@@ -46,13 +46,13 @@ public class Fantasma implements levelStrategy {
         new Texto("", Game.width / 2, 300, false)};
     private Tile piso[] = {
         Tile.spacePices[3],
+        Tile.woodFloor,
         Tile.sueloLibrary,
-        Tile.woodFloor
     };
     private Tile pared[] = {
         Tile.spacePices[0],
-        Tile.paredLibrary,
-        Tile.woodWall
+        Tile.woodWall,
+        Tile.estanterias[0]
     };
 
     public Fantasma(int indiceLevel) {
@@ -61,6 +61,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void update(){
+        
     }
 
     @Override
@@ -117,6 +118,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void mecanica() {
+        if(indiceLevel==0)player.animación();
         time();
         if (cont[0] == 10) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
@@ -135,10 +137,14 @@ public class Fantasma implements levelStrategy {
     @Override
     public void configPlayer(Level level) {
         //Buscar la manera de decidir cual cargar
+        int latencia= 30;
+        Sound p = new Sound(Sound.walk);
         player = new Player(Game.width / 2, Game.height / 2);
         switch (indiceLevel) {
             case 0:
                 player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
+                latencia=400;
+                p = new Sound(Sound.propulsion);
                 break;
             case 1:
                 player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
@@ -147,12 +153,12 @@ public class Fantasma implements levelStrategy {
                 player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
                 break;
         }
-        Sound p = new Sound(Sound.propulsion);
+        
         p.changeVolume(-10);
         player.setAjustes(24, -7, -12, -11, 12, 24, p);
         player.setTipo(3);
         player.setLevel(level);
-        player.setLatencia(400);
+        player.setLatencia(latencia);
     }
 
     @Override

@@ -36,7 +36,8 @@ public class Tile {
     
     //SpaceShit
     public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
-                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true)};
+                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true),
+                                       new Tile(Sprite.spaceCheese[2], true)};
     
     public static Tile []spaceMeteor = {new Tile(Sprite.meteorito[0], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[1], true),new Tile(Sprite.meteorito[2], true,TipoTile.GAME_OVER),
                                         new Tile(Sprite.meteorito[3], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[4], true),new Tile(Sprite.meteorito[5], true,TipoTile.GAME_OVER),
