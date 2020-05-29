@@ -35,20 +35,29 @@ public class Fantasma implements levelStrategy {
     private final Font spaceFont = Fuente.spaceFont;
     private final Color colorTexto = Color.WHITE;
     private boolean cambio = false;
-    private int cont[]= new int[5];
+    private int cont[] = new int[3];
+    private int indiceLevel;
     private Texto a[] = {
-        new Texto("1", Game.width / 2, 300, true),
-        new Texto("2", Game.width / 2, 300, false),
+        new Texto("Hola", Game.width / 2, 300, true),
+        new Texto("Puta :)", Game.width / 2, 300, false),
         new Texto("3", Game.width / 2, 300, false),
         new Texto("4", Game.width / 2, 300, false),
         new Texto("5", Game.width / 2, 300, false),
         new Texto("", Game.width / 2, 300, false)};
-    
-    public Fantasma(int nivelsig){
-        cont[3]=nivelsig;//La idea es utilizar esto para hacer tipo un switch
-    }
+    private Tile piso[] = {
+        Tile.spacePices[3],
+        Tile.sueloLibrary,
+        Tile.woodFloor
+    };
+    private Tile pared[] = {
+        Tile.spacePices[0],
+        Tile.paredLibrary,
+        Tile.woodWall
+    };
 
-  
+    public Fantasma(int indiceLevel) {
+        this.indiceLevel = indiceLevel;//La idea es utilizar esto para hacer tipo un switch
+    }
 
     @Override
     public void update(){
@@ -61,31 +70,12 @@ public class Fantasma implements levelStrategy {
             return Tile.spacePices[3];
         }
 
-        if (tiles[x + y * width] == Colors.lime.getColor()) {
-            return Tile.spacePices[0];
+        if (tiles[x + y * width] == Colors.yellow.getColor()) {
+            return pared[indiceLevel];
+        } else {
+            return piso[indiceLevel];
         }
 
-        if (tiles[x + y * width] == Colors.blue.getColor()) {
-            return Tile.spacePices[1];
-        }
-
-        if (tiles[x + y * width] == Colors.red.getColor()) {
-            return Tile.spacePices[2];
-        }
-
-        if (tiles[x + y * width] == Colors.fuchsia.getColor()) {
-            return Tile.spacePices[3];
-        }
-
-        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) {
-            return Tile.niceStuff[0];
-        }
-
-        if (tiles[x + y * width] == Colors.purplePoe.getColor()) {
-            return Tile.niceStuff[1];
-        }
-
-        return Tile.spacePices[3];
     }
 
     @Override
@@ -128,7 +118,7 @@ public class Fantasma implements levelStrategy {
     @Override
     public void mecanica() {
         time();
-        if (cont[0] == 2) {
+        if (cont[0] == 10) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
     }
@@ -146,7 +136,17 @@ public class Fantasma implements levelStrategy {
     public void configPlayer(Level level) {
         //Buscar la manera de decidir cual cargar
         player = new Player(Game.width / 2, Game.height / 2);
-        player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
+        switch (indiceLevel) {
+            case 0:
+                player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
+                break;
+            case 1:
+                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                break;
+            case 2:
+                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                break;
+        }
         Sound p = new Sound(Sound.propulsion);
         p.changeVolume(-10);
         player.setAjustes(24, -7, -12, -11, 12, 24, p);
@@ -171,13 +171,29 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Color getColor() {
-        return this.colorTexto;
+       Color color = Color.WHITE;
+       if(indiceLevel!=0){
+           color= Color.BLACK;
+       }
+        return color;
     }
 
     @Override
     public Level levelCambio() {
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
-        return new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());
+        Level game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new Fantasma(indiceLevel));
+        switch (indiceLevel) {
+            case 0:
+                game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());
+                break;
+            case 1:
+                game = new Level("/levels/level01/level1.png", "/levels/level01/collisionlevel1.png", new MathLevel());
+                break;
+            case 2:
+                game = new Level("/levels/level03/nivel3.png", "/levels/level03/nivel3COLLITION.png", new LibraryLevel());
+                break;
+        }
+        return game;
     }
 
     @Override

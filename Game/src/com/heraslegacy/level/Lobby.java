@@ -69,15 +69,15 @@ public class Lobby implements levelStrategy{
     @Override
     public boolean getCollision(int x, int y) {
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
-            nivelCase = 1;
+            nivelCase = 0;
             return true;
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.blue.getColor()) {
-            nivelCase = 2;
+            nivelCase = 1;
             return true;
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.red.getColor()) {
-            nivelCase = 3;
+            nivelCase = 2;
             return true;
         }
         boolSounds[0]=false;
@@ -166,13 +166,9 @@ public class Lobby implements levelStrategy{
         sounds[0].stop();
         switch(nivelCase){
             case 1:
-                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(1)));
-                break;
             case 2:
-                game = (new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
-                break;
             case 3:
-                game = (new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel()));
+                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(nivelCase)));
                 break;
         }
         return game;
