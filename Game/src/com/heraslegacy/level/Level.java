@@ -38,6 +38,7 @@ public class Level{
                 getTile(x, y).render(x, y);
             }
         }
+        levelstrategy.render();
         
     }
     public void superRender(int xScroll, int yScroll){

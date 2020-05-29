@@ -259,7 +259,7 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
-            if(KeyBoard.one)return "1";
+            if (KeyBoard.one)return "1";
             if (KeyBoard.doix)return "2";           
             if (KeyBoard.trois)return "3";            
             if (KeyBoard.quatre)return "4";
@@ -283,5 +283,10 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void sobreRender(int xScroll, int yScroll) {
+    }
+
+    @Override
+    public void render() {
+        
     }
 }   

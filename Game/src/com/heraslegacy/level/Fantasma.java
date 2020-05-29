@@ -42,7 +42,7 @@ public class Fantasma implements levelStrategy {
         new Texto("3", Game.width / 2, 300, false),
         new Texto("4", Game.width / 2, 300, false),
         new Texto("5", Game.width / 2, 300, false),
-    new Texto("", Game.width / 2, 300, false)};
+        new Texto("", Game.width / 2, 300, false)};
     
     public Fantasma(int nivelsig){
         cont[3]=nivelsig;//La idea es utilizar esto para hacer tipo un switch
@@ -51,7 +51,7 @@ public class Fantasma implements levelStrategy {
   
 
     @Override
-    public void update() {
+    public void update(){
     }
 
     @Override
@@ -187,6 +187,11 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void sobreRender(int xScroll, int yScroll) {
+    }
+
+    @Override
+    public void render() {
+        
     }
 
 }
