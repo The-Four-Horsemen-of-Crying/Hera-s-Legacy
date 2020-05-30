@@ -109,8 +109,9 @@ public class Sprite {
     
     //GUI MENU
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);
-    public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.buttonsGUI),new Sprite(86, 32, 0, 1, SpriteSheet.buttonsGUI),
-                                         new Sprite(86, 32, 0, 2, SpriteSheet.buttonsGUI)};
+    public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 0, SpriteSheet.buttonsGUI),
+                                         new Sprite(86, 32, 0, 1, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 1, SpriteSheet.buttonsGUI),
+                                         new Sprite(86, 32, 0, 2, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 2, SpriteSheet.buttonsGUI)};
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet

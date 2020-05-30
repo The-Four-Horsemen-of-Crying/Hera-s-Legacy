@@ -7,7 +7,6 @@ package com.heraslegacy.graphics;
 
 import com.heraslegacy.level.Fantasma;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.Lobby;
 import com.heraslegacy.level.levelStrategy;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
@@ -23,11 +22,11 @@ public class MenuGUI {
     private Sprite fondo = Sprite.menuGUI;
     private int cordX=screen.width/2-75, cordY=screen.height/2-75;
     Button botones[] = {
-        new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[0], screen.width/2-43, screen.height/2-4*16,0,10),
-        new Button(Sprite.botonesGUI[1],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-2*16,0,10),
-        new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[2], screen.width/2-43, screen.height/2-0*16,0,10)
+        new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-4*16,0,10),
+        new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[3], screen.width/2-43, screen.height/2-2*16,0,10),
+        new Button(Sprite.botonesGUI[4],Sprite.botonesGUI[5], screen.width/2-43, screen.height/2-0*16,0,10)
     };
-    private boolean visible, isLobby;
+    private boolean visible;
     private levelStrategy actualLevel;
     
     public void uptade(Level actualLevel){
@@ -41,7 +40,7 @@ public class MenuGUI {
     
     public void mouseOptionsTracker(){
     
-        if(botones[0].onZone()){  
+        if(botones[0].onZone()){
             if(Mouse.click){
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
@@ -62,9 +61,5 @@ public class MenuGUI {
         for (Button boton : botones) {
             boton.split();
         }
-    }
-
-    public void setIsLobby(boolean isLobby) {
-        this.isLobby = isLobby;
     }
 }
