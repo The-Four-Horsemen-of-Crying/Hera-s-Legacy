@@ -62,11 +62,20 @@ public class Tile {
     
     public static Tile paredLibrary = new Tile(Sprite.paredLibrary,true);
     public static Tile sueloLibrary = new Tile(Sprite.sueloLibrary,false);
+    public static Tile sueloLibraryD = new Tile(Sprite.sueloLibraryD,false);
     public static Tile estanterias[] = {new Tile(Sprite.estantes[0],true),new Tile(Sprite.estantes[1],true),
                                         new Tile(Sprite.estantes[2],true),new Tile(Sprite.estantes[3],true)};
     
-    public static Tile guardia[] = {new Tile(Sprite.guardia[0],true),new Tile(Sprite.guardia[1],true),
-                                    new Tile(Sprite.guardia[2],true),new Tile(Sprite.guardia[3],true)};
+    public static Tile guardia[][] = {
+                                     {new Tile(Sprite.guardia[0][0],true),new Tile(Sprite.guardia[0][1],true),
+                                      new Tile(Sprite.guardia[0][2],true),new Tile(Sprite.guardia[0][3],true)},
+                                     {new Tile(Sprite.guardia[1][0],true),new Tile(Sprite.guardia[1][1],true),
+                                      new Tile(Sprite.guardia[1][2],true),new Tile(Sprite.guardia[1][3],true)},
+                                     {new Tile(Sprite.guardia[2][0],true),new Tile(Sprite.guardia[2][1],true),
+                                      new Tile(Sprite.guardia[2][2],true),new Tile(Sprite.guardia[2][3],true)},
+                                     {new Tile(Sprite.guardia[3][0],true),new Tile(Sprite.guardia[3][1],true),
+                                      new Tile(Sprite.guardia[3][2],true),new Tile(Sprite.guardia[3][3],true)}
+                                     };
     public static Tile libro = new Tile(Sprite.libro,false);
 
     public Tile(Sprite sprite,boolean solid) {
