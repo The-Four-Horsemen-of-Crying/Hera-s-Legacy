@@ -37,6 +37,8 @@ public class Fantasma implements levelStrategy {
     private boolean cambio = false;
     private int cont[] = new int[3];
     private int indiceLevel;
+    private LocalTime dt = LocalTime.now();
+    private LocalTime dm = LocalTime.now();
     private Texto a[] = {
         new Texto("Hola", Game.width / 2, 300, true),
         new Texto("Puta :)", Game.width / 2, 300, false),
@@ -104,15 +106,18 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void time() {
-
-        cont[0] = LocalTime.now().minusSeconds(cont[0]).getSecond();//MAnejo del tiempo del nivel
-        cont[1] = LocalTime.now().minusSeconds(cont[1]).getSecond();//MAnejo del tiempo de los mensajes
-        if (cont[1] == 3) {//Mostrar mensajes
+        
+        cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
+        cont[1] = dm.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo de los mensajes
+       
+        if (cont[1] == 57) {//Mostrar mensajes
             cont[1] = 0;
             if (cont[2] <= 4) {
                 cont[2]++;
                 a[0].setVisible(cont[2], a);
             }
+            cont[1]=0;
+            dm= LocalTime.now();
         }
     }
 
@@ -120,7 +125,7 @@ public class Fantasma implements levelStrategy {
     public void mecanica() {
         if(indiceLevel==0)player.animación();
         time();
-        if (cont[0] == 10) {
+        if (cont[0] == 50) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
     }
