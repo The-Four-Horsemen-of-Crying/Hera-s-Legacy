@@ -24,4 +24,7 @@ public interface levelStrategy {
     public Color getColor();
     public Level levelCambio();
     public Font getFont();
+    public void render();
+
+    public void sobreRender(int xScroll,int yScroll);
 }

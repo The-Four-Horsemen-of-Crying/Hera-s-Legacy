@@ -8,10 +8,13 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Fuente;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.screen;
+import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.image.BufferedImage;
@@ -31,6 +34,10 @@ public class Lobby implements levelStrategy{
     private Player player;
     private Font lobbyFont = Fuente.spaceFont;
     private final Color colorTexto= Color.WHITE;
+    int ani[]={0,0};
+    private boolean [] boolSounds={false,false};
+    private boolean changeLevel=false;
+    private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
     public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
     
@@ -38,6 +45,7 @@ public class Lobby implements levelStrategy{
     
     @Override
     public void update() {
+
     }
 
     @Override
@@ -55,25 +63,24 @@ public class Lobby implements levelStrategy{
         if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
         if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
         if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
-        System.out.println(tiles[x + y * width]);
         return Tile.pikes;
     }
 
     @Override
     public boolean getCollision(int x, int y) {
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
-            nivelCase = 1;
+            nivelCase = 0;
             return true;
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.blue.getColor()) {
-            nivelCase = 2;
+            nivelCase = 1;
             return true;
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.red.getColor()) {
-            nivelCase = 3;
+            nivelCase = 2;
             return true;
         }
-
+        boolSounds[0]=false;
         return false;
     }
 
@@ -86,7 +93,8 @@ public class Lobby implements levelStrategy{
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
-
+            sounds[0].loop();
+            sounds[0].changeVolume(0);
             image.getRGB(0, 0, w, h, tiles, 0, w);
             imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
         } catch (IOException ex) {
@@ -101,26 +109,31 @@ public class Lobby implements levelStrategy{
     }
 
     @Override
-    public void mecanica() {
-        
+    public void mecanica(){
+        if(!boolSounds[0]){
+            sounds[2].play();
+            boolSounds[0]=true;
+        }
+        if(KeyBoard.enter)changeLevel=true;
     }
     
 
     @Override
     public void restar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public boolean cambio() {
-        return this.getCollision(player.getX(), player.getY());
+        
+        return changeLevel;
     }
 
     @Override
     public void configPlayer(Level level) {
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
-        player.setAjustes(14, 8, 12, 3, 16, 16);
+        player.setAjustes(14, 8, 12, 3, 16, 16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);
@@ -138,7 +151,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void setText(String c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
@@ -150,22 +163,40 @@ public class Lobby implements levelStrategy{
     @Override
     public Level levelCambio() {
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        switch(nivelCase){
-            case 1:
-                game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new SpaceLevel()));
-                break;
-            case 2:
-                game = (new Level("/levels/level01/level1.png","/levels/level01/collisionlevel1.png",new MathLevel()));
-                break;
-            case 3:
-                game = (new Level("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png",new LibraryLevel()));
-                break;
-        }
+        sounds[0].stop();
+        game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(nivelCase)));
         return game;
     }
 
     @Override
     public Font getFont() {
         return this.lobbyFont;
+    }
+
+    @Override
+    public void sobreRender(int xScroll, int yScroll){
+        screen.setOffset(xScroll, yScroll);
+        int x0 = (xScroll >> 4);
+        int x1 = (xScroll + screen.width+16) >> 4;
+        int y0 = (yScroll >> 4);
+        int y1 = (yScroll + screen.height+16) >> 4;
+        for (int y = y0; y < y1; y++) {
+            for (int x = x0; x < x1; x++) {
+                Tile t= getTile(x, y);
+                if(t==Tile.columnas[0])t.render(x, y);
+            }
+        }
+    }
+
+    @Override
+    public void render() {
+            ani[1]++;
+            if(ani[1]%160==0){
+                ani[0]++;
+                if(ani[1]==240)ani[1]=0;
+            }
+                screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
+                screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
+                screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
     }
 }
