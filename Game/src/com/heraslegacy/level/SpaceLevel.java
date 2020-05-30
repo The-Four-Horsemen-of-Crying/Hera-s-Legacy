@@ -35,7 +35,7 @@ public class SpaceLevel implements levelStrategy {
     private int[] tilesCollision;
     private Player player;
     private Font spaceFont = Fuente.spaceFont;
-    private boolean variaB[] = new boolean[4];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
+    private boolean variaB[] = new boolean[5];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
     private LocalTime dy = LocalTime.now();
     private LocalTime now = LocalTime.now();
     private int life = 2, j = 0, sw = 0, suena = 0;
@@ -310,7 +310,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public boolean cambio() {
-        return variaB[2];
+        return variaB[2]||variaB[4];
     }
 
     @Override
@@ -347,7 +347,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
-        Lobby.levels[2] = true;
+        if(variaB[2])Lobby.levels[2] = true;
         return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
 
@@ -364,5 +364,10 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void render() {
 
+    }
+
+    @Override
+    public void backWithoutWin() {
+        variaB[4]=true;
     }
 }

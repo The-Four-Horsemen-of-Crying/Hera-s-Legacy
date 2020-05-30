@@ -13,8 +13,10 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
+import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -128,6 +130,7 @@ public class Fantasma implements levelStrategy {
         if (cont[0] == 50) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
+        
     }
 
     @Override
@@ -191,6 +194,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Level levelCambio() {
+        KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
         Level game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new Fantasma(indiceLevel));
         switch (indiceLevel) {
@@ -219,6 +223,11 @@ public class Fantasma implements levelStrategy {
     @Override
     public void render() {
         
+    }
+
+    @Override
+    public void backWithoutWin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

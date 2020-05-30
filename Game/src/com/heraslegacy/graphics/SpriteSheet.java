@@ -25,7 +25,7 @@ public class SpriteSheet {
     public static SpriteSheet LobbyDoors = new SpriteSheet("/textures/portales.png", 144);
     public static SpriteSheet HojasnivelGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet.png", 300);
     public static SpriteSheet single_Menu = new SpriteSheet("/GUI/menu.png", 150);
-    public static SpriteSheet buttonsGUI = new SpriteSheet("/GUI/botones_Menu.png", 150);
+    public static SpriteSheet buttonsGUI = new SpriteSheet("/GUI/botones_Menu2.png", 191);
 
     //public static SpriteSheet tools = new SpriteSheet("/levels/level01/pincel.png",6);
     public static SpriteSheet numFonts = new SpriteSheet("/fonts/numberfont00.png",128);

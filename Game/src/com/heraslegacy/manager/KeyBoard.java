@@ -43,7 +43,7 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
             
-            keysStatic[e.getKeyCode()]=true;//!keysStatic[e.getKeyCode()]?true:false; 
+            keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true; 
             
         }
     }
