@@ -40,6 +40,7 @@ public class Lobby implements levelStrategy{
     private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
     public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
+        new Texto("Ya se encuentra en el Lobby", screen.width/2-40, screen.height/2-120, true)
     
     };
     
@@ -198,5 +199,10 @@ public class Lobby implements levelStrategy{
                 screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
                 screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
                 screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
+    }
+
+    @Override
+    public void backWithoutWin() {
+        textLobby[0].setVisible(true);
     }
 }

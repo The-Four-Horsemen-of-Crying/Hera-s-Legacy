@@ -29,16 +29,15 @@ public class MathLevel implements levelStrategy {
     private Font mathLevelFont= Fuente.spaceFont;
     private final Color colorTexto= Color.BLACK;
     private Player player;
-    private int mesa=0;
     private Random r = new Random();
+    private boolean comaTime, back, win;
+    private final float RATE_MESSAGE = 3;
+    private float showMessage=-1; 
+    private int answerLength = 0, indiceMesa, mesa=0;
+    
     private final float respuestas[] = {0,0, 1, 4, 0,0, 1, 4, 0,0, 1, 4, 0};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
-    private boolean boo, comaTime;
-    private int indiceMesa;
-    private final float RATE_MESSAGE = 3;
-    private float showMessage=-1; 
-    private int answerLength = 0;
     
     private Texto textMath[]= {
         new Texto("Click", screen.width/2*scale+45, screen.height/2*scale+70, false), 
@@ -54,7 +53,7 @@ public class MathLevel implements levelStrategy {
 
     
     @Override
-    public void update(){   
+    public void update(){ 
     }
     
     @Override
@@ -209,12 +208,11 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public boolean cambio(){
-            
-        boo = true;
         for (boolean re : resueltos) {
-            boo = boo && re;
+            if(!re)return false || back;
         }
-        return boo;
+        win=true;
+        return true;
     }
 
     @Override
@@ -240,7 +238,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void setText(String c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -250,7 +248,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
-        Lobby.levels[1]=true;
+        if(win)Lobby.levels[1]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
     private void addEjercicios(){
@@ -286,11 +284,7 @@ public class MathLevel implements levelStrategy {
                 comaTime=true;
                 return ".";
             }
-            
-            
-        
         return "";
-        
     }
 
     @Override
@@ -307,12 +301,12 @@ public class MathLevel implements levelStrategy {
         
     }
     
-    private void condicionesIni(){
-                textMath[3].setText("");
-                textMath[3].setPosx(screen.width / 2 * scale+100);
-                answerLength=1;
-                textMath[4].setVisible(false);
-                comaTime=false;
+    private void condicionesIni() {
+        textMath[3].setText("");
+        textMath[3].setPosx(screen.width / 2 * scale + 100);
+        answerLength = 1;
+        textMath[4].setVisible(false);
+        comaTime = false;
     }
 
     private void showReponse(int i) {
@@ -324,5 +318,10 @@ public class MathLevel implements levelStrategy {
         for (int i = 5; i < textMath.length; i++) {
             textMath[i].setVisible(false);
         }
+    }
+
+    @Override
+    public void backWithoutWin() {
+        back=true;
     }
 }   
