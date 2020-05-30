@@ -14,22 +14,22 @@ import com.heraslegacy.manager.Mouse;
  * @author Domain
  */
 public class Button {
-    private Sprite image,superImage;
-    private int x,y,x1,y1;
+    private Sprite [] images;
+    private int x,y,x1,y1,indiImage=0;
 
-    public Button(Sprite image,Sprite superImage, int x, int y,int fixX, int fixY) {
-        this.image = image;
-        this.superImage=superImage;
+    public Button(Sprite image,Sprite superImage, int x, int y,int fixX, int fixY){
+        images = new Sprite[2];
+        this.images[0]=image;
+        this.images[1]=superImage;
         this.x = x;
         this.y = y;
         this.x1=x+image.getWidth()-fixX;
-        System.out.println(x1-x);
         this.y1=y+image.getHeight()-fixY;
     }
 
 
-    public Sprite getImage() {
-        return image;
+    public Sprite getImage(int i) {
+        return images[i];
     }
 
     public int getX() {
@@ -47,17 +47,23 @@ public class Button {
     public int getY() {
         return y;
     }
+
+    public void setIndiImage(int indiImage) {
+        this.indiImage = indiImage;
+    }
     
     
     public boolean onZone(){
         int mX=Mouse.mouseX;
         int mY=Mouse.mouseY;
+        boolean b = mX<x1*scale&&mX>x*scale&&mY<y1*scale&&mY>y*scale;
+        indiImage = b?1:0;
         //System.out.println(mX + "   ||  " + x + "   ||  " + x1); 
-        return mX<x1*scale&&mX>x*scale&&mY<y1*scale&&mY>y*scale;      
+        return b;      
     }
 
     void split() {
-        screen.renderSprite(false, x, y, image);
+        screen.renderSprite(false, x, y, images[indiImage]);
     }
     
 }
