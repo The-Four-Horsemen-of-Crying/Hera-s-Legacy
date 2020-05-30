@@ -34,7 +34,7 @@ public class Sprite {
                                           {new Sprite(32, 48, 0, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 1, SpriteSheet.LobbyDoors)},
                                           {new Sprite(32, 48, 0, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 2, SpriteSheet.LobbyDoors)}};
     //SpaceShit
-    public static Sprite moon = new Sprite(96,0,0,SpriteSheet.singleDrawMoon);
+    public static Sprite moon = new Sprite(96,0,0,SpriteSheet.single_DrawMoon);
     
     public static Sprite meteorito[] = {new Sprite(16,0,2,SpriteSheet.nivel02_space),new Sprite(16,2,2,SpriteSheet.nivel02_space),new Sprite(16,3,2,SpriteSheet.nivel02_space),
                                         new Sprite(16,4,2,SpriteSheet.nivel02_space),new Sprite(16,5,2,SpriteSheet.nivel02_space),new Sprite(16,2,3,SpriteSheet.nivel02_space),
@@ -107,6 +107,10 @@ public class Sprite {
     public static Sprite guardia[]= new Sprite[4];
     public static Sprite libro;
     
+    //GUI MENU
+    public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);
+    public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.buttonsGUI),new Sprite(86, 32, 0, 1, SpriteSheet.buttonsGUI),
+                                         new Sprite(86, 32, 0, 2, SpriteSheet.buttonsGUI)};
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet

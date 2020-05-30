@@ -4,6 +4,7 @@ package com.heraslegacy.main;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Fuente;
+import com.heraslegacy.graphics.MenuGUI;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable {
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
+    public static MenuGUI menu;
     Sound theme;
 
     public Game(){
@@ -61,7 +63,7 @@ public class Game extends Canvas implements Runnable {
         key = new KeyBoard();
         level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         level.configPlayer();
-        
+        menu=new MenuGUI();
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);
@@ -120,6 +122,7 @@ public class Game extends Canvas implements Runnable {
         key.uptade();
         level.getPlayer().update();  
         level.update();
+        
     }
 
     public void render() {
@@ -150,7 +153,7 @@ public class Game extends Canvas implements Runnable {
             level = level.levelCambio();
             level.configPlayer();
         }
-       
+        menu.uptade(level);
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
         }

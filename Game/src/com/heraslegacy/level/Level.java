@@ -14,13 +14,13 @@ import java.awt.Font;
 public class Level{
     public final levelStrategy levelstrategy;
     private Font fontLevel;
-    private MenuGUI menu;
+    
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
         this.levelstrategy = levelstrategy;
         levelstrategy.loadLevel(path, pathCollision);
         fontLevel=levelstrategy.getFont();
-        menu= new MenuGUI();
+
     }
 
     public void update() {
