@@ -3,6 +3,7 @@ package com.heraslegacy.level.tile;
 
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
+import static com.heraslegacy.main.Game.screen;
 import javafx.scene.input.KeyCode;
 
 public class Tile {
@@ -27,13 +28,16 @@ public class Tile {
                                        new Tile(Sprite.marmolFloor[2], false),new Tile(Sprite.marmolFloor[3], false)};
     
     public static Tile specialMarmolFloor = new Tile(Sprite.specialMarmolFloor, false);
-    public static Tile columnas[] = {new Tile(Sprite.columnas[0], true),new Tile(Sprite.columnas[1], true)};
+    
+    public static Tile columnas[] = {new Tile(Sprite.columnas[0], false),new Tile(Sprite.columnas[1], true)};
+    
     public static Tile techo = new Tile(Sprite.techo, true);
     
     
     //SpaceShit
     public static Tile []spacePices = {new Tile(Sprite.spaceCheese[0], false),new Tile(Sprite.spaceCheese[1], false),new Tile(Sprite.spaceCheese[2], false),
-                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true)};
+                                       new Tile(Sprite.spaceCheese[2], false),new Tile(Sprite.spaceCheese[4], false),new Tile(Sprite.spaceCheese[3], true),
+                                       new Tile(Sprite.spaceCheese[2], true)};
     
     public static Tile []spaceMeteor = {new Tile(Sprite.meteorito[0], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[1], true),new Tile(Sprite.meteorito[2], true,TipoTile.GAME_OVER),
                                         new Tile(Sprite.meteorito[3], true,TipoTile.GAME_OVER),new Tile(Sprite.meteorito[4], true),new Tile(Sprite.meteorito[5], true,TipoTile.GAME_OVER),
@@ -55,10 +59,12 @@ public class Tile {
                                    new Tile(Sprite.puerta,false),new Tile(Sprite.puerta,false)};
     public static Tile puertaS[] ={new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true),
                                    new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true)};
+    
     public static Tile paredLibrary = new Tile(Sprite.paredLibrary,true);
     public static Tile sueloLibrary = new Tile(Sprite.sueloLibrary,false);
     public static Tile estanterias[] = {new Tile(Sprite.estantes[0],true),new Tile(Sprite.estantes[1],true),
                                         new Tile(Sprite.estantes[2],true),new Tile(Sprite.estantes[3],true)};
+    
     public static Tile guardia[] = {new Tile(Sprite.guardia[0],true),new Tile(Sprite.guardia[1],true),
                                     new Tile(Sprite.guardia[2],true),new Tile(Sprite.guardia[3],true)};
     public static Tile libro = new Tile(Sprite.libro,false);
@@ -73,7 +79,7 @@ public class Tile {
         this.solid=solid;
         this.tipo=tipo;
     }
-    public void render(int x, int y, Screen screen){
+    public void render(int x, int y){
             screen.renderTile(x << 4, y << 4, this);
     }
 

@@ -8,7 +8,7 @@ public class KeyBoard implements KeyListener {
 
     private static boolean keys[] = new boolean[500];
     private static boolean keysStatic[] = new boolean[500];
-    public static boolean up, down, left, right,restart,delete,enter, space, one, doix, trois, quatre, cinq, six, sept, huit,neuf, zero,soltado,coma;
+    public static boolean up, down, left, right,restart,delete,enter, space, one, doix, trois, quatre, cinq, six, sept, huit,neuf, zero,soltado,coma,escape;
     public static int rate = 2;
     public void uptade() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
@@ -29,6 +29,7 @@ public class KeyBoard implements KeyListener {
         huit = keys[KeyEvent.VK_8];
         neuf = keys[KeyEvent.VK_9];
         zero = keys[KeyEvent.VK_0];
+        escape = keysStatic[KeyEvent.VK_ESCAPE];
         coma = keys[KeyEvent.VK_COMMA];
 
     }
@@ -50,12 +51,12 @@ public class KeyBoard implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode()<500){
-            keysStatic[e.getKeyCode()]=false;
             keys[e.getKeyCode()] = false;
             rate=2;
         }
     }
-    public static void setKey(boolean b, int i){
-        keys[i]=b;
+
+    public static void setKeysStatic(boolean bool, int ind) {
+        KeyBoard.keysStatic[ind] = bool;
     }
 }

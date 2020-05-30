@@ -3,6 +3,7 @@ package com.heraslegacy.level;
 import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Fuente;
+import com.heraslegacy.graphics.Sound;
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
@@ -220,7 +221,7 @@ public class MathLevel implements levelStrategy {
     public void configPlayer(Level level) {
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
-        player.setAjustes(14, 8, 12, 3,16,16);
+        player.setAjustes(14, 8, 12, 3,16,16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);
@@ -270,7 +271,7 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
-            if(KeyBoard.one)return "1";
+            if (KeyBoard.one)return "1";
             if (KeyBoard.doix)return "2";           
             if (KeyBoard.trois)return "3";            
             if (KeyBoard.quatre)return "4";
@@ -295,6 +296,15 @@ public class MathLevel implements levelStrategy {
     @Override
     public Font getFont() {
         return this.mathLevelFont;
+    }
+
+    @Override
+    public void sobreRender(int xScroll, int yScroll) {
+    }
+
+    @Override
+    public void render() {
+        
     }
     
     private void condicionesIni(){
