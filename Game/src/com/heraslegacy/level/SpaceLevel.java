@@ -35,8 +35,9 @@ public class SpaceLevel implements levelStrategy {
     private int[] tilesCollision;
     private Player player;
     private Font spaceFont = Fuente.spaceFont;
-    private boolean cambio = false, loose = false, win = false;
+    private boolean variaB[]= new boolean[4];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
     private LocalTime dy = LocalTime.now();
+    private LocalTime now = LocalTime.now();
     private int life = 3, j = 0, sw = 0, suena = 0;
     int indiceCambio;
     private Color colorTexto = Color.WHITE;
@@ -169,11 +170,11 @@ public class SpaceLevel implements levelStrategy {
             System.out.println("No se pudo cargar el archivo del nivel.");
         }
     }
-    
+
     @Override
     public void mecanica() {
 
-        if (!cambio) {
+        if (!variaB[0]) {
             indiceCambio = 1;
         } else {
             indiceCambio = 0;
@@ -184,7 +185,7 @@ public class SpaceLevel implements levelStrategy {
         }
         player.animación();
         int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
-        if (res == 50 && !win && !loose) {
+        if (res == 50 && !variaB[2] && !variaB[1]) {
             textSpace[0].setVisible(indiceCambio, textSpace);//Implementar aviso cada 25s
             sonido[1].stop();
             sonido[2].stop();
@@ -192,30 +193,34 @@ public class SpaceLevel implements levelStrategy {
             sonido[2].changeVolume(0);
             sonido[2 - indiceCambio].play();
             player.setTipo(indiceCambio);
-            cambio = !cambio;
+            variaB[0] = !variaB[0];
             dy = LocalTime.now();
-        } else if (res == 55 && !win && !loose) {
+        } else if (res == 55 && !variaB[2] && !variaB[1]) {
             sonido[3].stop();
             time();
             textSpace[0].setVisible(false);
             textSpace[1].setVisible(false);
             textSpace[4].setVisible(false);
         }
-        if (player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER && !loose) {
-            textSpace[0].setVisible(3, textSpace);//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
-            player.setTipo(2);
-            loose = true;
+        if (player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER || variaB[1]) {
+            player.setTipo(2);  
             sonido[1].stop();
             sonido[2].stop();
             sonido[3].changeVolume(0);
             sonido[3].play();
-            life--;
-            if (life > 0) {
+             textSpace[4].setVisible(4, textSpace);
+             
+            delay();
+                    j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
+                    variaB[1] = true;
+            if (life > 0&& j==58) {   
                 restar();
-            } else {
+            } else if(life<=0) {
+                textSpace[0].setVisible(3, textSpace);//Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D 
                 sw = -10;
             }
-        } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !win) {
+               
+        } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !variaB[2]) {
             textSpace[0].setVisible(2, textSpace);//Se le indica que ganó, ya no se hace nada y se termina el juego
             player.setTipo(2);
             sonido[1].stop();
@@ -225,7 +230,7 @@ public class SpaceLevel implements levelStrategy {
             time();
             if (j == 4) {
                 sonido[0].stop();
-                win = true;
+               variaB[2] = true;
                 textSpace[2].setVisible(false);
             }
 
@@ -241,31 +246,46 @@ public class SpaceLevel implements levelStrategy {
         if (suena == 1) {
             sonido[0].play();
         }
+        if (suena == 6) {
+            suena = 100;
+        }
     }
 
     @Override
     public void restar() {
-        if (loose && life > 0) {
+        if (variaB[1] && life >0) {
             restart();
-            textSpace[0].setVisible(4, textSpace);
+            textSpace[4].setVisible(false);
             sw = 3;
+            life--;
         }
+
         if (sw == -10) {
             restart();
             life = 3;
             textSpace[3].setVisible(false);
             sw = 0;
         }
+    }
 
+    private void delay() {
+  
+        if(!variaB[3]){
+        now = LocalTime.now();
+        variaB[3]=true;
+            System.out.println("Entré");
+        }
+        
     }
 
     private void restart() {
         player.setX(Game.width / 2);
         player.setY(Game.height / 2);
-        loose = false;
-        win = false;
+        variaB[1]= false;
+        variaB[2] = false;
+        variaB[3]=false;
         player.setTipo(0);
-        cambio = false;
+        variaB[0] = false;
         sonido[1].stop();
         sonido[2].stop();
         dy = LocalTime.now();
@@ -273,7 +293,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public boolean cambio() {
-        return win;
+        return variaB[2];
     }
 
     @Override
@@ -321,11 +341,11 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void sobreRender(int xScroll, int yScroll) {
-        screen.renderSprite(true, 112*16,16*16 , Sprite.moon);
+        screen.renderSprite(true, 112 * 16, 16 * 16, Sprite.moon);
     }
 
     @Override
     public void render() {
-       
+
     }
 }
