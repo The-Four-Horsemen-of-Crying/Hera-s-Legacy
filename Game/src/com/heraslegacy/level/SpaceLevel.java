@@ -35,7 +35,7 @@ public class SpaceLevel implements levelStrategy {
     private int[] tilesCollision;
     private Player player;
     private Font spaceFont = Fuente.spaceFont;
-    private boolean cambio = false, loose = false, win = false;
+    public boolean cambio = false, loose = false, win = false;
     private LocalTime dy = LocalTime.now();
     private int life = 3, j = 0, sw = 0, suena = 0;
     int indiceCambio;

@@ -51,12 +51,12 @@ public class KeyBoard implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         if(e.getKeyCode()<500){
-            keysStatic[e.getKeyCode()]=false;
             keys[e.getKeyCode()] = false;
             rate=2;
         }
     }
-    public static void setKey(boolean b, int i){
-        keys[i]=b;
+
+    public static void setKeysStatic(boolean bool, int ind) {
+        KeyBoard.keysStatic[ind] = bool;
     }
 }
