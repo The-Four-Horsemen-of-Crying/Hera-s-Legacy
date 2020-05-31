@@ -255,6 +255,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
+        sounds[0].stop();
         if(bools[1])Lobby.levels[1]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
