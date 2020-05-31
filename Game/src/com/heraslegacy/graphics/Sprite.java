@@ -58,9 +58,10 @@ public class Sprite {
     
     //MathLevel
     public static Sprite []hoja ={null,new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat)};
+                                  new Sprite(150, 150, 2,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 2,1, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,2, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,2, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 2,2, SpriteSheet.HojasnivelGame01_mat)};
     
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
                                    new Sprite(16, 4, 5, SpriteSheet.nivel01_mat),new Sprite(16, 5, 5, SpriteSheet.nivel01_mat)};
