@@ -30,12 +30,12 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private boolean comaTime, back, win;
+    private boolean [] bools=new boolean[4];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
     private int answerLength = 0, indiceMesa, mesa=0;
-    
-    private final float respuestas[] = {0,0, 1, 4, 0,0, 1, 4, 0,0, 1, 4, 0};
+    private Sound sounds [] = {new Sound(Sound.math_Theme),new Sound(Sound.bookSound)};
+    private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
     
@@ -113,7 +113,9 @@ public class MathLevel implements levelStrategy {
 //            T.setVisible(false);
 //            
 //        }
+        bools[3]=false;
         condicionesIni();
+        Mouse.clickSwitch=false;
         return false;
      }
      
@@ -126,6 +128,8 @@ public class MathLevel implements levelStrategy {
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
+            sounds[0].loop();
+            sounds[0].changeVolume(0);
             addEjercicios();
             Mouse.clickSwitch=false;
             image.getRGB(0, 0, w, h, tiles, 0, w);
@@ -138,7 +142,10 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void mecanica() {
-        
+        if(!bools[3]){
+            sounds[1].play();
+            bools[3]=true;
+        }
         screen.renderSprite(false, screen.width / 2 - hoja[1].getWidth() / 2, screen.height / 2 - hoja[1].getHeight() / 2,
                 hoja[mesa]);
 
@@ -209,9 +216,9 @@ public class MathLevel implements levelStrategy {
     @Override
     public boolean cambio(){
         for (boolean re : resueltos) {
-            if(!re)return false || back;
+            if(!re)return false || bools[2];
         }
-        win=true;
+        bools[1]=true;
         return true;
     }
 
@@ -248,14 +255,15 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
-        if(win)Lobby.levels[1]=true;
+        if(bools[1])Lobby.levels[1]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
     private void addEjercicios(){
             for (int i = 0; i < ejercicios.length; i++) {
-            int random = r.nextInt(10)+1;
+            int random = r.nextInt(9)+1;
             if(!nonRepeated(random)){
                 ejercicios[i]=random;
+                System.out.println(random);
             }
             else i--;
         }
@@ -269,19 +277,19 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
-            if (KeyBoard.one)return "1";
-            if (KeyBoard.doix)return "2";           
-            if (KeyBoard.trois)return "3";            
-            if (KeyBoard.quatre)return "4";
-            if (KeyBoard.cinq)return "5";
-            if (KeyBoard.six)return "6";
-            if (KeyBoard.sept)return "7";
-            if (KeyBoard.huit)return "8";
-            if (KeyBoard.neuf)return "9";          
-            if (KeyBoard.zero)return "0";
-            if (KeyBoard.coma&&!comaTime&&!textMath[3].getText().isEmpty()){
+            if (KeyBoard.numbers[1])return "1";
+            if (KeyBoard.numbers[2])return "2";           
+            if (KeyBoard.numbers[3])return "3";            
+            if (KeyBoard.numbers[4])return "4";
+            if (KeyBoard.numbers[5])return "5";
+            if (KeyBoard.numbers[6])return "6";
+            if (KeyBoard.numbers[7])return "7";
+            if (KeyBoard.numbers[8])return "8";
+            if (KeyBoard.numbers[9])return "9";          
+            if (KeyBoard.numbers[0])return "0";
+            if (KeyBoard.coma&&!bools[0]&&!textMath[3].getText().isEmpty()){
                 answerLength--;
-                comaTime=true;
+                bools[0]=true;
                 return ".";
             }
         return "";
@@ -306,7 +314,7 @@ public class MathLevel implements levelStrategy {
         textMath[3].setPosx(screen.width / 2 * scale + 100);
         answerLength = 1;
         textMath[4].setVisible(false);
-        comaTime = false;
+        bools[0] = false;
     }
 
     private void showReponse(int i) {
@@ -322,6 +330,6 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void backWithoutWin() {
-        back=true;
+        bools[2]=true;
     }
 }   

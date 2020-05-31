@@ -8,7 +8,8 @@ public class KeyBoard implements KeyListener {
 
     private static boolean keys[] = new boolean[500];
     private static boolean keysStatic[] = new boolean[500];
-    public static boolean up, down, left, right,restart,delete,enter, space, one, doix, trois, quatre, cinq, six, sept, huit,neuf, zero,soltado,coma,escape;
+    public static boolean up, down, left, right,restart,delete,enter, space,soltado,coma,escape;
+    public static boolean numbers[]= new boolean[10];
     public static int rate = 2;
     public void uptade() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
@@ -19,18 +20,18 @@ public class KeyBoard implements KeyListener {
         space = keys[KeyEvent.VK_SPACE];
         delete = keys[KeyEvent.VK_BACK_SPACE];
         enter = keys[KeyEvent.VK_ENTER];
-        one = keys[KeyEvent.VK_1];
-        doix = keys[KeyEvent.VK_2];
-        trois = keys[KeyEvent.VK_3];
-        quatre = keys[KeyEvent.VK_4];
-        cinq = keys[KeyEvent.VK_5];
-        six = keys[KeyEvent.VK_6];
-        sept = keys[KeyEvent.VK_7];
-        huit = keys[KeyEvent.VK_8];
-        neuf = keys[KeyEvent.VK_9];
-        zero = keys[KeyEvent.VK_0];
+        numbers[1] = keys[KeyEvent.VK_1]||keys[KeyEvent.VK_NUMPAD1];
+        numbers[2] = keys[KeyEvent.VK_2]||keys[KeyEvent.VK_NUMPAD2];
+        numbers[3] = keys[KeyEvent.VK_3]||keys[KeyEvent.VK_NUMPAD3];
+        numbers[4] = keys[KeyEvent.VK_4]||keys[KeyEvent.VK_NUMPAD4];
+        numbers[5] = keys[KeyEvent.VK_5]||keys[KeyEvent.VK_NUMPAD5];
+        numbers[6] = keys[KeyEvent.VK_6]||keys[KeyEvent.VK_NUMPAD6];
+        numbers[7] = keys[KeyEvent.VK_7]||keys[KeyEvent.VK_NUMPAD7];
+        numbers[8] = keys[KeyEvent.VK_8]||keys[KeyEvent.VK_NUMPAD8];
+        numbers[9] = keys[KeyEvent.VK_9]||keys[KeyEvent.VK_NUMPAD9];
+        numbers[0] = keys[KeyEvent.VK_0]||keys[KeyEvent.VK_NUMPAD0];
         escape = keysStatic[KeyEvent.VK_ESCAPE];
-        coma = keys[KeyEvent.VK_COMMA];
+        coma = keys[KeyEvent.VK_COMMA]||keys[KeyEvent.VK_DECIMAL];
 
     }
 
@@ -42,7 +43,7 @@ public class KeyBoard implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
-            
+            System.out.println(e.getKeyCode());
             keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true; 
             
         }
