@@ -23,7 +23,7 @@ public class SpriteSheet {
     public static SpriteSheet nivel03_library = new SpriteSheet("/textures/mini_game03.png", 96);
     public static SpriteSheet single_DrawMoon = new SpriteSheet("/textures/moon.png", 96);
     public static SpriteSheet LobbyDoors = new SpriteSheet("/textures/portales.png", 144);
-    public static SpriteSheet HojasnivelGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet.png", 300);
+    public static SpriteSheet HojasnivelGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet2.png", 450);
     public static SpriteSheet single_Menu = new SpriteSheet("/GUI/menu.png", 150);
     public static SpriteSheet buttonsGUI = new SpriteSheet("/GUI/botones_Menu2.png", 191);
 

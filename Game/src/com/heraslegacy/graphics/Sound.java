@@ -30,8 +30,10 @@ public class Sound {
     public static Clip walk;
     public static Clip propulsion;
     public static Clip lobby_Theme;
+    public static Clip math_Theme;
     public static Clip lobby_portalSound;
     public static Clip buttonAlert_0;
+    public static Clip bookSound;
    
     public Sound (Clip clip){
         this.clip=clip;
@@ -71,7 +73,8 @@ public class Sound {
         lobby_Theme=loadSound("/sonidos/lobbyTheme.wav");
         lobby_portalSound= loadSound("/sonidos/portalPass.wav");
         buttonAlert_0= loadSound("/sonidos/buttonSound_0.wav");
-                
+        math_Theme=loadSound("/sonidos/mathTheme.wav");
+        bookSound=loadSound("/sonidos/bookSound.wav");
     }
     public static Clip loadSound(String path){
           
