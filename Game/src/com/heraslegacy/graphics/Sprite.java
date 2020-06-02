@@ -102,8 +102,6 @@ public class Sprite {
     //LibraryLevel
     public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
     public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
-    public static Sprite sueloLibrary = new Sprite(16,0,2,SpriteSheet.nivel03_library);
-    public static Sprite sueloLibraryD = new Sprite(16,0,3,SpriteSheet.nivel03_library);
     public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
                                      new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
     public static Sprite guardia[][]= {
@@ -121,6 +119,10 @@ public class Sprite {
                                        new Sprite(16,0,5,SpriteSheet.elizabeth),new Sprite(16,1,5,SpriteSheet.elizabeth)}
                                       };
     public static Sprite libro = new Sprite(16,3,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL1 = new Sprite(16,2,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL2 = new Sprite(16,3,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL1D = new Sprite(16,2,3,SpriteSheet.nivel03_library);
+    public static Sprite floorL2D = new Sprite(16,3,3,SpriteSheet.nivel03_library);
     
     //GUI MENU
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);

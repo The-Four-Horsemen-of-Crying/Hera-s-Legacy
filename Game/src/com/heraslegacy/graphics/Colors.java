@@ -33,7 +33,8 @@ public enum Colors {
     purplePoe           (-9699234),
     purpleDark          (0xff7f0060),
     naranjaMecanica     (-1411778),
-    bluecoli            (0xff3900ff);
+    bluecoli            (0xff3900ff),
+    golden              (0xffffc400);
     
     private final int color;
     

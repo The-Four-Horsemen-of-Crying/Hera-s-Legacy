@@ -61,8 +61,6 @@ public class Tile {
                                    new Tile(Sprite.puerta,true),new Tile(Sprite.puerta,true)};
     
     public static Tile paredLibrary = new Tile(Sprite.paredLibrary,true);
-    public static Tile sueloLibrary = new Tile(Sprite.sueloLibrary,false);
-    public static Tile sueloLibraryD = new Tile(Sprite.sueloLibraryD,false);
     public static Tile estanterias[] = {new Tile(Sprite.estantes[0],true),new Tile(Sprite.estantes[1],true),
                                         new Tile(Sprite.estantes[2],true),new Tile(Sprite.estantes[3],true)};
     
@@ -77,6 +75,10 @@ public class Tile {
                                       new Tile(Sprite.guardia[3][2],true),new Tile(Sprite.guardia[3][3],true)}
                                      };
     public static Tile libro = new Tile(Sprite.libro,false);
+    public static Tile floorL1 = new Tile(Sprite.floorL1,false);
+    public static Tile floorL2 = new Tile(Sprite.floorL2,false);
+    public static Tile floorL1D = new Tile(Sprite.floorL1,false);
+    public static Tile floorL2D = new Tile(Sprite.floorL2,false);
 
     public Tile(Sprite sprite,boolean solid) {
         this.sprite = sprite;

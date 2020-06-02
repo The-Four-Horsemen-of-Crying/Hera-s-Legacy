@@ -59,15 +59,18 @@ public class LibraryLevel implements levelStrategy{
         if (tiles[x + y * width] == Colors.red.getColor())              return Tile.estanterias[0];
         if (tiles[x + y * width] == Colors.higdarkred.getColor())       return Tile.estanterias[1];
         if (tiles[x + y * width] == Colors.darkred.getColor())          return Tile.estanterias[2];
-        if (tiles[x + y * width] == Colors.lessdarkred2.getColor())      return Tile.estanterias[3];
+        if (tiles[x + y * width] == Colors.lessdarkred2.getColor())     return Tile.estanterias[3];
         if (tiles[x + y * width] == Colors.green.getColor())            return Tile.libro;
         
         for (int i = 0; i < 4; i++) {
             
-            if (tiles[x + y * width] == Colors.white.getColor()
+            if (tiles[x + y * width] == Colors.purpleDark.getColor()
               &&tilesCollision[x + y * width] == visualRange[i]
-              &&i==direction)                                           return Tile.sueloLibraryD;
+              &&i==direction)                                           return Tile.floorL1D;
 
+            if (tiles[x + y * width] == Colors.golden.getColor()
+              &&tilesCollision[x + y * width] == visualRange[i]
+              &&i==direction)                                           return Tile.floorL2D;
             
             if (tiles[x + y * width] == Colors.somekindblue.getColor()
               &&tiles[x + (y+1) * width] == Colors.purpleDark.getColor()
@@ -85,7 +88,8 @@ public class LibraryLevel implements levelStrategy{
               &&tiles[x + (y-1) * width] == Colors.somekindblue.getColor()
               &&tilesCollision[x + (y-2) * width] == visualRange[i])    return Tile.guardia[pattern[i]][2];
         }
-        if (tiles[x + y * width] == Colors.white.getColor())            return Tile.sueloLibrary;
+        if (tiles[x + y * width] == Colors.purpleDark.getColor())       return Tile.floorL1;
+        if (tiles[x + y * width] == Colors.golden.getColor())           return Tile.floorL2;
         
         return Tile.pikes;
     }
@@ -211,7 +215,7 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Level levelCambio() {
-        Lobby.levels[3]=true;
+        Lobby.levels[2]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
 
