@@ -207,8 +207,7 @@ public class SpaceLevel implements levelStrategy {
         }
         if (player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER || variaB[1]) {
             player.setTipo(2);
-            sonido[1].stop();
-            sonido[2].stop();
+            stop();
             sonido[3].changeVolume(0);
             sonido[3].play();
             delay();
@@ -234,8 +233,7 @@ public class SpaceLevel implements levelStrategy {
         } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !variaB[2]) {
             //Se le indica que ganó, ya no se hace nada y se termina el juego
             player.setTipo(2);
-            sonido[1].stop();
-            sonido[2].stop();
+            stop();
             delay();
             j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
             suena++;
@@ -303,8 +301,7 @@ public class SpaceLevel implements levelStrategy {
         variaB[3] = false;
         player.setTipo(0);
         variaB[0] = false;
-        sonido[1].stop();
-        sonido[2].stop();
+        stop();
         dy = LocalTime.now();
     }
 
@@ -364,6 +361,12 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void render() {
 
+    }
+
+    private void stop() {
+        for (int i = 0; i < sonido.length; i++) {
+            sonido[i].stop();
+        }
     }
 
     @Override
