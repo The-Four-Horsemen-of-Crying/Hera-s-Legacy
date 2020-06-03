@@ -51,7 +51,7 @@ public class Fantasma implements levelStrategy {
     private final Tile piso[] = {
         Tile.spacePices[3],
         Tile.woodFloor,
-        Tile.sueloLibrary,
+        Tile.floorL1,
     };
     private final Tile pared[] = {
         Tile.spacePices[0],

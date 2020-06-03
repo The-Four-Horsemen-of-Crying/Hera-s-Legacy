@@ -28,7 +28,6 @@ import javax.imageio.ImageIO;
  */
 public class SpaceLevel implements levelStrategy {
 
-    protected int bluecoli = 0xff3900ff;
     private int width;
     private int height;
     private int[] tiles;
