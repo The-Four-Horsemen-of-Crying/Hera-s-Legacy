@@ -225,7 +225,7 @@ public class MathLevel implements levelStrategy {
     @Override
     public void configPlayer(Level level) {
         player = new Player(Game.width / 2, Game.height / 2);
-        player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+        player.setSprites(Sprite.katherine_up, Sprite.katherine_down, Sprite.katherine_rigth, Sprite.katherine_left);
         player.setAjustes(14, 8, 12, 3,16,16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);

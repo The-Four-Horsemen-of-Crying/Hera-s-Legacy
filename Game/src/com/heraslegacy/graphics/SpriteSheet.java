@@ -17,6 +17,9 @@ public class SpriteSheet {
     
     public static SpriteSheet elizabeth = new SpriteSheet("/textures/Elizabeth.png", 225);//La ruta y el tamaño de todo el pack
     public static SpriteSheet apolo11 = new SpriteSheet("/textures/apolo11.png", 144);
+    public static SpriteSheet hera = new SpriteSheet("/textures/persona_00.png", 128);
+    public static SpriteSheet katherine = new SpriteSheet("/textures/persona_01.png", 128);
+    public static SpriteSheet dorothy = new SpriteSheet("/textures/persona_03.png", 128);
     public static SpriteSheet nivel00_lobby = new SpriteSheet("/textures/textuLobby.png", 96);
     public static SpriteSheet nivel01_mat = new SpriteSheet("/textures/mini_game01.png", 96);
     public static SpriteSheet nivel02_space = new SpriteSheet("/textures/mini_game02.png", 96);
@@ -27,8 +30,6 @@ public class SpriteSheet {
     public static SpriteSheet single_Menu = new SpriteSheet("/GUI/menu.png", 150);
     public static SpriteSheet buttonsGUI = new SpriteSheet("/GUI/botones_Menu2.png", 191);
 
-    //public static SpriteSheet tools = new SpriteSheet("/levels/level01/pincel.png",6);
-    public static SpriteSheet numFonts = new SpriteSheet("/fonts/numberfont00.png",128);
     public static SpriteSheet guardia;
     
     
