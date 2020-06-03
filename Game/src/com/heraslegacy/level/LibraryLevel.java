@@ -185,7 +185,7 @@ public class LibraryLevel implements levelStrategy{
     @Override
     public void configPlayer(Level level) {
         player = new Player(25, 400);
-        player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+        player.setSprites(Sprite.dorothy_up, Sprite.dorothy_down, Sprite.dorothy_rigth, Sprite.dorothy_left);
         player.setAjustes(14, 8, 12, 3, 16 ,16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);
