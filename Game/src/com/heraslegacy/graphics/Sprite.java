@@ -48,19 +48,16 @@ public class Sprite {
     public static Sprite niceStuffForANiceGame [] = {new Sprite(16, 3, 3, SpriteSheet.nivel02_space),new Sprite(16, 4, 3, SpriteSheet.nivel02_space)};
     
     
-    //ZeroZone
-    public static Sprite fonts01[] = {new Sprite(32,32,0,0, SpriteSheet.numFonts),new Sprite(32,32,1,0, SpriteSheet.numFonts),new Sprite(32,32,2,0, SpriteSheet.numFonts),
-                                      new Sprite(32,32,3,0, SpriteSheet.numFonts),new Sprite(32,32,0,1, SpriteSheet.numFonts),new Sprite(32,32,1,1, SpriteSheet.numFonts),
-                                      new Sprite(32,32,2,1, SpriteSheet.numFonts),new Sprite(32,32,3,1, SpriteSheet.numFonts),new Sprite(32,32,0,2, SpriteSheet.numFonts),
-                                      new Sprite(32,32,1,2, SpriteSheet.numFonts)};
-    
-    public static Sprite frasesLvl01[] = {new Sprite(96,32,0,3, SpriteSheet.numFonts)};
-    
     //MathLevel
-    public static Sprite []hoja ={null,new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 2,0, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 2,1, SpriteSheet.HojasnivelGame01_mat),
-                                  new Sprite(150, 150, 0,2, SpriteSheet.HojasnivelGame01_mat),new Sprite(150, 150, 1,2, SpriteSheet.HojasnivelGame01_mat),
+    public static Sprite []hoja ={null,
+                                  new Sprite(150, 150, 0,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 1,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 2,0, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,1, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 1,1, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 2,1, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 0,2, SpriteSheet.HojasnivelGame01_mat),
+                                  new Sprite(150, 150, 1,2, SpriteSheet.HojasnivelGame01_mat),
                                   new Sprite(150, 150, 2,2, SpriteSheet.HojasnivelGame01_mat)};
     
     public static Sprite []mesa = {new Sprite(16, 4, 4, SpriteSheet.nivel01_mat),new Sprite(16, 5, 4, SpriteSheet.nivel01_mat),
@@ -97,16 +94,70 @@ public class Sprite {
     
     public static Sprite[] Elizabeth_left  = {new Sprite(32,0,2,SpriteSheet.elizabeth),new Sprite(32,1,2,SpriteSheet.elizabeth),
                                               new Sprite(32,2,2,SpriteSheet.elizabeth),new Sprite(32,3,2,SpriteSheet.elizabeth)};
+        //HERA
+    public static Sprite[] hera_down = {new Sprite(32, 0, 0, SpriteSheet.hera),new Sprite(32, 1, 0, SpriteSheet.hera),
+                                        new Sprite(32, 2, 0, SpriteSheet.hera),new Sprite(32, 3, 0, SpriteSheet.hera)};
+    
+    public static Sprite[] hera_left = {new Sprite(32, 0, 1, SpriteSheet.hera),new Sprite(32, 1, 1, SpriteSheet.hera),
+                                        new Sprite(32, 2, 1, SpriteSheet.hera),new Sprite(32, 3, 1, SpriteSheet.hera)};
+    
+    public static Sprite[] hera_rigth = {new Sprite(32, 0, 2, SpriteSheet.hera),new Sprite(32, 1, 2, SpriteSheet.hera),
+                                        new Sprite(32, 2, 2, SpriteSheet.hera),new Sprite(32, 3, 2, SpriteSheet.hera)};
+    
+    public static Sprite[] hera_up =    {new Sprite(32, 0, 3, SpriteSheet.hera),new Sprite(32, 1, 3, SpriteSheet.hera),
+                                        new Sprite(32, 2, 3, SpriteSheet.hera),new Sprite(32, 3, 3, SpriteSheet.hera)};
+        
+        //Khaterine
+    public static Sprite[] katherine_down = {new Sprite(32, 0, 0, SpriteSheet.katherine),new Sprite(32, 1, 0, SpriteSheet.katherine),
+                                            new Sprite(32, 2, 0, SpriteSheet.katherine),new Sprite(32, 3, 0, SpriteSheet.katherine)};
+    
+    public static Sprite[] katherine_left = {new Sprite(32, 0, 1, SpriteSheet.katherine),new Sprite(32, 1, 1, SpriteSheet.katherine),
+                                             new Sprite(32, 2, 1, SpriteSheet.katherine),new Sprite(32, 3, 1, SpriteSheet.katherine)};
+    
+    public static Sprite[] katherine_rigth = {new Sprite(32, 0, 2, SpriteSheet.katherine),new Sprite(32, 1, 2, SpriteSheet.katherine),
+                                            new Sprite(32, 2, 2, SpriteSheet.katherine),new Sprite(32, 3, 2, SpriteSheet.katherine)};
+    
+    public static Sprite[] katherine_up =   {new Sprite(32, 0, 3, SpriteSheet.katherine),new Sprite(32, 1, 3, SpriteSheet.katherine),
+                                             new Sprite(32, 2, 3, SpriteSheet.katherine),new Sprite(32, 3, 3, SpriteSheet.katherine)};
+        //Dorothy
+    public static Sprite[] dorothy_down = {new Sprite(32, 0, 0, SpriteSheet.dorothy),new Sprite(32, 1, 0, SpriteSheet.dorothy),
+                                        new Sprite(32, 2, 0, SpriteSheet.dorothy),new Sprite(32, 3, 0, SpriteSheet.dorothy)};
+    
+    public static Sprite[] dorothy_left = {new Sprite(32, 0, 1, SpriteSheet.dorothy),new Sprite(32, 1, 1, SpriteSheet.dorothy),
+                                        new Sprite(32, 2, 1, SpriteSheet.dorothy),new Sprite(32, 3, 1, SpriteSheet.dorothy)};
+    
+    public static Sprite[] dorothy_rigth = {new Sprite(32, 0, 2, SpriteSheet.dorothy),new Sprite(32, 1, 2, SpriteSheet.dorothy),
+                                        new Sprite(32, 2, 2, SpriteSheet.dorothy),new Sprite(32, 3, 2, SpriteSheet.dorothy)};
+    
+    public static Sprite[] dorothy_up =    {new Sprite(32, 0, 3, SpriteSheet.dorothy),new Sprite(32, 1, 3, SpriteSheet.dorothy),
+                                        new Sprite(32, 2, 3, SpriteSheet.dorothy),new Sprite(32, 3, 3, SpriteSheet.dorothy)};
+
     //Player
     
     //LibraryLevel
     public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
     public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
-    public static Sprite sueloLibrary = new Sprite(16,0,2,SpriteSheet.nivel03_library);
     public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
                                      new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
-    public static Sprite guardia[]= new Sprite[4];
-    public static Sprite libro;
+    public static Sprite guardia[][]= {
+                                      {new Sprite(16,0,8,SpriteSheet.elizabeth),new Sprite(16,1,8,SpriteSheet.elizabeth),
+                                       new Sprite(16,0,9,SpriteSheet.elizabeth),new Sprite(16,1,9,SpriteSheet.elizabeth)},
+        
+                                      
+                                      {new Sprite(16,0,6,SpriteSheet.elizabeth),new Sprite(16,1,6,SpriteSheet.elizabeth),
+                                       new Sprite(16,0,7,SpriteSheet.elizabeth),new Sprite(16,1,7,SpriteSheet.elizabeth)},
+                                      
+                                      {new Sprite(16,0,2,SpriteSheet.elizabeth),new Sprite(16,1,2,SpriteSheet.elizabeth),
+                                       new Sprite(16,0,3,SpriteSheet.elizabeth),new Sprite(16,1,3,SpriteSheet.elizabeth)},
+                                      
+                                      {new Sprite(16,0,4,SpriteSheet.elizabeth),new Sprite(16,1,4,SpriteSheet.elizabeth),
+                                       new Sprite(16,0,5,SpriteSheet.elizabeth),new Sprite(16,1,5,SpriteSheet.elizabeth)}
+                                      };
+    public static Sprite libro = new Sprite(16,3,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL1 = new Sprite(16,2,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL2 = new Sprite(16,3,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL1D = new Sprite(16,2,3,SpriteSheet.nivel03_library);
+    public static Sprite floorL2D = new Sprite(16,3,3,SpriteSheet.nivel03_library);
     
     //GUI MENU
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);
