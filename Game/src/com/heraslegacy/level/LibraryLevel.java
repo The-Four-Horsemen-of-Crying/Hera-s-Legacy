@@ -232,12 +232,6 @@ public class LibraryLevel implements levelStrategy{
         direction=0;
         player.setX(25);
         player.setY(400);
-        hide();
-        textLibrary[0].setVisible(true);
-        text1 = 2;
-        text2 = 10;
-        ant = LocalTime.now();
-        ant2 = LocalTime.now();
         loadLevel("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png");
     }
 
