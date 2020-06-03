@@ -77,8 +77,8 @@ public class Tile {
     public static Tile libro = new Tile(Sprite.libro,false);
     public static Tile floorL1 = new Tile(Sprite.floorL1,false);
     public static Tile floorL2 = new Tile(Sprite.floorL2,false);
-    public static Tile floorL1D = new Tile(Sprite.floorL1,false);
-    public static Tile floorL2D = new Tile(Sprite.floorL2,false);
+    public static Tile floorL1D = new Tile(Sprite.floorL1D,false);
+    public static Tile floorL2D = new Tile(Sprite.floorL2D,false);
 
     public Tile(Sprite sprite,boolean solid) {
         this.sprite = sprite;

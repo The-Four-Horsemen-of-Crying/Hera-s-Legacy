@@ -31,6 +31,7 @@ public enum Colors {
     kindColdplay        (-5991936),
     kindgreenday        (-16730112),
     purplePoe           (-9699234),
+    purpleDark1         (0xff950062),
     purpleDark          (0xff7f0060),
     naranjaMecanica     (-1411778),
     bluecoli            (0xff3900ff),

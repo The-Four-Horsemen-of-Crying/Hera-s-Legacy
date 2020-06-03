@@ -135,7 +135,7 @@ public class Sprite {
     //Player
     
     //LibraryLevel
-    public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
+    public static Sprite puerta = new Sprite(16,1,2,SpriteSheet.nivel03_library);
     public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
                                      new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
