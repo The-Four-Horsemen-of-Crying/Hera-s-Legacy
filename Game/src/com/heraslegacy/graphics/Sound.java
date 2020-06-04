@@ -22,7 +22,6 @@ public class Sound {
     private final Clip clip;
     private FloatControl volume;
     public static Clip de;
-    public static Clip fail;
     public static Clip change;
     public static Clip bakSpa;
     public static Clip win;
@@ -34,6 +33,10 @@ public class Sound {
     public static Clip lobby_portalSound;
     public static Clip buttonAlert_0;
     public static Clip bookSound;
+    /*Level 3*/
+    public static Clip backgroundLB;
+    public static Clip fail;
+    public static Clip pickup;
    
     public Sound (Clip clip){
         this.clip=clip;
@@ -63,7 +66,6 @@ public class Sound {
      
     public static void init(){//Es llamada 1 sola vez cuando se crea la clase Game, para añadir más sonidos se deben cargar aquí. 
         de=loadSound("/sonidos/aerith.wav");
-        fail = loadSound("/sonidos/fail.wav");
         change= loadSound("/sonidos/change.wav");
         bakSpa= loadSound("/sonidos/fondo.wav");
         win=loadSound("/sonidos/Win.wav");
@@ -75,6 +77,10 @@ public class Sound {
         buttonAlert_0= loadSound("/sonidos/buttonSound_0.wav");
         math_Theme=loadSound("/sonidos/mathTheme.wav");
         bookSound=loadSound("/sonidos/bookSound.wav");
+        /*Level 3*/
+        backgroundLB = loadSound("/sonidos/level3.wav");
+        fail = loadSound("/sonidos/fail.wav");
+        pickup = loadSound("/sonidos/pickup.wav");
     }
     public static Clip loadSound(String path){
           

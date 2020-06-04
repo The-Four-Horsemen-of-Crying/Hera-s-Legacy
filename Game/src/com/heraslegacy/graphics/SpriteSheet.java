@@ -29,6 +29,7 @@ public class SpriteSheet {
     public static SpriteSheet HojasnivelGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet2.png", 450);
     public static SpriteSheet single_Menu = new SpriteSheet("/GUI/menu.png", 150);
     public static SpriteSheet GUI = new SpriteSheet("/GUI/gui.png", 191);
+    public static SpriteSheet startScreen = new SpriteSheet("/GUI/back.png", 300);
 
     public static SpriteSheet guardia;
     

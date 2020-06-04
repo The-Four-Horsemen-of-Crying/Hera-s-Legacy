@@ -41,7 +41,7 @@ public class Fantasma implements levelStrategy {
     private int indiceLevel;
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
-    private final Texto a[] = {
+    private final Texto[] a = {
         new Texto("Hola", Game.width / 2, 300, true),
         new Texto("Puta :)", Game.width / 2, 300, false),
         new Texto("3", Game.width / 2, 300, false),
