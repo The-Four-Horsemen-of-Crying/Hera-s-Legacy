@@ -18,26 +18,31 @@ import java.awt.event.KeyEvent;
  *
  * @author Domain
  */
-public class MenuGUI {
-    private Sprite fondo = Sprite.menuGUI;
-    private int cordX=screen.width/2-75, cordY=screen.height/2-75;
-    Button botones[] = {
-        new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-4*16,0,10),
-        new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[3], screen.width/2-43, screen.height/2-2*16,0,10),
-        new Button(Sprite.botonesGUI[4],Sprite.botonesGUI[5], screen.width/2-43, screen.height/2-0*16,0,10)
-    };
-    private boolean visible;
-    private levelStrategy actualLevel;
+public class MenuGUI extends GUI{
+
+    private Level level;
+
+    public MenuGUI(Level level) {
+        super(Sprite.menuGUI, screen.width/2-75, screen.height/2-75, false);
+        this.level=level;
+        setBotones(
+            new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-4*16,0,10),
+            new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[3], screen.width/2-43, screen.height/2-2*16,0,10),
+            new Button(Sprite.botonesGUI[4],Sprite.botonesGUI[5], screen.width/2-43, screen.height/2-0*16,0,10)
+        );
+    }
     
-    public void uptade(Level actualLevel){
-        this.actualLevel = actualLevel.levelstrategy;
-        if(!(this.actualLevel instanceof Fantasma))visible=KeyBoard.escape;
+    @Override
+    public void uptade(){
+        
+        if(!(this.level.levelstrategy instanceof Fantasma))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
         }
     }
     
+    @Override
     public void mouseOptionsTracker(){
     
         if(botones[0].onZone()){
@@ -47,19 +52,12 @@ public class MenuGUI {
         }
         if(botones[1].onZone()){
             if(Mouse.click){
-                actualLevel.backWithoutWin();
+                level.levelstrategy.backWithoutWin();
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
         }
         if(botones[2].onZone()){
             if(Mouse.click)System.exit(0);
-        }
-    }
-
-    private void splitAll(){
-        screen.renderSprite(false, cordX, cordY, fondo);
-        for (Button boton : botones) {
-            boton.split();
         }
     }
 }

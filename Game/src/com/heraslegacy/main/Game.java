@@ -5,7 +5,9 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Fuente;
 import com.heraslegacy.graphics.MenuGUI;
+import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
+import com.heraslegacy.graphics.Welcome;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
@@ -36,34 +38,24 @@ public class Game extends Canvas implements Runnable {
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = true;
-    public static int gameState = 1; 
-    //Para dibujar texto
-    private Texto text[];
-    private int x=0, y=0;
-    private Color c=Color.white;
-    private Font f;
-    //para dibujar texto
+    private static boolean StartGame=false;
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
     public static MenuGUI menu;
     Sound theme;
+    private Welcome startScreen;
 
     public Game(){
+        System.out.println(height);
         Dimension size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
         frame = new JFrame();
         screen = new Screen(width, height);
         Sound.init();
         Fuente.init();
-        text= new Texto[1000];
-        f=Fuente.spaceFont;
-        theme=new Sound(Sound.de);
-        //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        level.configPlayer();
-        menu=new MenuGUI();
+        startScreen = new Welcome();
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);
@@ -120,9 +112,10 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level.getPlayer().update();  
-        level.update();
-        
+        if (StartGame) {
+            level.getPlayer().update();
+            level.update();
+        }
     }
 
     public void render() {
@@ -133,30 +126,47 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         
+        
         screen.clear();
-        int xScroll = level.getPlayer().getX() - screen.width/2;
-        int yScroll = level.getPlayer().getY() - screen.height/2;
+        
+        if(StartGame){
+            int xScroll = level.getPlayer().getX() - screen.width/2;
+            int yScroll = level.getPlayer().getY() - screen.height/2;
 
-        
-        level.render(xScroll, yScroll);   
-        level.getPlayer().render(screen);
-        level.superRender(xScroll, yScroll);
-        
-        if(activarMecanica){
-            level.mecanica();
+
+            level.render(xScroll, yScroll);   
+            level.getPlayer().render(screen);
+            level.superRender(xScroll, yScroll);
+
+            if(activarMecanica){
+                level.mecanica();
+
+            }        
+            if(KeyBoard.restart){
+                level.restart();
+            }
+            if(level.cambio()){
+                level = level.levelCambio();
+                level.configPlayer();
+            }
             
-        }        
-        if(KeyBoard.restart){
-            level.restart();
+            level.uptadeTexto();
+            menu.uptade();
+            
         }
-        if(level.cambio()){
-            level = level.levelCambio();
-            level.configPlayer();
+        else {
+            
+            startScreen.uptade();
+            level=startScreen.levelStar();
+            if(level!=null){
+                StartGame=true;
+                menu = new MenuGUI(level);
+            }
+            
         }
-        level.uptadeTexto();
-        menu.uptade(level);
+        
         for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = screen.pixels[i];
+                pixels[i] = screen.pixels[i];
         }
         
         Graphics g = bs.getDrawGraphics();
@@ -164,12 +174,14 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-            g.setFont(level.getFont());
-            g.setColor(level.getColor());
-            
-            for (int i = 0; i < level.getText().length; i++) {
-                if(level.getText()[i].isVisible()) {
-                    g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
+            if(StartGame){
+                g.setFont(level.getFont());
+                g.setColor(level.getColor());
+
+                for (int i = 0; i < level.getText().length; i++) {
+                    if(level.getText()[i].isVisible()) {
+                        g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
+                    }
                 }
             }
             g.dispose();
