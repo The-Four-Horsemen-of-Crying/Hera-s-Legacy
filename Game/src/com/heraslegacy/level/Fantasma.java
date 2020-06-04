@@ -127,7 +127,7 @@ public class Fantasma implements levelStrategy {
     public void mecanica() {
         if(indiceLevel==0)player.animación();
         time();
-        if (cont[0] == 50) {
+        if (cont[0] == 59) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
         
