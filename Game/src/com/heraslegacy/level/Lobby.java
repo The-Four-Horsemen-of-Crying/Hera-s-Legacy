@@ -134,7 +134,7 @@ public class Lobby implements levelStrategy{
     public void configPlayer(Level level) {
         player = new Player(Game.width / 2, Game.height / 2);
         player.setSprites(Sprite.hera_up, Sprite.hera_down, Sprite.hera_rigth, Sprite.hera_left);
-        player.setAjustes(14, 8, 12, 3, 16, 16, new Sound(Sound.walk));
+        player.setAjustes(14, 8, 13, 0, 16, 16, new Sound(Sound.walk));
         player.setLatencia(30);
         player.setTipo(0);
         player.setLevel(level);

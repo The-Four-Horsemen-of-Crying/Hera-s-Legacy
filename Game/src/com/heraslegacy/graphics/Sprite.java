@@ -16,6 +16,9 @@ public class Sprite {
     public static Sprite woodFloor = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
     public static Sprite null_floor = new Sprite(16,3,0,SpriteSheet.elizabeth);
     public static Sprite woodWall = new Sprite(16,0,0,SpriteSheet.nivel01_mat);
+    //menu
+    
+    public static Sprite b = new Sprite(300, 162, 0, 0, SpriteSheet.startScreen);
     
     //Lobby
     public static Sprite marmolWall[] = {new Sprite(16,0,1,SpriteSheet.nivel00_lobby), new Sprite(16, 1, 1, SpriteSheet.nivel00_lobby),
@@ -163,7 +166,11 @@ public class Sprite {
     
     public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.GUI),new Sprite(86, 32, 1, 0, SpriteSheet.GUI),
                                          new Sprite(86, 32, 0, 1, SpriteSheet.GUI),new Sprite(86, 32, 1, 1, SpriteSheet.GUI),
-                                         new Sprite(86, 32, 0, 2, SpriteSheet.GUI),new Sprite(86, 32, 1, 2, SpriteSheet.GUI)};
+                                         new Sprite(86, 32, 0, 2, SpriteSheet.GUI),new Sprite(86, 32, 1, 2, SpriteSheet.GUI),
+                                         new Sprite(86, 32, 0, 6, SpriteSheet.startScreen),new Sprite(86, 32, 0, 7, SpriteSheet.startScreen),
+                                         new Sprite(86, 32, 0, 8, SpriteSheet.startScreen)};
+    
+    
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet
