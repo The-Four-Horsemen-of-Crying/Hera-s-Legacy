@@ -12,6 +12,7 @@ import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
+import com.heraslegacy.main.Game;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalTime;
@@ -31,7 +32,7 @@ public class LibraryLevel implements levelStrategy{
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
-    private final Font LIBRARYFONT = Fuente.spaceFont;
+    private final Font LIBRARYFONT = Fuente.spaceFontSmaller;
     private boolean libros[] ={false, false, false, false};
     private boolean win = true;
     private final int[] ZONECOLOR ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkred.getColor()};//Los colores que diferencian cada zona
@@ -43,34 +44,34 @@ public class LibraryLevel implements levelStrategy{
     private LocalTime ant2= LocalTime.now();
     private Player player;
     private final Sound sound[] = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
-    private Color colorTexto= Color.MAGENTA;
+    private final Color colorTexto= Color.getHSBColor(46, 100, 100);
     private final Texto textLibrary[]= {
-        new Texto("Necesito reunir 4 libros a escondidas",50,100,true),            //0
+        new Texto("Necesito reunir 4 libros a escondidas",0,false,Sprite.dorothy_down[0]),           //0
         
-        new Texto("",50,100,false),                                                //1
+        new Texto("",0,false,Sprite.dorothy_down[0]),                                                //1
         
-        new Texto("Cuidado con los guardias Dorothy",50,100,false),                //2
-        new Texto("Tú puedes Dorothy!",50,100,false),                              //3
-        new Texto("Con esos libros puedo mejorar",50,100,false),                   //4
-        new Texto("Manual... IBM...",50,100,false),                                //5
-        new Texto("Debo seguir buscando",50,100,false),                            //6
-        new Texto("Necesito esos libros",50,100,false),                            //7
-        new Texto("Debo evitar perder mi trabajo",50,100,false),                   //8
-        new Texto("He de aprender sobre esas maquinas",50,100,false),              //9
+        new Texto("Cuidado con los guardias Dorothy",0,false,Sprite.dorothy_down[0]),                //2
+        new Texto("Tú puedes Dorothy!",0,false,Sprite.dorothy_down[0]),                              //3
+        new Texto("Con esos libros puedo mejorar",0,false,Sprite.dorothy_down[0]),                   //4
+        new Texto("Manual... IBM...",0,false,Sprite.dorothy_down[0]),                                //5
+        new Texto("Debo seguir buscando",0,false,Sprite.dorothy_down[0]),                            //6
+        new Texto("Necesito esos libros",0,false,Sprite.dorothy_down[0]),                            //7
+        new Texto("Debo evitar perder mi trabajo",0,false,Sprite.dorothy_down[0]),                   //8
+        new Texto("He de aprender sobre esas maquinas",0,false,Sprite.dorothy_down[0]),              //9
         
-        new Texto("QUÉ HACE? FUERA DE AQUÍ",50,100,false),                         //10
-        new Texto("¡LARGO!",50,100,false),                                         //11
-        new Texto("¡No quiero verla por aquí!",50,100,false),                      //12
-        new Texto("Me pareces conocida, largo de aquí",50,100,false),              //13
-        new Texto("¿Otra vez? Ya conoces el camino",50,100,false),                 //14
-        new Texto("Ya sabes que cerramos, cierto?",50,100,false),                  //15
-        new Texto("No es gracioso...",50,100,false),                               //16
-        new Texto("¿Necesitas ayuda?",50,100,false),                               //17
-        new Texto("Si quieres te acompañamos",50,100,false),                       //18
-        new Texto("A la proxima trae algo de tomar",50,100,false),                 //19
-        new Texto("Ya basta de juegos",50,100,false),                              //20
-        new Texto("No te podemos ver aquí",50,100,false),                          //21
-        new Texto("You are filled with DETERMINATION <3",50,100,false)             //22
+        new Texto("QUÉ HACE? FUERA DE AQUÍ",0,false,Sprite.dorothy_down[0]),                         //10
+        new Texto("¡LARGO!",0,false,Sprite.dorothy_down[0]),                                         //11
+        new Texto("¡No quiero verla por aquí!",0,false,Sprite.dorothy_down[0]),                      //12
+        new Texto("Me pareces conocida, largo de aquí",0,false,Sprite.dorothy_down[0]),              //13
+        new Texto("¿Otra vez? Ya conoces el camino",0,false,Sprite.dorothy_down[0]),                 //14
+        new Texto("Ya sabes que cerramos, cierto?",0,false,Sprite.dorothy_down[0]),                  //15
+        new Texto("No es gracioso...",0,false,Sprite.dorothy_down[0]),                               //16
+        new Texto("¿Necesitas ayuda?",0,false,Sprite.dorothy_down[0]),                               //17
+        new Texto("Si quieres te acompañamos",0,false,Sprite.dorothy_down[0]),                       //18
+        new Texto("A la proxima trae algo de tomar",0,false,Sprite.dorothy_down[0]),                 //19
+        new Texto("Ya basta de juegos",0,false,Sprite.dorothy_down[0]),                              //20
+        new Texto("No te podemos ver aquí",0,false,Sprite.dorothy_down[0]),                          //21
+        new Texto("You are filled with DETERMINATION <3",0,false,Sprite.dorothy_down[0])             //22
     };
 
     public LibraryLevel(){
@@ -86,7 +87,6 @@ public class LibraryLevel implements levelStrategy{
         }
         if (text.getSecond() >= 30) {
             hide();
-            colorTexto = Color.MAGENTA;
             ant2 = LocalTime.now();
             textLibrary[text1].setVisible(true);
             text1++;
@@ -146,7 +146,6 @@ public class LibraryLevel implements levelStrategy{
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor()){
             libros[zone]=true;
             tilesCollision[(x>>4)+(y>>4)*width] = ZONECOLOR[zone];
-            colorTexto = Color.GREEN;
             hide();
             ant2 = LocalTime.now();
             if (numLibros() != 0) {
@@ -211,7 +210,6 @@ public class LibraryLevel implements levelStrategy{
         if(Tile.puertaS[zone].solid==false){ Tile.puertaS[zone].setSolid(true);}
         time();
         if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == VISUALRANGE[direction]){
-            colorTexto = Color.BLUE;
             sound[1].play();
             hide();
             textLibrary[text2].setVisible(true);
@@ -241,7 +239,7 @@ public class LibraryLevel implements levelStrategy{
         for (boolean libro : libros) {
             boo = boo && libro;
         }
-        return boo && !textLibrary[2].isVisible();
+        return boo && Game.activarMecanica;
     }
 
     @Override
@@ -320,6 +318,9 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void uptadeTexto() {
+        for (Texto text : textLibrary) {
+            text.showIfActive();
+        }
     }
     
     private int numLibros(){
