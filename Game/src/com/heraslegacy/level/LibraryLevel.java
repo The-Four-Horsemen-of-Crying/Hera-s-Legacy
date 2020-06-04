@@ -237,5 +237,10 @@ public class LibraryLevel implements levelStrategy{
     public void backWithoutWin() {
         //Hacer condicion de volver true;
     }
+
+    @Override
+    public void uptadeTexto() {
+        
+    }
     
 }

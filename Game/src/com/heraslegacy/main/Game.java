@@ -153,6 +153,7 @@ public class Game extends Canvas implements Runnable {
             level = level.levelCambio();
             level.configPlayer();
         }
+        level.uptadeTexto();
         menu.uptade(level);
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];

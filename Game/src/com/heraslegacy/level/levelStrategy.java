@@ -27,4 +27,5 @@ public interface levelStrategy {
     public void render();
     public void backWithoutWin();
     public void sobreRender(int xScroll,int yScroll);
+    public void uptadeTexto();
 }

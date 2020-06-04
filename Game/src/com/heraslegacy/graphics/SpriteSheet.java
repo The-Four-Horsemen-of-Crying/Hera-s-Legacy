@@ -17,18 +17,18 @@ public class SpriteSheet {
     
     public static SpriteSheet elizabeth = new SpriteSheet("/textures/Elizabeth.png", 225);//La ruta y el tamaño de todo el pack
     public static SpriteSheet apolo11 = new SpriteSheet("/textures/apolo11.png", 144);
-    public static SpriteSheet hera = new SpriteSheet("/textures/persona_00.png", 128);
-    public static SpriteSheet katherine = new SpriteSheet("/textures/persona_01.png", 128);
-    public static SpriteSheet dorothy = new SpriteSheet("/textures/persona_03.png", 128);
+    public static SpriteSheet hera = new SpriteSheet("/textures/persona_000.png", 128);
+    public static SpriteSheet katherine = new SpriteSheet("/textures/persona_001.png", 128);
+    public static SpriteSheet dorothy = new SpriteSheet("/textures/persona_003.png", 128);
     public static SpriteSheet nivel00_lobby = new SpriteSheet("/textures/textuLobby.png", 96);
     public static SpriteSheet nivel01_mat = new SpriteSheet("/textures/mini_game01.png", 96);
     public static SpriteSheet nivel02_space = new SpriteSheet("/textures/mini_game02.png", 96);
-    public static SpriteSheet nivel03_library = new SpriteSheet("/textures/mini_game03.png", 96);
+    public static SpriteSheet nivel03_library = new SpriteSheet("/textures/mini_game032.png", 96);
     public static SpriteSheet single_DrawMoon = new SpriteSheet("/textures/moon.png", 96);
     public static SpriteSheet LobbyDoors = new SpriteSheet("/textures/portales.png", 144);
     public static SpriteSheet HojasnivelGame01_mat = new SpriteSheet("/levels/level01/ejerciciosSheet2.png", 450);
     public static SpriteSheet single_Menu = new SpriteSheet("/GUI/menu.png", 150);
-    public static SpriteSheet buttonsGUI = new SpriteSheet("/GUI/botones_Menu2.png", 191);
+    public static SpriteSheet GUI = new SpriteSheet("/GUI/gui.png", 191);
 
     public static SpriteSheet guardia;
     
