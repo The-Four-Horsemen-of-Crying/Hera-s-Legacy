@@ -15,10 +15,12 @@ import java.io.IOException;
  */
 public class Fuente {
     public static Font spaceFont;
+    public static Font spaceFontSmaller;
     public static Font greekFont;
    
     public static void init(){
         spaceFont=loadFont("/fonts/RobotoMono-Light.ttf", 35);
+        spaceFontSmaller=loadFont("/fonts/RobotoMono-Light.ttf", 20);
         greekFont=loadFont("/fonts/Olympus.ttf", 35);
     } 
     public static Font loadFont(String path, int size) {

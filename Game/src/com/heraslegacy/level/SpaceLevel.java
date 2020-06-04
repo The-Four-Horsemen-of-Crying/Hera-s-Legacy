@@ -33,7 +33,7 @@ public class SpaceLevel implements levelStrategy {
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private final Font spaceFont = Fuente.spaceFont;
+    private final Font spaceFont = Fuente.greekFont;
     private boolean variaB[] = new boolean[5];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
     private LocalTime dy = LocalTime.now();
     private LocalTime now = LocalTime.now();
@@ -47,13 +47,13 @@ public class SpaceLevel implements levelStrategy {
         new Sound(Sound.loose)
     };
     private static final Texto textSpace[] = {
-        new Texto("¡Todo se arregló!", Game.width / 2, Game.height / 2, false),
-        new Texto("¡LOS CONTROLES FALLAN!", Game.width / 2, Game.height / 2, false),
-        new Texto("!FELICIDADES!", Game.width / 2, Game.height / 2, false),
-        new Texto("!Has llegado a la luna!", Game.width / 2, Game.height / 2, false),
-        new Texto("FIN DEL JUEGO", Game.width / 2, Game.height / 2, false),
-        new Texto("Presiona R para reiniciar", Game.width / 2, Game.height / 2, false),
-        new Texto("¡INTENTA DE NUEVO!", Game.width / 2, Game.height / 2, false)
+        new Texto("¡Todo se arregló!", 0, false),
+        new Texto("¡LOS CONTROLES FALLAN!", 0, false),
+        new Texto("!FELICIDADES!", 0, false),
+        new Texto("!Has llegado a la luna!", 0, false),
+        new Texto("FIN DEL JUEGO",0, false),
+        new Texto("Presiona R para reiniciar",0, false),
+        new Texto("¡INTENTA DE NUEVO!", 0, false)
     };
 
     @Override
@@ -368,8 +368,8 @@ public class SpaceLevel implements levelStrategy {
     }
 
     private void stop() {
-        for (int i = 0; i < sonido.length; i++) {
-            sonido[i].stop();
+        for (Sound sonido1 : sonido) {
+            sonido1.stop();
         }
     }
 
@@ -377,5 +377,12 @@ public class SpaceLevel implements levelStrategy {
     public void backWithoutWin() {
         stop();
         variaB[4]=true;
+    }
+
+    @Override
+    public void uptadeTexto() {
+    for (Texto text : textSpace) {
+            text.showIfActive();
+        }
     }
 }

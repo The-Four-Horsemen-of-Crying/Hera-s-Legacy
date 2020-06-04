@@ -61,7 +61,8 @@ public class Screen {
                 int xAbsolute = x + xPosition;                
                 if (xAbsolute < -tile.sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height) break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
                 if(xAbsolute<0) xAbsolute=0;//Evita un outOfBounds
-                pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+                int fondo = tile.sprite.pixels[x+y*tile.sprite.getWidth()];
+                if(fondo!=0xffff00ff)pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
             }
         }
     }
