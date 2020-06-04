@@ -44,10 +44,10 @@ public class MathLevel implements levelStrategy {
         new Texto("Introduce", screen.width/2*scale+3, screen.height/2*scale+30, false),
         new Texto("Respuesta", screen.width/2*scale+3, screen.height/2*scale+70, false),
         new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
-        new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false),
-        new Texto("Excelente Carlitos, sigue así!", 0, false),
-        new Texto("GGWP", 0, false),
-        new Texto("Intenta con otra respuesta", 0, false)
+        new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false,Sprite.hera_down[0]),
+        new Texto("Excelente Carlitos, sigue así!", 0, false,Sprite.hera_down[0]),
+        new Texto("GGWP", 0, false,Sprite.hera_down[0]),
+        new Texto("Intenta con otra respuesta", 0, false,Sprite.hera_down[0])
     };
     
 

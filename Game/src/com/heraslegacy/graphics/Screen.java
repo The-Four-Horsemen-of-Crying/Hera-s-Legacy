@@ -45,8 +45,8 @@ public class Screen {
                 int xa=x+xPosition;
                 if(xa<0||xa>=width||ya<0||ya>=height)continue;
                 int fondo = sprite.pixels[x+y*sprite.getWidth()];
-                
-                if(fondo!=0xffff00ff)pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
+
+                if(fondo!=0xff000000&&fondo!=0xffff00ff)pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
             }
             
         }
