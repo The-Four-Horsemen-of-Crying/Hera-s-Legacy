@@ -44,10 +44,10 @@ public class MathLevel implements levelStrategy {
         new Texto("Introduce", screen.width/2*scale+3, screen.height/2*scale+30, false),
         new Texto("Respuesta", screen.width/2*scale+3, screen.height/2*scale+70, false),
         new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
-        new Texto("Carlitos, Estás haciendo esa vaina mal", screen.width/2-140, screen.height/2*scale-200, false),
-        new Texto("Excelente Carlitos, sigue así!", screen.width/2-140, screen.height/2*scale-200, false),
-        new Texto("Ese estaba muy complicado", screen.width/2-140, screen.height/2*scale-200, false),
-        new Texto("GGWP", screen.width/2-140, screen.height/2*scale-200, false),
+        new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false),
+        new Texto("Excelente Carlitos, sigue así!", 0, false),
+        new Texto("GGWP", 0, false),
+        new Texto("Intenta con otra respuesta", 0, false)
     };
     
 
@@ -142,6 +142,7 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void mecanica() {
+        changeFont(2);
         if(!bools[3]){
             sounds[1].play();
             bools[3]=true;
@@ -180,11 +181,15 @@ public class MathLevel implements levelStrategy {
                     String reponse = textMath[3].getText();
                     if (!reponse.isEmpty()) {
                         float f_reponse = Float.parseFloat(reponse);
+                        
                         if (f_reponse == respuestas[mesa]) {
                             showReponse(r.nextInt(2)+5);
                             resueltos[indiceMesa] = true;
+                            changeFont(1);
                             condicionesIni();
-                        } else if (f_reponse != respuestas[mesa]) {
+                        } 
+                        
+                        else if (f_reponse != respuestas[mesa]) {
                             showReponse(6);
                             condicionesIni();
                         }
@@ -332,5 +337,16 @@ public class MathLevel implements levelStrategy {
     @Override
     public void backWithoutWin() {
         bools[2]=true;
+    }
+
+    @Override
+    public void uptadeTexto() {
+        for (Texto text : textMath) {
+            text.showIfActive();
+        } 
+    }
+    public void changeFont(int i){
+        if(i==1)mathLevelFont=Fuente.spaceFontSmaller;
+        else mathLevelFont= Fuente.spaceFont; 
     }
 }   

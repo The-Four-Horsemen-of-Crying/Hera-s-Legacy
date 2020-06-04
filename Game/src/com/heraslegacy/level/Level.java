@@ -103,6 +103,10 @@ public class Level{
     public levelStrategy getLevelstrategy() {
         return levelstrategy;
     }
+
+    public void uptadeTexto() {
+        levelstrategy.uptadeTexto();
+    }
     
 }
 

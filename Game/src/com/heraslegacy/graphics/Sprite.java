@@ -135,35 +135,35 @@ public class Sprite {
     //Player
     
     //LibraryLevel
-    public static Sprite puerta = new Sprite(16,1,2,SpriteSheet.nivel03_library);
-    public static Sprite paredLibrary = new Sprite(16,1,0,SpriteSheet.nivel01_mat);
+    public static Sprite puerta = new Sprite(16,2,2,SpriteSheet.nivel03_library);
+    public static Sprite paredLibrary = new Sprite(16,2,0,SpriteSheet.nivel03_library);
+    
     public static Sprite estantes[]={new Sprite(16,0,0,SpriteSheet.nivel03_library),new Sprite(16,1,0,SpriteSheet.nivel03_library),
                                      new Sprite(16,0,1,SpriteSheet.nivel03_library),new Sprite(16,1,1,SpriteSheet.nivel03_library)};
-    public static Sprite guardia[][]= {
-                                      {new Sprite(16,0,8,SpriteSheet.elizabeth),new Sprite(16,1,8,SpriteSheet.elizabeth),
-                                       new Sprite(16,0,9,SpriteSheet.elizabeth),new Sprite(16,1,9,SpriteSheet.elizabeth)},
-        
-                                      
-                                      {new Sprite(16,0,6,SpriteSheet.elizabeth),new Sprite(16,1,6,SpriteSheet.elizabeth),
-                                       new Sprite(16,0,7,SpriteSheet.elizabeth),new Sprite(16,1,7,SpriteSheet.elizabeth)},
-                                      
-                                      {new Sprite(16,0,2,SpriteSheet.elizabeth),new Sprite(16,1,2,SpriteSheet.elizabeth),
-                                       new Sprite(16,0,3,SpriteSheet.elizabeth),new Sprite(16,1,3,SpriteSheet.elizabeth)},
-                                      
-                                      {new Sprite(16,0,4,SpriteSheet.elizabeth),new Sprite(16,1,4,SpriteSheet.elizabeth),
-                                       new Sprite(16,0,5,SpriteSheet.elizabeth),new Sprite(16,1,5,SpriteSheet.elizabeth)}
-                                      };
-    public static Sprite libro = new Sprite(16,3,2,SpriteSheet.nivel03_library);
-    public static Sprite floorL1 = new Sprite(16,2,2,SpriteSheet.nivel03_library);
-    public static Sprite floorL2 = new Sprite(16,3,2,SpriteSheet.nivel03_library);
-    public static Sprite floorL1D = new Sprite(16,2,3,SpriteSheet.nivel03_library);
-    public static Sprite floorL2D = new Sprite(16,3,3,SpriteSheet.nivel03_library);
     
-    //GUI MENU
+    public static Sprite guardia[][]= {{new Sprite(16,2,2,SpriteSheet.nivel03_library),new Sprite(16,3,2,SpriteSheet.nivel03_library),
+                                        new Sprite(16,2,3,SpriteSheet.nivel03_library),new Sprite(16,3,3,SpriteSheet.nivel03_library)},
+                                       {new Sprite(16,4,2,SpriteSheet.nivel03_library),new Sprite(16,5,2,SpriteSheet.nivel03_library),
+                                        new Sprite(16,4,3,SpriteSheet.nivel03_library),new Sprite(16,5,3,SpriteSheet.nivel03_library)},
+                                       {new Sprite(16,2,4,SpriteSheet.nivel03_library),new Sprite(16,3,4,SpriteSheet.nivel03_library),
+                                        new Sprite(16,2,5,SpriteSheet.nivel03_library),new Sprite(16,3,5,SpriteSheet.nivel03_library)},
+                                       {new Sprite(16,4,4,SpriteSheet.nivel03_library),new Sprite(16,5,4,SpriteSheet.nivel03_library),
+                                        new Sprite(16,4,5,SpriteSheet.nivel03_library),new Sprite(16,5,5,SpriteSheet.nivel03_library)}};
+    
+    public static Sprite libro = new Sprite(16,5,0,SpriteSheet.nivel03_library);
+    public static Sprite floorL1 = new Sprite(16,3,0,SpriteSheet.nivel03_library);//before 2:2
+    public static Sprite floorL2 = new Sprite(16,4,0,SpriteSheet.nivel03_library);//3:2
+    public static Sprite floorL1D = new Sprite(16,3,1,SpriteSheet.nivel03_library);
+    public static Sprite floorL2D = new Sprite(16,4,1,SpriteSheet.nivel03_library);
+    
+    //GUI
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);
-    public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 0, SpriteSheet.buttonsGUI),
-                                         new Sprite(86, 32, 0, 1, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 1, SpriteSheet.buttonsGUI),
-                                         new Sprite(86, 32, 0, 2, SpriteSheet.buttonsGUI),new Sprite(86, 32, 1, 2, SpriteSheet.buttonsGUI)};
+    
+    public static Sprite dialogBox = new Sprite(160,48,0,2,SpriteSheet.GUI);
+    
+    public static Sprite botonesGUI[] = {new Sprite(86, 32, 0, 0, SpriteSheet.GUI),new Sprite(86, 32, 1, 0, SpriteSheet.GUI),
+                                         new Sprite(86, 32, 0, 1, SpriteSheet.GUI),new Sprite(86, 32, 1, 1, SpriteSheet.GUI),
+                                         new Sprite(86, 32, 0, 2, SpriteSheet.GUI),new Sprite(86, 32, 1, 2, SpriteSheet.GUI)};
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         this.x = x*size; //seleccionando la coordenada x del SpriteSheet

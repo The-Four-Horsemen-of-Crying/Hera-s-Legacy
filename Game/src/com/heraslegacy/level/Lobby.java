@@ -40,7 +40,7 @@ public class Lobby implements levelStrategy{
     private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
     public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
-        new Texto("Ya se encuentra en el Lobby", screen.width/2-40, screen.height/2-120, true)
+        new Texto("Ya se encuentra en el Lobby", screen.width/2-40, screen.height/2-120, false)
     
     };
     
@@ -56,7 +56,7 @@ public class Lobby implements levelStrategy{
         if (tiles[x + y * width] == Colors.lime.getColor())            return Tile.specialMarmolFloor;
         if (tiles[x + y * width] == Colors.blue.getColor())            return Tile.pikes;
         if (tiles[x + y * width] == Colors.red.getColor())             return Tile.columnas[1];      
-        if (tiles[x + y * width] == Colors.kindblue.getColor())        return Tile.columnas[0];
+        if (tiles[x + y * width] == Colors.kindblue.getColor())        return Tile.columnas[2];
         if (tiles[x + y * width] == Colors.fuchsia.getColor())         return Tile.marmolFloor[0];     
         if (tiles[x + y * width] == Colors.yellow.getColor())          return Tile.marmolWall[0];
         if (tiles[x + y * width] == Colors.kindColdplay.getColor())    return Tile.marmolFloor[1];
@@ -183,8 +183,7 @@ public class Lobby implements levelStrategy{
         int y1 = (yScroll + screen.height+16) >> 4;
         for (int y = y0; y < y1; y++) {
             for (int x = x0; x < x1; x++) {
-                Tile t= getTile(x, y);
-                if(t==Tile.columnas[0])t.render(x, y);
+                if(getTile(x,y)==Tile.columnas[2])Tile.columnas[0].render(x, y);
             }
         }
     }
@@ -204,5 +203,12 @@ public class Lobby implements levelStrategy{
     @Override
     public void backWithoutWin() {
         textLobby[0].setVisible(true);
+    }
+
+    @Override
+    public void uptadeTexto() {
+        for (Texto text : textLobby) {
+            text.showIfActive();
+        }
     }
 }

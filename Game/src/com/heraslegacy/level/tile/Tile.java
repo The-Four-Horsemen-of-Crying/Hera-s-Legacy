@@ -29,7 +29,7 @@ public class Tile {
     
     public static Tile specialMarmolFloor = new Tile(Sprite.specialMarmolFloor, false);
     
-    public static Tile columnas[] = {new Tile(Sprite.columnas[0], false),new Tile(Sprite.columnas[1], true)};
+    public static Tile columnas[] = {new Tile(Sprite.columnas[0], false),new Tile(Sprite.columnas[1], true),new Tile(Sprite.marmolFloor[0], false)};
     
     public static Tile techo = new Tile(Sprite.techo, true);
     

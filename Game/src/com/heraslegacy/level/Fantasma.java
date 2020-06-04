@@ -155,10 +155,10 @@ public class Fantasma implements levelStrategy {
                 p = new Sound(Sound.propulsion);
                 break;
             case 1:
-                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                player.setSprites(Sprite.katherine_up, Sprite.katherine_down, Sprite.katherine_rigth, Sprite.katherine_left);
                 break;
             case 2:
-                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                player.setSprites(Sprite.dorothy_up, Sprite.dorothy_down, Sprite.dorothy_rigth, Sprite.dorothy_left);
                 break;
         }
         
@@ -228,6 +228,11 @@ public class Fantasma implements levelStrategy {
     @Override
     public void backWithoutWin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void uptadeTexto() {
+        
     }
 
 }

@@ -317,6 +317,11 @@ public class LibraryLevel implements levelStrategy{
             texto.setVisible(false);
         }
     }
+
+    @Override
+    public void uptadeTexto() {
+        
+    }
     
     private int numLibros(){
         int cont = 0;
