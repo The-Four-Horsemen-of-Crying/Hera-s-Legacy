@@ -127,7 +127,7 @@ public class Fantasma implements levelStrategy {
     public void mecanica() {
         if(indiceLevel==0)player.animación();
         time();
-        if (cont[0] == 50) {
+        if (cont[0] == 59) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
         
@@ -155,10 +155,10 @@ public class Fantasma implements levelStrategy {
                 p = new Sound(Sound.propulsion);
                 break;
             case 1:
-                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                player.setSprites(Sprite.katherine_up, Sprite.katherine_down, Sprite.katherine_rigth, Sprite.katherine_left);
                 break;
             case 2:
-                player.setSprites(Sprite.Elizabeth_up, Sprite.Elizabeth_down, Sprite.Elizabeth_rigth, Sprite.Elizabeth_left);
+                player.setSprites(Sprite.dorothy_up, Sprite.dorothy_down, Sprite.dorothy_rigth, Sprite.dorothy_left);
                 break;
         }
         

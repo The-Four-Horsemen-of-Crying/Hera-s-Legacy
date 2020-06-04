@@ -31,12 +31,13 @@ public class Texto {
         backBox=null;
     }
     
-    public Texto(String text, int jumpCordY, boolean visible){
+    public Texto(String text, int jumpCordY, boolean visible, Sprite subject){
         this.text=text;
         this.posx=10;
         this.visible=visible;
         this.posy=screen.height*scale-backBox.getHeight()*scale/2+30*jumpCordY;
         backGroundActive=visible;
+        this.subject=subject;
     }
 
     public String getText() {
@@ -83,7 +84,7 @@ public class Texto {
 
     public void showIfActive() {
         if(visible&&backGroundActive){
-            //screen.renderSprite(false, 0,screen.height-backBox.getHeight()-subject.getHeight()/2 , subject);  //Cuando se añada
+            screen.renderSprite(false, 0,screen.height-backBox.getHeight()-subject.getHeight()/2 , subject);  //Cuando se añada
             screen.renderSprite(false, 0, screen.height-backBox.getHeight(), backBox);
         }
     }
