@@ -34,25 +34,42 @@ public class Fantasma implements levelStrategy {
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private final Font spaceFont = Fuente.spaceFont;
+    private final Font spaceFont = Fuente.trans;
     private final Color colorTexto = Color.WHITE;
     private boolean cambio = false;
     private int cont[] = new int[3];
-    private int indiceLevel;
+    private int indiceLevel, maxMensajes;
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
-    private final Texto[] a = {
-        new Texto("Hola", Game.width / 2, 300, true),
-        new Texto("Puta :)", Game.width / 2, 300, false),
-        new Texto("3", Game.width / 2, 300, false),
-        new Texto("4", Game.width / 2, 300, false),
-        new Texto("5", Game.width / 2, 300, false),
-        new Texto("", Game.width / 2, 300, false)};
+    private final Texto a[];
+    private final Texto mensajeSpace[]={
+        new Texto("Katherine Jonhson, la calculadora humana.", Game.width / 2, 300, true),
+        new Texto("En 1969, gracias a los calculos manuales de Katherine", Game.width / 2, 300, false),
+        new Texto("se logró sincronizar la nave de aterrizaje con", Game.width / 2, 300, false),
+        new Texto("el módulo de comando en orbita y gracias a esto", Game.width / 2, 300, false),
+        new Texto("la tripulación del Apolo 11 regresó a la tierra", Game.width / 2, 300, false),
+        new Texto("En una entrevista Katherine declaró:", Game.width / 2, 300, false),
+        new Texto("''Había hecho los cálculos y sabía que eran correctos...", Game.width / 2, 300, false),
+        new Texto("pero era como conducir, cualquier cosa podía pasar''", Game.width / 2, 300, false),
+        new Texto("Hoy en día podemos decir que los calculos de Katherine", Game.width / 2, 300, false),
+        new Texto("Estuvieron bien.", Game.width / 2, 300, false),
+        new Texto("A partir de ahora, eres un astronauta", Game.width / 2, 300, false),
+        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.width / 2, 300, false), 
+        new Texto("Regresarás a salvo, exito en la misión.", Game.width / 2, 300, false),
+        new Texto("Recuerda:", Game.width / 2, 300, false),
+        new Texto("''En un tiempo donde todos pensaban en cómo llegar...", Game.width / 2, 300, false),
+        new Texto("y nadie en cómo regresar, Jonhson se adelantó, supo como volver''", Game.width / 2, 300, false)
+    };
+    private final Texto mensajeMath[]={
+        new Texto("h", Game.width / 2, 300, true)
+    };
+    private final Texto mensajeLibrary[]={
+        new Texto("bro", Game.width / 2, 300, true)
+    };
     private final Tile piso[] = {
         Tile.spacePices[3],
         Tile.woodFloor,
-        Tile.floorL1,
-    };
+        Tile.floorL1,};
     private final Tile pared[] = {
         Tile.spacePices[0],
         Tile.woodWall,
@@ -61,11 +78,34 @@ public class Fantasma implements levelStrategy {
 
     public Fantasma(int indiceLevel) {
         this.indiceLevel = indiceLevel;//La idea es utilizar esto para hacer tipo un switch
+        switch(indiceLevel){
+            default:
+                this.maxMensajes=16;
+                a = new Texto[maxMensajes];
+                for (int i = 0; i < maxMensajes; i++) {
+                    a[i]=this.mensajeSpace[i];
+                }
+                break;
+            case 1:
+                this.maxMensajes=1;
+                a= new Texto[maxMensajes];
+                for (int i = 0; i < maxMensajes; i++) {
+                    a[i]=this.mensajeMath[i];
+                }
+                break;
+            case 2:
+                this.maxMensajes=1;
+                a= new Texto[maxMensajes];
+                for (int i = 0; i < maxMensajes; i++) {
+                    a[i]=this.mensajeLibrary[i];
+                }
+                break;
+        }
     }
 
     @Override
-    public void update(){
-        
+    public void update() {
+
     }
 
     @Override
@@ -108,29 +148,32 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void time() {
-        
+
         cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
         cont[1] = dm.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo de los mensajes
-       
+
         if (cont[1] == 57) {//Mostrar mensajes
             cont[1] = 0;
-            if (cont[2] <= 4) {
+            if (cont[2] <= maxMensajes){
                 cont[2]++;
                 a[0].setVisible(cont[2], a);
+                
             }
-            cont[1]=0;
-            dm= LocalTime.now();
+            cont[1] = 0;
+            dm = LocalTime.now();
         }
     }
 
     @Override
     public void mecanica() {
-        if(indiceLevel==0)player.animación();
+        if (indiceLevel == 0) {
+            player.animación();
+        }
         time();
-        if (cont[0] == 59) {
+        if (cont[0] == 59-maxMensajes*3) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
-        
+
     }
 
     @Override
@@ -145,13 +188,13 @@ public class Fantasma implements levelStrategy {
     @Override
     public void configPlayer(Level level) {
         //Buscar la manera de decidir cual cargar
-        int latencia= 30;
+        int latencia = 30;
         Sound p = new Sound(Sound.walk);
         player = new Player(Game.width / 2, Game.height / 2);
         switch (indiceLevel) {
             case 0:
                 player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
-                latencia=400;
+                latencia = 400;
                 p = new Sound(Sound.propulsion);
                 break;
             case 1:
@@ -161,7 +204,7 @@ public class Fantasma implements levelStrategy {
                 player.setSprites(Sprite.dorothy_up, Sprite.dorothy_down, Sprite.dorothy_rigth, Sprite.dorothy_left);
                 break;
         }
-        
+
         p.changeVolume(-10);
         player.setAjustes(24, -7, -12, -11, 12, 24, p);
         player.setTipo(3);
@@ -176,7 +219,15 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Texto[] getText() {
-        return a;
+        Texto text[]= this.mensajeSpace;
+        switch(indiceLevel){
+            case 1:
+                text= this.mensajeMath;
+                break;
+            case 2:
+                text= this.mensajeLibrary;
+        }
+        return text;
     }
 
     @Override
@@ -185,10 +236,10 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Color getColor() {
-       Color color = Color.WHITE;
-       if(indiceLevel!=0){
-           color= Color.BLACK;
-       }
+        Color color = Color.WHITE;
+        if (indiceLevel != 0) {
+            color = Color.BLACK;
+        }
         return color;
     }
 
@@ -222,7 +273,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void render() {
-        
+
     }
 
     @Override
@@ -232,7 +283,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void uptadeTexto() {
-        
+
     }
 
 }
