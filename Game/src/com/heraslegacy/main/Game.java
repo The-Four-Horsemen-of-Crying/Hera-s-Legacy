@@ -151,7 +151,7 @@ public class Game extends Canvas implements Runnable {
             }
             
             level.uptadeTexto();
-            menu.uptade();
+            menu.uptade(level.levelstrategy);
             
         }
         else {
@@ -160,7 +160,7 @@ public class Game extends Canvas implements Runnable {
             level=startScreen.levelStar();
             if(level!=null){
                 StartGame=true;
-                menu = new MenuGUI(level);
+                menu = new MenuGUI();
             }
             
         }

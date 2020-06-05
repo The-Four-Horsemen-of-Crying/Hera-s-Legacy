@@ -20,11 +20,11 @@ import java.awt.event.KeyEvent;
  */
 public class MenuGUI extends GUI{
 
-    private Level level;
 
-    public MenuGUI(Level level) {
+    private levelStrategy actualLevel;
+
+    public MenuGUI(){
         super(Sprite.menuGUI, screen.width/2-75, screen.height/2-75, false);
-        this.level=level;
         setBotones(
             new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-4*16,0,10),
             new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[3], screen.width/2-43, screen.height/2-2*16,0,10),
@@ -32,10 +32,9 @@ public class MenuGUI extends GUI{
         );
     }
     
-    @Override
-    public void uptade(){
-        
-        if(!(this.level.levelstrategy instanceof Fantasma))visible=KeyBoard.escape;
+    public void uptade(levelStrategy theLevel){
+        actualLevel=theLevel;
+        if(!(actualLevel instanceof Fantasma))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
@@ -52,7 +51,8 @@ public class MenuGUI extends GUI{
         }
         if(botones[1].onZone()){
             if(Mouse.click){
-                level.levelstrategy.backWithoutWin();
+                actualLevel.backWithoutWin();
+                if(actualLevel==null)System.out.println("asdasd");
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
         }
