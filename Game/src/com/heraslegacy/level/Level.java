@@ -103,6 +103,9 @@ public class Level{
     public levelStrategy getLevelstrategy() {
         return levelstrategy;
     }
+    public void backLobby(){
+        levelstrategy.backWithoutWin();
+    }
 
     public void uptadeTexto() {
         levelstrategy.uptadeTexto();
