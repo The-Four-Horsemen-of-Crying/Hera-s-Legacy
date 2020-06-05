@@ -59,4 +59,7 @@ public class KeyBoard implements KeyListener {
     public static void setKeysStatic(boolean bool, int ind) {
         KeyBoard.keysStatic[ind] = bool;
     }
+    public static boolean getKeysStatic(int i){
+        return KeyBoard.keysStatic[i];
+    }
 }

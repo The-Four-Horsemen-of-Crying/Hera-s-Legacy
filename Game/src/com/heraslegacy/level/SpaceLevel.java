@@ -15,8 +15,10 @@ import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.level.tile.TipoTile;
 import com.heraslegacy.main.Game;
 import static com.heraslegacy.main.Game.screen;
+import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalTime;
@@ -47,13 +49,13 @@ public class SpaceLevel implements levelStrategy {
         new Sound(Sound.loose)
     };
     private static final Texto textSpace[] = {
-        new Texto("¡Todo se arregló!", 0, false,Sprite.katherine_down[0]),
-        new Texto("¡LOS CONTROLES FALLAN!", 0, false,Sprite.katherine_down[0]),
-        new Texto("!FELICIDADES!", 0, false,Sprite.katherine_down[0]),
-        new Texto("!Has llegado a la luna!", 0, false,Sprite.katherine_down[0]),
-        new Texto("FIN DEL JUEGO",0, false,Sprite.katherine_down[0]),
-        new Texto("Presiona R para reiniciar",0, false,Sprite.katherine_down[0]),
-        new Texto("¡INTENTA DE NUEVO!", 0,false, Sprite.katherine_down[0])
+        new Texto("¡Todo se arregló!", 0, false, Sprite.katherine_down[0]),
+        new Texto("¡LOS CONTROLES FALLAN!", 0, false, Sprite.katherine_down[0]),
+        new Texto("!FELICIDADES!", 0, false, Sprite.katherine_down[0]),
+        new Texto("!Has llegado a la luna!", 0, false, Sprite.katherine_down[0]),
+        new Texto("FIN DEL JUEGO", 0, false, Sprite.katherine_down[0]),
+        new Texto("Presiona R para reiniciar", 0, false, Sprite.katherine_down[0]),
+        new Texto("¡INTENTA DE NUEVO!", 0, false, Sprite.katherine_down[0])
     };
 
     @Override
@@ -175,87 +177,91 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void mecanica() {
-
-        if (!variaB[0]) {
-            indiceCambio = 1;
-        } else {
-            indiceCambio = 0;
-        }
-        if (sw == 0) {
-            sonido[2].play();
-            sw = 2;
-        }
-        player.animación();
-        int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
-        if (res == 50 && !variaB[2] && !variaB[1]) {
-            textSpace[0].setVisible(indiceCambio, textSpace);//Implementar aviso cada 25s
-            sonido[1].stop();
-            sonido[2].stop();
-            sonido[1].changeVolume(0);
-            sonido[2].changeVolume(0);
-            sonido[2 - indiceCambio].play();
-            player.setTipo(indiceCambio);
-            variaB[0] = !variaB[0];
-            dy = LocalTime.now();
-        } else if (res == 55 && !variaB[2] && !variaB[1]) {
-            sonido[3].stop();
-            time();
-            textSpace[0].setVisible(false);
-            textSpace[1].setVisible(false);
-            textSpace[4].setVisible(false);
-        }
-        if (player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER || variaB[1]) {
-            player.setTipo(2);
-            stop();
-            sonido[3].changeVolume(0);
-            sonido[3].play();
-            delay();
-            j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
-            variaB[1] = true;
-            if (life > 0) {
-                textSpace[0].setVisible(6, textSpace);
-                if (j == 58) {
-                    restar();
-                }
+        if (!KeyBoard.getKeysStatic(KeyEvent.VK_ESCAPE)) {
+            if (!variaB[0]) {
+                indiceCambio = 1;
             } else {
-                //Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
-                switch (j) {
-                    case 58:
-                        textSpace[0].setVisible(5, textSpace);
-                        break;
-                    case 0:
-                        textSpace[3].setVisible(4, textSpace);
-                        break;
-                    case 56:
-                        now = LocalTime.now();
-                        break;
-                    default:
-                        break;
+                indiceCambio = 0;
+            }
+            if (sw == 0) {
+                sonido[2].play();
+                sw = 2;
+            }
+            player.animación();
+            int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
+            if (res == 50 && !variaB[2] && !variaB[1]) {
+                textSpace[0].setVisible(indiceCambio, textSpace);//Implementar aviso cada 25s
+                sonido[1].stop();
+                sonido[2].stop();
+                sonido[1].changeVolume(0);
+                sonido[2].changeVolume(0);
+                sonido[2 - indiceCambio].play();
+                player.setTipo(indiceCambio);
+                variaB[0] = !variaB[0];
+                dy = LocalTime.now();
+            } else if (res == 55 && !variaB[2] && !variaB[1]) {
+                sonido[3].stop();
+                time();
+                textSpace[0].setVisible(false);
+                textSpace[1].setVisible(false);
+                textSpace[4].setVisible(false);
+            }
+            if ((player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER|| variaB[1] )&& !variaB[2]) {
+                player.setTipo(2);
+                sonido[2].stop();
+                sonido[1].stop();
+                sonido[3].changeVolume(0);
+                sonido[3].play();
+                delay();
+                j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
+                variaB[1] = true;
+                if (life > 0) {
+                    textSpace[0].setVisible(6, textSpace);
+                    if (j == 56) {
+                        restar();
+                    }
+                } else {
+                    //Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
+                    switch (j) {
+                        case 58:
+                            textSpace[0].setVisible(5, textSpace);
+                            break;
+                        case 0:
+                            textSpace[3].setVisible(4, textSpace);
+                            break;
+                        case 56:
+                            now = LocalTime.now();
+                            break;
+                        default:
+                            break;
+                    }
+                    sw = -10;
                 }
-                sw = -10;
-            }
 
-        } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !variaB[2]) {
-            //Se le indica que ganó, ya no se hace nada y se termina el juego
+            } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !variaB[2]) {
+                //Se le indica que ganó, ya no se hace nada y se termina el juego
+                player.setTipo(2);
+                sonido[1].stop();
+                sonido[2].stop();
+                delay();
+                j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
+                suena++;
+                time();
+                if (j == 0) {
+                    textSpace[0].setVisible(2, textSpace);
+                } else if (j == 58) {
+                    textSpace[0].setVisible(3, textSpace);
+                }
+                if (j == 54) {
+                    sonido[0].stop();
+                    variaB[2] = true;
+                    textSpace[2].setVisible(false);
+                }
+
+            }
+        }else{
             player.setTipo(2);
-            stop();
-            delay();
-            j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
-            suena++;
-            time();
-            if (j == 0) {
-                textSpace[0].setVisible(2, textSpace);
-            } else if (j == 58) {
-                textSpace[0].setVisible(3, textSpace);
-            }
-            if (j == 54) {
-                sonido[0].stop();
-                variaB[2] = true;
-                textSpace[2].setVisible(false);
-            }
-
         }
-
     }
 
     @Override
@@ -311,7 +317,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public boolean cambio() {
-        return variaB[2]||variaB[4];
+        return variaB[2] || variaB[4];
     }
 
     @Override
@@ -348,7 +354,9 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
-        if(variaB[2])Lobby.levels[2] = true;
+        if (variaB[2]) {
+            Lobby.levels[2] = true;
+        }
         return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
 
@@ -376,12 +384,12 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void backWithoutWin() {
         stop();
-        variaB[4]=true;
+        variaB[4] = true;
     }
 
     @Override
     public void uptadeTexto() {
-    for (Texto text : textSpace) {
+        for (Texto text : textSpace) {
             text.showIfActive();
         }
     }
