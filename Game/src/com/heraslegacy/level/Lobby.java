@@ -176,7 +176,7 @@ public class Lobby implements levelStrategy{
     public Level levelCambio() {
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         sounds[0].stop();
-        game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(nivelCase)));
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(nivelCase)));
         return game;
     }
 
