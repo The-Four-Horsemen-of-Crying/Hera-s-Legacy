@@ -18,7 +18,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import static com.heraslegacy.main.Game.scale;
+import static com.heraslegacy.main.Game.SCALE;
+import java.awt.event.KeyEvent;
 
 
 public class MathLevel implements levelStrategy {
@@ -30,30 +31,37 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private boolean [] bools=new boolean[4];
+    private static boolean [] bools=new boolean[4];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
-    private int answerLength = 0, indiceMesa, mesa=0;
+    private static int answerLength = 0;
+    private int indiceMesa, mesa=0;
     private Sound sounds [] = {new Sound(Sound.math_Theme),new Sound(Sound.bookSound)};
     private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
+    public static String concaAnsw;
     
-    private Texto textMath[]= {
-        new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
-        new Texto("Introduce", screen.width/2*scale+40, screen.height/2*scale+30, false),
-        new Texto("Respuesta", screen.width/2*scale+40, screen.height/2*scale+70, false),
-        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
-        new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false,Sprite.hera_down[0]),
-        new Texto("Excelente Carlitos, sigue así!", 0, false,Sprite.hera_down[0]),
-        new Texto("GGWP", 0, false,Sprite.hera_down[0]),
+    private static Texto textMath[]= {
+        new Texto("Click", screen.width/2*SCALE+65, screen.height/2*SCALE+70, false), 
+        new Texto("Introduce", screen.width/2*SCALE+40, screen.height/2*SCALE+30, false),
+        new Texto("Respuesta", screen.width/2*SCALE+40, screen.height/2*SCALE+70, false),
+        new Texto("", screen.width/2*SCALE+100, screen.height/2*SCALE+100, false),
+        new Texto("Tus cálculos necesitan otra revisión", 0, false,Sprite.hera_down[0]),
+        new Texto("Perfecto! No esperaba menos de usted", 0, false,Sprite.hera_down[0]),
+        new Texto("Excelente respuesta", 0, false,Sprite.hera_down[0]),
         new Texto("Intenta con otra respuesta", 0, false,Sprite.hera_down[0])
     };
     
-
+    public MathLevel(){
+        concaAnsw = "";
+        answerLength = 0;
+        bools = new boolean[4];
+    }
     
     @Override
-    public void update(){ 
+    public void update(){
+        
     }
     
     @Override
@@ -161,9 +169,9 @@ public class MathLevel implements levelStrategy {
                 textMath[3].setVisible(true);
                 
                 if (KeyBoard.rate == 2 && answerLength < 7) {
-                    String concaAnsw = numberInput();
                     textMath[3].setText(textMath[3].getText() + concaAnsw);
                     if (!concaAnsw.isEmpty()) {
+                        concaAnsw="";
                         textMath[3].setPosx(textMath[3].getPosx() - 9);
                         answerLength++;
                     }
@@ -279,21 +287,19 @@ public class MathLevel implements levelStrategy {
         return false;
     }
 
-    private String numberInput() {
+    public static String numberInput() {
         KeyBoard.rate--;
-            if (KeyBoard.numbers[1])return "1";
-            if (KeyBoard.numbers[2])return "2";           
-            if (KeyBoard.numbers[3])return "3";            
-            if (KeyBoard.numbers[4])return "4";
-            if (KeyBoard.numbers[5])return "5";
-            if (KeyBoard.numbers[6])return "6";
-            if (KeyBoard.numbers[7])return "7";
-            if (KeyBoard.numbers[8])return "8";
-            if (KeyBoard.numbers[9])return "9";          
-            if (KeyBoard.numbers[0])return "0";
-            if (KeyBoard.coma&&!bools[0]&&!textMath[3].getText().isEmpty()){
-                answerLength--;
-                bools[0]=true;
+        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
+            System.out.println(i-KeyEvent.VK_0+" || "+KeyBoard.getKeys(i));
+            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
+        }
+        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
+            System.out.println(i-KeyEvent.VK_NUMPAD0+" || "+KeyBoard.getKeys(i));
+            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
+        }
+            if (KeyBoard.coma&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
+                MathLevel.answerLength--;
+                MathLevel.bools[0]=true;
                 return ".";
             }
         return "";
@@ -317,6 +323,7 @@ public class MathLevel implements levelStrategy {
         textMath[3].setText("");
         textMath[3].setPosx(screen.width / 2 * scale + 100);
         answerLength = 1;
+        concaAnsw = "";
         textMath[4].setVisible(false);
         bools[0] = false;
     }
@@ -342,5 +349,9 @@ public class MathLevel implements levelStrategy {
         for (Texto text : textMath) {
             text.showIfActive();
         } 
+    }
+    
+    public static void assignConcaAnsw(String s){
+        concaAnsw = s;
     }
 }   
