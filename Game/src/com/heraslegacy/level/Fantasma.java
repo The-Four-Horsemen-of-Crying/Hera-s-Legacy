@@ -34,43 +34,43 @@ public class Fantasma implements levelStrategy {
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private final Font spaceFont = Fuente.trans;
-    private final Color colorTexto = Color.WHITE;
+    private final Font SPACEFONT = Fuente.trans;
+    private final Color COLORTEXTO = Color.WHITE;
     private boolean cambio = false;
     private int cont[] = new int[3];
     private int indiceLevel, maxMensajes;
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
-    private final Texto a[];
-    private final Texto mensajeSpace[]={
-        new Texto("Katherine Jonhson, la calculadora humana.", Game.width / 2, 300, true),
-        new Texto("En 1969, gracias a los calculos manuales de Katherine", Game.width / 2, 300, false),
-        new Texto("se logró sincronizar la nave de aterrizaje con", Game.width / 2, 300, false),
-        new Texto("el módulo de comando en orbita y gracias a esto", Game.width / 2, 300, false),
-        new Texto("la tripulación del Apolo 11 regresó a la tierra", Game.width / 2, 300, false),
-        new Texto("En una entrevista Katherine declaró:", Game.width / 2, 300, false),
-        new Texto("''Había hecho los cálculos y sabía que eran correctos...", Game.width / 2, 300, false),
-        new Texto("pero era como conducir, cualquier cosa podía pasar''", Game.width / 2, 300, false),
-        new Texto("Hoy en día podemos decir que los calculos de Katherine", Game.width / 2, 300, false),
-        new Texto("Estuvieron bien.", Game.width / 2, 300, false),
-        new Texto("A partir de ahora, eres un astronauta", Game.width / 2, 300, false),
-        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.width / 2, 300, false), 
-        new Texto("Regresarás a salvo, exito en la misión.", Game.width / 2, 300, false),
-        new Texto("Recuerda:", Game.width / 2, 300, false),
-        new Texto("''En un tiempo donde todos pensaban en cómo llegar...", Game.width / 2, 300, false),
-        new Texto("y nadie en cómo regresar, Jonhson se adelantó, supo como volver''", Game.width / 2, 300, false)
+    private final Texto[] A;
+    private final Texto[] MENSAJESPACE={
+        new Texto("Katherine Jonhson, la calculadora humana.", Game.WIDTH / 2, 300, true),
+        new Texto("En 1969, gracias a los calculos manuales de Katherine", Game.WIDTH / 2, 300, false),
+        new Texto("se logró sincronizar la nave de aterrizaje con", Game.WIDTH / 2, 300, false),
+        new Texto("el módulo de comando en orbita y gracias a esto", Game.WIDTH / 2, 300, false),
+        new Texto("la tripulación del Apolo 11 regresó a la tierra", Game.WIDTH / 2, 300, false),
+        new Texto("En una entrevista Katherine declaró:", Game.WIDTH / 2, 300, false),
+        new Texto("''Había hecho los cálculos y sabía que eran correctos...", Game.WIDTH / 2, 300, false),
+        new Texto("pero era como conducir, cualquier cosa podía pasar''", Game.WIDTH / 2, 300, false),
+        new Texto("Hoy en día podemos decir que los calculos de Katherine", Game.WIDTH / 2, 300, false),
+        new Texto("Estuvieron bien.", Game.WIDTH / 2, 300, false),
+        new Texto("A partir de ahora, eres un astronauta", Game.WIDTH / 2, 300, false),
+        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.WIDTH / 2, 300, false), 
+        new Texto("Regresarás a salvo, exito en la misión.", Game.WIDTH / 2, 300, false),
+        new Texto("Recuerda:", Game.WIDTH / 2, 300, false),
+        new Texto("''En un tiempo donde todos pensaban en cómo llegar...", Game.WIDTH / 2, 300, false),
+        new Texto("y nadie en cómo regresar, Jonhson se adelantó, supo como volver''", Game.WIDTH / 2, 300, false)
     };
-    private final Texto mensajeMath[]={
-        new Texto("h", Game.width / 2, 300, true)
+    private final Texto[] MENSAJEMATH={
+        new Texto("h", Game.WIDTH / 2, 300, true)
     };
-    private final Texto mensajeLibrary[]={
-        new Texto("bro", Game.width / 2, 300, true)
+    private final Texto[] MENSAJELIBRARY={
+        new Texto("bro", Game.WIDTH / 2, 300, true)
     };
-    private final Tile piso[] = {
+    private final Tile[] PISO = {
         Tile.spacePices[3],
         Tile.woodFloor,
         Tile.floorL1,};
-    private final Tile pared[] = {
+    private final Tile[] PARED = {
         Tile.spacePices[0],
         Tile.woodWall,
         Tile.estanterias[0]
@@ -81,23 +81,23 @@ public class Fantasma implements levelStrategy {
         switch(indiceLevel){
             default:
                 this.maxMensajes=16;
-                a = new Texto[maxMensajes];
+                A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
-                    a[i]=this.mensajeSpace[i];
+                    A[i]=this.MENSAJESPACE[i];
                 }
                 break;
             case 1:
                 this.maxMensajes=1;
-                a= new Texto[maxMensajes];
+                A= new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
-                    a[i]=this.mensajeMath[i];
+                    A[i]=this.MENSAJEMATH[i];
                 }
                 break;
             case 2:
                 this.maxMensajes=1;
-                a= new Texto[maxMensajes];
+                A= new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
-                    a[i]=this.mensajeLibrary[i];
+                    A[i]=this.MENSAJELIBRARY[i];
                 }
                 break;
         }
@@ -116,9 +116,9 @@ public class Fantasma implements levelStrategy {
         }
 
         if (tiles[x + y * width] == Colors.yellow.getColor()) {
-            return pared[indiceLevel];
+            return PARED[indiceLevel];
         } else {
-            return piso[indiceLevel];
+            return PISO[indiceLevel];
         }
 
     }
@@ -156,7 +156,7 @@ public class Fantasma implements levelStrategy {
             cont[1] = 0;
             if (cont[2] <= maxMensajes){
                 cont[2]++;
-                a[0].setVisible(cont[2], a);
+                A[0].setVisible(cont[2], A);
                 
             }
             cont[1] = 0;
@@ -190,7 +190,7 @@ public class Fantasma implements levelStrategy {
         //Buscar la manera de decidir cual cargar
         int latencia = 30;
         Sound p = new Sound(Sound.walk);
-        player = new Player(Game.width / 2, Game.height / 2);
+        player = new Player(Game.WIDTH / 2, Game.HEIGHT / 2);
         switch (indiceLevel) {
             case 0:
                 player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
@@ -219,13 +219,13 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Texto[] getText() {
-        Texto text[]= this.mensajeSpace;
+        Texto text[]= this.MENSAJESPACE;
         switch(indiceLevel){
             case 1:
-                text= this.mensajeMath;
+                text= this.MENSAJEMATH;
                 break;
             case 2:
-                text= this.mensajeLibrary;
+                text= this.MENSAJELIBRARY;
         }
         return text;
     }
@@ -264,7 +264,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public Font getFont() {
-        return this.spaceFont;
+        return this.SPACEFONT;
     }
 
     @Override

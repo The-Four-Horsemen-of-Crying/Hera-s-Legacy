@@ -32,14 +32,14 @@ public class Game extends Canvas implements Runnable {
     private Mouse mouse;
     public JFrame frame; 
     private static final long serialVersionUID = 1L;
-    public static final int width = 300;
-    public static final int height = width / 16 * 9;
-    public static final int scale = 3;
+    public static final int WIDTH = 300;
+    public static final int HEIGHT = WIDTH / 16 * 9;
+    public static final int SCALE = 3;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = true;
     private static boolean StartGame=false;
-    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
     public static MenuGUI menu;
@@ -47,10 +47,10 @@ public class Game extends Canvas implements Runnable {
     private Welcome startScreen;
 
     public Game(){
-        Dimension size = new Dimension(width * scale, height * scale);
+        Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
         setPreferredSize(size);
         frame = new JFrame();
-        screen = new Screen(width, height);
+        screen = new Screen(WIDTH, HEIGHT);
         Sound.init();
         Fuente.init();
         key = new KeyBoard();

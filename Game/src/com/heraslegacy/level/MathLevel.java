@@ -4,7 +4,6 @@ import com.heraslegacy.entity.Player;
 import com.heraslegacy.graphics.Colors;
 import com.heraslegacy.graphics.Fuente;
 import com.heraslegacy.graphics.Sound;
-import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.graphics.Sprite;
 import static com.heraslegacy.graphics.Sprite.hoja;
@@ -19,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
+import static com.heraslegacy.main.Game.SCALE;
 
 
 public class MathLevel implements levelStrategy {
@@ -40,10 +40,10 @@ public class MathLevel implements levelStrategy {
     private boolean resueltos[] = {false, false, false, false};
     
     private Texto textMath[]= {
-        new Texto("Click", screen.width/2*scale+45, screen.height/2*scale+70, false), 
-        new Texto("Introduce", screen.width/2*scale+3, screen.height/2*scale+30, false),
-        new Texto("Respuesta", screen.width/2*scale+3, screen.height/2*scale+70, false),
-        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
+        new Texto("Click", screen.width/2*SCALE+45, screen.height/2*SCALE+70, false), 
+        new Texto("Introduce", screen.width/2*SCALE+3, screen.height/2*SCALE+30, false),
+        new Texto("Respuesta", screen.width/2*SCALE+3, screen.height/2*SCALE+70, false),
+        new Texto("", screen.width/2*SCALE+100, screen.height/2*SCALE+100, false),
         new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false,Sprite.hera_down[0]),
         new Texto("Excelente Carlitos, sigue así!", 0, false,Sprite.hera_down[0]),
         new Texto("GGWP", 0, false,Sprite.hera_down[0]),
@@ -150,10 +150,10 @@ public class MathLevel implements levelStrategy {
         screen.renderSprite(false, screen.width / 2 - hoja[1].getWidth() / 2, screen.height / 2 - hoja[1].getHeight() / 2,
                 hoja[mesa]);
 
-        if ((Mouse.mouseX > screen.width * scale / 2)
-                && (Mouse.mouseX < screen.width * scale / 2 + (hoja[mesa].getWidth() - 22) * scale / 2)
-                && (Mouse.mouseY > screen.height * scale / 2)
-                && (Mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight() - 22) * scale / 2)) {
+        if ((Mouse.mouseX > screen.width * SCALE / 2)
+                && (Mouse.mouseX < screen.width * SCALE / 2 + (hoja[mesa].getWidth() - 22) * SCALE / 2)
+                && (Mouse.mouseY > screen.height * SCALE / 2)
+                && (Mouse.mouseY < screen.height * SCALE / 2 + (hoja[mesa].getHeight() - 22) * SCALE / 2)) {
 
             if (Mouse.clickSwitch) {
                 textMath[0].setVisible(false);
@@ -229,7 +229,7 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void configPlayer(Level level) {
-        player = new Player(Game.width / 2, Game.height / 2);
+        player = new Player(Game.WIDTH / 2, Game.HEIGHT / 2);
         player.setSprites(Sprite.katherine_up, Sprite.katherine_down, Sprite.katherine_rigth, Sprite.katherine_left);
         player.setAjustes(14, 8, 12, 3,16,16, new Sound(Sound.walk));
         player.setLatencia(30);
@@ -317,7 +317,7 @@ public class MathLevel implements levelStrategy {
     
     private void condicionesIni() {
         textMath[3].setText("");
-        textMath[3].setPosx(screen.width / 2 * scale + 100);
+        textMath[3].setPosx(screen.width / 2 * SCALE + 100);
         answerLength = 1;
         textMath[4].setVisible(false);
         bools[0] = false;

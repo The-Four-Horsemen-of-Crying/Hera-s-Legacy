@@ -40,9 +40,9 @@ public class LibraryLevel implements levelStrategy{
     private LocalTime ant = LocalTime.now();
     private LocalTime ant2= LocalTime.now();
     private Player player;
-    private final Sound sound[] = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
-    private final Color colorTexto= Color.WHITE;//Color.getHSBColor(46, 100, 100);
-    private final Texto textLibrary[]= {
+    private final Sound[] SOUND = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
+    private final Color COLORTEXTO= Color.WHITE;//Color.getHSBColor(46, 100, 100);
+    private final Texto[] TEXTLIBRARY= {
         new Texto("Necesito reunir 4 libros a escondidas",0,false,Sprite.dorothy_down[0]),           //0
         
         new Texto("",0,false,Sprite.dorothy_down[0]),                                                //1
@@ -73,7 +73,7 @@ public class LibraryLevel implements levelStrategy{
 
     public LibraryLevel(){
         this.pattern = new int[]{0, 3, 2, 1};
-        sound[0].loop();
+        SOUND[0].loop();
     }
     
     @Override
@@ -85,7 +85,7 @@ public class LibraryLevel implements levelStrategy{
         if (text.getSecond() >= 30) {
             hide();
             ant2 = LocalTime.now();
-            textLibrary[text1].setVisible(true);
+            TEXTLIBRARY[text1].setVisible(true);
             text1++;
             if (text1 > 9) {
                 text1 = 3;
@@ -146,12 +146,12 @@ public class LibraryLevel implements levelStrategy{
             hide();
             ant2 = LocalTime.now();
             if (numLibros() != 0) {
-                textLibrary[1].setText("Solo faltan " + numLibros() + " libros");
+                TEXTLIBRARY[1].setText("Solo faltan " + numLibros() + " libros");
             }else{
-                textLibrary[1].setText("Los tengo todos, ahora a salir de aquí");
+                TEXTLIBRARY[1].setText("Los tengo todos, ahora a salir de aquí");
             }
-            textLibrary[1].setVisible(true);
-            sound[2].play();
+            TEXTLIBRARY[1].setVisible(true);
+            SOUND[2].play();
             tiles[(x>>4)+(y>>4)*width] = Colors.purpleDark1.getColor();
             Tile.puertaS[zone].setSolid(false);
         }
@@ -207,9 +207,9 @@ public class LibraryLevel implements levelStrategy{
         if(Tile.puertaS[zone].solid==false){ Tile.puertaS[zone].setSolid(true);}
         time();
         if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == VISUALRANGE[direction]){
-            sound[1].play();
+            SOUND[1].play();
             hide();
-            textLibrary[text2].setVisible(true);
+            TEXTLIBRARY[text2].setVisible(true);
             ant2 = LocalTime.now();
             text2++;
             if(text2>22) text2 = 10;
@@ -257,7 +257,7 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Texto[] getText() {
-        return textLibrary;
+        return TEXTLIBRARY;
     }
 
     @Override
@@ -267,13 +267,13 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Color getColor() {
-        return colorTexto;
+        return COLORTEXTO;
     }
 
     @Override
     public Level levelCambio() {
             Lobby.levels[2] = win;
-            sound[0].stop();
+            SOUND[0].stop();
             return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
 
@@ -299,14 +299,14 @@ public class LibraryLevel implements levelStrategy{
 
 
     private void hide() {
-        for (Texto texto : textLibrary) {
+        for (Texto texto : TEXTLIBRARY) {
             texto.setVisible(false);
         }
     }
 
     @Override
     public void uptadeTexto() {
-        for (Texto text : textLibrary) {
+        for (Texto text : TEXTLIBRARY) {
             text.showIfActive();
         }
     }

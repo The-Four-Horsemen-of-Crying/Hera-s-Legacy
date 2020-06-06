@@ -156,10 +156,10 @@ public class Sprite {
     public static Sprite guard = new Sprite(32,0,2,SpriteSheet.nivel03_library);
     public static Sprite undertale = new Sprite(32,1,0,SpriteSheet.nivel03_library);
     public static Sprite libro = new Sprite(16,4,1,SpriteSheet.nivel03_library);
-    public static Sprite floorL1 = new Sprite(16,0,2,SpriteSheet.nivel03_library);
-    public static Sprite floorL2 = new Sprite(16,5,0,SpriteSheet.nivel03_library);
-    public static Sprite floorL1D = new Sprite(16,0,3,SpriteSheet.nivel03_library);
-    public static Sprite floorL2D = new Sprite(16,5,1,SpriteSheet.nivel03_library);
+    public static Sprite floorL1 = new Sprite(16,0,3,SpriteSheet.nivel03_library);
+    public static Sprite floorL2 = new Sprite(16,5,1,SpriteSheet.nivel03_library);
+    public static Sprite floorL1D = new Sprite(16,0,2,SpriteSheet.nivel03_library);
+    public static Sprite floorL2D = new Sprite(16,5,0,SpriteSheet.nivel03_library);
     
     //GUI
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);

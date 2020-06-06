@@ -19,7 +19,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author HP
  */
 public class Sound {
-    private final Clip clip;
+    private final Clip CLIP;
     private FloatControl volume;
     public static Clip de;
     public static Clip change;
@@ -39,26 +39,26 @@ public class Sound {
     public static Clip pickup;
    
     public Sound (Clip clip){
-        this.clip=clip;
+        this.CLIP=clip;
         volume = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
     }
     
      public void loop(){//Se reinicia la musica constantemente.
-        clip.setFramePosition(0);//Vuelve al inicio.
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        CLIP.setFramePosition(0);//Vuelve al inicio.
+        CLIP.loop(Clip.LOOP_CONTINUOUSLY);
      }
 
      public void play(){
-       clip.setFramePosition(0);
-       clip.start();
+       CLIP.setFramePosition(0);
+       CLIP.start();
      }
      
      public void stop(){
-         clip.stop();
+         CLIP.stop();
      }
      
      public int getFraemPosition(){
-         return clip.getFramePosition();
+         return CLIP.getFramePosition();
      }
      public void changeVolume(float f){
          volume.setValue(f);

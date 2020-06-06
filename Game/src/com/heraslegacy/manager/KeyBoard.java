@@ -43,7 +43,7 @@ public class KeyBoard implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
-            keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true; 
+            keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true;
             
         }
     }
