@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import static com.heraslegacy.main.Game.SCALE;
+import java.awt.event.KeyEvent;
 
 
 public class MathLevel implements levelStrategy {
@@ -26,7 +27,7 @@ public class MathLevel implements levelStrategy {
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
-    private Font mathLevelFont= Fuente.spaceFont;
+    private Font mathLevelFont= Fuente.spaceFontSmaller;
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
@@ -38,11 +39,12 @@ public class MathLevel implements levelStrategy {
     private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
+    private boolean[] arreglo = new boolean[10];
     
     private Texto textMath[]= {
-        new Texto("Click", screen.width/2*SCALE+45, screen.height/2*SCALE+70, false), 
-        new Texto("Introduce", screen.width/2*SCALE+3, screen.height/2*SCALE+30, false),
-        new Texto("Respuesta", screen.width/2*SCALE+3, screen.height/2*SCALE+70, false),
+        new Texto("Click", screen.width/2*SCALE+65, screen.height/2*SCALE+70, false), 
+        new Texto("Introduce", screen.width/2*SCALE+40, screen.height/2*SCALE+30, false),
+        new Texto("Respuesta", screen.width/2*SCALE+40, screen.height/2*SCALE+70, false),
         new Texto("", screen.width/2*SCALE+100, screen.height/2*SCALE+100, false),
         new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false,Sprite.hera_down[0]),
         new Texto("Excelente Carlitos, sigue así!", 0, false,Sprite.hera_down[0]),
@@ -53,7 +55,13 @@ public class MathLevel implements levelStrategy {
 
     
     @Override
-    public void update(){ 
+    public void update(){
+        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
+            arreglo[i-KeyEvent.VK_0]= KeyBoard.getKeys(i);
+        }
+        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
+            arreglo[i-KeyEvent.VK_NUMPAD0] = arreglo[i-KeyEvent.VK_NUMPAD0] || KeyBoard.getKeys(i);
+        }
     }
     
     @Override
@@ -142,7 +150,6 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void mecanica() {
-        changeFont(2);
         if(!bools[3]){
             sounds[1].play();
             bools[3]=true;
@@ -185,7 +192,6 @@ public class MathLevel implements levelStrategy {
                         if (f_reponse == respuestas[mesa]) {
                             showReponse(r.nextInt(2)+5);
                             resueltos[indiceMesa] = true;
-                            changeFont(1);
                             condicionesIni();
                         } 
                         
@@ -282,17 +288,14 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
+        System.out.println("esta cosa");
         KeyBoard.rate--;
-            if (KeyBoard.numbers[1])return "1";
-            if (KeyBoard.numbers[2])return "2";           
-            if (KeyBoard.numbers[3])return "3";            
-            if (KeyBoard.numbers[4])return "4";
-            if (KeyBoard.numbers[5])return "5";
-            if (KeyBoard.numbers[6])return "6";
-            if (KeyBoard.numbers[7])return "7";
-            if (KeyBoard.numbers[8])return "8";
-            if (KeyBoard.numbers[9])return "9";          
-            if (KeyBoard.numbers[0])return "0";
+        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
+            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
+        }
+        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
+            if(KeyBoard.getKeys(i-KeyEvent.VK_NUMPAD0)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
+        }
             if (KeyBoard.coma&&!bools[0]&&!textMath[3].getText().isEmpty()){
                 answerLength--;
                 bools[0]=true;
@@ -345,8 +348,5 @@ public class MathLevel implements levelStrategy {
             text.showIfActive();
         } 
     }
-    public void changeFont(int i){
-        if(i==1)mathLevelFont=Fuente.spaceFontSmaller;
-        else mathLevelFont= Fuente.spaceFont; 
-    }
+    
 }   

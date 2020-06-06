@@ -35,7 +35,7 @@ public class MenuGUI extends GUI{
     
     @Override
     public void uptade(){
-        if(!(actualLevel.levelstrategy instanceof Fantasma))visible=KeyBoard.escape;
+        if(!(actualLevel.LEVELSTRATEGY instanceof Fantasma))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
@@ -56,7 +56,7 @@ public class MenuGUI extends GUI{
         }
         if(botones[1].onZone()){
             if(Mouse.click){
-                actualLevel.levelstrategy.backWithoutWin();
+                actualLevel.LEVELSTRATEGY.backWithoutWin();
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
         }

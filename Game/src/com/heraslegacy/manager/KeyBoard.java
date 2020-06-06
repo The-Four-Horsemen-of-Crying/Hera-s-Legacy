@@ -44,7 +44,7 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
             keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true;
-            
+            System.out.println("presed");
         }
     }
 
@@ -53,7 +53,12 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = false;
             rate=2;
+            System.out.println("released");
         }
+    }
+    
+    public static boolean getKeys(int i){
+        return KeyBoard.keys[i];
     }
 
     public static void setKeysStatic(boolean bool, int ind) {
