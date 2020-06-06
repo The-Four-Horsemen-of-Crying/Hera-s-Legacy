@@ -288,7 +288,7 @@ public class SpaceLevel implements levelStrategy {
 
         if (sw == -10) {
             restart();
-            life = 3;
+            life = 2;
             textSpace[5].setVisible(false);
             sw = 0;
         }
@@ -366,6 +366,9 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void sobreRender(int xScroll, int yScroll) {
         screen.renderSprite(true, 112 * 16, 16 * 16, Sprite.moon);
+        for (int i = 0; i < life; i++) {
+            screen.renderSprite(true,(16*i) + xScroll, yScroll, Sprite.life);
+        }
     }
 
     @Override

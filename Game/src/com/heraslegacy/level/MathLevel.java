@@ -296,7 +296,7 @@ public class MathLevel implements levelStrategy {
         for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
             if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
         }
-            if (KeyBoard.coma&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
+            if ((KeyBoard.getKeys(KeyEvent.VK_COMMA)||KeyBoard.getKeys(KeyEvent.VK_DECIMAL))&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
                 MathLevel.answerLength--;
                 MathLevel.bools[0]=true;
                 return ".";
@@ -311,6 +311,9 @@ public class MathLevel implements levelStrategy {
 
     @Override
     public void sobreRender(int xScroll, int yScroll) {
+        for (int i = 0; i < numResueltos(); i++) {
+            screen.renderSprite(true,(16*i) + xScroll, yScroll, Sprite.book);
+        }
     }
 
     @Override
@@ -353,4 +356,12 @@ public class MathLevel implements levelStrategy {
     public static void assignConcaAnsw(String s){
         concaAnsw = s;
     }
+    
+    public int numResueltos(){
+        int cont = 0;
+        for (boolean resuelto : resueltos) {
+            if(!resuelto) cont++;
+        }
+        return cont;
+    } 
 }   
