@@ -47,7 +47,6 @@ public class Game extends Canvas implements Runnable {
     private Welcome startScreen;
 
     public Game(){
-        System.out.println(HEIGHT);
         Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
         setPreferredSize(size);
         frame = new JFrame();
