@@ -12,19 +12,19 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Level{
-    public final levelStrategy levelstrategy;
+    public final levelStrategy LEVELSTRATEGY;
     private Font fontLevel;
     
     
     public Level(String path, String pathCollision, levelStrategy levelstrategy){
-        this.levelstrategy = levelstrategy;
+        this.LEVELSTRATEGY = levelstrategy;
         levelstrategy.loadLevel(path, pathCollision);
         fontLevel=levelstrategy.getFont();
 
     }
 
     public void update() {
-        levelstrategy.update();
+        LEVELSTRATEGY.update();
     }
 
     public void render(int xScroll, int yScroll) {
@@ -38,77 +38,77 @@ public class Level{
                 getTile(x, y).render(x, y);
             }
         }
-        levelstrategy.render();
+        LEVELSTRATEGY.render();
         
     }
     public void superRender(int xScroll, int yScroll){
-        levelstrategy.sobreRender(xScroll,yScroll);    
+        LEVELSTRATEGY.sobreRender(xScroll,yScroll);    
     }
 
     public Tile getTile(int x, int y) {
-        return levelstrategy.getTile(x, y);
+        return LEVELSTRATEGY.getTile(x, y);
     }
 
     public boolean getCollision(int x, int y) {
-        return levelstrategy.getCollision(x, y);
+        return LEVELSTRATEGY.getCollision(x, y);
     }
 
     public void loadLevel(String path, String pathCollision) {
-        levelstrategy.loadLevel(path, pathCollision);
+        LEVELSTRATEGY.loadLevel(path, pathCollision);
     }
 
     public void time() {
-        levelstrategy.time();
+        LEVELSTRATEGY.time();
     }
 
     public void mecanica() {
-        levelstrategy.mecanica();
+        LEVELSTRATEGY.mecanica();
     }
 
     public void restart() {
-        levelstrategy.restar();
+        LEVELSTRATEGY.restar();
     }
     
     public boolean cambio(){
-        return levelstrategy.cambio();
+        return LEVELSTRATEGY.cambio();
     }
     
     public void configPlayer(){
-        levelstrategy.configPlayer(this);
+        LEVELSTRATEGY.configPlayer(this);
     }
     
     public Player getPlayer(){
-        return levelstrategy.getPlayer();
+        return LEVELSTRATEGY.getPlayer();
     }
    
     public Texto[] getText(){
-        return levelstrategy.getText();
+        return LEVELSTRATEGY.getText();
     }
     
     public  void setText(String t){
-         levelstrategy.setText(t);
+         LEVELSTRATEGY.setText(t);
     }
     public Color getColor(){
-        return levelstrategy.getColor();
+        return LEVELSTRATEGY.getColor();
     }
     
     public Font getFont(){
-        return levelstrategy.getFont();
+        return LEVELSTRATEGY.getFont();
     }
     
     public Level levelCambio(){
-        return levelstrategy.levelCambio();
+        return LEVELSTRATEGY.levelCambio();
     }
 
     public levelStrategy getLevelstrategy() {
-        return levelstrategy;
+        return LEVELSTRATEGY;
     }
     public void backLobby(){
-        levelstrategy.backWithoutWin();
+        LEVELSTRATEGY.backWithoutWin();
     }
 
     public void uptadeTexto() {
-        levelstrategy.uptadeTexto();
+        LEVELSTRATEGY.uptadeTexto();
     }
     
 }

@@ -304,8 +304,8 @@ public class SpaceLevel implements levelStrategy {
     }
 
     private void restart() {
-        player.setX(Game.width / 2);
-        player.setY(Game.height / 2);
+        player.setX(Game.WIDTH / 2);
+        player.setY(Game.HEIGHT / 2);
         variaB[1] = false;
         variaB[2] = false;
         variaB[3] = false;
@@ -323,7 +323,7 @@ public class SpaceLevel implements levelStrategy {
     @Override
     public void configPlayer(Level level) {
 
-        player = new Player(Game.width / 2, Game.height / 2);
+        player = new Player(Game.WIDTH / 2, Game.HEIGHT / 2);
         player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
         Sound p = new Sound(Sound.propulsion);
         p.changeVolume(-10);

@@ -5,9 +5,9 @@
  */
 package com.heraslegacy.graphics;
 
-import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.Mouse;
+import static com.heraslegacy.main.Game.SCALE;
 
 /**
  *
@@ -56,7 +56,7 @@ public class Button {
     public boolean onZone(){
         int mX=Mouse.mouseX;
         int mY=Mouse.mouseY;
-        boolean b = mX<x1*scale&&mX>x*scale&&mY<y1*scale&&mY>y*scale;
+        boolean b = mX<x1*SCALE&&mX>x*SCALE&&mY<y1*SCALE&&mY>y*SCALE;
         indiImage = b?1:0;
         //System.out.println(mX + "   ||  " + x + "   ||  " + x1); 
         return b;      
