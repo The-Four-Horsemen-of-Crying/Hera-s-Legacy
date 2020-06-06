@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import static com.heraslegacy.main.Game.SCALE;
+import static com.heraslegacy.main.Game.scale;
 
 
 public class MathLevel implements levelStrategy {
@@ -26,7 +26,7 @@ public class MathLevel implements levelStrategy {
     private int height;
     private int[] tiles; 
     private int[] tilesCollision;
-    private Font mathLevelFont= Fuente.spaceFont;
+    private Font mathLevelFont= Fuente.spaceFontSmaller;
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
@@ -40,10 +40,10 @@ public class MathLevel implements levelStrategy {
     private boolean resueltos[] = {false, false, false, false};
     
     private Texto textMath[]= {
-        new Texto("Click", screen.width/2*SCALE+45, screen.height/2*SCALE+70, false), 
-        new Texto("Introduce", screen.width/2*SCALE+3, screen.height/2*SCALE+30, false),
-        new Texto("Respuesta", screen.width/2*SCALE+3, screen.height/2*SCALE+70, false),
-        new Texto("", screen.width/2*SCALE+100, screen.height/2*SCALE+100, false),
+        new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
+        new Texto("Introduce", screen.width/2*scale+40, screen.height/2*scale+30, false),
+        new Texto("Respuesta", screen.width/2*scale+40, screen.height/2*scale+70, false),
+        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
         new Texto("Carlitos, Estás haciendo esa vaina mal", 0, false,Sprite.hera_down[0]),
         new Texto("Excelente Carlitos, sigue así!", 0, false,Sprite.hera_down[0]),
         new Texto("GGWP", 0, false,Sprite.hera_down[0]),
@@ -142,7 +142,6 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void mecanica() {
-        changeFont(2);
         if(!bools[3]){
             sounds[1].play();
             bools[3]=true;
@@ -150,10 +149,10 @@ public class MathLevel implements levelStrategy {
         screen.renderSprite(false, screen.width / 2 - hoja[1].getWidth() / 2, screen.height / 2 - hoja[1].getHeight() / 2,
                 hoja[mesa]);
 
-        if ((Mouse.mouseX > screen.width * SCALE / 2)
-                && (Mouse.mouseX < screen.width * SCALE / 2 + (hoja[mesa].getWidth() - 22) * SCALE / 2)
-                && (Mouse.mouseY > screen.height * SCALE / 2)
-                && (Mouse.mouseY < screen.height * SCALE / 2 + (hoja[mesa].getHeight() - 22) * SCALE / 2)) {
+        if ((Mouse.mouseX > screen.width * scale / 2)
+                && (Mouse.mouseX < screen.width * scale / 2 + (hoja[mesa].getWidth() - 22) * scale / 2)
+                && (Mouse.mouseY > screen.height * scale / 2)
+                && (Mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight() - 22) * scale / 2)) {
 
             if (Mouse.clickSwitch) {
                 textMath[0].setVisible(false);
@@ -185,7 +184,6 @@ public class MathLevel implements levelStrategy {
                         if (f_reponse == respuestas[mesa]) {
                             showReponse(r.nextInt(2)+5);
                             resueltos[indiceMesa] = true;
-                            changeFont(1);
                             condicionesIni();
                         } 
                         
@@ -317,7 +315,7 @@ public class MathLevel implements levelStrategy {
     
     private void condicionesIni() {
         textMath[3].setText("");
-        textMath[3].setPosx(screen.width / 2 * SCALE + 100);
+        textMath[3].setPosx(screen.width / 2 * scale + 100);
         answerLength = 1;
         textMath[4].setVisible(false);
         bools[0] = false;
@@ -344,9 +342,5 @@ public class MathLevel implements levelStrategy {
         for (Texto text : textMath) {
             text.showIfActive();
         } 
-    }
-    public void changeFont(int i){
-        if(i==1)mathLevelFont=Fuente.spaceFontSmaller;
-        else mathLevelFont= Fuente.spaceFont; 
     }
 }   

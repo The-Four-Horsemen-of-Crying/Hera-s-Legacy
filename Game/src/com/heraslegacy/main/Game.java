@@ -34,7 +34,7 @@ public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1L;
     public static final int WIDTH = 300;
     public static final int HEIGHT = WIDTH / 16 * 9;
-    public static final int SCALE = 3;
+    public static int scale;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = true;
@@ -46,8 +46,9 @@ public class Game extends Canvas implements Runnable {
     Sound theme;
     private Welcome startScreen;
 
-    public Game(){
-        Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
+    public Game(int scale){
+        this.scale=scale;
+        Dimension size = new Dimension(WIDTH * Game.scale, HEIGHT * Game.scale);
         setPreferredSize(size);
         frame = new JFrame();
         screen = new Screen(WIDTH, HEIGHT);

@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class main {
 
     public static void main(String[] arg) throws InterruptedException {
-        Game game = new Game();
+        Game game = new Game(3);
         game.frame.setResizable(false);
         game.frame.add(game);
         game.frame.pack();

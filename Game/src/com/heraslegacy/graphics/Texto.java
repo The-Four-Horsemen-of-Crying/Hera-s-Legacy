@@ -8,7 +8,7 @@ package com.heraslegacy.graphics;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
-import static com.heraslegacy.main.Game.SCALE;
+import static com.heraslegacy.main.Game.scale;
 
 /**
  *
@@ -36,7 +36,7 @@ public class Texto {
         this.text=text;
         this.posx=10;
         this.visible=visible;
-        this.posy=screen.height*SCALE-backBox.getHeight()*SCALE/2+30*jumpCordY;
+        this.posy=screen.height*scale-backBox.getHeight()*scale/2+30*jumpCordY;
         backGroundActive=visible;
         this.subject=subject;
     }
