@@ -13,6 +13,7 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.screen;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalTime;
@@ -31,7 +32,7 @@ public class LibraryLevel implements levelStrategy{
     private int[] tilesCollision;
     private final Font LIBRARYFONT = Fuente.spaceFontSmaller;
     private boolean libros[] ={false, false, false, false};
-    private boolean win = true, logout = false;
+    private boolean state[] = {true, false,false};
     private final int[] ZONECOLOR ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkred.getColor()};//Los colores que diferencian cada zona
     private final int[] VISUALRANGE ={Colors.orange.getColor(),Colors.lessdarkred.getColor(),Colors.clearblue.getColor(),Colors.green.getColor()};//Los colores de a que lugar están viendo
     private int zone;
@@ -43,7 +44,7 @@ public class LibraryLevel implements levelStrategy{
     private final Sound[] SOUND = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
     private final Color COLORTEXTO= Color.WHITE;//Color.getHSBColor(46, 100, 100);
     private final Texto[] TEXTLIBRARY= {
-        new Texto("Necesito reunir 4 libros a escondidas",0,false,Sprite.dorothy_down[0]),           //0
+        new Texto("Necesito reunir 4 libros a escondidas",0,true,Sprite.dorothy_down[0]),           //0
         
         new Texto("",0,false,Sprite.dorothy_down[0]),                                                //1
         
@@ -68,7 +69,8 @@ public class LibraryLevel implements levelStrategy{
         new Texto("A la proxima trae algo de tomar",0,false,Sprite.guard),                           //19
         new Texto("Ya basta de juegos",0,false,Sprite.guard),                                        //20
         new Texto("No te podemos ver aquí",0,false,Sprite.guard),                                    //21
-        new Texto("You are filled with DETERMINATION",0,false,Sprite.undertale)                      //22
+        new Texto("You are filled with DETERMINATION",0,false,Sprite.undertale),                     //22
+        new Texto("No te llevarás nada",1,false,Sprite.guard),                                       //23
     };
 
     public LibraryLevel(){
@@ -206,14 +208,23 @@ public class LibraryLevel implements levelStrategy{
     public void mecanica() {
         if(Tile.puertaS[zone].solid==false){ Tile.puertaS[zone].setSolid(true);}
         time();
-        if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == VISUALRANGE[direction]){
-            SOUND[1].play();
-            hide();
-            TEXTLIBRARY[text2].setVisible(true);
-            ant2 = LocalTime.now();
-            text2++;
-            if(text2>22) text2 = 10;
-            restar();
+        if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == VISUALRANGE[direction]||state[2]){
+            ant = LocalTime.now();
+            if (!state[2]) {
+                SOUND[1].play();
+                hide();
+                TEXTLIBRARY[text2].setVisible(true);
+                if(!TEXTLIBRARY[22].isVisible())TEXTLIBRARY[23].setVisible(true);
+                state[2]=true;
+                ant2 = LocalTime.now();
+                player.setTipo(2);
+            }else if (!TEXTLIBRARY[text2].isVisible()){
+                restar();
+                text2++;
+                if (text2 > 22) {
+                    text2 = 10;
+                }
+            }
         }
     }
 
@@ -227,6 +238,8 @@ public class LibraryLevel implements levelStrategy{
         direction=0;
         player.setX(25);
         player.setY(400);
+        player.setTipo(0);
+        state[0] = true; state[1] = false; state[2] = false;
         loadLevel("/levels/level03/nivel3.png","/levels/level03/nivel3COLLITION.png");
     }
 
@@ -236,7 +249,7 @@ public class LibraryLevel implements levelStrategy{
         for (boolean libro : libros) {
             boo = boo && libro;
         }
-        return (boo && Game.activarMecanica) || logout;
+        return (boo && Game.activarMecanica) || state[1];
     }
 
     @Override
@@ -272,7 +285,7 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public Level levelCambio() {
-            Lobby.levels[2] = win;
+            Lobby.levels[2] = state[0];
             SOUND[0].stop();
             return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
@@ -284,6 +297,10 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void sobreRender(int xScroll, int yScroll) {
+        for (int i = 0; i < numLibros(); i++) {
+            screen.renderSprite(true,(16*i) + xScroll, yScroll, Sprite.book);
+        }
+        
     }
 
     @Override
@@ -293,14 +310,14 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void backWithoutWin() {
-        logout = true;
-        win = false;
+        state[1] = true;
+        state[0] = false;
     }
 
 
     private void hide() {
-        for (Texto texto : TEXTLIBRARY) {
-            texto.setVisible(false);
+        for (int i = 0; i < TEXTLIBRARY.length; i++) {
+            TEXTLIBRARY[i].setVisible(false);
         }
     }
 

@@ -46,52 +46,55 @@ public class Fantasma implements levelStrategy {
     private final Texto A[];
     private final Texto MENSAJESPACE[] = {
         new Texto("Katherine Jonhson, la calculadora humana.", Game.WIDTH / 2, 300, true),
-        new Texto("En 1969, gracias a los calculos manuales de Katherine", Game.WIDTH / 2, 300, false),
-        new Texto("se logró sincronizar la nave de aterrizaje con", Game.WIDTH / 2, 300, false),
-        new Texto("el módulo de comando en orbita y gracias a esto", Game.WIDTH / 2, 300, false),
-        new Texto("la tripulación del Apolo 11 regresó a la tierra", Game.WIDTH / 2, 300, false),
+        new Texto("En 1969, gracias a los cálculos manuales de Katherine", Game.WIDTH / 2, 300, false),
+        new Texto("se logró sincronizar la nave de aterrizaje", Game.WIDTH / 2, 300, false),
+        new Texto("con el módulo de comando en órbita y", Game.WIDTH / 2, 300, false),
+        new Texto("gracias a esto la tripulación del Apolo 11", Game.WIDTH / 2, 300, false),
+        new Texto("fue capaz de regresar a la tierra.", Game.WIDTH / 2, 300, false),
         new Texto("En una entrevista Katherine declaró:", Game.WIDTH / 2, 300, false),
         new Texto("\"Había hecho los cálculos y sabía que eran correctos...", Game.WIDTH / 2, 300, false),
         new Texto("pero era como conducir, cualquier cosa podía pasar\"", Game.WIDTH / 2, 300, false),
-        new Texto("Hoy en día podemos decir que los calculos de Katherine", Game.WIDTH / 2, 300, false),
+        new Texto("Hoy en día podemos decir que los cálculos de Katherine", Game.WIDTH / 2, 300, false),
         new Texto("Estuvieron bien.", Game.WIDTH / 2, 300, false),
-        new Texto("A partir de ahora, eres un astronauta", Game.WIDTH / 2, 300, false),
-        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.WIDTH / 2, 300, false),
-        new Texto("Regresarás a salvo, exito en la misión.", Game.WIDTH / 2, 300, false),
-        new Texto("Recuerda:", Game.WIDTH / 2, 300, false),
-        new Texto("\"En un tiempo donde todos pensaban en cómo llegar...", Game.WIDTH / 2, 300, false),
-        new Texto("y nadie en cómo regresar, Jonhson se adelantó, supo como volver\"", Game.WIDTH / 2, 300, false)
+        new Texto("A partir de ahora, eres un astronauta", Game.WIDTH/ 2, 300, false),
+        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.WIDTH / 2, 300, false), 
+        new Texto("Regresarás a salvo, éxito en la misión.", Game.WIDTH / 2, 300, false),
+        new Texto("Recuerda:", Game.WIDTH/ 2, 300, false),
+        new Texto("\"En un tiempo donde todos pensaban en cómo llegar...",Game.WIDTH / 2, 300, false),
+        new Texto("y nadie en cómo regresar,... ",Game.WIDTH/ 2, 300, false),
+        new Texto("Jonhson se adelantó, supo cómo volver\"",Game.WIDTH/ 2, 300, false)
     };
-    private final Texto MENSAJEMATH[] = {
-        new Texto("Katherin Johnson, la calculadora humana.", Game.WIDTH / 2, 300, true),
-        new Texto("Trabajaba en la aeronáutica como \"calculadora humana\"", Game.WIDTH / 2, 300, false),
-        new Texto("y realizaba los calculos requeridos de manera manual", Game.WIDTH / 2, 300, false),
-        new Texto("Además, realizó los cálculos que enviaron a los ", Game.WIDTH / 2, 300, false),
-        new Texto("astronautas al espacio entre 1960 y 1969", Game.WIDTH / 2, 300, false),
-        new Texto("Fue profesora y siempre mostró curiosidad,", Game.WIDTH / 2, 300, false),
+    private final Texto MENSAJEMATH[]={
+        new Texto("Katherine Johnson, la calculadora humana.", Game.WIDTH / 2, 300, true),
+        new Texto("Trabajaba en la aeronáutica como \"calculadora humana\"",Game.WIDTH / 2, 300, false),
+        new Texto("y realizaba los cálculos requeridos de manera manual",Game.WIDTH/ 2, 300, false),
+        new Texto("Además, realizó los cálculos que, entre 1960 y 1969,", Game.WIDTH / 2, 300, false),
+        new Texto("enviaron a los astronautas al espacio.", Game.WIDTH/ 2, 300, false),
+        new Texto("Fue profesora y siempre mostró curiosidad,", Game.WIDTH/ 2, 300, false),
         new Texto("siempre sorprendía a todos con su astucia.", Game.WIDTH / 2, 300, false),
-        new Texto("Katherine siempre quería saber el por qué de todo", Game.WIDTH / 2, 300, false),
-        new Texto("Ahora eres Katherine y podrás vivir ", Game.WIDTH / 2, 300, false),
+        new Texto("Katherine siempre quería saber el porqué de todo", Game.WIDTH/ 2, 300, false),
+        new Texto("Ahora eres Katherine y podrás vivir", Game.WIDTH / 2, 300, false),
         new Texto("una parte muy pequeña de su trabajo.", Game.WIDTH / 2, 300, false),
-        new Texto("Deberas hacer calculos sencillos, pero recuerda", Game.WIDTH / 2, 300, false),
-        new Texto("Katherine y su equipo de trabajo eran más efecientes", Game.WIDTH / 2, 300, false),
-        new Texto("que una calculadora.", Game.WIDTH / 2, 300, false)
+        new Texto("Deberás hacer cálculos sencillos, pero recuerda", Game.WIDTH / 2, 300, false),
+        new Texto("Katherine y su equipo de trabajo", Game.WIDTH / 2, 300, false),
+        new Texto("eran más eficientes que una calculadora.", Game.WIDTH / 2, 300, false)
+            
 
     };
     private final Texto MENSAJELIBRARY[] = {
         new Texto("Dorothy Vaughan, la primera supervisora.", Game.WIDTH / 2, 300, true),
         new Texto("Fue una profesora de matemáticas", Game.WIDTH / 2, 300, false),
         new Texto("que se convirtió en una de las principales", Game.WIDTH / 2, 300, false),
-        new Texto("ingenieras matemáticas en los comienzos de ", Game.WIDTH / 2, 300, false),
+        new Texto("ingenieras matemáticas en los comienzos de", Game.WIDTH / 2, 300, false),
         new Texto("la industria aeroespacial.", Game.WIDTH / 2, 300, false),
-        new Texto("Era segregada por ser de color ", Game.WIDTH / 2, 300, false),
-        new Texto("aún así logró ser ascendida a gerente del area oeste", Game.WIDTH / 2, 300, false),
-        new Texto("de Computación. Con su ascenso se convirtió", Game.WIDTH / 2, 300, false),
-        new Texto("en una defensora dedica de las empleadas", Game.WIDTH / 2, 300, false),
-        new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH / 2, 300, false),
-        new Texto("Cuando la tecnología avanzó, su trabjo se vió en riesgo", Game.WIDTH / 2, 300, false),
-        new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, 300, false),
-        new Texto("hacerse experta en FORTRAN para así poder usar las computadoras.", Game.WIDTH / 2, 300, false),
+        new Texto("Era segregada por ser de color,",Game.WIDTH / 2, 300, false),
+        new Texto("aun así, logró ser ascendida a gerente del área oeste", Game.WIDTH/ 2, 300, false),
+        new Texto("de Computación. Con su ascenso se convirtió", Game.WIDTH/ 2, 300, false),
+        new Texto("en una defensora dedicada de las empleadas", Game.WIDTH/ 2, 300, false),
+        new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH/ 2, 300, false),
+        new Texto("Cuando la tecnología avanzó, su trabajo se vio en riesgo", Game.WIDTH / 2, 300, false),
+        new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, 300, false), 
+        new Texto("hacerse experta en FORTRAN para así poder usar las computadoras.", Game.WIDTH/ 2, 300, false),
         new Texto("Para aprender tuvo que escabullirse a la biblioteca,", Game.WIDTH / 2, 300, false),
         new Texto("leer a escondidas y ocultarse de los guardias.", Game.WIDTH / 2, 300, false),
         new Texto("Ahora eres Dorothy y debes buscar los libros que necesitas.", Game.WIDTH / 2, 300, false),
@@ -133,22 +136,22 @@ public class Fantasma implements levelStrategy {
         this.indiceLevel = indiceLevel;//La idea es utilizar esto para hacer tipo un switch
         switch (indiceLevel) {
             default:
-                this.maxMensajes = 16;
+                this.maxMensajes=MENSAJESPACE.length;
                 A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJESPACE[i];
                 }
                 break;
             case 1:
-                this.maxMensajes = 13;
-                A = new Texto[maxMensajes];
+                this.maxMensajes=MENSAJEMATH.length;
+                A= new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJEMATH[i];
                 }
                 break;
             case 2:
-                this.maxMensajes = 17;
-                A = new Texto[maxMensajes];
+                this.maxMensajes=MENSAJELIBRARY.length;
+                A= new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJELIBRARY[i];
                 }
@@ -166,7 +169,7 @@ public class Fantasma implements levelStrategy {
 
     @Override
     public void update() {
-
+        KeyBoard.escape=false;
     }
 
     @Override
