@@ -33,7 +33,7 @@ public class Lobby implements levelStrategy{
     private int[] tilesCollision;
     private Player player;
     private Font lobbyFont = Fuente.spaceFont;
-    private final Color colorTexto= Color.WHITE;
+    private final Color COLORTEXTO= Color.WHITE;
     int ani[]={0,0};
     private boolean [] boolSounds={false,false};
     private boolean changeLevel=false;
@@ -157,7 +157,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public Color getColor() {
-        return colorTexto;
+        return COLORTEXTO;
     }
    
 
