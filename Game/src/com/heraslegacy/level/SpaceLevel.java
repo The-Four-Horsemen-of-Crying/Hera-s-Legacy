@@ -49,13 +49,13 @@ public class SpaceLevel implements levelStrategy {
         new Sound(Sound.loose)
     };
     private static final Texto textSpace[] = {
-        new Texto("¡Todo se arregló!", 0, false, Sprite.katherine_down[0]),
-        new Texto("¡LOS CONTROLES FALLAN!", 0, false, Sprite.katherine_down[0]),
-        new Texto("!FELICIDADES!", 0, false, Sprite.katherine_down[0]),
-        new Texto("!Has llegado a la luna!", 0, false, Sprite.katherine_down[0]),
+        new Texto("Todo se arreglo!", 0, false, Sprite.katherine_down[0]),
+        new Texto("LOS CONTROLES FALLAN!", 0, false, Sprite.katherine_down[0]),
+        new Texto("FELICIDADES!", 0, false, Sprite.katherine_down[0]),
+        new Texto("Has llegado a la luna!", 0, false, Sprite.katherine_down[0]),
         new Texto("FIN DEL JUEGO", 0, false, Sprite.katherine_down[0]),
         new Texto("Presiona R para reiniciar", 0, false, Sprite.katherine_down[0]),
-        new Texto("¡INTENTA DE NUEVO!", 0, false, Sprite.katherine_down[0])
+        new Texto("INTENTA DE NUEVO!", 0, false, Sprite.katherine_down[0])
     };
 
     @Override

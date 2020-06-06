@@ -157,10 +157,10 @@ public class MathLevel implements levelStrategy {
         screen.renderSprite(false, screen.width / 2 - hoja[1].getWidth() / 2, screen.height / 2 - hoja[1].getHeight() / 2,
                 hoja[mesa]);
 
-        if ((Mouse.mouseX > screen.width * SCALE / 2)
-                && (Mouse.mouseX < screen.width * SCALE / 2 + (hoja[mesa].getWidth() - 22) * SCALE / 2)
-                && (Mouse.mouseY > screen.height * SCALE / 2)
-                && (Mouse.mouseY < screen.height * SCALE / 2 + (hoja[mesa].getHeight() - 22) * SCALE / 2)) {
+        if ((Mouse.mouseX > screen.width * scale / 2)
+                && (Mouse.mouseX < screen.width * scale / 2 + (hoja[mesa].getWidth() - 22) * scale / 2)
+                && (Mouse.mouseY > screen.height * scale / 2)
+                && (Mouse.mouseY < screen.height * scale / 2 + (hoja[mesa].getHeight() - 22) * scale / 2)) {
 
             if (Mouse.clickSwitch) {
                 textMath[0].setVisible(false);
@@ -321,7 +321,7 @@ public class MathLevel implements levelStrategy {
     
     private void condicionesIni() {
         textMath[3].setText("");
-        textMath[3].setPosx(screen.width / 2 * SCALE + 100);
+        textMath[3].setPosx(screen.width / 2 * scale + 100);
         answerLength = 1;
         concaAnsw = "";
         textMath[4].setVisible(false);

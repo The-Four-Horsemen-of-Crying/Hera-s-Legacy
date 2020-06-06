@@ -13,6 +13,7 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
+import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
@@ -36,11 +37,11 @@ public class Lobby implements levelStrategy{
     private final Color COLORTEXTO= Color.WHITE;
     int ani[]={0,0};
     private boolean [] boolSounds={false,false};
-    private boolean changeLevel=false;
+    private boolean changeLevel=false, agradecimiento=false;
     private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
     public static boolean levels[]= {false,false,false};
     private Texto textLobby[]= {
-        new Texto("Ya se encuentra en el Lobby", screen.width/2-40, screen.height/2-120, false)
+        new Texto("Ya se encuentra en el Lobby", 0, false, Sprite.hera_down[0])
     
     };
     
@@ -69,6 +70,10 @@ public class Lobby implements levelStrategy{
 
     @Override
     public boolean getCollision(int x, int y) {
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.naranjaMecanica.getColor()){
+            agradecimiento=true;
+            return true;
+        }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
             nivelCase = 0;
             return !levels[0];
@@ -81,6 +86,9 @@ public class Lobby implements levelStrategy{
             nivelCase = 2;
             return !levels[2];
         }
+        
+        
+        agradecimiento=false;
         boolSounds[0]=false;
         return false;
     }
@@ -111,11 +119,14 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void mecanica(){
-        if(!boolSounds[0]){
-            sounds[2].play();
-            boolSounds[0]=true;
+        if(!agradecimiento){
+            if(!boolSounds[0]){
+                sounds[2].play();
+                boolSounds[0]=true;
+            }
+            if(KeyBoard.enter)changeLevel=true;
         }
-        if(KeyBoard.enter)changeLevel=true;
+        else screen.renderSprite(false,screen.width/2-75, screen.height/2-50, Sprite.agradecimiento[1]);
     }
     
 
@@ -132,7 +143,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void configPlayer(Level level) {
-        player = new Player(239, 64);
+        player = new Player(15*16, 6*16);
         player.setSprites(Sprite.hera_up, Sprite.hera_down, Sprite.hera_rigth, Sprite.hera_left);
         player.setAjustes(14, 8, 13, 0, 16, 16, new Sound(Sound.walk));
         player.setLatencia(30);
@@ -198,6 +209,7 @@ public class Lobby implements levelStrategy{
                 screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
                 screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
                 screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
+                screen.renderSprite(true,14*16, 1*16, Sprite.agradecimiento[0]);
     }
 
     @Override

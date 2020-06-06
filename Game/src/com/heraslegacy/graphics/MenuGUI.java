@@ -12,7 +12,7 @@ import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import java.awt.event.KeyEvent;
-import static com.heraslegacy.main.Game.SCALE;
+import static com.heraslegacy.main.Game.scale;
 
 /**
  *
