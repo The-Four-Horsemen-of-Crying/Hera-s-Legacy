@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
     public static Screen screen;
     public static MenuGUI menu;
     private Welcome startScreen;
-    private int introDuration=5;
+    private int introDuration=0;
 
     public Game(int scale){
         this.scale=scale;

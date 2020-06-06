@@ -1,5 +1,6 @@
 package com.heraslegacy.manager;
 
+import com.heraslegacy.level.Lobby;
 import com.heraslegacy.level.MathLevel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -35,7 +36,7 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
             keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true;
-            MathLevel.assignConcaAnsw(MathLevel.numberInput());
+            if(!Lobby.levels[1])MathLevel.assignConcaAnsw(MathLevel.numberInput());
         }
     }
 
@@ -44,7 +45,6 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = false;
             rate=2;
-            System.out.println("released"+LocalTime.now());
         }
     }
     
