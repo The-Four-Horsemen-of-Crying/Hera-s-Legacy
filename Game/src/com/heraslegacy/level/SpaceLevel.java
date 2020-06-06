@@ -354,9 +354,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Level levelCambio() {
-        if (variaB[2]) {
-            Lobby.levels[2] = true;
-        }
+        if(variaB[2])Lobby.levels[0] = true;
         return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
 
