@@ -34,13 +34,13 @@ public class Game extends Canvas implements Runnable {
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = true;
-    private static boolean StartGame=false;
+    public static boolean startGame=false;
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
     public static MenuGUI menu;
     private Welcome startScreen;
-    private int introDuration=0;
+    private int introDuration=5;
 
     public Game(int scale){
         this.scale=scale;
@@ -108,7 +108,7 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        if (StartGame) {
+        if (startGame) {
             level.getPlayer().update();
             level.update();
         }
@@ -125,7 +125,7 @@ public class Game extends Canvas implements Runnable {
         
         screen.clear();
         
-        if(StartGame&&introDuration==0){
+        if(startGame&&introDuration==0){
             int xScroll = level.getPlayer().getX() - screen.width/2;
             int yScroll = level.getPlayer().getY() - screen.height/2;
 
@@ -150,7 +150,11 @@ public class Game extends Canvas implements Runnable {
             
             level.uptadeTexto();
             menu.uptade();
-            
+            if(startGame==false){
+                level=null;
+                startScreen.setLevel(null);
+                introDuration=1;
+            }
         }
         else {
             
@@ -158,7 +162,7 @@ public class Game extends Canvas implements Runnable {
             introDuration=startScreen.passToIntro(introDuration);
             if(introDuration==0)level=startScreen.getLevelStart();
             if(level!=null){
-                StartGame=true;
+                startGame=true;
                 menu = new MenuGUI(level);
             }
             
@@ -173,7 +177,7 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-            if(StartGame){
+            if(startGame){
                 g.setFont(level.getFont());
                 g.setColor(level.getColor());
 
