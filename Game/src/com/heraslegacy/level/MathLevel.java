@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import static com.heraslegacy.main.Game.SCALE;
+import static com.heraslegacy.main.Game.scale;
 import java.awt.event.KeyEvent;
 
 
@@ -43,14 +43,15 @@ public class MathLevel implements levelStrategy {
     public static String concaAnsw;
     
     private static Texto textMath[]= {
-        new Texto("Click", screen.width/2*SCALE+65, screen.height/2*SCALE+70, false), 
-        new Texto("Introduce", screen.width/2*SCALE+40, screen.height/2*SCALE+30, false),
-        new Texto("Respuesta", screen.width/2*SCALE+40, screen.height/2*SCALE+70, false),
-        new Texto("", screen.width/2*SCALE+100, screen.height/2*SCALE+100, false),
-        new Texto("Tus cálculos necesitan otra revisión", 0, false,Sprite.hera_down[0]),
-        new Texto("Perfecto! No esperaba menos de usted", 0, false,Sprite.hera_down[0]),
-        new Texto("Excelente respuesta", 0, false,Sprite.hera_down[0]),
-        new Texto("Intenta con otra respuesta", 0, false,Sprite.hera_down[0])
+        new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
+        new Texto("Introduce", screen.width/2*scale+40, screen.height/2*scale+30, false),
+        new Texto("Respuesta", screen.width/2*scale+40, screen.height/2*scale+70, false),
+        new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
+        new Texto("Creo que ella deberia volver a hacerlo", 0, false,Sprite.hera_down[0]),
+        new Texto("Wow! me sorprenden sus capacidades", 0, false,Sprite.hera_down[0]),
+        new Texto("Muy buena su respuesta", 0, false,Sprite.hera_down[0]),
+        new Texto("Creo que ella debería replantearlo", 0, false,Sprite.hera_down[0]),
+        new Texto("Tal vez se confundio con un numero", 0, false,Sprite.hera_down[0])
     };
     
     public MathLevel(){
@@ -196,7 +197,7 @@ public class MathLevel implements levelStrategy {
                         } 
                         
                         else if (f_reponse != respuestas[mesa]) {
-                            showReponse(6);
+                            showReponse(r.nextInt(2)+7);
                             condicionesIni();
                         }
                     }
@@ -290,11 +291,9 @@ public class MathLevel implements levelStrategy {
     public static String numberInput() {
         KeyBoard.rate--;
         for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
-            System.out.println(i-KeyEvent.VK_0+" || "+KeyBoard.getKeys(i));
             if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
         }
         for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
-            System.out.println(i-KeyEvent.VK_NUMPAD0+" || "+KeyBoard.getKeys(i));
             if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
         }
             if (KeyBoard.coma&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
