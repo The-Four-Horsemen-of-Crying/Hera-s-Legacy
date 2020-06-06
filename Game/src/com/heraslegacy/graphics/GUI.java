@@ -5,14 +5,7 @@
  */
 package com.heraslegacy.graphics;
 
-import com.heraslegacy.level.Fantasma;
-import com.heraslegacy.level.Level;
-import com.heraslegacy.level.levelStrategy;
 import static com.heraslegacy.main.Game.screen;
-import com.heraslegacy.manager.KeyBoard;
-import com.heraslegacy.manager.Mouse;
-import java.awt.event.KeyEvent;
-
 /**
  *
  * @author Domain

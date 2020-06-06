@@ -160,6 +160,7 @@ public class MathLevel implements levelStrategy {
                 textMath[1].setVisible(true);
                 textMath[2].setVisible(true);
                 textMath[3].setVisible(true);
+                
                 if (KeyBoard.rate == 2 && answerLength < 7) {
                     String concaAnsw = numberInput();
                     textMath[3].setText(textMath[3].getText() + concaAnsw);
@@ -170,11 +171,10 @@ public class MathLevel implements levelStrategy {
                 } else if (answerLength >= 7) {
                     textMath[4].setVisible(true);
                 }
-                KeyBoard.rate = 0;
-
+                
+                if(KeyBoard.rate==Integer.MIN_VALUE)KeyBoard.rate=0;
                 if (KeyBoard.delete) {
                     condicionesIni();
-
                 }
                 //read answer
                 if (KeyBoard.enter) {
@@ -269,7 +269,6 @@ public class MathLevel implements levelStrategy {
             int random = r.nextInt(9)+1;
             if(!nonRepeated(random)){
                 ejercicios[i]=random;
-                System.out.println(random);
             }
             else i--;
         }
@@ -283,6 +282,7 @@ public class MathLevel implements levelStrategy {
     }
 
     private String numberInput() {
+        KeyBoard.rate--;
             if (KeyBoard.numbers[1])return "1";
             if (KeyBoard.numbers[2])return "2";           
             if (KeyBoard.numbers[3])return "3";            

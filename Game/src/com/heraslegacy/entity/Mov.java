@@ -11,6 +11,7 @@ public abstract class Mov {
     protected int ani = 0, ani2 = 0, direction = 1, x, y;
     protected int ajusteX1, ajusteX2, ajusteY1, ajusteY2;
     protected int latencia;
+    protected Tile directionalSolid_Snake_Tile;
     protected Tile directionalTile;
     protected Sound move;
     Level level;
@@ -65,10 +66,11 @@ public abstract class Mov {
             int xLimit =((x + xMove) + corners % 2 * ajusteX1 - ajusteX2) / 16;
             int yLimit =(((y + yMove) + corners / 2 *ajusteY1 + ajusteY2) / 16);
             Tile nextTile = level.getTile(xLimit, yLimit);  //COLLITION FÍSICA DEL NIVEL
+            directionalTile=nextTile;
             if(nextTile.solid()){ 
                 
                 solid = true;
-                directionalTile=nextTile;
+                directionalSolid_Snake_Tile=nextTile;
             }
         }
         return  solid;
@@ -95,8 +97,11 @@ public abstract class Mov {
         this.level = level;
     }
     
+    public Tile getDirectionalSolidSnakeTile(){
+        return directionalSolid_Snake_Tile;
+    } 
+    
     public Tile getDirectionalTile(){
-       // System.out.println(directionalTile);
         return directionalTile;
     }
     
