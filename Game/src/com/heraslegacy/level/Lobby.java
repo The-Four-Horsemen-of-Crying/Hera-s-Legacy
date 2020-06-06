@@ -176,7 +176,11 @@ public class Lobby implements levelStrategy{
     public Level levelCambio() {
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         sounds[0].stop();
+        if(!isFinish()){
         game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(nivelCase)));
+        }else{
+        game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(3)));        
+        }
         return game;
     }
 
@@ -222,5 +226,13 @@ public class Lobby implements levelStrategy{
         for (Texto text : textLobby) {
             text.showIfActive();
         }
+    }
+    private boolean isFinish(){
+        int cont=0;
+        for (boolean level : levels) {
+            if(level)cont++;
+        }
+        if(cont==levels.length-1)return true;
+        return false;
     }
 }

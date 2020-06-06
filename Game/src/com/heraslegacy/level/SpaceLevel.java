@@ -39,7 +39,7 @@ public class SpaceLevel implements levelStrategy {
     private boolean variaB[] = new boolean[5];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
     private LocalTime dy = LocalTime.now();
     private LocalTime now = LocalTime.now();
-    private int life = 2, j = 0, sw = 0, suena = 0;
+    private int life = 3, j = 0, sw = 0, suena = 0;
     int indiceCambio;
     private Color colorTexto = Color.WHITE;
     private final Sound sonido[] = {
