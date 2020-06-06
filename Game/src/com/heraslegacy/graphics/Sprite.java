@@ -21,6 +21,8 @@ public class Sprite {
     
     
     //Lobby
+    public static Sprite agradecimiento[] = {new Sprite(32, 0, 2, SpriteSheet.nivel00_lobby),new Sprite(150, 100, 1,2,SpriteSheet.single_ManualPage)};
+    
     public static Sprite marmolWall[] = {new Sprite(16,0,1,SpriteSheet.nivel00_lobby), new Sprite(16, 1, 1, SpriteSheet.nivel00_lobby),
                                          new Sprite(16, 2, 1, SpriteSheet.nivel00_lobby)};//NORMAL, UP
     
@@ -174,7 +176,8 @@ public class Sprite {
                                          new Sprite(86, 32, 0, 8, SpriteSheet.startScreen),new Sprite(86, 32, 1, 8, SpriteSheet.startScreen),
                                          new Sprite(86, 32, 2, 6, SpriteSheet.startScreen),new Sprite(86, 32, 2, 7, SpriteSheet.startScreen)};
     
-    public static Sprite startMenu[] = {new Sprite(300, 162, 0, 0, SpriteSheet.startScreen),new Sprite(300, 162, 0, 0, SpriteSheet.single_ManualPage)};
+    public static Sprite startMenu[] = {new Sprite(300, 162, 0, 0, SpriteSheet.startScreen),new Sprite(300, 162, 0, 0, SpriteSheet.single_ManualPage),
+                                        new Sprite(150, 100, 0, 2, SpriteSheet.single_ManualPage)};
     
     
     

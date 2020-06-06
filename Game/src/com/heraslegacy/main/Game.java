@@ -5,17 +5,13 @@ import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Fuente;
 import com.heraslegacy.graphics.MenuGUI;
-import com.heraslegacy.graphics.Sprite;
-import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.graphics.Welcome;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.*;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -43,8 +39,8 @@ public class Game extends Canvas implements Runnable {
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
     public static MenuGUI menu;
-    Sound theme;
     private Welcome startScreen;
+    private int introDuration=5;
 
     public Game(int scale){
         this.scale=scale;
@@ -129,7 +125,7 @@ public class Game extends Canvas implements Runnable {
         
         screen.clear();
         
-        if(StartGame){
+        if(StartGame&&introDuration==0){
             int xScroll = level.getPlayer().getX() - screen.width/2;
             int yScroll = level.getPlayer().getY() - screen.height/2;
 
@@ -159,7 +155,8 @@ public class Game extends Canvas implements Runnable {
         else {
             
             startScreen.uptade();
-            level=startScreen.levelStar();
+            introDuration=startScreen.passToIntro(introDuration);
+            if(introDuration==0)level=startScreen.getLevelStart();
             if(level!=null){
                 StartGame=true;
                 menu = new MenuGUI(level);

@@ -20,12 +20,11 @@ public class Welcome extends GUI{
 
     private Level level;
     private Sprite pageBackG = Sprite.startMenu[1];
-    private int page=0;
-    private Game game;
+    private int page=0, timeCounter=0;
+    
     
     public Welcome(){
         super(Sprite.startMenu[0], 0, 0, true);
-        this.level=level;
         setBotones(
             new Button(Sprite.botonesGUI[6],Sprite.botonesGUI[7], 0*86+10,screen.height-2*16,0,10),
             new Button(Sprite.botonesGUI[8],Sprite.botonesGUI[9], 1*86+20, screen.height-2*16,0,10),
@@ -36,46 +35,62 @@ public class Welcome extends GUI{
     
     @Override
         public void mouseOptionsTracker(){
-        if (page == 0) {
-            if (botones[0].onZone()) {
-                if (Mouse.click) {
-                    level = new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
-                    level.configPlayer();
+        if(timeCounter==0){
+            if (page == 0) {
+                if (botones[0].onZone()) {
+                    if (Mouse.click) {
+                        level = new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
+                        level.configPlayer();
+                    }
                 }
+                if (botones[1].onZone()) {
+                    if (Mouse.click)page = 1;
+
+                }
+                if (botones[2].onZone()) {
+                    if (Mouse.click)System.exit(0);
+                } 
             }
-            if (botones[1].onZone()) {
-                if (Mouse.click)page = 1;
-                
+            else if (page == 1) {
+                if (botones[3].onZone()) 
+                    if (Mouse.click)page = 0;
             }
-            if (botones[2].onZone()) {
-                if (Mouse.click)System.exit(0);
-            } 
-        }
-        else if (page == 1) {
-            if (botones[3].onZone()) 
-                if (Mouse.click)page = 0;
         }
     }
 
-    public Level levelStar() {
+    public Level getLevelStart() {
         return this.level;
     }
     
     @Override
     protected void splitAll(){
-        switch(page){
-            case 0:
-                screen.renderSprite(false, cordX, cordY, fondo);
-                for (int i = 0; i <= 2; i++) {
-                    botones[i].split();
-                }
-            break;
-            case 1:
-                screen.renderSprite(false, cordX, cordY, pageBackG);
-                for (int i = 3; i < botones.length; i++) {
-                    botones[i].split();
-                }
-                break;
+        if (timeCounter == 0) {
+            switch (page) {
+                case 0:
+                    screen.renderSprite(false, cordX, cordY, fondo);
+                    for (int i = 0; i <= 2; i++) {
+                        botones[i].split();
+                    }
+                    break;
+                case 1:
+                    screen.renderSprite(false, cordX, cordY, pageBackG);
+                    for (int i = 3; i < botones.length; i++) {
+                        botones[i].split();
+                    }
+                    break;
+            }
         }
+    }
+    
+    public int passToIntro(int time){
+        if(level==null)return time;
+        timeCounter++;
+        
+        if(timeCounter%5000==0){
+            time--;
+            timeCounter=1;
+        }
+        screen.renderSprite(true, screen.width/2-75, screen.height/2-50, Sprite.startMenu[2]);
+        return time;
     }
 }
