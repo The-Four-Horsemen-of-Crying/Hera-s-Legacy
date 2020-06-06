@@ -206,7 +206,7 @@ public class SpaceLevel implements levelStrategy {
                 textSpace[1].setVisible(false);
                 textSpace[4].setVisible(false);
             }
-            if ((player.getCollisionP() && player.getDirectionalTile().tipo == TipoTile.GAME_OVER|| variaB[1] )&& !variaB[2]) {
+            if ((player.getCollisionP() && player.getDirectionalSolidSnakeTile().tipo == TipoTile.GAME_OVER|| variaB[1] )&& !variaB[2]) {
                 player.setTipo(2);
                 sonido[2].stop();
                 sonido[1].stop();

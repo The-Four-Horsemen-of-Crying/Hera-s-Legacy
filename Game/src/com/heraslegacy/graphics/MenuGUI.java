@@ -7,8 +7,6 @@ package com.heraslegacy.graphics;
 
 import com.heraslegacy.level.Fantasma;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.levelStrategy;
-import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
@@ -21,10 +19,11 @@ import java.awt.event.KeyEvent;
 public class MenuGUI extends GUI{
 
 
-    private levelStrategy actualLevel;
+    private Level actualLevel;
 
-    public MenuGUI(){
+    public MenuGUI(Level actualLevel){
         super(Sprite.menuGUI, screen.width/2-75, screen.height/2-75, false);
+        this.actualLevel=actualLevel;
         setBotones(
             new Button(Sprite.botonesGUI[0],Sprite.botonesGUI[1], screen.width/2-43, screen.height/2-4*16,0,10),
             new Button(Sprite.botonesGUI[2],Sprite.botonesGUI[3], screen.width/2-43, screen.height/2-2*16,0,10),
@@ -32,13 +31,17 @@ public class MenuGUI extends GUI{
         );
     }
     
-    public void uptade(levelStrategy theLevel){
-        actualLevel=theLevel;
-        if(!(actualLevel instanceof Fantasma))visible=KeyBoard.escape;
+    @Override
+    public void uptade(){
+        if(!(actualLevel.levelstrategy instanceof Fantasma))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
         }
+    }
+
+    public void setActualLevel(Level actualLevel) {
+        this.actualLevel = actualLevel;
     }
     
     @Override
@@ -51,8 +54,7 @@ public class MenuGUI extends GUI{
         }
         if(botones[1].onZone()){
             if(Mouse.click){
-                actualLevel.backWithoutWin();
-                if(actualLevel==null)System.out.println("asdasd");
+                actualLevel.levelstrategy.backWithoutWin();
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
         }

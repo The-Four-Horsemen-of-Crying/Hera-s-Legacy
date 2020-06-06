@@ -7,9 +7,6 @@ package com.heraslegacy.graphics;
 
 import com.heraslegacy.level.tile.Tile;
 
-import java.util.Random;
-
-
 public class Screen {
 
     public int width;

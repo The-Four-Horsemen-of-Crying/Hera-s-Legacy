@@ -7,6 +7,7 @@ package com.heraslegacy.graphics;
 
 import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
+import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 
 /**
@@ -65,13 +66,14 @@ public class Texto {
     }
 
     public boolean isVisible() {
-        return visible;
+        return visible&&!KeyBoard.escape;
     }
 
     public void setVisible(boolean visible) {
         this.visible = visible;
         if(backBox!=null)this.backGroundActive=visible;
-    }
+        
+        }
     public void setVisible(int i, Texto[]s){
         for (int j = 0; j < s.length; j++) {
             if(j!=i){
@@ -83,7 +85,7 @@ public class Texto {
     }
 
     public void showIfActive() {
-        if(visible&&backGroundActive){
+        if(visible&&backGroundActive&&!KeyBoard.escape){
             screen.renderSprite(false, 0,screen.height-backBox.getHeight()-subject.getHeight()/2 , subject);  //Cuando se añada
             screen.renderSprite(false, 0, screen.height-backBox.getHeight(), backBox);
         }

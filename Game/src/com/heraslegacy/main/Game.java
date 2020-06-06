@@ -47,7 +47,6 @@ public class Game extends Canvas implements Runnable {
     private Welcome startScreen;
 
     public Game(){
-        System.out.println(height);
         Dimension size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
         frame = new JFrame();
@@ -147,11 +146,13 @@ public class Game extends Canvas implements Runnable {
             }
             if(level.cambio()){
                 level = level.levelCambio();
+                
                 level.configPlayer();
+                menu.setActualLevel(level);
             }
             
             level.uptadeTexto();
-            menu.uptade(level.levelstrategy);
+            menu.uptade();
             
         }
         else {
@@ -160,7 +161,7 @@ public class Game extends Canvas implements Runnable {
             level=startScreen.levelStar();
             if(level!=null){
                 StartGame=true;
-                menu = new MenuGUI();
+                menu = new MenuGUI(level);
             }
             
         }
