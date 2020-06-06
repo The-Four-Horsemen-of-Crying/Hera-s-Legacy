@@ -51,6 +51,7 @@ public class Sprite {
                                           new Sprite(16, 2,0,SpriteSheet.nivel02_space),new Sprite(16, 3,1,SpriteSheet.nivel02_space)};
     
     public static Sprite niceStuffForANiceGame [] = {new Sprite(16, 3, 3, SpriteSheet.nivel02_space),new Sprite(16, 4, 3, SpriteSheet.nivel02_space)};
+    public static Sprite life = new Sprite(16,0,3,SpriteSheet.nivel02_space);
     
     
     //MathLevel
@@ -162,6 +163,7 @@ public class Sprite {
     public static Sprite floorL2 = new Sprite(16,5,1,SpriteSheet.nivel03_library);
     public static Sprite floorL1D = new Sprite(16,0,2,SpriteSheet.nivel03_library);
     public static Sprite floorL2D = new Sprite(16,5,0,SpriteSheet.nivel03_library);
+    public static Sprite book = new Sprite(16,1,2,SpriteSheet.nivel03_library);
     
     //GUI
     public static Sprite menuGUI= new Sprite(150, 0, 0, SpriteSheet.single_Menu);
