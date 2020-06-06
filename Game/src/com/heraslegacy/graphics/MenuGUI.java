@@ -12,7 +12,7 @@ import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import java.awt.event.KeyEvent;
-import static com.heraslegacy.main.Game.SCALE;
+import static com.heraslegacy.main.Game.scale;
 
 /**
  *
@@ -35,7 +35,7 @@ public class MenuGUI extends GUI{
     
     @Override
     public void uptade(){
-        if(!(actualLevel.levelstrategy instanceof Fantasma))visible=KeyBoard.escape;
+        if(!(actualLevel.LEVELSTRATEGY instanceof Fantasma))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
@@ -56,7 +56,7 @@ public class MenuGUI extends GUI{
         }
         if(botones[1].onZone()){
             if(Mouse.click){
-                actualLevel.levelstrategy.backWithoutWin();
+                actualLevel.LEVELSTRATEGY.backWithoutWin();
                 KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
             }
         }
