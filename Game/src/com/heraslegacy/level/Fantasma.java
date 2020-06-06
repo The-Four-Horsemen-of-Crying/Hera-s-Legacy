@@ -37,7 +37,6 @@ public class Fantasma implements levelStrategy {
     private int[] tilesCollision;
     private Player player;
     private final Font SPACEFONT = Fuente.trans;
-    private final Color COLORTEXTO = Color.WHITE;
     private boolean cambio = false;
     private int cont[] = new int[3];
     private int indiceLevel, maxMensajes;
@@ -265,7 +264,7 @@ public class Fantasma implements levelStrategy {
         //Buscar la manera de decidir cual cargar
         int latencia = 30;
         Sound p = new Sound(Sound.walk);
-        player = new Player(Game.WIDTH / 2, Game.HEIGHT / 2);
+        player = new Player(2*16,4*16);
         switch (indiceLevel) {
             case 0:
                 player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
@@ -322,6 +321,7 @@ public class Fantasma implements levelStrategy {
         if (indiceLevel != 0) {
             color = Color.BLACK;
         }
+        color= Color.WHITE;
         return color;
     }
 
