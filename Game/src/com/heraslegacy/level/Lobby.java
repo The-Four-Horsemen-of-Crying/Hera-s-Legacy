@@ -46,7 +46,7 @@ public class Lobby implements levelStrategy{
     
     @Override
     public void update() {
-
+        
     }
 
     @Override
@@ -71,15 +71,15 @@ public class Lobby implements levelStrategy{
     public boolean getCollision(int x, int y) {
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
             nivelCase = 0;
-            return true;
+            return !levels[0];
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.blue.getColor()) {
             nivelCase = 1;
-            return true;
+            return !levels[1];
         }
         if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.red.getColor()) {
             nivelCase = 2;
-            return true;
+            return !levels[2];
         }
         boolSounds[0]=false;
         return false;
@@ -132,7 +132,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void configPlayer(Level level) {
-        player = new Player(Game.width / 2, Game.height / 2);
+        player = new Player(239, 64);
         player.setSprites(Sprite.hera_up, Sprite.hera_down, Sprite.hera_rigth, Sprite.hera_left);
         player.setAjustes(14, 8, 13, 0, 16, 16, new Sound(Sound.walk));
         player.setLatencia(30);
