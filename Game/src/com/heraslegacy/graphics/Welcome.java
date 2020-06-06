@@ -7,10 +7,8 @@ package com.heraslegacy.graphics;
 
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.Lobby;
-import com.heraslegacy.main.Game;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.Mouse;
-import javax.swing.JFrame;
 
 /**
  *
@@ -90,7 +88,12 @@ public class Welcome extends GUI{
             time--;
             timeCounter=1;
         }
-        screen.renderSprite(true, screen.width/2-75, screen.height/2-50, Sprite.startMenu[2]);
+        screen.renderSprite(false, screen.width/2-75, screen.height/2-50, Sprite.startMenu[2]);
         return time;
+    }
+
+    public void setLevel(Level level) {
+        timeCounter=0;
+        this.level=level;
     }
 }
