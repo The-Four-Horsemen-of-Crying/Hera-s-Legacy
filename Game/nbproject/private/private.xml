@@ -12,11 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ejose/Documents/gitRepos/Proyecto-POO/Game/src/com/heraslegacy/level/tile/Tile.java</file>
-            <file>file:/C:/Users/ejose/Documents/gitRepos/Proyecto-POO/Game/src/com/heraslegacy/entity/Mov.java</file>
-            <file>file:/C:/Users/ejose/Documents/gitRepos/Proyecto-POO/Game/src/com/heraslegacy/level/Level.java</file>
-            <file>file:/C:/Users/ejose/Documents/gitRepos/Proyecto-POO/Game/src/com/heraslegacy/main/Game.java</file>
-            <file>file:/C:/Users/ejose/Documents/gitRepos/Proyecto-POO/Game/src/com/heraslegacy/level/LibraryLevel.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/level/SpaceLevel.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/main/Game.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/level/LibraryLevel.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/level/Lobby.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/manager/KeyBoard.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/level/MathLevel.java</file>
+            <file>file:/C:/Users/Servicio%20Tecnico/Documents/Hera's%20Legacy/Hera's%20Legacy/Game/src/com/heraslegacy/graphics/Sprite.java</file>
         </group>
     </open-files>
 </project-private>

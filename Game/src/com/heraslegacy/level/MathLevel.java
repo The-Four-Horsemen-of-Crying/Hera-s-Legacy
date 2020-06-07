@@ -31,16 +31,16 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private boolean [] bools=new boolean[5];
+    private boolean [] bools=new boolean[4];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
-    private static int answerLength = 0;
+    private int answerLength = 0;
     private int indiceMesa, mesa=0;
     private Sound sounds [] = {new Sound(Sound.math_Theme),new Sound(Sound.bookSound)};
     private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
-    private String concaAnsw;
+    public String concaAnsw;
     
     private Texto textMath[]= {
         new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
@@ -65,7 +65,6 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void update(){
-        checkNumberInput();
     }
     
     @Override
@@ -169,6 +168,7 @@ public class MathLevel implements levelStrategy {
                 textMath[3].setVisible(true);
                 
                 if (KeyBoard.rate == 2 && answerLength < 7) {
+                    numberInput();
                     textMath[3].setText(textMath[3].getText() + concaAnsw);
                     if (!concaAnsw.isEmpty()) {
                         concaAnsw="";
@@ -287,7 +287,15 @@ public class MathLevel implements levelStrategy {
         return false;
     }
 
-    
+    public void numberInput() {
+        KeyBoard.rate--;
+        concaAnsw = KeyBoard.getLastKeyNumber();
+        System.out.println("conca   "+concaAnsw);
+        if (concaAnsw.equals(".")&&!bools[0]&&!textMath[3].getText().isEmpty()){
+            answerLength--;
+            bools[0]=true;
+        }
+    }
 
 
     @Override
@@ -317,18 +325,6 @@ public class MathLevel implements levelStrategy {
     }
     
     
-    private void checkNumberInput(){
-        String instantInput = KeyBoard.numberInput();
-        if(instantInput=="."&&!bools[0]&&!textMath[3].getText().isEmpty()){
-                answerLength--;
-                bools[0]=true;
-                concaAnsw=instantInput;
-        }
-        else if(instantInput!="."){
-            concaAnsw=instantInput;
-        }
-    }
-    
     private void showReponse(int i) {
         if(i<7);
         textMath[i].setVisible(true);
@@ -351,10 +347,6 @@ public class MathLevel implements levelStrategy {
         for (Texto text : textMath) {
             text.showIfActive();
         } 
-    }
-    
-    public void assignConcaAnsw(){
-        
     }
     
     public int numResueltos(){
