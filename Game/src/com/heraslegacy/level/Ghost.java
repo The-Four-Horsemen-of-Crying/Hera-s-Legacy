@@ -28,9 +28,8 @@ import static com.heraslegacy.main.Game.scale;
  *
  * @author HP
  */
-public class Fantasma implements levelStrategy {
+public class Ghost implements levelStrategy {
 
-    protected int bluecoli = 0xff3900ff;
     private int width;
     private int height;
     private int[] tiles;
@@ -153,6 +152,8 @@ public class Fantasma implements levelStrategy {
         new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 64 * 25, true),     
         new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 65 * 25, true),     
         new Texto("-Katherine Johnson", Game.WIDTH / 2+200, y + 66 * 25, true),             
+        new Texto("Este proyecto fue realizado con fines academicos", Game.WIDTH / 2, y + 69 * 25, true),             
+        new Texto("Realizado para: ", Game.WIDTH / 2, y + 70 * 25, true),                     
     };
     private final Tile[] PISO = {
         Tile.spacePices[3],
@@ -167,7 +168,7 @@ public class Fantasma implements levelStrategy {
 
     };
 
-    public Fantasma(int indiceLevel) {
+    public Ghost(int indiceLevel) {
         this.indiceLevel = indiceLevel;//La idea es utilizar esto para hacer tipo un switch
         switch (indiceLevel) {
             default:
@@ -362,7 +363,7 @@ public class Fantasma implements levelStrategy {
         KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
        
-        Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Fantasma(indiceLevel));
+        Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Ghost(indiceLevel));
         switch (indiceLevel) {
             case 0:
                 game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());

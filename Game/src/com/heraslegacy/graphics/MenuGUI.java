@@ -5,7 +5,7 @@
  */
 package com.heraslegacy.graphics;
 
-import com.heraslegacy.level.Fantasma;
+import com.heraslegacy.level.Ghost;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.main.Game;
 import static com.heraslegacy.main.Game.screen;
@@ -34,7 +34,7 @@ public class MenuGUI extends GUI{
     
     @Override
     public void uptade(){
-        if(!(actualLevel.LEVELSTRATEGY instanceof Fantasma))visible=KeyBoard.escape;
+        if(!(actualLevel.LEVELSTRATEGY instanceof Ghost))visible=KeyBoard.escape;
         if(visible){
             splitAll();
             mouseOptionsTracker();
