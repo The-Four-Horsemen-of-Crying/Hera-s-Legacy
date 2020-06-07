@@ -31,16 +31,16 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private static boolean [] bools=new boolean[4];
+    private boolean [] bools=new boolean[4];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
-    private static int answerLength = 0;
+    private int answerLength = 0;
     private int indiceMesa, mesa=0;
     private Sound sounds [] = {new Sound(Sound.math_Theme),new Sound(Sound.bookSound)};
     private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
-    public static String concaAnsw;
+    public String concaAnsw;
     
     private static Texto textMath[]= {
         new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
@@ -173,6 +173,7 @@ public class MathLevel implements levelStrategy {
                 textMath[3].setVisible(true);
                 
                 if (KeyBoard.rate == 2 && answerLength < 7) {
+                    numberInput();
                     textMath[3].setText(textMath[3].getText() + concaAnsw);
                     if (!concaAnsw.isEmpty()) {
                         concaAnsw="";
@@ -291,20 +292,14 @@ public class MathLevel implements levelStrategy {
         return false;
     }
 
-    public static String numberInput() {
+    public void numberInput() {
         KeyBoard.rate--;
-        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
-            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
+        concaAnsw = KeyBoard.getLastKeyNumber();
+        System.out.println("conca   "+concaAnsw);
+        if (concaAnsw.equals(".")&&!bools[0]&&!textMath[3].getText().isEmpty()){
+            answerLength--;
+            bools[0]=true;
         }
-        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
-            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
-        }
-            if ((KeyBoard.getKeys(KeyEvent.VK_COMMA)||KeyBoard.getKeys(KeyEvent.VK_DECIMAL))&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
-                MathLevel.answerLength--;
-                MathLevel.bools[0]=true;
-                return ".";
-            }
-        return "";
     }
 
     @Override
@@ -354,10 +349,6 @@ public class MathLevel implements levelStrategy {
         for (Texto text : textMath) {
             text.showIfActive();
         } 
-    }
-    
-    public static void assignConcaAnsw(String s){
-        concaAnsw = s;
     }
     
     public int numResueltos(){
