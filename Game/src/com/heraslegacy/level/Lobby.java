@@ -90,7 +90,7 @@ public class Lobby implements levelStrategy{
         
         agradecimiento=false;
         boolSounds[0]=false;
-        return false;
+        return isFinish();
     }
 
     @Override
@@ -138,7 +138,7 @@ public class Lobby implements levelStrategy{
     @Override
     public boolean cambio() {
         
-        return changeLevel;
+        return changeLevel||isFinish();
     }
 
     @Override
@@ -177,9 +177,10 @@ public class Lobby implements levelStrategy{
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         sounds[0].stop();
         if(!isFinish()){
-        game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(nivelCase)));
+            //levels[nivelCase]=true;
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(nivelCase)));
         }else{
-        game = (new Level("/levels/level02/level2.png","/levels/level02/collisionlevel2.png",new Fantasma(3)));        
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(3)));        
         }
         return game;
     }
@@ -232,7 +233,7 @@ public class Lobby implements levelStrategy{
         for (boolean level : levels) {
             if(level)cont++;
         }
-        if(cont==levels.length-1)return true;
-        return false;
+        if(cont!=levels.length)return false;
+        return true;
     }
 }

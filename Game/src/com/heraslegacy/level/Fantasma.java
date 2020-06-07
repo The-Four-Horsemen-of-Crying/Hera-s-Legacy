@@ -61,7 +61,7 @@ public class Fantasma implements levelStrategy {
         new Texto("Regresarás a salvo, éxito en la misión.", Game.WIDTH / 2, 300, false),
         new Texto("Recuerda:", Game.WIDTH/ 2, 300, false),
         new Texto("\"En un tiempo donde todos pensaban en cómo llegar...",Game.WIDTH / 2, 300, false),
-        new Texto("y nadie en cómo regresar,... ",Game.WIDTH/ 2, 300, false),
+        new Texto("y nadie en cómo regresar... ",Game.WIDTH/ 2, 300, false),
         new Texto("Jonhson se adelantó, supo cómo volver\"",Game.WIDTH/ 2, 300, false)
     };
     private final Texto MENSAJEMATH[]={
@@ -94,41 +94,67 @@ public class Fantasma implements levelStrategy {
         new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH/ 2, 300, false),
         new Texto("Cuando la tecnología avanzó, su trabajo se vio en riesgo", Game.WIDTH / 2, 300, false),
         new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, 300, false), 
-        new Texto("hacerse experta en FORTRAN para así poder usar las computadoras.", Game.WIDTH/ 2, 300, false),
+        new Texto("hacerse experta en FORTRAN para así", Game.WIDTH/ 2, 300, false),
+        new Texto("poder usar las computadoras.", Game.WIDTH/ 2, 300, false),
         new Texto("Para aprender tuvo que escabullirse a la biblioteca,", Game.WIDTH / 2, 300, false),
         new Texto("leer a escondidas y ocultarse de los guardias.", Game.WIDTH / 2, 300, false),
         new Texto("Ahora eres Dorothy y debes buscar los libros que necesitas.", Game.WIDTH / 2, 300, false),
         new Texto("¡Evita que los guardias te vean!", Game.WIDTH / 2, 300, false)
     };
     private final Texto CREDITOS[] = {
-        new Texto("Dorothy Vaughan, la primera supervisora.", Game.WIDTH / 2, y , true),
-        new Texto("Fue una profesora de matemáticas", Game.WIDTH / 2, y + 16, false),
-        new Texto("que se convirtió en una de las principales", Game.WIDTH / 2, y + 2 * 16, false),
-        new Texto("ingenieras matemáticas en los comienzos de ", Game.WIDTH / 2, y + 3 * 16, false),
-        new Texto("la industria aeroespacial.", Game.WIDTH / 2, y + 4 * 16, false),
-        new Texto("Era segregada por ser de color ", Game.WIDTH / 2, 5 + 6 * 16, false),
-        new Texto("aún así logró ser ascendida a gerente del area oeste", Game.WIDTH / 2, y + 6 * 16, false),
-        new Texto("de Computación. Con su ascenso se convirtió", Game.WIDTH / 2, y +  7* 16, false),
-        new Texto("en una defensora dedicada de las empleadas", Game.WIDTH / 2, y + 8 * 16, false),
-        new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH / 2, y + 9 * 16, false),
-        new Texto("Cuando la tecnología avanzó, su trabjo se vió en riesgo", Game.WIDTH / 2, y + 10 * 16, false),
-        new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, y + 11 * 16, false),
-        new Texto("hacerse experta en FORTRAN para así poder usar las computadoras.", Game.WIDTH / 2, y + 12 * 16, false),
-        new Texto("Para aprender tuvo que escabullirse a la biblioteca,", Game.WIDTH / 2, y + 13 * 16, false),
-        new Texto("leer a escondidas y ocultarse de los guardias.", Game.WIDTH / 2, y + 14 * 16, false),
-        new Texto("Ahora eres Dorothy y debes buscar los libros que necesitas.", Game.WIDTH / 2, y + 15 * 16, false),
-        new Texto("¡Evita que los guardias te vean!", Game.WIDTH / 2, y + 16 * 16, false)
+        new Texto("Hera's Legacy", Game.WIDTH / 2, y , true),
+        new Texto("Directors:", Game.WIDTH / 2, y + 16, false),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 2 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 3 * 16, false),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 4 * 16, false),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 6 * 16, false),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 6 * 16, false),
+        new Texto("Game Desing: ", Game.WIDTH / 2, y +  7* 16, false),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 8 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 9 * 16, false),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 10 * 16, false),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 11 * 16, false),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 12 * 16, false),
+        new Texto("Sound:", Game.WIDTH / 2, y + 13 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 14 * 16, false),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 15 * 16, false),
+        new Texto("Programming:", Game.WIDTH / 2, y + 16 * 16, false),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 17 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 18 * 16, false),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 19 * 16, false),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 20 * 16, false),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 21 * 16, false),
+        new Texto("Art:", Game.WIDTH / 2, y + 13 * 22, false),
+        new Texto("Debug:", Game.WIDTH / 2, y + 23 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 24 * 16, false),
+        new Texto("Testing team:", Game.WIDTH / 2, y + 25 * 16, false),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 26 * 16, false),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 27 * 16, false),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 28 * 16, false),
+        new Texto("Documentation:", Game.WIDTH / 2, y + 29 * 16, false),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 30 * 16, false),
+        new Texto("Desing:", Game.WIDTH / 2, y + 31 * 16, false),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 32 * 16, false),
+        new Texto("Manager:", Game.WIDTH / 2, y + 33 * 16, false),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 34 * 16, false),
+        new Texto("Sound Track:", Game.WIDTH / 2, y + 35 * 16, false),
+        new Texto("Sound Track:", Game.WIDTH / 2, y + 36 * 16, false),     
+        new Texto("Final Fantasy IX-Crossing Those Hills", Game.WIDTH / 2, y + 37 * 16, false),
+        new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 38 * 16, false),     
+        new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 39 * 16, false),     
+        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 40 * 16, false),     
+        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 41 * 16, false),     
     };
     private final Tile[] PISO = {
         Tile.spacePices[3],
         Tile.woodFloor,
         Tile.floorL1,
-        Tile.floorL1};
+        Tile.spacePices[3]};
     private final Tile[] PARED = {
         Tile.spacePices[0],
         Tile.woodWall,
         Tile.estanterias[0],
-        Tile.estanterias[0]
+        Tile.spacePices[1]
 
     };
 
@@ -157,7 +183,7 @@ public class Fantasma implements levelStrategy {
                 }
                 break;
             case 3:
-                this.maxMensajes = 17;
+                this.maxMensajes = CREDITOS.length;
                 A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.CREDITOS[i];
@@ -242,14 +268,12 @@ public class Fantasma implements levelStrategy {
     public void mecanica() {
         if (indiceLevel == 0) {
             player.animación();
-        } else if (indiceLevel == 3) {
-            player.setTipo(2);
-            player.animación();
         }
         time();
-        if (cont[0] == 59 - maxMensajes * 3) {
+        if (cont[0] == 59 - maxMensajes * 3 && indiceLevel!=3) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
+        if(indiceLevel==3 && A[maxMensajes-1].getPosy()==0) cambio=true;
 
     }
 
@@ -321,10 +345,9 @@ public class Fantasma implements levelStrategy {
     @Override
     public Color getColor() {
         Color color = Color.WHITE;
-        if (indiceLevel != 0) {
+        if (indiceLevel != 0 && indiceLevel != 1 && indiceLevel!=3) {
             color = Color.BLACK;
         }
-        color= Color.WHITE;
         return color;
     }
 

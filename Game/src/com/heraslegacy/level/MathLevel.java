@@ -58,6 +58,9 @@ public class MathLevel implements levelStrategy {
         concaAnsw = "";
         answerLength = 0;
         bools = new boolean[4];
+        sounds[0].changeVolume(0);
+        sounds[0].loop();
+
     }
     
     @Override
@@ -137,8 +140,6 @@ public class MathLevel implements levelStrategy {
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
-            sounds[0].loop();
-            sounds[0].changeVolume(0);
             addEjercicios();
             Mouse.clickSwitch=false;
             image.getRGB(0, 0, w, h, tiles, 0, w);

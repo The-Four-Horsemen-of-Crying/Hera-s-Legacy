@@ -189,7 +189,7 @@ public class SpaceLevel implements levelStrategy {
             }
             player.animación();
             int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
-            if (res == 50 && !variaB[2] && !variaB[1]) {
+            if (res == 50 && !variaB[2] && !variaB[1]&& sw!=20) {
                 textSpace[0].setVisible(indiceCambio, textSpace);//Implementar aviso cada 25s
                 sonido[1].stop();
                 sonido[2].stop();
@@ -245,6 +245,7 @@ public class SpaceLevel implements levelStrategy {
                 sonido[2].stop();
                 delay();
                 j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
+                sw=20;
                 suena++;
                 time();
                 if (j == 0) {
@@ -288,7 +289,7 @@ public class SpaceLevel implements levelStrategy {
 
         if (sw == -10) {
             restart();
-            life = 2;
+            life = 3;
             textSpace[5].setVisible(false);
             sw = 0;
         }
