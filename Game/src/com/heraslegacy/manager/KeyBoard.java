@@ -37,7 +37,6 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
             keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true;
-            if(!Lobby.levels[1])MathLevel.assignConcaAnsw(MathLevel.numberInput());
         }
     }
 
@@ -58,5 +57,21 @@ public class KeyBoard implements KeyListener {
     }
     public static boolean getKeysStatic(int i){
         return KeyBoard.keysStatic[i];
+    }
+    
+    
+    public static String numberInput() {
+        KeyBoard.rate--;
+        
+        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
+            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
+        }
+        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
+            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
+        }
+            if ((KeyBoard.getKeys(KeyEvent.VK_COMMA)||KeyBoard.getKeys(KeyEvent.VK_DECIMAL))){
+                return ".";
+            }
+        return "";
     }
 }

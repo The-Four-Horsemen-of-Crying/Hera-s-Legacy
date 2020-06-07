@@ -12,8 +12,6 @@ import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
-import com.heraslegacy.main.Game;
-import static com.heraslegacy.main.Game.scale;
 import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
@@ -33,6 +31,7 @@ public class Lobby implements levelStrategy{
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
+    private int chronos=0;
     private Font lobbyFont = Fuente.trans;
     private final Color COLORTEXTO= Color.WHITE;
     int ani[]={0,0};
@@ -47,7 +46,7 @@ public class Lobby implements levelStrategy{
     
     @Override
     public void update() {
-        
+        if(chronos<System.nanoTime()/1000000000)textLobby[0].setVisible(false);
     }
 
     @Override
@@ -220,6 +219,7 @@ public class Lobby implements levelStrategy{
     @Override
     public void backWithoutWin() {
         textLobby[0].setVisible(true);
+        chronos=(int)(System.nanoTime()/1000000000+3);
     }
 
     @Override

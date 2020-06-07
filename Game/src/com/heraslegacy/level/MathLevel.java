@@ -31,7 +31,7 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private static boolean [] bools=new boolean[4];
+    private boolean [] bools=new boolean[5];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
     private static int answerLength = 0;
@@ -40,14 +40,14 @@ public class MathLevel implements levelStrategy {
     private final float respuestas[] = {0,6, 32, 6.28f, 22,28, 0, 1, 3.14f,4};
     private int [] ejercicios = {0,0,0,0};
     private boolean resueltos[] = {false, false, false, false};
-    public static String concaAnsw;
+    private String concaAnsw;
     
-    private static Texto textMath[]= {
+    private Texto textMath[]= {
         new Texto("Click", screen.width/2*scale+65, screen.height/2*scale+70, false), 
         new Texto("Introduce", screen.width/2*scale+40, screen.height/2*scale+30, false),
         new Texto("Respuesta", screen.width/2*scale+40, screen.height/2*scale+70, false),
         new Texto("", screen.width/2*scale+100, screen.height/2*scale+100, false),
-        new Texto("Creo que ella deberia volver a hacerlo", 0, false,Sprite.hera_down[0]),
+        new Texto("Un calculo excepcional", 0, false,Sprite.hera_down[0]),
         new Texto("Wow! me sorprenden sus capacidades", 0, false,Sprite.hera_down[0]),
         new Texto("Muy buena su respuesta", 0, false,Sprite.hera_down[0]),
         new Texto("Creo que ella debería replantearlo", 0, false,Sprite.hera_down[0]),
@@ -65,7 +65,7 @@ public class MathLevel implements levelStrategy {
     
     @Override
     public void update(){
-        
+        checkNumberInput();
     }
     
     @Override
@@ -93,14 +93,12 @@ public class MathLevel implements levelStrategy {
     public boolean getCollision(int x, int y){
         if(System.nanoTime()/1000000000>showMessage)takeOffReponseMessages();
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.getColor() && !this.resueltos[0]){
-            takeOffReponseMessages();
             mesa = ejercicios[0];
             indiceMesa=0;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor() && !this.resueltos[1]){
-            takeOffReponseMessages();
             mesa = ejercicios[1];
             indiceMesa=1;
             return true;
@@ -108,14 +106,12 @@ public class MathLevel implements levelStrategy {
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.getColor() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
             mesa = ejercicios[2];
-            takeOffReponseMessages();
             indiceMesa = 2;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.getColor() && !this.resueltos[3]){
             mesa = ejercicios[3];
-            takeOffReponseMessages();
             indiceMesa = 3;
             return true;
         }
@@ -291,21 +287,8 @@ public class MathLevel implements levelStrategy {
         return false;
     }
 
-    public static String numberInput() {
-        KeyBoard.rate--;
-        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
-            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_0);
-        }
-        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
-            if(KeyBoard.getKeys(i)) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
-        }
-            if ((KeyBoard.getKeys(KeyEvent.VK_COMMA)||KeyBoard.getKeys(KeyEvent.VK_DECIMAL))&&!MathLevel.bools[0]&&!MathLevel.textMath[3].getText().isEmpty()){
-                MathLevel.answerLength--;
-                MathLevel.bools[0]=true;
-                return ".";
-            }
-        return "";
-    }
+    
+
 
     @Override
     public Font getFont() {
@@ -332,10 +315,24 @@ public class MathLevel implements levelStrategy {
         textMath[4].setVisible(false);
         bools[0] = false;
     }
-
+    
+    
+    private void checkNumberInput(){
+        String instantInput = KeyBoard.numberInput();
+        if(instantInput=="."&&!bools[0]&&!textMath[3].getText().isEmpty()){
+                answerLength--;
+                bools[0]=true;
+                concaAnsw=instantInput;
+        }
+        else if(instantInput!="."){
+            concaAnsw=instantInput;
+        }
+    }
+    
     private void showReponse(int i) {
-            textMath[i].setVisible(true);
-            showMessage=RATE_MESSAGE+System.nanoTime()/1000000000;
+        if(i<7);
+        textMath[i].setVisible(true);
+        showMessage = RATE_MESSAGE + System.nanoTime() / 1000000000;
     }
 
     private void takeOffReponseMessages() {
@@ -356,8 +353,8 @@ public class MathLevel implements levelStrategy {
         } 
     }
     
-    public static void assignConcaAnsw(String s){
-        concaAnsw = s;
+    public void assignConcaAnsw(){
+        
     }
     
     public int numResueltos(){
