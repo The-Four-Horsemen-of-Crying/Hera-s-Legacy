@@ -210,9 +210,12 @@ public class Lobby implements levelStrategy{
                 ani[0]++;
                 if(ani[1]==240)ani[1]=0;
             }
-                screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
-                screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
-                screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
+                if(!levels[0])screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
+                else System.out.println("papa");
+                if(!levels[1])screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
+                else System.out.println("asdasd");
+                if(!levels[2])screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
+                else System.out.println("3");
                 screen.renderSprite(true,14*16, 1*16, Sprite.agradecimiento[0]);
     }
 
