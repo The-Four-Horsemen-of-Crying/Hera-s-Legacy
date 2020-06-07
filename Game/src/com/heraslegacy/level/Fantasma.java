@@ -103,47 +103,53 @@ public class Fantasma implements levelStrategy {
     };
     private final Texto CREDITOS[] = {
         new Texto("Hera's Legacy", Game.WIDTH / 2, y , true),
-        new Texto("Directors:", Game.WIDTH / 2, y + 16, false),
-        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 2 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 3 * 16, false),
-        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 4 * 16, false),
-        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 6 * 16, false),
-        new Texto("Dilan Triana", Game.WIDTH / 2, y + 6 * 16, false),
-        new Texto("Game Desing: ", Game.WIDTH / 2, y +  7* 16, false),
-        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 8 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 9 * 16, false),
-        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 10 * 16, false),
-        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 11 * 16, false),
-        new Texto("Dilan Triana", Game.WIDTH / 2, y + 12 * 16, false),
-        new Texto("Sound:", Game.WIDTH / 2, y + 13 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 14 * 16, false),
-        new Texto("Dilan Triana", Game.WIDTH / 2, y + 15 * 16, false),
-        new Texto("Programming:", Game.WIDTH / 2, y + 16 * 16, false),
-        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 17 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 18 * 16, false),
-        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 19 * 16, false),
-        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 20 * 16, false),
-        new Texto("Dilan Triana", Game.WIDTH / 2, y + 21 * 16, false),
-        new Texto("Art:", Game.WIDTH / 2, y + 13 * 22, false),
-        new Texto("Debug:", Game.WIDTH / 2, y + 23 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 24 * 16, false),
-        new Texto("Testing team:", Game.WIDTH / 2, y + 25 * 16, false),
-        new Texto("Enrique Miranda", Game.WIDTH / 2, 5 + 26 * 16, false),
-        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 27 * 16, false),
-        new Texto("Dilan Triana", Game.WIDTH / 2, y + 28 * 16, false),
-        new Texto("Documentation:", Game.WIDTH / 2, y + 29 * 16, false),
-        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 30 * 16, false),
-        new Texto("Desing:", Game.WIDTH / 2, y + 31 * 16, false),
-        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 32 * 16, false),
-        new Texto("Manager:", Game.WIDTH / 2, y + 33 * 16, false),
-        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 34 * 16, false),
-        new Texto("Sound Track:", Game.WIDTH / 2, y + 35 * 16, false),
-        new Texto("Sound Track:", Game.WIDTH / 2, y + 36 * 16, false),     
-        new Texto("Final Fantasy IX-Crossing Those Hills", Game.WIDTH / 2, y + 37 * 16, false),
-        new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 38 * 16, false),     
-        new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 39 * 16, false),     
-        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 40 * 16, false),     
-        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 41 * 16, false),     
+        new Texto("Directors:", Game.WIDTH / 2, y +2*25, true),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 3 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 4 * 25, true),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 5 * 25, true),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 6 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 7 * 25, true),
+        new Texto("Game Desing: ", Game.WIDTH / 2, y +  9* 25, true),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 10 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 11 * 25, true),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 12 * 25, true),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 13 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 14 * 25, true),
+        new Texto("Sound:", Game.WIDTH / 2, y + 16 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 17 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 18 * 25, true),
+        new Texto("Programming:", Game.WIDTH / 2, y + 20 * 25, true),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 21 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 22 * 25, true),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 23 * 25, true),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 24 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 25 * 25, true),
+        new Texto("Art:", Game.WIDTH / 2, y + 27 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 28 * 25, true),
+        new Texto("Debug:", Game.WIDTH / 2, y + 30 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 31 * 25, true),
+        new Texto("Testing team:", Game.WIDTH / 2, y + 33* 25, true),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 34 * 25, true),
+        new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 35 * 25, true),
+        new Texto("Dilan Triana", Game.WIDTH / 2, y + 36 * 25, true),
+        new Texto("Documentation:", Game.WIDTH / 2, y + 38 * 25, true),
+        new Texto("Enrique Niebles", Game.WIDTH / 2, y + 39 * 25, true),
+        new Texto("Desing:", Game.WIDTH / 2, y + 41 * 25, true),
+        new Texto("Enrique Miranda", Game.WIDTH / 2, y + 42 * 25, true),
+        new Texto("Manager:", Game.WIDTH / 2, y + 44 * 25, true),
+        new Texto("Jonatha Arias", Game.WIDTH / 2, y + 45 * 25, true),
+        new Texto("Sound Track:", Game.WIDTH / 2, y + 47 * 25, true),
+        new Texto("Final Fantasy IX-Crossing Those Hills", Game.WIDTH / 2, y + 48 * 25, true),
+        new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 49 * 25, true),     
+        new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 50 * 25, true),
+        new Texto("Phoenix Wright-Age, Regret, Reward", Game.WIDTH / 2, y + 51 * 25, true),     
+        new Texto("The Legend of Zelda:Ocarina of Time- Temple of Time", Game.WIDTH / 2, y + 52 * 25, true),     
+        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 56 * 25, true),     
+        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 57 * 25, true),     
+        new Texto("En honor a:", Game.WIDTH / 2, y + 60 * 25, true),     
+        new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 61 * 25, true),     
+        new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 64 * 25, true),     
+        new Texto("-Katherine Johnson", Game.WIDTH / 2+100, y + 65 * 25, true),             
     };
     private final Tile[] PISO = {
         Tile.spacePices[3],
@@ -250,15 +256,9 @@ public class Fantasma implements levelStrategy {
             cont[1] = 0;
             dm = LocalTime.now();
         } else if (indiceLevel == 3 && cont[1] == 59) {
-            if (cont[2] < maxMensajes) {
-                cont[2]++;
-                for (int i = 0; i < cont[2]; i++) {
-                    A[i].setPosy(A[i].getPosy()-16);
-                    A[i].setVisible(true);
+                for (int i = 0; i < A.length; i++) {
+                    A[i].setPosy(A[i].getPosy()-25);
                 }
-            }else{
-                cont[2]=0;
-            }
             cont[1] = 0;
             dm = LocalTime.now();
         }
@@ -273,7 +273,7 @@ public class Fantasma implements levelStrategy {
         if (cont[0] == 59 - maxMensajes * 3 && indiceLevel!=3) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
-        if(indiceLevel==3 && A[maxMensajes-1].getPosy()==0) cambio=true;
+        if(indiceLevel==3 && A[maxMensajes-1].getPosy()<=0) cambio=true;
 
     }
 
@@ -355,7 +355,7 @@ public class Fantasma implements levelStrategy {
     public Level levelCambio() {
         KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
-        Level game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new Fantasma(indiceLevel));
+        Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Fantasma(indiceLevel));
         switch (indiceLevel) {
             case 0:
                 game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());
@@ -365,6 +365,12 @@ public class Fantasma implements levelStrategy {
                 break;
             case 2:
                 game = new Level("/levels/level03/nivel3.png", "/levels/level03/nivel3COLLITION.png", new LibraryLevel());
+                break;
+            case 3:
+                Game.startGame=false;
+                Lobby.levels[0]=false;
+                Lobby.levels[1]=false;
+                Lobby.levels[2]=false;
                 break;
         }
         return game;
