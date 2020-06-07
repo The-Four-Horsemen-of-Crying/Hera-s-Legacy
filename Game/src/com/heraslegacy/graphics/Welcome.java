@@ -8,7 +8,9 @@ package com.heraslegacy.graphics;
 import com.heraslegacy.level.Level;
 import com.heraslegacy.level.Lobby;
 import static com.heraslegacy.main.Game.screen;
+import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -37,6 +39,10 @@ public class Welcome extends GUI{
             if (page == 0) {
                 if (botones[0].onZone()) {
                     if (Mouse.click) {
+                        KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
+                        for (boolean b : Lobby.levels) {
+                            b=false;
+                        }
                         level = new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
                         level.configPlayer();
                     }

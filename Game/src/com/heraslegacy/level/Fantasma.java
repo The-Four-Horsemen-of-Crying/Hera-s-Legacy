@@ -276,7 +276,7 @@ public class Fantasma implements levelStrategy {
             player.animación();
         }
         time();
-        if (cont[0] == 59 - maxMensajes * 3 && indiceLevel!=3) {
+        if (cont[0] == 57 - maxMensajes * 3 && indiceLevel!=3) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
         if(indiceLevel==3 && A[maxMensajes-1].getPosy()<=0) cambio=true;
@@ -407,6 +407,11 @@ public class Fantasma implements levelStrategy {
     @Override
     public void uptadeTexto() {
 
+    }
+
+    @Override
+    public void stopAll() {
+        
     }
 
 }

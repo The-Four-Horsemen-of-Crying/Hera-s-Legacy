@@ -64,6 +64,7 @@ public class Lobby implements levelStrategy{
         if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
         if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
         if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
+        if (tiles[x + y * width] == Colors.white.getColor())           return Tile.marmolFloor[4];
         return Tile.pikes;
     }
 
@@ -211,11 +212,15 @@ public class Lobby implements levelStrategy{
                 if(ani[1]==240)ani[1]=0;
             }
                 if(!levels[0])screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][ani[0]&2]);
-                else System.out.println("papa");
+                else screen.renderSprite(true, 7*16, 10*16, Sprite.portales[0][3]);
+                
                 if(!levels[1])screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][ani[0]&2]);
-                else System.out.println("asdasd");
+                else screen.renderSprite(true, 14*16, 10*16, Sprite.portales[1][3]);
+                
                 if(!levels[2])screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][ani[0]&2]);
-                else System.out.println("3");
+                else screen.renderSprite(true, 21*16, 10*16, Sprite.portales[2][3]);
+                
+                
                 screen.renderSprite(true,14*16, 1*16, Sprite.agradecimiento[0]);
     }
 
@@ -238,5 +243,12 @@ public class Lobby implements levelStrategy{
         }
         if(cont!=levels.length)return false;
         return true;
+    }
+
+    @Override
+    public void stopAll() {
+        for (Sound sonido1 : sounds) {
+            sonido1.stop();
+        }
     }
 }

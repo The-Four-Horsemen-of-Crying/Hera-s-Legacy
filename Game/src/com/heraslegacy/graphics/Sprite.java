@@ -35,9 +35,9 @@ public class Sprite {
     
     public static Sprite techo = new Sprite(16, 2, 2, SpriteSheet.nivel00_lobby);
     
-    public static Sprite portales [][] = {{new Sprite(32, 48, 0, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 0, SpriteSheet.LobbyDoors)},
-                                          {new Sprite(32, 48, 0, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 1, SpriteSheet.LobbyDoors)},
-                                          {new Sprite(32, 48, 0, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 2, SpriteSheet.LobbyDoors)}};
+    public static Sprite portales [][] = {{new Sprite(32, 48, 0, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 0, SpriteSheet.LobbyDoors),new Sprite(32, 48, 3, 0, SpriteSheet.LobbyDoors)},
+                                          {new Sprite(32, 48, 0, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 1, SpriteSheet.LobbyDoors),new Sprite(32, 48, 3, 1, SpriteSheet.LobbyDoors)},
+                                          {new Sprite(32, 48, 0, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 1, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 2, 2, SpriteSheet.LobbyDoors),new Sprite(32, 48, 3, 2, SpriteSheet.LobbyDoors)}};
     //SpaceShit
     public static Sprite moon = new Sprite(96,0,0,SpriteSheet.single_DrawMoon);
     

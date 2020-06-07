@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
 import static com.heraslegacy.main.Game.scale;
-import java.awt.event.KeyEvent;
 
 
 public class MathLevel implements levelStrategy {
@@ -31,7 +30,7 @@ public class MathLevel implements levelStrategy {
     private final Color colorTexto= Color.BLACK;
     private Player player;
     private Random r = new Random();
-    private boolean [] bools=new boolean[4];
+    private boolean [] bools=new boolean[5];
     private final float RATE_MESSAGE = 3;
     private float showMessage=-1; 
     private int answerLength = 0;
@@ -270,6 +269,7 @@ public class MathLevel implements levelStrategy {
         if(bools[1])Lobby.levels[1]=true;
         return new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
     }
+    
     private void addEjercicios(){
             for (int i = 0; i < ejercicios.length; i++) {
             int random = r.nextInt(9)+1;
@@ -280,6 +280,7 @@ public class MathLevel implements levelStrategy {
         }
     
     }
+    
     private boolean nonRepeated(int i){
         for (int j = 0; j < ejercicios.length; j++) {
             if(ejercicios[j]==i)return true;
@@ -291,6 +292,8 @@ public class MathLevel implements levelStrategy {
         KeyBoard.rate--;
         concaAnsw = KeyBoard.getLastKeyNumber();
         System.out.println("conca   "+concaAnsw);
+        
+        if(concaAnsw.equals(".")&&(bools[0]||textMath[3].getText().isEmpty()))concaAnsw="";
         if (concaAnsw.equals(".")&&!bools[0]&&!textMath[3].getText().isEmpty()){
             answerLength--;
             bools[0]=true;
@@ -326,7 +329,7 @@ public class MathLevel implements levelStrategy {
     
     
     private void showReponse(int i) {
-        if(i<7);
+        takeOffReponseMessages();
         textMath[i].setVisible(true);
         showMessage = RATE_MESSAGE + System.nanoTime() / 1000000000;
     }
@@ -356,4 +359,11 @@ public class MathLevel implements levelStrategy {
         }
         return cont;
     } 
+
+    @Override
+    public void stopAll() {
+        for (Sound sonido1 : sounds) {
+            sonido1.stop();
+        }
+    }
 }   
