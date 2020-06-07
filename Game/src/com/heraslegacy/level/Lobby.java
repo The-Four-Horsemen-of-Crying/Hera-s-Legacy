@@ -33,7 +33,7 @@ public class Lobby implements levelStrategy{
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private Font lobbyFont = Fuente.spaceFont;
+    private Font lobbyFont = Fuente.trans;
     private final Color COLORTEXTO= Color.WHITE;
     int ani[]={0,0};
     private boolean [] boolSounds={false,false};
@@ -90,7 +90,7 @@ public class Lobby implements levelStrategy{
         
         agradecimiento=false;
         boolSounds[0]=false;
-        return false;
+        return isFinish();
     }
 
     @Override
@@ -120,11 +120,12 @@ public class Lobby implements levelStrategy{
     @Override
     public void mecanica(){
         if(!agradecimiento){
+            screen.renderSprite(false, screen.width-48, screen.height-48, Sprite.botonesGUI[14]);
             if(!boolSounds[0]){
                 sounds[2].play();
                 boolSounds[0]=true;
             }
-            if(KeyBoard.enter)changeLevel=true;
+            if(KeyBoard.e)changeLevel=true;
         }
         else screen.renderSprite(false,screen.width/2-75, screen.height/2-50, Sprite.agradecimiento[1]);
     }
@@ -138,7 +139,7 @@ public class Lobby implements levelStrategy{
     @Override
     public boolean cambio() {
         
-        return changeLevel;
+        return changeLevel||isFinish();
     }
 
     @Override
@@ -176,7 +177,11 @@ public class Lobby implements levelStrategy{
     public Level levelCambio() {
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         sounds[0].stop();
+        if(!isFinish()){
         game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(nivelCase)));
+        }else{
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(3)));        
+        }
         return game;
     }
 
@@ -222,5 +227,13 @@ public class Lobby implements levelStrategy{
         for (Texto text : textLobby) {
             text.showIfActive();
         }
+    }
+    private boolean isFinish(){
+        int cont=0;
+        for (boolean level : levels) {
+            if(level)cont++;
+        }
+        if(cont!=levels.length)return false;
+        return true;
     }
 }
