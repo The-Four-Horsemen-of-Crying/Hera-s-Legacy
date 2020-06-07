@@ -355,7 +355,7 @@ public class Fantasma implements levelStrategy {
     public Level levelCambio() {
         KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
-        Level game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new Fantasma(indiceLevel));
+        Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Fantasma(indiceLevel));
         switch (indiceLevel) {
             case 0:
                 game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());
