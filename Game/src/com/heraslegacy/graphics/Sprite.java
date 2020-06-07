@@ -182,6 +182,7 @@ public class Sprite {
     public static Sprite startMenu[] = {new Sprite(300, 162, 0, 0, SpriteSheet.startScreen),new Sprite(300, 162, 0, 0, SpriteSheet.single_ManualPage),
                                         new Sprite(150, 100, 0, 2, SpriteSheet.single_ManualPage)};
     
+    public static Sprite logo_Wstem = new Sprite(255, 0, 0, SpriteSheet.single_LogoWstem);
     
     
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
