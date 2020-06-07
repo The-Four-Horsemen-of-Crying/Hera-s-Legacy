@@ -13,6 +13,12 @@ public class KeyBoard implements KeyListener {
     private static boolean keysStatic[] = new boolean[500];
     public static boolean up, down, left, right,restart,delete,enter, space,soltado,coma,escape,e;
     public static int rate = 2;
+    private static String LastKeyNumber;
+    LocalTime ant = LocalTime.now(),rest;
+
+    public KeyBoard() {
+        this.LastKeyNumber = "";
+    }
     public void uptade() {
         up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
         down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
@@ -25,7 +31,10 @@ public class KeyBoard implements KeyListener {
         e = keys[KeyEvent.VK_E];
         escape = keysStatic[KeyEvent.VK_ESCAPE];
         coma = keys[KeyEvent.VK_COMMA]||keys[KeyEvent.VK_DECIMAL];
-
+        rest = LocalTime.now().minusSeconds(ant.getSecond());
+        if(rest.getSecond()>=1){
+            LastKeyNumber = "";
+        }
     }
 
     @Override
@@ -37,7 +46,9 @@ public class KeyBoard implements KeyListener {
         if(e.getKeyCode()<500){
             keys[e.getKeyCode()] = true;
             keysStatic[e.getKeyCode()]= keysStatic[e.getKeyCode()]?false:true;
-            if(!Lobby.levels[1])MathLevel.assignConcaAnsw(MathLevel.numberInput());
+            ant = LocalTime.now();
+            LastKeyNumber = setLastKeyNumber();
+            
         }
     }
 
@@ -59,4 +70,22 @@ public class KeyBoard implements KeyListener {
     public static boolean getKeysStatic(int i){
         return KeyBoard.keysStatic[i];
     }
+    
+    public static String setLastKeyNumber(){
+        for (int i = KeyEvent.VK_0; i <= KeyEvent.VK_9; i++) {
+            if(keys[i]) return Integer.toString(i-KeyEvent.VK_0);
+        }
+        for (int i = KeyEvent.VK_NUMPAD0; i <= KeyEvent.VK_NUMPAD9; i++) {
+            if(keys[i]) return Integer.toString(i-KeyEvent.VK_NUMPAD0);
+        }
+        if ((keys[KeyEvent.VK_COMMA]||keys[KeyEvent.VK_DECIMAL])){
+                return ".";
+        }
+        return "";
+    }
+
+    public static String getLastKeyNumber() {
+        return LastKeyNumber;
+    }
+    
 }
