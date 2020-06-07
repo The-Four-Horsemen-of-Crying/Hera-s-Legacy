@@ -7,9 +7,6 @@ package com.heraslegacy.graphics;
 
 import com.heraslegacy.level.tile.Tile;
 
-import java.util.Random;
-
-
 public class Screen {
 
     public int width;
@@ -45,8 +42,8 @@ public class Screen {
                 int xa=x+xPosition;
                 if(xa<0||xa>=width||ya<0||ya>=height)continue;
                 int fondo = sprite.pixels[x+y*sprite.getWidth()];
-                
-                if(fondo!=0xffff00ff)pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
+
+                if(fondo!=0xff000000&&fondo!=0xffff00ff)pixels[xa+ya*width] = sprite.pixels[x+y*sprite.getWidth()];
             }
             
         }
@@ -61,7 +58,8 @@ public class Screen {
                 int xAbsolute = x + xPosition;                
                 if (xAbsolute < -tile.sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height) break;//   xAbsolute < -tile.sprite.SIZE Hace posible renderizar el apartado izquierdo de la pantalla por completo
                 if(xAbsolute<0) xAbsolute=0;//Evita un outOfBounds
-                pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
+                int fondo = tile.sprite.pixels[x+y*tile.sprite.getWidth()];
+                if(fondo!=0xffff00ff)pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
             }
         }
     }

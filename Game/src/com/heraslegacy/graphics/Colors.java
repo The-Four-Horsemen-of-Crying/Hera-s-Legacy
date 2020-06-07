@@ -11,9 +11,10 @@ package com.heraslegacy.graphics;
  */
 public enum Colors {
     red                 (0xffff0000),
-    higdarkred          (0xffbc021e),
-    darkred             (0xffdc0223),
+    higdarkred          (0xffff0013),
+    darkred             (0xffff0019),
     lessdarkred         (0xffff0026),
+    lessdarkred2        (0xffff001d),
     fuchsia             (0xffff00ff),
     lime                (0xff00ff00),
     blue                (0xff0000ff),
@@ -25,12 +26,16 @@ public enum Colors {
     kindblue            (-9411424),
     kindred             (-2358749),
     kindblue2           (-16724531),
+    somekindblue        (0xff7564a3),
     black               (0xff000000),
     kindColdplay        (-5991936),
     kindgreenday        (-16730112),
     purplePoe           (-9699234),
+    purpleDark1         (0xff950062),
+    purpleDark          (0xff7f0060),
     naranjaMecanica     (-1411778),
-    bluecoli            (0xff3900ff);
+    bluecoli            (0xff3900ff),
+    golden              (0xffffc400);
     
     private final int color;
     

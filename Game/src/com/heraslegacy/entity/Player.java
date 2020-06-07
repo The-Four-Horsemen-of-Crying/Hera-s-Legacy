@@ -3,6 +3,7 @@ package com.heraslegacy.entity;
 
 
 import com.heraslegacy.graphics.Screen;
+import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.level.SpaceLevel;
 import com.heraslegacy.main.Game;
@@ -16,7 +17,8 @@ public class Player extends Mov{
     private Sprite down[];
     private int tipo=0;
     private int ajusteCentroX, ajusteCentroY;
-    private int xDireccion = 0, yDireccion = 0;
+    private int xDireccion = 0, yDireccion = 0, lastDirx;
+    
     
     public Player(int x, int y){
         this.x = x;
@@ -44,19 +46,51 @@ public class Player extends Mov{
                 if(KeyBoard.right) xDireccion++;
                 if(KeyBoard.left) xDireccion--;
             break;
+            case 3:
+                xDireccion++;
+                yDireccion=0;
+            break;
         }
         
-        if(xDireccion!=0||yDireccion!=0) move(xDireccion, yDireccion);
-        if(collision(xDireccion,yDireccion)) System.out.println("yu die");
+        if(xDireccion!=0||yDireccion!=0) {
+            move(xDireccion, yDireccion);
+        }
+        
     }
     
     @Override
     public void render(Screen screen){
         
-        if(direction == 0)sprite = up[ani2 & 3];
-        if(direction == 1) sprite = rigth[ani2 & 3];
-        if(direction == 2) sprite = down[ani2 & 3];      
-        if(direction == 3) sprite = left[ani2 & 3];
+        if(direction == 0){
+            if(level.getLevelstrategy() instanceof SpaceLevel){
+                if(lastDirx==1){
+                    sprite =left[ani2 & 3];
+                }else{
+                    sprite= rigth[ani2& 3];
+                }
+            }else{
+                sprite= up[ani2& 3];
+            }
+        }
+        if(direction == 1) {
+            sprite = rigth[ani2 & 3];
+            lastDirx=0;
+        }
+        if(direction == 2) {
+        if(level.getLevelstrategy() instanceof SpaceLevel){
+                if(lastDirx==1){
+                    sprite =left[ani2 & 3];
+                }else{
+                    sprite= rigth[ani2& 3];
+                }
+            }else{
+                sprite= down[ani2& 3];
+            }
+        }
+        if(direction == 3) {
+            sprite = left[ani2 & 3];
+            lastDirx=1;
+        }
         
         Game.activarMecanica=level.getCollision(x, y);    //MECANICA QUE DEPENDE DEL NIVEL
         screen.renderPlayer(x - ajusteCentroX, y - ajusteCentroY, sprite);
@@ -72,13 +106,14 @@ public class Player extends Mov{
       tipo=b;
     }
 
-    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2, int ajusteCentroX, int ajusteCentroY) {
+    public void setAjustes(int ajusteX1, int ajusteX2, int ajusteY1, int ajusteY2, int ajusteCentroX, int ajusteCentroY, Sound move) {
         this.ajusteX1 = ajusteX1;
         this.ajusteX2 = ajusteX2;
         this.ajusteY1 = ajusteY1;
         this.ajusteY2 = ajusteY2;
         this.ajusteCentroX = ajusteCentroX;
         this.ajusteCentroY = ajusteCentroY;
+        this.move=move;
     }
 
     public boolean getCollisionP(){

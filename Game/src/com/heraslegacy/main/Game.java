@@ -4,15 +4,14 @@ package com.heraslegacy.main;
 import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sound;
 import com.heraslegacy.graphics.Fuente;
-import com.heraslegacy.graphics.Texto;
+import com.heraslegacy.graphics.MenuGUI;
+import com.heraslegacy.graphics.Welcome;
 import com.heraslegacy.manager.KeyBoard;
 import com.heraslegacy.manager.Mouse;
 import com.heraslegacy.level.Level;
-import com.heraslegacy.level.*;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -29,39 +28,30 @@ public class Game extends Canvas implements Runnable {
     private Mouse mouse;
     public JFrame frame; 
     private static final long serialVersionUID = 1L;
-    public static final int width = 300;
-    public static final int height = width / 16 * 9;
-    public static final int scale = 3;
+    public static final int WIDTH = 300;
+    public static final int HEIGHT = WIDTH / 16 * 9;
+    public static int scale;
     private boolean running = true;
     private final double TIME_BEFORE_UPDATE = 1000000000.0 / 120.0;
     public static boolean activarMecanica = true;
-    public static int gameState = 1; 
-    //Para dibujar texto
-    private Texto text[];
-    private int x=0, y=0;
-    private Color c=Color.white;
-    private Font f;
-    //para dibujar texto
-    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    public static boolean startGame=false;
+    private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
     public static Screen screen;
-    Sound theme;
+    public static MenuGUI menu;
+    private Welcome startScreen;
+    private int introDuration=1;
 
-    public Game(){
-        Dimension size = new Dimension(width * scale, height * scale);
+    public Game(int scale){
+        this.scale=scale;
+        Dimension size = new Dimension(WIDTH * Game.scale, HEIGHT * Game.scale);
         setPreferredSize(size);
         frame = new JFrame();
-        screen = new Screen(width, height);
+        screen = new Screen(WIDTH, HEIGHT);
         Sound.init();
         Fuente.init();
-        text= new Texto[1000];
-        f=Fuente.spaceFont;
-        theme=new Sound(Sound.de);
-        //theme.loop(); //MUSICA PARA EL JUEGO
         key = new KeyBoard();
-        level = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        level.configPlayer();
-        
+        startScreen = new Welcome();
         addKeyListener(key);
         mouse = new Mouse();
         addMouseListener(mouse);
@@ -118,7 +108,10 @@ public class Game extends Canvas implements Runnable {
 
     public void update() {
         key.uptade();
-        level.getPlayer().update();      
+        if (startGame) {
+            level.getPlayer().update();
+            level.update();
+        }
     }
 
     public void render() {
@@ -129,26 +122,54 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         
+        
         screen.clear();
-        int xScroll = level.getPlayer().getX() - screen.width/2;
-        int yScroll = level.getPlayer().getY() - screen.height/2;
+        
+        if(startGame&&introDuration==0){
+            int xScroll = level.getPlayer().getX() - screen.width/2;
+            int yScroll = level.getPlayer().getY() - screen.height/2;
 
-        
-        level.render(xScroll, yScroll, screen);    
-        level.getPlayer().render(screen);
-        
-        if(activarMecanica){
-            level.mecanica();
+
+            level.render(xScroll, yScroll);   
+            level.getPlayer().render(screen);
+            level.superRender(xScroll, yScroll);
+
+            if(activarMecanica){
+                level.mecanica();
+
+            }        
+            if(KeyBoard.restart){
+                level.restart();
+            }
+            if(level.cambio()){
+                level = level.levelCambio();
+                
+                level.configPlayer();
+                menu.setActualLevel(level);
+            }
             
-        }        
-        
-        if(level.cambio()){
-            level = level.levelCambio();
-            level.configPlayer();
+            level.uptadeTexto();
+            menu.uptade();
+            if(startGame==false){
+                level=null;
+                startScreen.setLevel(null);
+                introDuration=1;
+            }
         }
-       
+        else {
+            
+            startScreen.uptade();
+            introDuration=startScreen.passToIntro(introDuration);
+            if(introDuration==0)level=startScreen.getLevelStart();
+            if(level!=null){
+                startGame=true;
+                menu = new MenuGUI(level);
+            }
+            
+        }
+        
         for (int i = 0; i < pixels.length; i++) {
-            pixels[i] = screen.pixels[i];
+                pixels[i] = screen.pixels[i];
         }
         
         Graphics g = bs.getDrawGraphics();
@@ -156,11 +177,14 @@ public class Game extends Canvas implements Runnable {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
             g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-            g.setFont(f);
-            g.setColor(level.getColor());
-            for (int i = 0; i < level.getText().length; i++) {
-                if(level.getText()[i].isVisible()) {
-                    g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
+            if(startGame){
+                g.setFont(level.getFont());
+                g.setColor(level.getColor());
+
+                for (int i = 0; i < level.getText().length; i++) {
+                    if(level.getText()[i].isVisible()) {
+                        g.drawString(level.getText()[i].getText(), level.getText()[i].getPosx(), level.getText()[i].getPosy());   
+                    }
                 }
             }
             g.dispose();
