@@ -43,6 +43,7 @@ public class Fantasma implements levelStrategy {
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
     private int y = screen.height * scale;
+    private final Sound SOUND[]={new Sound(Sound.creditos_Theme), new Sound(Sound.fantasma_Theme)};
     private final Texto A[];
     private final Texto MENSAJESPACE[] = {
         new Texto("Katherine Jonhson, la calculadora humana.", Game.WIDTH / 2, 300, true),
@@ -141,15 +142,17 @@ public class Fantasma implements levelStrategy {
         new Texto("Sound Track:", Game.WIDTH / 2, y + 47 * 25, true),
         new Texto("Final Fantasy IX-Crossing Those Hills", Game.WIDTH / 2, y + 48 * 25, true),
         new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 49 * 25, true),     
-        new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 50 * 25, true),
-        new Texto("Phoenix Wright-Age, Regret, Reward", Game.WIDTH / 2, y + 51 * 25, true),     
-        new Texto("The Legend of Zelda:Ocarina of Time- Temple of Time", Game.WIDTH / 2, y + 52 * 25, true),     
-        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 56 * 25, true),     
-        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 57 * 25, true),     
-        new Texto("En honor a:", Game.WIDTH / 2, y + 60 * 25, true),     
-        new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 61 * 25, true),     
-        new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 64 * 25, true),     
-        new Texto("-Katherine Johnson", Game.WIDTH / 2+100, y + 65 * 25, true),             
+        new Texto("Final Fantasy VII-Prelude", Game.WIDTH / 2, y + 50 * 25, true),
+        new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 51 * 25, true),
+        new Texto("Phoenix Wright-Age, Regret, Reward", Game.WIDTH / 2, y + 52 * 25, true),     
+        new Texto("Pokemon Blue/Red-Pallet town", Game.WIDTH / 2, y + 53 * 25, true),     
+        new Texto("The Legend of Zelda:Ocarina of Time- Temple of Time", Game.WIDTH / 2, y + 54 * 25, true),     
+        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 58 * 25, true),     
+        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 59 * 25, true),     
+        new Texto("En honor a:", Game.WIDTH / 2, y + 63 * 25, true),     
+        new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 64 * 25, true),     
+        new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 65 * 25, true),     
+        new Texto("-Katherine Johnson", Game.WIDTH / 2+200, y + 66 * 25, true),             
     };
     private final Tile[] PISO = {
         Tile.spacePices[3],
@@ -196,7 +199,10 @@ public class Fantasma implements levelStrategy {
                 }
                 break;
         }
-        y=0;
+        SOUND[0].changeVolume(-2);
+        SOUND[1].changeVolume(-2);
+        if(indiceLevel!=3)SOUND[1].play();
+        else SOUND[0].loop();
     }
 
     @Override
@@ -355,6 +361,7 @@ public class Fantasma implements levelStrategy {
     public Level levelCambio() {
         KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
+       
         Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Fantasma(indiceLevel));
         switch (indiceLevel) {
             case 0:
@@ -373,6 +380,8 @@ public class Fantasma implements levelStrategy {
                 Lobby.levels[2]=false;
                 break;
         }
+         SOUND[0].stop();
+        SOUND[1].stop();
         return game;
     }
 
