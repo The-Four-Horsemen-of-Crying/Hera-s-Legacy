@@ -33,7 +33,7 @@ public class Lobby implements levelStrategy{
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private Font lobbyFont = Fuente.spaceFont;
+    private Font lobbyFont = Fuente.trans;
     private final Color COLORTEXTO= Color.WHITE;
     int ani[]={0,0};
     private boolean [] boolSounds={false,false};
