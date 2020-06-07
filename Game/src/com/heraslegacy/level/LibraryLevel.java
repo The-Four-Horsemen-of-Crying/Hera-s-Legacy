@@ -70,7 +70,7 @@ public class LibraryLevel implements levelStrategy{
         new Texto("Ya basta de juegos",0,false,Sprite.guard),                                        //20
         new Texto("No te podemos ver aquí",0,false,Sprite.guard),                                    //21
         new Texto("You are filled with DETERMINATION",0,false,Sprite.undertale),                     //22
-        new Texto("No te llevarás nada",1,false,Sprite.guard),                                       //23
+        new Texto("No te llevarás nada",1,false,Sprite.guard)                                        //23
     };
 
     public LibraryLevel(){
@@ -93,7 +93,7 @@ public class LibraryLevel implements levelStrategy{
                 text1 = 3;
             }
         }
-
+        
     }
 
     @Override
@@ -147,7 +147,9 @@ public class LibraryLevel implements levelStrategy{
             tilesCollision[(x>>4)+(y>>4)*width] = ZONECOLOR[zone];
             hide();
             ant2 = LocalTime.now();
-            if (numLibros() != 0) {
+            if(numLibros()==1){
+                TEXTLIBRARY[1].setText("Solo falta 1 libro");
+            }else if (numLibros() != 0) {
                 TEXTLIBRARY[1].setText("Solo faltan " + numLibros() + " libros");
             }else{
                 TEXTLIBRARY[1].setText("Los tengo todos, ahora a salir de aquí");
