@@ -337,4 +337,11 @@ public class LibraryLevel implements levelStrategy{
         }
         return cont;
     }
+
+    @Override
+    public void stopAll() {
+        for (Sound sonido1 : SOUND) {
+            sonido1.stop();
+        }
+    }
 }

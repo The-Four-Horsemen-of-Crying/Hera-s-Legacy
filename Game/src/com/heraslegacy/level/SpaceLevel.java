@@ -395,4 +395,9 @@ public class SpaceLevel implements levelStrategy {
             text.showIfActive();
         }
     }
+
+    @Override
+    public void stopAll() {
+        stop();
+    }
 }

@@ -25,7 +25,8 @@ public class Tile {
     public static Tile marmolWall[] = {new Tile(Sprite.marmolWall[0], true),new Tile(Sprite.marmolWall[1], true),new Tile(Sprite.marmolWall[2], true)};
     
     public static Tile marmolFloor[] ={new Tile(Sprite.marmolFloor[0], false),new Tile(Sprite.marmolFloor[1], false),
-                                       new Tile(Sprite.marmolFloor[2], false),new Tile(Sprite.marmolFloor[3], false)};
+                                       new Tile(Sprite.marmolFloor[2], false),new Tile(Sprite.marmolFloor[3], false),
+                                       new Tile(Sprite.marmolFloor[0], true)};
     
     public static Tile specialMarmolFloor = new Tile(Sprite.specialMarmolFloor, false);
     

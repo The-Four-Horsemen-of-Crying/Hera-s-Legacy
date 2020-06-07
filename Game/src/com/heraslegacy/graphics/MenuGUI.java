@@ -60,7 +60,10 @@ public class MenuGUI extends GUI{
             }
         }
         if(botones[2].onZone()){
-            if(Mouse.click)Game.startGame=false;
+            if(Mouse.click){
+                actualLevel.LEVELSTRATEGY.stopAll();
+                Game.startGame=false;
+            }
         }
     }
 }
