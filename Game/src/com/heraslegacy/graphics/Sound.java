@@ -37,6 +37,8 @@ public class Sound {
     public static Clip backgroundLB;
     public static Clip fail;
     public static Clip pickup;
+    public static Clip fantasma_Theme;
+    public static Clip creditos_Theme;
    
     public Sound (Clip clip){
         this.CLIP=clip;
@@ -81,6 +83,8 @@ public class Sound {
         backgroundLB = loadSound("/sonidos/level3.wav");
         fail = loadSound("/sonidos/fail.wav");
         pickup = loadSound("/sonidos/pickup.wav");
+        fantasma_Theme=loadSound("/sonidos/fantasmaTheme.wav");
+        creditos_Theme=loadSound("/sonidos/creditosTheme.wav");
     }
     public static Clip loadSound(String path){
           
