@@ -93,14 +93,14 @@ public class MathLevel implements levelStrategy {
     public boolean getCollision(int x, int y){
         if(System.nanoTime()/1000000000>showMessage)takeOffReponseMessages();
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.yellow.getColor() && !this.resueltos[0]){
-            
+            takeOffReponseMessages();
             mesa = ejercicios[0];
             indiceMesa=0;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor() && !this.resueltos[1]){
-            
+            takeOffReponseMessages();
             mesa = ejercicios[1];
             indiceMesa=1;
             return true;
@@ -108,12 +108,14 @@ public class MathLevel implements levelStrategy {
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.lime.getColor() && !this.resueltos[2]){//System.out.println("es mesa"+x+" ||  "+y);te falta un punto y coma
             mesa = ejercicios[2];
+            takeOffReponseMessages();
             indiceMesa = 2;
             return true;
         }
 
         if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.blue.getColor() && !this.resueltos[3]){
             mesa = ejercicios[3];
+            takeOffReponseMessages();
             indiceMesa = 3;
             return true;
         }

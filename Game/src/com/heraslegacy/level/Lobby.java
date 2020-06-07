@@ -120,11 +120,12 @@ public class Lobby implements levelStrategy{
     @Override
     public void mecanica(){
         if(!agradecimiento){
+            screen.renderSprite(false, screen.width-48, screen.height-48, Sprite.botonesGUI[14]);
             if(!boolSounds[0]){
                 sounds[2].play();
                 boolSounds[0]=true;
             }
-            if(KeyBoard.enter)changeLevel=true;
+            if(KeyBoard.e)changeLevel=true;
         }
         else screen.renderSprite(false,screen.width/2-75, screen.height/2-50, Sprite.agradecimiento[1]);
     }

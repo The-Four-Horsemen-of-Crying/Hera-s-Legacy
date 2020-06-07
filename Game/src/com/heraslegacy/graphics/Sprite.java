@@ -176,7 +176,8 @@ public class Sprite {
                                          new Sprite(86, 32, 0, 6, SpriteSheet.startScreen),new Sprite(86, 32, 1, 6, SpriteSheet.startScreen),
                                          new Sprite(86, 32, 0, 7, SpriteSheet.startScreen),new Sprite(86, 32, 1, 7, SpriteSheet.startScreen),
                                          new Sprite(86, 32, 0, 8, SpriteSheet.startScreen),new Sprite(86, 32, 1, 8, SpriteSheet.startScreen),
-                                         new Sprite(86, 32, 2, 6, SpriteSheet.startScreen),new Sprite(86, 32, 2, 7, SpriteSheet.startScreen)};
+                                         new Sprite(86, 32, 2, 6, SpriteSheet.startScreen),new Sprite(86, 32, 2, 7, SpriteSheet.startScreen),
+                                         new Sprite(32, 2, 2, SpriteSheet.nivel00_lobby)};
     
     public static Sprite startMenu[] = {new Sprite(300, 162, 0, 0, SpriteSheet.startScreen),new Sprite(300, 162, 0, 0, SpriteSheet.single_ManualPage),
                                         new Sprite(150, 100, 0, 2, SpriteSheet.single_ManualPage)};
