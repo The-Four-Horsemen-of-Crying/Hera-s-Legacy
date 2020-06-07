@@ -178,9 +178,9 @@ public class Lobby implements levelStrategy{
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
         sounds[0].stop();
         if(!isFinish()){
-        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(nivelCase)));
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Ghost(nivelCase)));
         }else{
-        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Fantasma(3)));        
+        game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Ghost(3)));        
         }
         return game;
     }
