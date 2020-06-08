@@ -40,7 +40,7 @@ public class SpaceLevel implements levelStrategy {
     private LocalTime dy = LocalTime.now();
     private LocalTime now = LocalTime.now();
     private int life = 3, j = 0, sw = 0, suena = 0;
-    int indiceCambio;
+    private int indiceCambio;
     private Color colorTexto = Color.WHITE;
     private final Sound sonido[] = {
         new Sound(Sound.win),

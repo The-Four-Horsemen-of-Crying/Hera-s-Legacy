@@ -38,7 +38,7 @@ public class Lobby implements levelStrategy{
     private boolean [] boolSounds={false,false};
     private boolean changeLevel=false, agradecimiento=false;
     private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
-    public static boolean levels[]= {false,false,false};
+    public static boolean levels[]= {true,true,true};
     private Texto textLobby[]= {
         new Texto("Ya se encuentra en el Lobby", 0, false, Sprite.hera_down[0])
     
