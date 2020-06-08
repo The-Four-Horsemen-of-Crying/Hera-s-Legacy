@@ -312,7 +312,7 @@ public class SpaceLevel implements levelStrategy {
         variaB[3] = false;
         player.setTipo(0);
         variaB[0] = false;
-        stop();
+        stopAll();
         dy = LocalTime.now();
     }
 
@@ -377,15 +377,9 @@ public class SpaceLevel implements levelStrategy {
 
     }
 
-    private void stop() {
-        for (Sound sonido1 : sonido) {
-            sonido1.stop();
-        }
-    }
-
     @Override
     public void backWithoutWin() {
-        stop();
+        stopAll();
         variaB[4] = true;
     }
 
@@ -398,6 +392,8 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void stopAll() {
-        stop();
+        for (Sound sonido1 : sonido) {
+            sonido1.stop();
+        }
     }
 }

@@ -8,8 +8,6 @@ import javafx.scene.input.KeyCode;
 
 public class Tile {
 
-    public int x;
-    public int y;
     public Sprite sprite;
     public boolean solid;
     public TipoTile tipo;
