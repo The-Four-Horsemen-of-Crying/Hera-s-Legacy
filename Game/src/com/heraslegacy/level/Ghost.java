@@ -268,6 +268,7 @@ public class Ghost implements levelStrategy {
         } else {
            
             if (cont[1] == 59) {
+                cont[0]++;
                 for (int i = 0; i < A.length; i++) {
                     A[i].setPosy(A[i].getPosy() - 25);
                 }
@@ -292,16 +293,10 @@ public class Ghost implements levelStrategy {
             player.animación();
         }
         time();
-        if (cont[0] == 57 - maxMensajes * 3 && indiceLevel != 3) {
+        if ((cont[0] == 57 - maxMensajes * 3 && indiceLevel != 3)|| cont[0]>=118) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
-        if (indiceLevel == 3 && A[maxMensajes - 1].getPosy() <= 0 && A[maxMensajes - 1].getPosy() >= -100) {
-            cambio = true;
-        }
-        /**if (indiceLevel == 3 && A[maxMensajes - 1].getPosy() <= 200) {
-            cont[2]++;
-            screen.renderSprite(false, screen.width / 2 - 127, screen.height - cont[2], Sprite.logo_Wstem);
-        }**/
+       
 
     }
 
