@@ -206,7 +206,6 @@ public class Ghost implements levelStrategy {
         } else {
             SOUND[0].loop();
         }
-        y=0;
     }
 
     @Override
@@ -255,24 +254,35 @@ public class Ghost implements levelStrategy {
     @Override
     public void time() {
 
-        cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
         cont[1] = dm.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo de los mensajes
-
-        if (cont[1] == 57 && indiceLevel != 3) {//Mostrar mensajes
-            if (cont[2] < maxMensajes) {
-                cont[2]++;
-                A[0].setVisible(cont[2], A);
+        if (indiceLevel != 3) {
+            cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
+            if (cont[1] == 57 && indiceLevel != 3) {//Mostrar mensajes
+                if (cont[2] < maxMensajes) {
+                    cont[2]++;
+                    A[0].setVisible(cont[2], A);
+                }
+                cont[1] = 0;
+                dm = LocalTime.now();
             }
-            cont[1] = 0;
-            dm = LocalTime.now();
-        } else if (indiceLevel == 3 && cont[1] == 59) {
-            
-            
-            for (int i = 0; i < A.length; i++) {
-                A[i].setPosy(A[i].getPosy() - 25);
+        } else {
+           
+            if (cont[1] == 59) {
+                for (int i = 0; i < A.length; i++) {
+                    A[i].setPosy(A[i].getPosy() - 25);
+                }
+                if(A[maxMensajes - 1].getPosy() <= 400){
+                    for (int i = 1; i <= 10; i++) {
+                        cont[2]++;
+                        y=screen.height - cont[2];
+                        screen.renderSprite(false, screen.width / 2 - 127, y, Sprite.logo_Wstem);
+                    }
+                }
+                cont[1] = 0;
+                dm = LocalTime.now();
             }
-            cont[1] = 0;
-            dm = LocalTime.now();
+                    screen.renderSprite(false, screen.width / 2 - 127, y, Sprite.logo_Wstem);            
+                    
         }
     }
 
@@ -285,14 +295,13 @@ public class Ghost implements levelStrategy {
         if (cont[0] == 57 - maxMensajes * 3 && indiceLevel != 3) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
-        if (indiceLevel == 3 && A[maxMensajes - 1].getPosy() <= 0&& A[maxMensajes - 1].getPosy() >= -100) {
+        if (indiceLevel == 3 && A[maxMensajes - 1].getPosy() <= 0 && A[maxMensajes - 1].getPosy() >= -100) {
             cambio = true;
         }
-        if(indiceLevel==3 && A[maxMensajes-1].getPosy()<=200){
+        /**if (indiceLevel == 3 && A[maxMensajes - 1].getPosy() <= 200) {
             cont[2]++;
-  
-            screen.renderSprite(false, screen.width / 2 - 127,screen.height -cont[2] , Sprite.logo_Wstem);
-        }
+            screen.renderSprite(false, screen.width / 2 - 127, screen.height - cont[2], Sprite.logo_Wstem);
+        }**/
 
     }
 
