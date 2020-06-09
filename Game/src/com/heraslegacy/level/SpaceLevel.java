@@ -35,20 +35,20 @@ public class SpaceLevel implements levelStrategy {
     private int[] tiles;
     private int[] tilesCollision;
     private Player player;
-    private final Font spaceFont = Fuente.greekFont;
+    private final Font SPACEFONT = Fuente.greekFont;
     private boolean variaB[] = new boolean[5];// 0 para los cambios, 1 para perder, 2 para ganar, 3 para el delay
     private LocalTime dy = LocalTime.now();
     private LocalTime now = LocalTime.now();
     private int life = 3, j = 0, sw = 0, suena = 0;
     private int indiceCambio;
-    private Color colorTexto = Color.WHITE;
-    private final Sound sonido[] = {
+    private final Color COLORTEXTO = Color.WHITE;
+    private final Sound SOUNDS[] = {
         new Sound(Sound.win),
         new Sound(Sound.change),
         new Sound(Sound.bakSpa),
         new Sound(Sound.loose)
     };
-    private static final Texto textSpace[] = {
+    private final Texto TEXTSPACE[] = {
         new Texto("Todo se arreglo!", 0, false, Sprite.katherine_down[0]),
         new Texto("LOS CONTROLES FALLAN!", 0, false, Sprite.katherine_down[0]),
         new Texto("FELICIDADES!", 0, false, Sprite.katherine_down[0]),
@@ -69,83 +69,83 @@ public class SpaceLevel implements levelStrategy {
             return Tile.spacePices[3];
         }
 
-        if (tiles[x + y * width] == Colors.lime.getColor()) {
+        if (tiles[x + y * width] == Colors.LIME.getColor()) {
             return Tile.spacePices[0];
         }
 
-        if (tiles[x + y * width] == Colors.blue.getColor()) {
+        if (tiles[x + y * width] == Colors.BLUE.getColor()) {
             return Tile.spacePices[1];
         }
 
-        if (tiles[x + y * width] == Colors.red.getColor()) {
+        if (tiles[x + y * width] == Colors.RED.getColor()) {
             return Tile.spacePices[2];
         }
 
-        if (tiles[x + y * width] == Colors.fuchsia.getColor()) {
+        if (tiles[x + y * width] == Colors.FUCHSIA.getColor()) {
             return Tile.spacePices[3];
         }
 
-        if (tiles[x + y * width] == Colors.yellow.getColor()) {
+        if (tiles[x + y * width] == Colors.YELLOW.getColor()) {
             return Tile.spacePices[6];
         }
 
-        if (tiles[x + y * width] == Colors.white.getColor()) {
+        if (tiles[x + y * width] == Colors.WHITE.getColor()) {
             return Tile.spaceMeteor[0];
         }
 
-        if (tiles[x + y * width] == Colors.kindblue.getColor() && tiles[x - 1 + y * width] == Colors.kindblue.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDBLUE.getColor() && tiles[x - 1 + y * width] == Colors.KINDBLUE.getColor()) {
             return Tile.spaceMeteor[2];
         }
 
-        if (y > 0 && tiles[x + y * width] == Colors.kindblue.getColor() && tiles[x + (y - 1) * width] == Colors.kindblue.getColor()) {
+        if (y > 0 && tiles[x + y * width] == Colors.KINDBLUE.getColor() && tiles[x + (y - 1) * width] == Colors.KINDBLUE.getColor()) {
             return Tile.spaceMeteor[5];
         }
 
-        if (tiles[x + y * width] == Colors.kindblue.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDBLUE.getColor()) {
             return Tile.spaceMeteor[1];
         }
 
-        if (tiles[x + y * width] == Colors.kindred.getColor() && tiles[x + 1 + y * width] == Colors.kindred.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDRED.getColor() && tiles[x + 1 + y * width] == Colors.KINDRED.getColor()) {
             return Tile.spaceMeteor[3];
         }
 
-        if (y > 0 && tiles[x + y * width] == Colors.kindred.getColor() && tiles[x + (y - 1) * width] == Colors.kindred.getColor()) {
+        if (y > 0 && tiles[x + y * width] == Colors.KINDRED.getColor() && tiles[x + (y - 1) * width] == Colors.KINDRED.getColor()) {
             return Tile.spaceMeteor[6];
         }
 
-        if (tiles[x + y * width] == Colors.kindred.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDRED.getColor()) {
             return Tile.spaceMeteor[4];
         }
 
-        if (tiles[x + y * width] == Colors.kindColdplay.getColor() && tiles[x + (y + 1) * width] == Colors.kindColdplay.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDCOLDPLAY.getColor() && tiles[x + (y + 1) * width] == Colors.KINDCOLDPLAY.getColor()) {
             return Tile.spaceMeteor[6];
         }
 
-        if (tiles[x + y * width] == Colors.kindColdplay.getColor() && tiles[x - 1 + y * width] == Colors.kindColdplay.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDCOLDPLAY.getColor() && tiles[x - 1 + y * width] == Colors.KINDCOLDPLAY.getColor()) {
             return Tile.spaceMeteor[8];
         }
 
-        if (tiles[x + y * width] == Colors.kindColdplay.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDCOLDPLAY.getColor()) {
             return Tile.spaceMeteor[7];
         }
 
-        if (tiles[x + y * width] == Colors.kindblue2.getColor() && tiles[x + (y + 1) * width] == Colors.kindblue2.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDBLUE2.getColor() && tiles[x + (y + 1) * width] == Colors.KINDBLUE2.getColor()) {
             return Tile.spaceMeteor[6];
         }
 
-        if (tiles[x + y * width] == Colors.kindblue2.getColor() && tiles[x + 1 + y * width] == Colors.kindblue2.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDBLUE2.getColor() && tiles[x + 1 + y * width] == Colors.KINDBLUE2.getColor()) {
             return Tile.spaceMeteor[9];
         }
 
-        if (tiles[x + y * width] == Colors.kindblue2.getColor()) {
+        if (tiles[x + y * width] == Colors.KINDBLUE2.getColor()) {
             return Tile.spaceMeteor[12];
         }
 
-        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) {
+        if (tiles[x + y * width] == Colors.NARANJAMECANICA.getColor()) {
             return Tile.niceStuff[0];
         }
 
-        if (tiles[x + y * width] == Colors.purplePoe.getColor()) {
+        if (tiles[x + y * width] == Colors.PURPLEPOE.getColor()) {
             return Tile.niceStuff[1];
         }
 
@@ -184,39 +184,39 @@ public class SpaceLevel implements levelStrategy {
                 indiceCambio = 0;
             }
             if (sw == 0) {
-                sonido[2].play();
+                SOUNDS[2].play();
                 sw = 2;
             }
             player.animación();
             int res = dy.minusSeconds(LocalTime.now().getSecond()).getSecond();
             if (res == 50 && !variaB[2] && !variaB[1]&& sw!=20) {
-                textSpace[0].setVisible(indiceCambio, textSpace);//Implementar aviso cada 25s
-                sonido[1].stop();
-                sonido[2].stop();
-                sonido[1].changeVolume(0);
-                sonido[2].changeVolume(0);
-                sonido[2 - indiceCambio].play();
+                TEXTSPACE[0].setVisible(indiceCambio, TEXTSPACE);//Implementar aviso cada 25s
+                SOUNDS[1].stop();
+                SOUNDS[2].stop();
+                SOUNDS[1].changeVolume(0);
+                SOUNDS[2].changeVolume(0);
+                SOUNDS[2 - indiceCambio].play();
                 player.setTipo(indiceCambio);
                 variaB[0] = !variaB[0];
                 dy = LocalTime.now();
             } else if (res == 55 && !variaB[2] && !variaB[1]) {
-                sonido[3].stop();
+                SOUNDS[3].stop();
                 time();
-                textSpace[0].setVisible(false);
-                textSpace[1].setVisible(false);
-                textSpace[4].setVisible(false);
+                TEXTSPACE[0].setVisible(false);
+                TEXTSPACE[1].setVisible(false);
+                TEXTSPACE[4].setVisible(false);
             }
             if ((player.getCollisionP() && player.getDirectionalSolidSnakeTile().tipo == TipoTile.GAME_OVER|| variaB[1] )&& !variaB[2]) {
                 player.setTipo(2);
-                sonido[2].stop();
-                sonido[1].stop();
-                sonido[3].changeVolume(0);
-                sonido[3].play();
+                SOUNDS[2].stop();
+                SOUNDS[1].stop();
+                SOUNDS[3].changeVolume(0);
+                SOUNDS[3].play();
                 delay();
                 j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
                 variaB[1] = true;
                 if (life > 0) {
-                    textSpace[0].setVisible(6, textSpace);
+                    TEXTSPACE[0].setVisible(6, TEXTSPACE);
                     if (j == 56) {
                         restar();
                     }
@@ -224,10 +224,10 @@ public class SpaceLevel implements levelStrategy {
                     //Habria que verificar si quiere volver a intentar o se puede hacer por vidas :D
                     switch (j) {
                         case 58:
-                            textSpace[0].setVisible(5, textSpace);
+                            TEXTSPACE[0].setVisible(5, TEXTSPACE);
                             break;
                         case 0:
-                            textSpace[3].setVisible(4, textSpace);
+                            TEXTSPACE[3].setVisible(4, TEXTSPACE);
                             break;
                         case 56:
                             now = LocalTime.now();
@@ -238,30 +238,31 @@ public class SpaceLevel implements levelStrategy {
                     sw = -10;
                 }
 
-            } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.bluecoli.getColor() && !variaB[2]) {
+            } else if (tilesCollision[(player.getX() >> 4) + (player.getY() >> 4) * width] == Colors.BLUECOLI.getColor() && !variaB[2]) {
                 //Se le indica que ganó, ya no se hace nada y se termina el juego
                 player.setTipo(2);
-                sonido[1].stop();
-                sonido[2].stop();
+                SOUNDS[1].stop();
+                SOUNDS[2].stop();
                 delay();
                 j = now.minusSeconds(LocalTime.now().getSecond()).getSecond();
                 sw=20;
                 suena++;
                 time();
                 if (j == 0) {
-                    textSpace[0].setVisible(2, textSpace);
+                    TEXTSPACE[0].setVisible(2, TEXTSPACE);
                 } else if (j == 58) {
-                    textSpace[0].setVisible(3, textSpace);
+                    TEXTSPACE[0].setVisible(3, TEXTSPACE);
                 }
                 if (j == 54) {
-                    sonido[0].stop();
+                    SOUNDS[0].stop();
                     variaB[2] = true;
-                    textSpace[2].setVisible(false);
+                    TEXTSPACE[2].setVisible(false);
                 }
 
             }
         }else{
             player.setTipo(2);
+  
         }
     }
 
@@ -271,7 +272,7 @@ public class SpaceLevel implements levelStrategy {
             sw = 0;
         }
         if (suena == 1) {
-            sonido[0].play();
+            SOUNDS[0].play();
         }
         if (suena == 6) {
             suena = 100;
@@ -282,15 +283,16 @@ public class SpaceLevel implements levelStrategy {
     public void restar() {
         if (variaB[1] && life > 0) {
             restart();
-            textSpace[6].setVisible(false);
+            TEXTSPACE[6].setVisible(false);
             sw = 3;
             life--;
         }
 
         if (sw == -10) {
             restart();
-            life = 3;
-            textSpace[5].setVisible(false);
+            life = 3;   
+            TEXTSPACE[4].setVisible(false);
+            TEXTSPACE[5].setVisible(false);
             sw = 0;
         }
     }
@@ -341,7 +343,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Texto[] getText() {
-        return textSpace;
+        return TEXTSPACE;
     }
 
     @Override
@@ -350,7 +352,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Color getColor() {
-        return colorTexto;
+        return COLORTEXTO;
     }
 
     @Override
@@ -361,7 +363,7 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public Font getFont() {
-        return this.spaceFont;
+        return this.SPACEFONT;
     }
 
     @Override
@@ -385,14 +387,14 @@ public class SpaceLevel implements levelStrategy {
 
     @Override
     public void uptadeTexto() {
-        for (Texto text : textSpace) {
+        for (Texto text : TEXTSPACE) {
             text.showIfActive();
         }
     }
 
     @Override
     public void stopAll() {
-        for (Sound sonido1 : sonido) {
+        for (Sound sonido1 : SOUNDS) {
             sonido1.stop();
         }
     }

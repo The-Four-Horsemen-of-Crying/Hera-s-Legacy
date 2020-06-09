@@ -13,7 +13,6 @@ import com.heraslegacy.graphics.Sprite;
 import com.heraslegacy.graphics.Texto;
 import com.heraslegacy.level.tile.Tile;
 import com.heraslegacy.main.Game;
-import static com.heraslegacy.main.Game.screen;
 import com.heraslegacy.manager.KeyBoard;
 import java.awt.Color;
 import java.awt.Font;
@@ -43,7 +42,7 @@ public class Ghost implements levelStrategy {
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
     private int y = screen.height * scale;
-    private final Sound SOUND[] = {new Sound(Sound.creditos_Theme), new Sound(Sound.fantasma_Theme)};
+    private final Sound SOUNDS[] = {new Sound(Sound.creditos_Theme), new Sound(Sound.fantasma_Theme)};
     private final Texto A[];
     private final Texto MENSAJESPACE[] = {
         new Texto("Katherine Jonhson, la calculadora humana.", Game.WIDTH / 2, 300, true),
@@ -199,12 +198,12 @@ public class Ghost implements levelStrategy {
                 }
                 break;
         }
-        SOUND[0].changeVolume(-2);
-        SOUND[1].changeVolume(-2);
+        SOUNDS[0].changeVolume(-10);
+        SOUNDS[1].changeVolume(-10);
         if (indiceLevel != 3) {
-            SOUND[1].play();
+            SOUNDS[1].play();
         } else {
-            SOUND[0].loop();
+            SOUNDS[0].loop();
         }
     }
 
@@ -220,7 +219,7 @@ public class Ghost implements levelStrategy {
             return Tile.spacePices[3];
         }
 
-        if (tiles[x + y * width] == Colors.yellow.getColor()) {
+        if (tiles[x + y * width] == Colors.YELLOW.getColor()) {
             return PARED[indiceLevel];
         } else {
             return PISO[indiceLevel];
@@ -397,8 +396,8 @@ public class Ghost implements levelStrategy {
                 Lobby.levels[2] = false;
                 break;
         }
-        SOUND[0].stop();
-        SOUND[1].stop();
+        SOUNDS[0].stop();
+        SOUNDS[1].stop();
         return game;
     }
 

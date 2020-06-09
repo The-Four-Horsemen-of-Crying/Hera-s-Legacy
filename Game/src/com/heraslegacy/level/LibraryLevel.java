@@ -33,15 +33,15 @@ public class LibraryLevel implements levelStrategy{
     private final Font LIBRARYFONT = Fuente.spaceFontSmaller;
     private boolean libros[] ={false, false, false, false};
     private boolean state[] = {true, false,false};
-    private final int[] ZONECOLOR ={Colors.yellow.getColor(),Colors.blue.getColor(),Colors.white.getColor(),Colors.darkred.getColor()};//Los colores que diferencian cada zona
-    private final int[] VISUALRANGE ={Colors.orange.getColor(),Colors.lessdarkred.getColor(),Colors.clearblue.getColor(),Colors.green.getColor()};//Los colores de a que lugar están viendo
+    private final int[] ZONECOLOR ={Colors.YELLOW.getColor(),Colors.BLUE.getColor(),Colors.WHITE.getColor(),Colors.DARKRED.getColor()};//Los colores que diferencian cada zona
+    private final int[] VISUALRANGE ={Colors.ORANGE.getColor(),Colors.LESSDARKRED.getColor(),Colors.CLEARBLUE.getColor(),Colors.GREEN.getColor()};//Los colores de a que lugar están viendo
     private int zone;
     private int pattern[],direction=0;
     private int text1 = 2, text2 = 10;
     private LocalTime ant = LocalTime.now();
     private LocalTime ant2= LocalTime.now();
     private Player player;
-    private final Sound[] SOUND = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
+    private final Sound[] SOUNDS = {new Sound(Sound.backgroundLB), new Sound(Sound.fail), new Sound(Sound.pickup)};
     private final Color COLORTEXTO= Color.WHITE;//Color.getHSBColor(46, 100, 100);
     private final Texto[] TEXTLIBRARY= {
         new Texto("Necesito reunir 4 libros a escondidas",0,true,Sprite.dorothy_down[0]),           //0
@@ -75,7 +75,7 @@ public class LibraryLevel implements levelStrategy{
 
     public LibraryLevel(){
         this.pattern = new int[]{0, 3, 2, 1};
-        SOUND[0].loop();
+        SOUNDS[0].loop();
     }
     
     @Override
@@ -99,50 +99,50 @@ public class LibraryLevel implements levelStrategy{
     @Override
     public Tile getTile(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height)                 return Tile.pikes;
-        if (tiles[x + y * width] == Colors.yellow.getColor())           return Tile.puertaS[zone];
-        if (tiles[x + y * width] == Colors.blue.getColor())             return Tile.puertaE[zone];
-        if (tiles[x + y * width] == Colors.fuchsia.getColor())          return Tile.paredLibrary;
-        if (tiles[x + y * width] == Colors.red.getColor())              return Tile.estanterias[0];
-        if (tiles[x + y * width] == Colors.higdarkred.getColor())       return Tile.estanterias[1];
-        if (tiles[x + y * width] == Colors.darkred.getColor())          return Tile.estanterias[2];
-        if (tiles[x + y * width] == Colors.lessdarkred2.getColor())     return Tile.estanterias[3];
-        if (tiles[x + y * width] == Colors.green.getColor())            return Tile.libro;
+        if (tiles[x + y * width] == Colors.YELLOW.getColor())           return Tile.puertaS[zone];
+        if (tiles[x + y * width] == Colors.BLUE.getColor())             return Tile.puertaE[zone];
+        if (tiles[x + y * width] == Colors.FUCHSIA.getColor())          return Tile.paredLibrary;
+        if (tiles[x + y * width] == Colors.RED.getColor())              return Tile.estanterias[0];
+        if (tiles[x + y * width] == Colors.HIGDARKRED.getColor())       return Tile.estanterias[1];
+        if (tiles[x + y * width] == Colors.DARKRED.getColor())          return Tile.estanterias[2];
+        if (tiles[x + y * width] == Colors.LESSDARKRED2.getColor())     return Tile.estanterias[3];
+        if (tiles[x + y * width] == Colors.GREEN.getColor())            return Tile.libro;
         
         for (int i = 0; i < 4; i++) {
 
-            if (tiles[x + y * width] == Colors.golden.getColor()
+            if (tiles[x + y * width] == Colors.GOLDEN.getColor()
               &&tilesCollision[x + y * width] == VISUALRANGE[i]
               &&i==direction)                                           return Tile.floorL2D;
             
-            if (tiles[x + y * width] == Colors.purpleDark1.getColor()
+            if (tiles[x + y * width] == Colors.PURPLEDARK1.getColor()
               &&tilesCollision[x + y * width] == VISUALRANGE[i]
               &&i==direction)                                           return Tile.floorL1D;
             
-            if (tiles[x + y * width] == Colors.somekindblue.getColor()
-              &&tiles[x + (y+1) * width] == Colors.purpleDark.getColor()
+            if (tiles[x + y * width] == Colors.SOMEKINDBLUE.getColor()
+              &&tiles[x + (y+1) * width] == Colors.PURPLEDARK.getColor()
               &&tilesCollision[x + (y-2) * width] == VISUALRANGE[i])    return Tile.guardia[pattern[i]][0];
             
-            if (tiles[x + y * width] == Colors.purpleDark.getColor()
-              &&tiles[x + (y+1) * width] == Colors.somekindblue.getColor()
+            if (tiles[x + y * width] == Colors.PURPLEDARK.getColor()
+              &&tiles[x + (y+1) * width] == Colors.SOMEKINDBLUE.getColor()
               &&tilesCollision[x + (y-2) * width] == VISUALRANGE[i])    return Tile.guardia[pattern[i]][1];
             
-            if (tiles[x + y * width] == Colors.somekindblue.getColor()
-              &&tiles[x + (y-1) * width] == Colors.purpleDark.getColor()
+            if (tiles[x + y * width] == Colors.SOMEKINDBLUE.getColor()
+              &&tiles[x + (y-1) * width] == Colors.PURPLEDARK.getColor()
               &&tilesCollision[x + (y-2) * width] == VISUALRANGE[i])    return Tile.guardia[pattern[i]][3];
             
-            if (tiles[x + y * width] == Colors.purpleDark.getColor()
-              &&tiles[x + (y-1) * width] == Colors.somekindblue.getColor()
+            if (tiles[x + y * width] == Colors.PURPLEDARK.getColor()
+              &&tiles[x + (y-1) * width] == Colors.SOMEKINDBLUE.getColor()
               &&tilesCollision[x + (y-2) * width] == VISUALRANGE[i])    return Tile.guardia[pattern[i]][2];
         }
-        if (tiles[x + y * width] == Colors.purpleDark1.getColor())      return Tile.floorL1;
-        if (tiles[x + y * width] == Colors.golden.getColor())           return Tile.floorL2;
+        if (tiles[x + y * width] == Colors.PURPLEDARK1.getColor())      return Tile.floorL1;
+        if (tiles[x + y * width] == Colors.GOLDEN.getColor())           return Tile.floorL2;
         
         return Tile.pikes;
     }
 
     @Override
     public boolean getCollision(int x, int y) {
-        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.fuchsia.getColor()){
+        if (tilesCollision[(x>>4)+(y>>4)*width] == Colors.FUCHSIA.getColor()){
             libros[zone]=true;
             tilesCollision[(x>>4)+(y>>4)*width] = ZONECOLOR[zone];
             hide();
@@ -155,8 +155,8 @@ public class LibraryLevel implements levelStrategy{
                 TEXTLIBRARY[1].setText("Los tengo todos, ahora a salir de aquí");
             }
             TEXTLIBRARY[1].setVisible(true);
-            SOUND[2].play();
-            tiles[(x>>4)+(y>>4)*width] = Colors.purpleDark1.getColor();
+            SOUNDS[2].play();
+            tiles[(x>>4)+(y>>4)*width] = Colors.PURPLEDARK1.getColor();
             Tile.puertaS[zone].setSolid(false);
         }
         
@@ -213,7 +213,7 @@ public class LibraryLevel implements levelStrategy{
         if (tilesCollision[(player.getX()>>4)+(player.getY()>>4)*width] == VISUALRANGE[direction]||state[2]){
             ant = LocalTime.now();
             if (!state[2]) {
-                SOUND[1].play();
+                SOUNDS[1].play();
                 hide();
                 TEXTLIBRARY[text2].setVisible(true);
                 if(!TEXTLIBRARY[22].isVisible())TEXTLIBRARY[23].setVisible(true);
@@ -288,7 +288,7 @@ public class LibraryLevel implements levelStrategy{
     @Override
     public Level levelCambio() {
             Lobby.levels[2] = state[0];
-            SOUND[0].stop();
+            SOUNDS[0].stop();
             return new Level("/levels/lobby/lobby.png", "/levels/lobby/collisionlobby.png", new Lobby());
     }
 
@@ -340,7 +340,7 @@ public class LibraryLevel implements levelStrategy{
 
     @Override
     public void stopAll() {
-        for (Sound sonido1 : SOUND) {
+        for (Sound sonido1 : SOUNDS) {
             sonido1.stop();
         }
     }

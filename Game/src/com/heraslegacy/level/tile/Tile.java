@@ -1,10 +1,8 @@
 
 package com.heraslegacy.level.tile;
 
-import com.heraslegacy.graphics.Screen;
 import com.heraslegacy.graphics.Sprite;
 import static com.heraslegacy.main.Game.screen;
-import javafx.scene.input.KeyCode;
 
 public class Tile {
 
@@ -97,7 +95,7 @@ public class Tile {
         return solid;
     }
     
-    public void setSolid(Boolean solid){
+    public void setSolid(boolean solid){
         this.solid=solid;
     }
 }

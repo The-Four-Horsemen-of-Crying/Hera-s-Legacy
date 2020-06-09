@@ -34,55 +34,55 @@ public class Lobby implements levelStrategy{
     private int chronos=0;
     private Font lobbyFont = Fuente.trans;
     private final Color COLORTEXTO= Color.WHITE;
-    int ani[]={0,0};
+    private int ani[]={0,0};
     private boolean [] boolSounds={false,false};
     private boolean changeLevel=false, agradecimiento=false;
-    private Sound sounds[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
+    private final Sound SOUNDS[] = {new Sound(Sound.lobby_Theme), new Sound(Sound.lobby_portalSound), new Sound(Sound.buttonAlert_0)};
     public static boolean levels[]= {false, false, false};
-    private Texto textLobby[]= {
+    private final Texto TEXTLOBBY[]= {
         new Texto("Ya se encuentra en el Lobby", 0, false, Sprite.hera_down[0])
     
     };
     
     @Override
     public void update() {
-        if(chronos<System.nanoTime()/1000000000)textLobby[0].setVisible(false);
+        if(chronos<System.nanoTime()/1000000000)TEXTLOBBY[0].setVisible(false);
     }
 
     @Override
     public Tile getTile(int x, int y) {
         if(x < 0 || y < 0 || x >= width || y >= height) return Tile.pikes;
         
-        if (tiles[x + y * width] == Colors.lime.getColor())            return Tile.specialMarmolFloor;
-        if (tiles[x + y * width] == Colors.blue.getColor())            return Tile.pikes;
-        if (tiles[x + y * width] == Colors.red.getColor())             return Tile.columnas[1];      
-        if (tiles[x + y * width] == Colors.kindblue.getColor())        return Tile.columnas[2];
-        if (tiles[x + y * width] == Colors.fuchsia.getColor())         return Tile.marmolFloor[0];     
-        if (tiles[x + y * width] == Colors.yellow.getColor())          return Tile.marmolWall[0];
-        if (tiles[x + y * width] == Colors.kindColdplay.getColor())    return Tile.marmolFloor[1];
-        if (tiles[x + y * width] == Colors.kindgreenday.getColor())    return Tile.marmolWall[1];
-        if (tiles[x + y * width] == Colors.purplePoe.getColor())       return Tile.marmolWall[2];
-        if (tiles[x + y * width] == Colors.naranjaMecanica.getColor()) return Tile.marmolFloor[3];
-        if (tiles[x + y * width] == Colors.kindblue2.getColor())       return Tile.techo;
-        if (tiles[x + y * width] == Colors.white.getColor())           return Tile.marmolFloor[4];
+        if (tiles[x + y * width] == Colors.LIME.getColor())            return Tile.specialMarmolFloor;
+        if (tiles[x + y * width] == Colors.BLUE.getColor())            return Tile.pikes;
+        if (tiles[x + y * width] == Colors.RED.getColor())             return Tile.columnas[1];      
+        if (tiles[x + y * width] == Colors.KINDBLUE.getColor())        return Tile.columnas[2];
+        if (tiles[x + y * width] == Colors.FUCHSIA.getColor())         return Tile.marmolFloor[0];     
+        if (tiles[x + y * width] == Colors.YELLOW.getColor())          return Tile.marmolWall[0];
+        if (tiles[x + y * width] == Colors.KINDCOLDPLAY.getColor())    return Tile.marmolFloor[1];
+        if (tiles[x + y * width] == Colors.KINDGREENDAY.getColor())    return Tile.marmolWall[1];
+        if (tiles[x + y * width] == Colors.PURPLEPOE.getColor())       return Tile.marmolWall[2];
+        if (tiles[x + y * width] == Colors.NARANJAMECANICA.getColor()) return Tile.marmolFloor[3];
+        if (tiles[x + y * width] == Colors.KINDBLUE2.getColor())       return Tile.techo;
+        if (tiles[x + y * width] == Colors.WHITE.getColor())           return Tile.marmolFloor[4];
         return Tile.pikes;
     }
 
     @Override
     public boolean getCollision(int x, int y) {
-        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.naranjaMecanica.getColor()){
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.NARANJAMECANICA.getColor()){
             agradecimiento=true;
             return true;
         }
-        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.lime.getColor()) {
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.LIME.getColor()) {
             nivelCase = 0;
             return !levels[0];
         }
-        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.blue.getColor()) {
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.BLUE.getColor()) {
             nivelCase = 1;
             return !levels[1];
         }
-        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.red.getColor()) {
+        if (tilesCollision[(x >> 4) + (y >> 4) * width] == Colors.RED.getColor()) {
             nivelCase = 2;
             return !levels[2];
         }
@@ -102,8 +102,8 @@ public class Lobby implements levelStrategy{
             int h = height = image.getHeight();
             tiles = new int[w * h];
             tilesCollision = new int[w * h];
-            sounds[0].loop();
-            sounds[0].changeVolume(0);
+            SOUNDS[0].loop();
+            SOUNDS[0].changeVolume(0);
             image.getRGB(0, 0, w, h, tiles, 0, w);
             imageCollision.getRGB(0, 0, w, h, tilesCollision, 0, w);
         } catch (IOException ex) {
@@ -122,7 +122,7 @@ public class Lobby implements levelStrategy{
         if(!agradecimiento){
             screen.renderSprite(false, screen.width-48, screen.height-48, Sprite.botonesGUI[14]);
             if(!boolSounds[0]){
-                sounds[2].play();
+                SOUNDS[2].play();
                 boolSounds[0]=true;
             }
             if(KeyBoard.e)changeLevel=true;
@@ -159,7 +159,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public Texto[] getText() {
-        return textLobby;
+        return TEXTLOBBY;
     }
 
     @Override
@@ -176,7 +176,7 @@ public class Lobby implements levelStrategy{
     @Override
     public Level levelCambio() {
         Level game = new Level("/levels/lobby/lobby.png","/levels/lobby/collisionlobby.png",new Lobby());
-        sounds[0].stop();
+        SOUNDS[0].stop();
         if(!isFinish()){
         game = (new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png",new Ghost(nivelCase)));
         }else{
@@ -226,13 +226,13 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void backWithoutWin() {
-        textLobby[0].setVisible(true);
+        TEXTLOBBY[0].setVisible(true);
         chronos=(int)(System.nanoTime()/1000000000+3);
     }
 
     @Override
     public void uptadeTexto() {
-        for (Texto text : textLobby) {
+        for (Texto text : TEXTLOBBY) {
             text.showIfActive();
         }
     }
@@ -247,7 +247,7 @@ public class Lobby implements levelStrategy{
 
     @Override
     public void stopAll() {
-        for (Sound sonido1 : sounds) {
+        for (Sound sonido1 : SOUNDS) {
             sonido1.stop();
         }
     }

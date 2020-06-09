@@ -14,7 +14,7 @@ public class KeyBoard implements KeyListener {
     public static boolean up, down, left, right,restart,delete,enter, space,soltado,coma,escape,e;
     public static int rate = 2;
     private static String LastKeyNumber;
-    LocalTime ant = LocalTime.now(),rest;
+    private LocalTime ant = LocalTime.now(),rest;
 
     public KeyBoard() {
         this.LastKeyNumber = "";
@@ -60,9 +60,6 @@ public class KeyBoard implements KeyListener {
         }
     }
     
-    public static boolean getKeys(int i){
-        return KeyBoard.keys[i];
-    }
 
     public static void setKeysStatic(boolean bool, int ind) {
         KeyBoard.keysStatic[ind] = bool;

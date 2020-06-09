@@ -19,12 +19,13 @@ import java.awt.event.KeyEvent;
 public class Welcome extends GUI{
 
     private Level level;
-    private Sprite pageBackG = Sprite.startMenu[1];
+    private final Sprite PAGEBACKG;
     private int page=0, timeCounter=0;
     
     
     public Welcome(){
         super(Sprite.startMenu[0], 0, 0, true);
+        PAGEBACKG = Sprite.startMenu[1];
         setBotones(
             new Button(Sprite.botonesGUI[6],Sprite.botonesGUI[7], 0*86+10,screen.height-2*16,0,10),
             new Button(Sprite.botonesGUI[8],Sprite.botonesGUI[9], 1*86+20, screen.height-2*16,0,10),
@@ -77,7 +78,7 @@ public class Welcome extends GUI{
                     }
                     break;
                 case 1:
-                    screen.renderSprite(false, cordX, cordY, pageBackG);
+                    screen.renderSprite(false, cordX, cordY, PAGEBACKG);
                     for (int i = 3; i < botones.length; i++) {
                         botones[i].split();
                     }
