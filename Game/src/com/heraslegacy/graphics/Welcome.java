@@ -35,7 +35,6 @@ public class Welcome extends GUI{
     
     @Override
         public void mouseOptionsTracker(){
-            screen.renderSprite(true, screen.width/2-127, screen.height/-127, Sprite.logo_Wstem);
         if(timeCounter==0){
             if (page == 0) {
                 if (botones[0].onZone()) {

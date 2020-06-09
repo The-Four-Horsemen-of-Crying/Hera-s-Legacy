@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.time.LocalTime;
 import javax.imageio.ImageIO;
 import static com.heraslegacy.main.Game.scale;
+import static com.heraslegacy.main.Game.screen;
 
 /**
  *
@@ -42,7 +43,7 @@ public class Ghost implements levelStrategy {
     private LocalTime dt = LocalTime.now();
     private LocalTime dm = LocalTime.now();
     private int y = screen.height * scale;
-    private final Sound SOUND[]={new Sound(Sound.creditos_Theme), new Sound(Sound.fantasma_Theme)};
+    private final Sound SOUND[] = {new Sound(Sound.creditos_Theme), new Sound(Sound.fantasma_Theme)};
     private final Texto A[];
     private final Texto MENSAJESPACE[] = {
         new Texto("Katherine Jonhson, la calculadora humana.", Game.WIDTH / 2, 300, true),
@@ -56,29 +57,28 @@ public class Ghost implements levelStrategy {
         new Texto("pero era como conducir, cualquier cosa podía pasar\"", Game.WIDTH / 2, 300, false),
         new Texto("Hoy en día podemos decir que los cálculos de Katherine", Game.WIDTH / 2, 300, false),
         new Texto("Estuvieron bien.", Game.WIDTH / 2, 300, false),
-        new Texto("A partir de ahora, eres un astronauta", Game.WIDTH/ 2, 300, false),
-        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.WIDTH / 2, 300, false), 
+        new Texto("A partir de ahora, eres un astronauta", Game.WIDTH / 2, 300, false),
+        new Texto("Debes llevar la nave a la luna y confiar en Katherine", Game.WIDTH / 2, 300, false),
         new Texto("Regresarás a salvo, éxito en la misión.", Game.WIDTH / 2, 300, false),
-        new Texto("Recuerda:", Game.WIDTH/ 2, 300, false),
-        new Texto("\"En un tiempo donde todos pensaban en cómo llegar...",Game.WIDTH / 2, 300, false),
-        new Texto("y nadie en cómo regresar... ",Game.WIDTH/ 2, 300, false),
-        new Texto("Jonhson se adelantó, supo cómo volver\"",Game.WIDTH/ 2, 300, false)
+        new Texto("Recuerda:", Game.WIDTH / 2, 300, false),
+        new Texto("\"En un tiempo donde todos pensaban en cómo llegar...", Game.WIDTH / 2, 300, false),
+        new Texto("y nadie en cómo regresar... ", Game.WIDTH / 2, 300, false),
+        new Texto("Jonhson se adelantó, supo cómo volver\"", Game.WIDTH / 2, 300, false)
     };
-    private final Texto MENSAJEMATH[]={
+    private final Texto MENSAJEMATH[] = {
         new Texto("Katherine Johnson, la calculadora humana.", Game.WIDTH / 2, 300, true),
-        new Texto("Trabajaba en la aeronáutica como \"calculadora humana\"",Game.WIDTH / 2, 300, false),
-        new Texto("y realizaba los cálculos requeridos de manera manual",Game.WIDTH/ 2, 300, false),
+        new Texto("Trabajaba en la aeronáutica como \"calculadora humana\"", Game.WIDTH / 2, 300, false),
+        new Texto("y realizaba los cálculos requeridos de manera manual", Game.WIDTH / 2, 300, false),
         new Texto("Además, realizó los cálculos que, entre 1960 y 1969,", Game.WIDTH / 2, 300, false),
-        new Texto("enviaron a los astronautas al espacio.", Game.WIDTH/ 2, 300, false),
-        new Texto("Fue profesora y siempre mostró curiosidad,", Game.WIDTH/ 2, 300, false),
+        new Texto("enviaron a los astronautas al espacio.", Game.WIDTH / 2, 300, false),
+        new Texto("Fue profesora y siempre mostró curiosidad,", Game.WIDTH / 2, 300, false),
         new Texto("siempre sorprendía a todos con su astucia.", Game.WIDTH / 2, 300, false),
-        new Texto("Katherine siempre quería saber el porqué de todo", Game.WIDTH/ 2, 300, false),
+        new Texto("Katherine siempre quería saber el porqué de todo", Game.WIDTH / 2, 300, false),
         new Texto("Ahora eres Katherine y podrás vivir", Game.WIDTH / 2, 300, false),
         new Texto("una parte muy pequeña de su trabajo.", Game.WIDTH / 2, 300, false),
         new Texto("Deberás hacer cálculos sencillos, pero recuerda", Game.WIDTH / 2, 300, false),
         new Texto("Katherine y su equipo de trabajo", Game.WIDTH / 2, 300, false),
         new Texto("eran más eficientes que una calculadora.", Game.WIDTH / 2, 300, false)
-            
 
     };
     private final Texto MENSAJELIBRARY[] = {
@@ -87,29 +87,29 @@ public class Ghost implements levelStrategy {
         new Texto("que se convirtió en una de las principales", Game.WIDTH / 2, 300, false),
         new Texto("ingenieras matemáticas en los comienzos de", Game.WIDTH / 2, 300, false),
         new Texto("la industria aeroespacial.", Game.WIDTH / 2, 300, false),
-        new Texto("Era segregada por ser de color,",Game.WIDTH / 2, 300, false),
-        new Texto("aun así, logró ser ascendida a gerente del área oeste", Game.WIDTH/ 2, 300, false),
-        new Texto("de Computación. Con su ascenso se convirtió", Game.WIDTH/ 2, 300, false),
-        new Texto("en una defensora dedicada de las empleadas", Game.WIDTH/ 2, 300, false),
-        new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH/ 2, 300, false),
+        new Texto("Era segregada por ser de color,", Game.WIDTH / 2, 300, false),
+        new Texto("aun así, logró ser ascendida a gerente del área oeste", Game.WIDTH / 2, 300, false),
+        new Texto("de Computación. Con su ascenso se convirtió", Game.WIDTH / 2, 300, false),
+        new Texto("en una defensora dedicada de las empleadas", Game.WIDTH / 2, 300, false),
+        new Texto("Dorothy hacía cálculos manuales junto con otras mujeres.", Game.WIDTH / 2, 300, false),
         new Texto("Cuando la tecnología avanzó, su trabajo se vio en riesgo", Game.WIDTH / 2, 300, false),
-        new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, 300, false), 
-        new Texto("hacerse experta en FORTRAN para así", Game.WIDTH/ 2, 300, false),
-        new Texto("poder usar las computadoras.", Game.WIDTH/ 2, 300, false),
+        new Texto("las computadoras iban a reemplazarla, por lo que decidió", Game.WIDTH / 2, 300, false),
+        new Texto("hacerse experta en FORTRAN para así", Game.WIDTH / 2, 300, false),
+        new Texto("poder usar las computadoras.", Game.WIDTH / 2, 300, false),
         new Texto("Para aprender tuvo que escabullirse a la biblioteca,", Game.WIDTH / 2, 300, false),
         new Texto("leer a escondidas y ocultarse de los guardias.", Game.WIDTH / 2, 300, false),
         new Texto("Ahora eres Dorothy y debes buscar los libros que necesitas.", Game.WIDTH / 2, 300, false),
         new Texto("¡Evita que los guardias te vean!", Game.WIDTH / 2, 300, false)
     };
     private final Texto CREDITOS[] = {
-        new Texto("Hera's Legacy", Game.WIDTH / 2, y , true),
-        new Texto("Directors:", Game.WIDTH / 2, y +2*25, true),
+        new Texto("Hera's Legacy", Game.WIDTH / 2, y, true),
+        new Texto("Directors:", Game.WIDTH / 2, y + 2 * 25, true),
         new Texto("Jonatha Arias", Game.WIDTH / 2, y + 3 * 25, true),
         new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 4 * 25, true),
         new Texto("Enrique Niebles", Game.WIDTH / 2, y + 5 * 25, true),
         new Texto("Enrique Miranda", Game.WIDTH / 2, y + 6 * 25, true),
         new Texto("Dilan Triana", Game.WIDTH / 2, y + 7 * 25, true),
-        new Texto("Game Desing: ", Game.WIDTH / 2, y +  9* 25, true),
+        new Texto("Game Desing: ", Game.WIDTH / 2, y + 9 * 25, true),
         new Texto("Jonatha Arias", Game.WIDTH / 2, y + 10 * 25, true),
         new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 11 * 25, true),
         new Texto("Enrique Niebles", Game.WIDTH / 2, y + 12 * 25, true),
@@ -128,7 +128,7 @@ public class Ghost implements levelStrategy {
         new Texto("Dilan Triana", Game.WIDTH / 2, y + 28 * 25, true),
         new Texto("Debug:", Game.WIDTH / 2, y + 30 * 25, true),
         new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 31 * 25, true),
-        new Texto("Testing team:", Game.WIDTH / 2, y + 33* 25, true),
+        new Texto("Testing team:", Game.WIDTH / 2, y + 33 * 25, true),
         new Texto("Enrique Miranda", Game.WIDTH / 2, y + 34 * 25, true),
         new Texto("Alvaro Cabrera", Game.WIDTH / 2, y + 35 * 25, true),
         new Texto("Dilan Triana", Game.WIDTH / 2, y + 36 * 25, true),
@@ -140,21 +140,20 @@ public class Ghost implements levelStrategy {
         new Texto("Jonatha Arias", Game.WIDTH / 2, y + 45 * 25, true),
         new Texto("Sound Track:", Game.WIDTH / 2, y + 47 * 25, true),
         new Texto("Final Fantasy IX-Crossing Those Hills", Game.WIDTH / 2, y + 48 * 25, true),
-        new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 49 * 25, true),     
+        new Texto("Final Fantasy VII-One Winged Angel", Game.WIDTH / 2, y + 49 * 25, true),
         new Texto("Final Fantasy VII-Prelude", Game.WIDTH / 2, y + 50 * 25, true),
         new Texto("Final Fantasy VII-Victory Fanfare", Game.WIDTH / 2, y + 51 * 25, true),
-        new Texto("Phoenix Wright-Age, Regret, Reward", Game.WIDTH / 2, y + 52 * 25, true),     
-        new Texto("Pokemon Blue/Red-Pallet town", Game.WIDTH / 2, y + 53 * 25, true),     
-        new Texto("The Legend of Zelda:Ocarina of Time- Temple of Time", Game.WIDTH / 2, y + 54 * 25, true),     
-        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 58 * 25, true),     
-        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 59 * 25, true),     
-        new Texto("En honor a:", Game.WIDTH / 2, y + 63 * 25, true),     
-        new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 64 * 25, true),     
-        new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 65 * 25, true),     
-        new Texto("-Katherine Johnson", Game.WIDTH / 2+200, y + 66 * 25, true),             
-        new Texto("Este proyecto fue realizado con fines academicos", Game.WIDTH / 2, y + 69 * 25, true),             
-        new Texto("Realizado para: ", Game.WIDTH / 2, y + 70 * 25, true),                     
-    };
+        new Texto("Phoenix Wright-Age, Regret, Reward", Game.WIDTH / 2, y + 52 * 25, true),
+        new Texto("Pokemon Blue/Red-Pallet town", Game.WIDTH / 2, y + 53 * 25, true),
+        new Texto("The Legend of Zelda:Ocarina of Time- Temple of Time", Game.WIDTH / 2, y + 54 * 25, true),
+        new Texto("Agradecemos de corazon a todos los que participaron en esto", Game.WIDTH / 2, y + 58 * 25, true),
+        new Texto("Te agradecemos mucho más a ti por jugar.", Game.WIDTH / 2, y + 59 * 25, true),
+        new Texto("En honor a:", Game.WIDTH / 2, y + 63 * 25, true),
+        new Texto("Katherine Johnson y Dorothy Vaughan", Game.WIDTH / 2, y + 64 * 25, true),
+        new Texto("\"Ama lo que haces y entonces, darás lo mejor de ti\"", Game.WIDTH / 2, y + 65 * 25, true),
+        new Texto("-Katherine Johnson", Game.WIDTH / 2 + 200, y + 66 * 25, true),
+        new Texto("Este proyecto fue realizado con fines academicos", Game.WIDTH / 2, y + 69 * 25, true),
+        new Texto("Realizado para: ", Game.WIDTH / 2, y + 70 * 25, true),};
     private final Tile[] PISO = {
         Tile.spacePices[3],
         Tile.woodFloor,
@@ -172,22 +171,22 @@ public class Ghost implements levelStrategy {
         this.indiceLevel = indiceLevel;//La idea es utilizar esto para hacer tipo un switch
         switch (indiceLevel) {
             default:
-                this.maxMensajes=MENSAJESPACE.length;
+                this.maxMensajes = MENSAJESPACE.length;
                 A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJESPACE[i];
                 }
                 break;
             case 1:
-                this.maxMensajes=MENSAJEMATH.length;
-                A= new Texto[maxMensajes];
+                this.maxMensajes = MENSAJEMATH.length;
+                A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJEMATH[i];
                 }
                 break;
             case 2:
-                this.maxMensajes=MENSAJELIBRARY.length;
-                A= new Texto[maxMensajes];
+                this.maxMensajes = MENSAJELIBRARY.length;
+                A = new Texto[maxMensajes];
                 for (int i = 0; i < maxMensajes; i++) {
                     A[i] = this.MENSAJELIBRARY[i];
                 }
@@ -202,13 +201,16 @@ public class Ghost implements levelStrategy {
         }
         SOUND[0].changeVolume(-2);
         SOUND[1].changeVolume(-2);
-        if(indiceLevel!=3)SOUND[1].play();
-        else SOUND[0].loop();
+        if (indiceLevel != 3) {
+            SOUND[1].play();
+        } else {
+            SOUND[0].loop();
+        }
     }
 
     @Override
     public void update() {
-        KeyBoard.escape=false;
+        KeyBoard.escape = false;
     }
 
     @Override
@@ -252,22 +254,36 @@ public class Ghost implements levelStrategy {
     @Override
     public void time() {
 
-        cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
         cont[1] = dm.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo de los mensajes
-
-        if (cont[1] == 57 && indiceLevel != 3 ) {//Mostrar mensajes
-            if (cont[2] < maxMensajes) {
-                cont[2]++;
-                A[0].setVisible(cont[2], A);
-            }
-            cont[1] = 0;
-            dm = LocalTime.now();
-        } else if (indiceLevel == 3 && cont[1] == 59) {
-                for (int i = 0; i < A.length; i++) {
-                    A[i].setPosy(A[i].getPosy()-25);
+        if (indiceLevel != 3) {
+            cont[0] = dt.minusSeconds(LocalTime.now().getSecond()).getSecond();//MAnejo del tiempo del nivel
+            if (cont[1] == 57 && indiceLevel != 3) {//Mostrar mensajes
+                if (cont[2] < maxMensajes) {
+                    cont[2]++;
+                    A[0].setVisible(cont[2], A);
                 }
-            cont[1] = 0;
-            dm = LocalTime.now();
+                cont[1] = 0;
+                dm = LocalTime.now();
+            }
+        } else {
+           
+            if (cont[1] == 59) {
+                cont[0]++;
+                for (int i = 0; i < A.length; i++) {
+                    A[i].setPosy(A[i].getPosy() - 25);
+                }
+                if(A[maxMensajes - 1].getPosy() <= 400){
+                    for (int i = 1; i <= 10; i++) {
+                        cont[2]++;
+                        y=screen.height - cont[2];
+                        screen.renderSprite(false, screen.width / 2 - 127, y, Sprite.logo_Wstem);
+                    }
+                }
+                cont[1] = 0;
+                dm = LocalTime.now();
+            }
+                    screen.renderSprite(false, screen.width / 2 - 127, y, Sprite.logo_Wstem);            
+                    
         }
     }
 
@@ -277,10 +293,10 @@ public class Ghost implements levelStrategy {
             player.animación();
         }
         time();
-        if (cont[0] == 57 - maxMensajes * 3 && indiceLevel!=3) {
+        if ((cont[0] == 57 - maxMensajes * 3 && indiceLevel != 3)|| cont[0]>=118) {
             cambio = true;// Aquí se dice cuando se "Acabo" la presentación
         }
-        if(indiceLevel==3 && A[maxMensajes-1].getPosy()<=0) cambio=true;
+       
 
     }
 
@@ -298,7 +314,7 @@ public class Ghost implements levelStrategy {
         //Buscar la manera de decidir cual cargar
         int latencia = 30;
         Sound p = new Sound(Sound.walk);
-        player = new Player(2*16,4*16);
+        player = new Player(2 * 16, 4 * 16);
         switch (indiceLevel) {
             case 0:
                 player.setSprites(Sprite.apolo_up, Sprite.apolo_down, Sprite.apolo_rigth, Sprite.apolo_left);
@@ -352,7 +368,7 @@ public class Ghost implements levelStrategy {
     @Override
     public Color getColor() {
         Color color = Color.WHITE;
-        if (indiceLevel != 0 && indiceLevel != 1 && indiceLevel!=3) {
+        if (indiceLevel != 0 && indiceLevel != 1 && indiceLevel != 3) {
             color = Color.BLACK;
         }
         return color;
@@ -362,8 +378,8 @@ public class Ghost implements levelStrategy {
     public Level levelCambio() {
         KeyBoard.setKeysStatic(false, KeyEvent.VK_ESCAPE);
         //Se debería implementar un codigo parecido al deLobby para decir que cambio hacer
-       
-        Level game = new Level("/levels/fantasma/nivelFantasma.png","/levels/fantasma/nivelFantasma.png", new Ghost(indiceLevel));
+
+        Level game = new Level("/levels/fantasma/nivelFantasma.png", "/levels/fantasma/nivelFantasma.png", new Ghost(indiceLevel));
         switch (indiceLevel) {
             case 0:
                 game = new Level("/levels/level02/level2.png", "/levels/level02/collisionlevel2.png", new SpaceLevel());
@@ -375,13 +391,13 @@ public class Ghost implements levelStrategy {
                 game = new Level("/levels/level03/nivel3.png", "/levels/level03/nivel3COLLITION.png", new LibraryLevel());
                 break;
             case 3:
-                Game.startGame=false;
-                Lobby.levels[0]=false;
-                Lobby.levels[1]=false;
-                Lobby.levels[2]=false;
+                Game.startGame = false;
+                Lobby.levels[0] = false;
+                Lobby.levels[1] = false;
+                Lobby.levels[2] = false;
                 break;
         }
-         SOUND[0].stop();
+        SOUND[0].stop();
         SOUND[1].stop();
         return game;
     }
@@ -412,7 +428,7 @@ public class Ghost implements levelStrategy {
 
     @Override
     public void stopAll() {
-        
+
     }
 
 }
